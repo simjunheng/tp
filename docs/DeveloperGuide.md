@@ -255,15 +255,20 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+**Target user profile**:  
 
-* has a need to manage a significant number of contacts
+* is a coach managing a team of players
+* has a need to manage a significant number of players
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* needs to keep track of administrative tasks
+* can help enhance decision-making during games instantaneously
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: helps busy sports coaches organise their overwhelming lists of contacts and messy weekly
+schedules, and provides them with a platform to visualise defensive and offensive plays as the game unfolds
+
 
 
 ### User stories
@@ -322,7 +327,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Time-clash**: An error where the user attempts to schedule an event at the same time as another
+* **Switchover**: The action of switching a player for another on a given field
+* **Liability-Potential** The statistics of a player's overall penalties and injuries across games
 
+*{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
