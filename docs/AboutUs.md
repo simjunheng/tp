@@ -38,15 +38,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role:  Deliverables and Deadline
 * Responsibilities: Ensure project deliverables are done on time and in the right format
 
-### Jean Doe
+### Sim Jun Heng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/simjunheng.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/simjunheng)]
+[[portfolio](team/simjunheng.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Documentation and Integration
+* Responsibilities: In charge of versioning, repository maintenance, and code integration. Assist and ensure
+that all documentations are in-order.
 
 ### James Doe
 
