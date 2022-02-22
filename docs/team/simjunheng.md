@@ -16,6 +16,6 @@ schedules. It also provides them with a platform to visualise defensive and offe
 * **Contributions to team-based tasks**
     * _to be added soon_
 * **Review/mentoring contributions**
-    * _to be added soon_   
+    * _to be added soon_
 * **Contributions beyond the project team**
-    * _to be added soon_        
+    * _to be added soon_
