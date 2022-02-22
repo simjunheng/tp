@@ -29,14 +29,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Abdulelah Faisal S Al Ghrairy
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/aalghrairy.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/aalghrairy)] [[portfolio](team/aalghrairy.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role:  Deliverables and Deadline
+* Responsibilities: Ensure project deliverables are done on time and in the right format
 
 ### Jean Doe
 
