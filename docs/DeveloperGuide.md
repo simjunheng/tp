@@ -270,16 +270,19 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                         |
+|----------|--------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                               |
+| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date          |
+| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                           |
+| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                    |
+| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                   |
+| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person      |
+| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                 |
+| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                           |
+| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs |
 
-*{More to be added}*
+
 
 ### Use cases
 
@@ -312,11 +315,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3. Should be able to hold up to 100 teams without a noticeable sluggishness in performance for typical usage.
+4. Should be able to hold up to 50 tags without a noticeable sluggishness in performance for typical usage.
+5. Should be portable so moving from one OS to another OS will not create problems.
+6. Should warn the user when attempting to delete a contact.
+7. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-*{More to be added}*
 
 ### Glossary
 
