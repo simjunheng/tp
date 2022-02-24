@@ -318,6 +318,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
+**Use case: Filter persons by tag**
+
+**MSS**
+
+1.  User requests to list persons with a specific tag description
+2.  AddressBook shows a list of filtered persons
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given tag description cannot be found in AddressBook.
+
+    * 1a1. AddressBook shows an error message and an empty list.
+
+      Use case ends.
+
+*{More to be added}*
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
