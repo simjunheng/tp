@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/juayhee)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/juayhee.md)]
 
 * Role: Code Quality and Testing
 * Responsibilities: Ensures the testing of the project is done properly and on time; looks
