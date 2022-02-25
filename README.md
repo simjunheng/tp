@@ -17,8 +17,6 @@
   - List all your contacts
   - Add, delete and edit them
   - Add notes to contacts
-
-- Tags
   - Add tags to your contacts
   - Filter and search for them based on tags for quick organisation
 
