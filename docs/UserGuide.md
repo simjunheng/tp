@@ -4,7 +4,9 @@ title: User Guide for Coach2K22
 ---
 [![codecov](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp/branch/master/graph/badge.svg?token=N3IGRH3TN0)](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp)
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+#User Guide for Coach2K22
+
+Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
 
 * Table of Contents
 {:toc}
@@ -22,16 +24,14 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all the possible commands.<br>
    Some example commands you can try:
 
    * **`list`** : Lists all contacts.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * **`add`**`n/John Doe p/98765432 e/johnd@example.com` : Adds a contact named `John Doe`.
 
    * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts.
 
    * **`exit`** : Exits the app.
 
@@ -65,89 +65,98 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 </div>
 
-### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+### Listing all contacts : `list`
 
-![help message](images/helpMessage.png)
+Shows a list of all persons in our contact list.
 
-Format: `help`
+Format: `list`
 
 
 ### Adding a person: `add`
 
-Adds a person to the address book.
+Adds a person to our contact list.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG_NAME]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers`
 
-### Listing all persons : `list`
 
-Shows a list of all persons in the address book.
+### Deleting a person: `del`
 
-Format: `list`
+Delete a person from our contact list.
 
-### Editing a person : `edit`
-
-Edits an existing person in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
-
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+Format: `del INDEX`
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `del 1` deletes the first person in the contact list.
 
-### Locating persons by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+### Adding a tag : `tag-add`
+
+Add tags to a selected person from our contact list.
+
+Format: `tag-add INDEX  TAG_NAME`
+
+Examples:
+* `tag-add 1 Public Relations` adds the tag `Public Relations` to the first person in the contact list.
+
+
+### Deleting a tag : `tag-del`
+
+Add tags to a selected person from our contact list.
+
+Format: `tag-del INDEX  TAG_INDEX`
+
+Examples:
+* `tag-del 1 1` deletes the first tag from the first person in the contact list.
+
+
+### Locating persons by keyword : `find`
+
+Find persons matching any of the given keywords from our contact list.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+Examples:
+* `find n/Alan t/team1`
+
+
+### Adding a note : `note-add`
+
+Add a note to a selected person from our contact list.
+
+Format: `note-add INDEX  NOTE_DESCRIPTION`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `note-add 1 Surgery Scheduled for tomorrow` adds the note "Surgery Scheduled for tomorrow" to the 1st person in the contact list.
 
-### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+### Deleting a note : `note-del`
 
-Format: `delete INDEX`
+Delete the note to a selected person from our contact list.
+
+Format: `note-del INDEX  NOTE_INDEX`
 
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `note-del 1 1` deletes the first note from the first person in the contact list.
 
-### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+### Listing all the commands : `help`
 
-Format: `clear`
+Show a list of all the commands with their respective format and a short description of what they do.
+
+Format: `help`
+
 
 ### Exiting the program : `exit`
 
@@ -155,39 +164,26 @@ Exits the program.
 
 Format: `exit`
 
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.
-</div>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+| Action       | Format, Examples                                                                                                   |
+|--------------|--------------------------------------------------------------------------------------------------------------------|
+| **List**     | `list`                                                                                                             |
+| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
+| **Del**      | `del INDEX`<br> e.g., `del 1`                                                                                      |
+| **tag-add**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
+| **tag-del**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
+| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find n/Alan t/team1`                                                     |
+| **note-add** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
+| **note-del** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
+| **Help**     | `help`                                                                                                             |
+| **Exit**     | `exit`                                                                                                             |
