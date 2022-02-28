@@ -50,12 +50,14 @@ after code quality and ensures adherence to coding standards.
 * Responsibilities: In charge of versioning, repository maintenance, and code integration. Assist and ensure
 that all documentations are in-order.
 
-### James Doe
+### Lyu Xiaoteng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/rye-catcher.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Rye-Catcher)]
+[[portfolio](team/rye-catcher.md)]
+[[blog](https://x1a0teng.page/posts/about/)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Documentation and Integration
+* Responsibilities: Ensure project documentation in good quality 
+and various parts of codes can be integrated to create a whole.

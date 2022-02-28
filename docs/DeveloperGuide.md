@@ -291,16 +291,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Coach2K22` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Delete a person**
 
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  Coach2K22 shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  Coach2K22 deletes the person
 
     Use case ends.
 
@@ -312,26 +312,89 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
 
-*{More to be added}*
+
+**Use case: Add a note to a person**
+
+**MSS**
+
+1.  User requests to add a note to a person
+2.  Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+    * 1a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 1b. The given list index cannot be found in Coach2K22.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 1.
+
+* 1c. The note provided is an empty string.
+
+    * 1c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Delete a note from a person**
+
+**MSS**
+
+1.  User requests to delete a note for a person
+2.  Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+    * 1a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 1b. The given list index is invalid.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 1.
+
+* 1c. Notes have not been assigned to the person.
+
+    * 1c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 1.
+
+* 1d. The given note index is invalid.
+
+    * 1d1. Coach2K22 shows an error message.
+
+      Use case resumes at step 1.
 
 **Use case: Filter persons by tag**
 
 **MSS**
 
 1.  User requests to list persons with a specific tag description
-2.  AddressBook shows a list of filtered persons
+2.  Coach2K22 shows a list of filtered persons
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The given tag description cannot be found in AddressBook.
+* 1a. The given tag description cannot be found in Coach2K22.
 
-    * 1a1. AddressBook shows an error message and an empty list.
+    * 1a1. Coach2K22 shows an error message and an empty list.
 
       Use case ends.
 
