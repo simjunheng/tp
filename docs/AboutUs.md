@@ -21,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Tan Juay Hee
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/juayhee.png" width="200px">
 
 [[github](http://github.com/juayhee)]
 [[portfolio](team/juayhee.md)]
