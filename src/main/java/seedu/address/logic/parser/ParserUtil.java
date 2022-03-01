@@ -2,8 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -48,6 +50,18 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses {@code Collection<String> names} into a {@code List<Name>}.
+     */
+    public static List<Name> parseNames(Collection<String> names) throws ParseException {
+        requireNonNull(names);
+        final List<Name> nameList = new ArrayList<>();
+        for (String name : names) {
+            nameList.add(parseName(name));
+        }
+        return nameList;
     }
 
     /**

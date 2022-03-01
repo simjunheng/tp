@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,8 @@ public class ParserUtilTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_NAME = "Rachel Walker";
+    private static final String VALID_NAME_1 = "Alex Yeoh";
+    private static final String VALID_NAME_2 = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
@@ -68,15 +70,33 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
-        Name expectedName = new Name(VALID_NAME);
-        assertEquals(expectedName, ParserUtil.parseName(VALID_NAME));
+        Name expectedName = new Name(VALID_NAME_1);
+        assertEquals(expectedName, ParserUtil.parseName(VALID_NAME_1));
     }
 
     @Test
     public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
-        String nameWithWhitespace = WHITESPACE + VALID_NAME + WHITESPACE;
-        Name expectedName = new Name(VALID_NAME);
+        String nameWithWhitespace = WHITESPACE + VALID_NAME_1 + WHITESPACE;
+        Name expectedName = new Name(VALID_NAME_1);
         assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));
+    }
+
+    @Test
+    public void parseNames_collectionWithInvalidNames_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNames(Arrays.asList(VALID_NAME_1, INVALID_NAME)));
+    }
+
+    @Test
+    public void parseNames_emptyCollection_returnsEmptySet() throws Exception {
+        assertTrue(ParserUtil.parseNames(Collections.emptyList()).isEmpty());
+    }
+
+    @Test
+    public void parseNames_collectionWithValidNames_returnsNameList() throws Exception {
+        List<Name> actualNameList = ParserUtil.parseNames(Arrays.asList(VALID_NAME_1, VALID_NAME_2));
+        List<Name> expectedNameList = Arrays.asList(new Name(VALID_NAME_1), new Name(VALID_NAME_2));
+
+        assertEquals(expectedNameList, actualNameList);
     }
 
     @Test

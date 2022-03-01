@@ -5,11 +5,16 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.TagContainsKeywordsPredicate;
 
 public class FindCommandParserTest {
 
@@ -22,13 +27,15 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsFindCommand() {
+        List<Name> nameList = Arrays.asList(new Name("Alex"), new Name("Bob"));
+        HashSet<Tag> tagSet = new HashSet<>(Arrays.asList(new Tag("friends"), new Tag("neighbours")));
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Bob")));
-        assertParseSuccess(parser, "Alice Bob", expectedFindCommand);
+                new FindCommand(new NameContainsKeywordsPredicate(nameList), new TagContainsKeywordsPredicate(tagSet));
+        assertParseSuccess(parser, " n/Alex n/Bob t/friends t/neighbours", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " \n Alice \n \t Bob  \t", expectedFindCommand);
+        assertParseSuccess(parser, " n/Alex     n/Bob   t/friends t/neighbours    ", expectedFindCommand);
     }
 
 }
