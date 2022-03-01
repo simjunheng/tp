@@ -121,10 +121,12 @@ Examples:
 
 Find persons matching any of the given keywords from our contact list.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find [n/NAME]... [t/TAG]...`
+
+* One of the optional items e.g. `[n/NAME]` must be present for the command to work. 
 
 Examples:
-* `find n/Alan t/team1`
+* `find n/Alex n/Charlotte t/team1 t/team2`
 
 
 ### Adding a note : `note-add`
@@ -180,10 +182,10 @@ Format: `exit`
 | **List**     | `list`                                                                                                             |
 | **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
 | **Del**      | `del INDEX`<br> e.g., `del 1`                                                                                      |
-| **tag-add**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
-| **tag-del**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find n/Alan t/team1`                                                     |
-| **note-add** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
-| **note-del** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
+| **Add Tag**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
+| **Del Tag**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
+| **Find**     | `find [n/NAME]... [t/TAG]...`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                                     |
+| **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
+| **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
 | **Help**     | `help`                                                                                                             |
 | **Exit**     | `exit`                                                                                                             |
