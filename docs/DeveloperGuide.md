@@ -381,23 +381,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-**Use case: Filter persons by tag**
+**Use case: Find persons by name and/or tag**
 
 **MSS**
 
-1.  User requests to list persons with a specific tag description
+1.  User requests to list persons with a specific name and/or tag
 2.  Coach2K22 shows a list of filtered persons
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The given tag description cannot be found in Coach2K22.
+* 1a. The given name and tag keywords cannot be found in Coach2K22.
 
-    * 1a1. Coach2K22 shows an error message and an empty list.
+    * 1a1. Coach2K22 shows an empty list.
+
+      Use case ends.
+    
+* 1b. The keyword provided does not indicate any prefix e.g. `n/` or `t/`.
+
+    * 1a1. Coach2K22 shows an error message.
 
       Use case ends.
 
+* 1c. No keywords are provided.
+
+    * 1a1. Coach2K22 shows an error message.
+
+      Use case ends.
+    
 *{More to be added}*
 
 ### Non-Functional Requirements
