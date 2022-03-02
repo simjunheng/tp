@@ -121,12 +121,15 @@ Examples:
 
 Find persons matching any of the given keywords from our contact list.
 
-Format: `find [n/NAME]... [t/TAG]...`
+Format: `Format: `find [n/NAME]…​ [t/TAG]…​``
 
 * One of the optional items e.g. `[n/NAME]` must be present for the command to work. 
 
 Examples:
 * `find n/Alex n/Charlotte t/team1 t/team2`
+* `find n/Alan t/team1`
+* `find n/Alan`
+* `find t/team1`
 
 
 ### Adding a note : `note-add`
