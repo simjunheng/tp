@@ -49,12 +49,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities: In charge of versioning, repository maintenance, and code integration. Assist and ensure
 that all documentations are in-order.
 
-### James Doe
+### Pragya Jha
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/PrgJ.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/PrgJ)]
+[[portfolio](team/PrgJ.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Scheduling and tracking
+* Responsibilities: In charge of defining, assigning, and tracking project tasks.
