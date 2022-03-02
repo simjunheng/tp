@@ -120,16 +120,17 @@ Examples:
 ### Locating persons by keyword : `find`
 
 Find persons matching any of the given keywords from our contact list.
+Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
 Format: `find [n/NAME]…​ [t/TAG]…​`
 
 * One of the optional items e.g. `[n/NAME]` must be present for the command to work. 
 
 Examples:
-* `find n/Alex n/Charlotte t/team1 t/team2`
 * `find n/Alan t/team1`
 * `find n/Alan`
 * `find t/team1`
+* `find n/Alex n/Charlotte t/team1 t/team2`
 
 
 ### Adding a note : `note-add`
@@ -187,7 +188,7 @@ Format: `exit`
 | **Del**      | `del INDEX`<br> e.g., `del 1`                                                                                      |
 | **Add Tag**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
 | **Del Tag**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
-| **Find**     | `find [n/NAME]... [t/TAG]...`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                                     |
+| **Find**     | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                                     |
 | **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
 | **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
 | **Help**     | `help`                                                                                                             |
