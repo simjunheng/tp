@@ -398,6 +398,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+**Use case: Add a tag to a person**
+
+**MSS**
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to list tags
+4. Coach2k22 shows a list of existing tags
+5. User requests to attach an existing tag to a person
+6. Coach2k22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The persons list is empty
+
+      Use case ends.
+
+* 3a. The tags list is empty
+
+      * 3a1. Coach2K22 provides information on how to add new tags
+
+      Use case ends.
+
+* 5a. User specified a tag that does not exist in the current list
+
+      * 5a1. Coach2K22 shows an error message
+      * 5a2. Coach2K22 asks if the user intends to create a new tag
+      * 5a3. User confirms
+      * 5a4. Coach2K22 creates a new tag and attaches it to the person
+
+      Use case resumes at step 6.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
