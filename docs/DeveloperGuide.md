@@ -415,6 +415,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+**Use case: Delete a tag from a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to remove an existing tag from a person
+4. Coach2k22 shows the updated details of the person
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The persons list is empty.
+
+    * 1a1. Coach2K22 shows an error message.
+    * 1a2. Coach2k22 returns an empty list.
+
+      Use case ends.
+
+* 3a. The tag requested to remove does not exist for the person.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3b. No argument for tag removal is provided.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case ends.
 
 *{More to be added}*
 
