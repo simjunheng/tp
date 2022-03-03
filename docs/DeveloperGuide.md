@@ -401,6 +401,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: Add a tag to a person**
 
 **MSS**
+
 1. User requests to list persons
 2. Coach2K22 shows a list of persons
 3. User requests to list tags
