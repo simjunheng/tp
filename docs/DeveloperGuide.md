@@ -428,10 +428,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The persons list is empty.
-
-    * 1a1. Coach2K22 shows an error message.
-    * 1a2. Coach2k22 returns an empty list.
+* 2a. The list is empty.
 
       Use case ends.
 
