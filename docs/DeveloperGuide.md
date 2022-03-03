@@ -293,6 +293,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `Coach2K22` and the **Actor** is the `user`, unless specified otherwise)
 
+**Use case: Add a person**
+
+**MSS**
+
+1.  User requests to add a new person in the list
+2.  Coach2K22 shows a list with the newly added person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The parameters supplied by the user is invalid.
+  
+    * 1a1. Coach2K22 shows an error message.
+      
+      Use case ends.
+
+* 1b. Compulsory parameters not supplied by the user.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
 **Use case: Delete a person**
 
 **MSS**
