@@ -9,19 +9,21 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Lyu Xiaoteng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/rye-catcher.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Rye-Catcher)]
+[[portfolio](team/rye-catcher.md)]
+[[blog](https://x1a0teng.page/posts/about/)]
 
-* Role: Project Advisor
+* Role: Documentation and Integration
+* Responsibilities: Ensure project documentation in good quality 
+and various parts of codes can be integrated to create a whole.
 
 ### Tan Juay Hee
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/juayhee.png" width="200px">
 
 [[github](http://github.com/juayhee)]
 [[portfolio](team/juayhee.md)]
@@ -50,14 +52,13 @@ after code quality and ensures adherence to coding standards.
 * Responsibilities: In charge of versioning, repository maintenance, and code integration. Assist and ensure
 that all documentations are in-order.
 
-### Lyu Xiaoteng
 
-<img src="images/rye-catcher.png" width="200px">
+### Pragya Jha
 
-[[github](https://github.com/Rye-Catcher)]
-[[portfolio](team/rye-catcher.md)]
-[[blog](https://x1a0teng.page/posts/about/)]
+<img src="images/prgj.png" width="200px">
 
-* Role: Documentation and Integration
-* Responsibilities: Ensure project documentation in good quality 
-and various parts of codes can be integrated to create a whole.
+[[github](http://github.com/prgj)]
+[[portfolio](team/prgj.md)]
+
+* Role: Scheduling and tracking
+* Responsibilities: In charge of defining, assigning, adn tracking project tasks.
