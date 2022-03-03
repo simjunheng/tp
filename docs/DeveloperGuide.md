@@ -404,8 +404,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to list persons
 2. Coach2K22 shows a list of persons
-5. User requests to attach an existing tag to a person
-6. Coach2k22 shows the new details of the person
+3. User requests to attach a new tag to a person
+4. Coach2k22 shows the new details of the person
 
     Use case ends.
 
