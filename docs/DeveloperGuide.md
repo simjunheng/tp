@@ -434,9 +434,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The persons list is empty
+* 2a. The list is empty
 
-      Use case ends.
+  Use case ends.
 
 **Use case: Delete a tag from a person**
 
@@ -453,7 +453,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-      Use case ends.
+  Use case ends.
 
 * 3a. The tag requested to remove does not exist for the person.
 
