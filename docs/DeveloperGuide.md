@@ -255,44 +255,75 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+**Target user profile**:  
 
-* has a need to manage a significant number of contacts
+* is a coach managing a team of players
+* has a need to manage a significant number of players
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* needs to keep track of administrative tasks
+* can help enhance decision-making during games instantaneously
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: helps busy sports coaches organise their overwhelming lists of contacts and messy weekly
+schedules, and provides them with a platform to visualise defensive and offensive plays as the game unfolds
+
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                         |
+|----------|--------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                               |
+| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date          |
+| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                           |
+| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                    |
+| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                   |
+| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person      |
+| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                 |
+| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                           |
+| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs |
 
-*{More to be added}*
+
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Coach2K22` and the **Actor** is the `user`, unless specified otherwise)
+
+**Use case: Add a person**
+
+**MSS**
+
+1.  User requests to add a new person in the list
+2.  Coach2K22 shows a list with the newly added person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The parameters supplied by the user is invalid.
+  
+    * 1a1. Coach2K22 shows an error message.
+      
+      Use case ends.
+
+* 1b. Compulsory parameters not supplied by the user.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
 
 **Use case: Delete a person**
 
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  Coach2K22 shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  Coach2K22 deletes the person
 
     Use case ends.
 
@@ -304,10 +335,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-
+    
 **Use case: Add a note to a person**
 
 **MSS**
@@ -371,12 +402,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. Coach2K22 shows an error message.
 
       Use case resumes at step 1.
-
-**Use case: Find persons by name and/or tag**
+    
+**Use case: Filter persons by tag**
 
 **MSS**
 
-1.  User requests to list persons with a specific name and/or tag
+1.  User requests to list persons with a specific tag description
 2.  Coach2K22 shows a list of filtered persons
 
     Use case ends.
@@ -391,13 +422,59 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
 * 1b. The keyword provided does not indicate any prefix e.g. `n/` or `t/`.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 1b1. Coach2K22 shows an error message.
 
       Use case ends.
 
 * 1c. No keywords are provided.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 1c1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+**Use case: Add a tag to a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to attach a new tag to a person
+4. Coach2k22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
+
+  Use case ends.
+
+**Use case: Delete a tag from a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to remove an existing tag from a person
+4. Coach2k22 shows the updated details of the person
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The tag requested to remove does not exist for the person.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3b. No argument for tag removal is provided.
+
+    * 3b1. Coach2K22 shows an error message.
 
       Use case ends.
     
@@ -405,17 +482,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3. Should be able to hold up to 100 teams without a noticeable sluggishness in performance for typical usage.
+4. Should be able to hold up to 50 tags without a noticeable sluggishness in performance for typical usage.
+5. Should be portable so moving from one OS to another OS will not create problems.
+6. Should warn the user when attempting to delete a contact.
+7. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-*{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Time-clash**: An error where the user attempts to schedule an event at the same time as another
+* **Switchover**: The action of switching a player for another on a given field
+* **Liability-Potential** The statistics of a player's overall penalties and injuries across games
 
+*{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
