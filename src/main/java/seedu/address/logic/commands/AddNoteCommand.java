@@ -17,12 +17,10 @@ import seedu.address.model.person.Person;
  * Adds a note to a person in the address book.
  */
 public class AddNoteCommand extends Command {
-    private final Index index;
-    private final Note note;
-
     public static final String COMMAND_WORD = "note-add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add a note to a selected person from our contact list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Add a note to a selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
             + "NOTE_DESCRIPTION (must be non-empty)\n"
@@ -36,6 +34,9 @@ public class AddNoteCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New note added: %1$s";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
+
+    private final Index index;
+    private final Note note;
 
     /**
      * @param index of the person in the filtered person list to add the note
