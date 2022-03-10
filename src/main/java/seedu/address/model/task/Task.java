@@ -1,13 +1,14 @@
 package seedu.address.model.task;
 
-import seedu.address.model.tag.Tag;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.model.name.Name;
+import seedu.address.model.tag.Tag;
 
 public class Task {
 

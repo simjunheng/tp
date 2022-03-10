@@ -1,12 +1,15 @@
 package seedu.address.testutil;
 
-import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.task.*;
-import seedu.address.model.util.SampleDataUtil;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import seedu.address.model.name.Name;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Date;
+import seedu.address.model.task.EndTime;
+import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.util.SampleDataUtil;
 
 public class TaskBuilder {
     public static final String DEFAULT_NAME = "Meeting";

@@ -1,19 +1,19 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Task's date in the schedule book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
 public class Date {
-    public static final String MESSAGE_CONSTRAINTS =  "Date should be in the following format DD-MM-YYYY "
+    public static final String MESSAGE_CONSTRAINTS = "Date should be in the following format DD-MM-YYYY "
             + "and adhere to the following constraints: \n"
             + "1. YYYY should be a 4-digit numeric \n"
             + "2. MM should be a 2-digit numeric ranging from 01 to 12 \n"

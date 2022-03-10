@@ -1,19 +1,19 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
 /**
- * Represents a Task's start time in the schedule book.
+ * Represents a Task's end time in the schedule book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEndTime(String)}
  */
 public class EndTime {
-    public static final String MESSAGE_CONSTRAINTS = "The start time should be in the following format HH:MM "
+    public static final String MESSAGE_CONSTRAINTS = "The end time should be in the following format HH:MM "
             + "and adhere to the following constraints: \n"
             + "1. HH should be a 2-digit numeric in the range of 00 to 23 \n"
             + "2. MM should be a 2-digit numeric in the range of 00 to 59";

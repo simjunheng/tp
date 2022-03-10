@@ -1,13 +1,14 @@
 package seedu.address.model.task;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.TaskBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.FIRST_TASK;
 import static seedu.address.testutil.TypicalTasks.SECOND_TASK;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.TaskBuilder;
 
 public class TaskTest {
     @Test
@@ -30,13 +31,13 @@ public class TaskTest {
         assertTrue(FIRST_TASK.isSameTask(editedFirstTask));
 
         // different name, all other attributes same -> returns false
-        editedFirstTask= new TaskBuilder().withName("Swimming").withDate("09-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Swimming").withDate("09-10-2022")
                 .withStartTime("09:00").withEndTime("10:00")
                 .withTags("friends", "colleagues").build();
         assertFalse(FIRST_TASK.isSameTask(editedFirstTask));
 
         // name with trailing spaces, all other attributes same -> returns false
-        editedFirstTask= new TaskBuilder().withName("Meeting  ").withDate("09-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Meeting  ").withDate("09-10-2022")
                 .withStartTime("09:00").withEndTime("10:00")
                 .withTags("friends", "colleagues").build();
         assertFalse(FIRST_TASK.isSameTask(editedFirstTask));

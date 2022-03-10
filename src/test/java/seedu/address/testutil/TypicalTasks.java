@@ -1,12 +1,11 @@
 package seedu.address.testutil;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.person.Person;
-import seedu.address.model.task.Task;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import seedu.address.model.TaskBook;
+import seedu.address.model.task.Task;
 
 /**
  * A utility class containing a list of {@code Task} objects to be used in tests.
@@ -22,5 +21,28 @@ public class TypicalTasks {
             .withStartTime("14:00").withEndTime("16:00")
             .withTags("colleagues").build();
 
+    // Manually added
+    public static final Task FOURTH_TASK = new TaskBuilder().withName("Soccer Training").withDate("01-03-2020")
+            .withStartTime("14:30").withEndTime("16:00")
+            .withTags("team2").build();
+    public static final Task FIFTH_TASK = new TaskBuilder().withName("Basketball Training").withDate("02-03-2020")
+            .withStartTime("14:30").withEndTime("16:00")
+            .withTags("team1").build();
+
     private TypicalTasks() {} // prevents instantiation
+
+    /**
+     * Returns an {@code TaskBook} with all the typical persons.
+     */
+    public static TaskBook getTypicalTaskBook() {
+        TaskBook tb = new TaskBook();
+        for (Task task : getTypicalTasks()) {
+            tb.addTask(task);
+        }
+        return tb;
+    }
+
+    public static List<Task> getTypicalTasks() {
+        return new ArrayList<>(Arrays.asList(FIRST_TASK, SECOND_TASK, THIRD_TASK));
+    }
 }
