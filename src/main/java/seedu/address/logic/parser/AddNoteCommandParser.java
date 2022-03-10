@@ -23,7 +23,7 @@ public class AddNoteCommandParser implements Parser<AddNoteCommand> {
             Index index = ParserUtil.parseIndex(splitArgs[0]);
             Note note = ParserUtil.parseNote(splitArgs[1]);
             return new AddNoteCommand(index, note);
-        } catch (ParseException pe) {
+        } catch (ParseException | IndexOutOfBoundsException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
         }
