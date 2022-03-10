@@ -293,6 +293,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `Coach2K22` and the **Actor** is the `user`, unless specified otherwise)
 
+**Use case: Add a person**
+
+**MSS**
+
+1.  User requests to add a new person in the list
+2.  Coach2K22 shows a list with the newly added person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The parameters supplied by the user is invalid.
+  
+    * 1a1. Coach2K22 shows an error message.
+      
+      Use case ends.
+
+* 1b. Compulsory parameters not supplied by the user.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
 **Use case: Delete a person**
 
 **MSS**
@@ -400,16 +423,63 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
 * 1b. The keyword provided does not indicate any prefix e.g. `n/` or `t/`.
 
-    * 1a1. Coach2K22 shows an error message.
-
-      Use case ends.
-
-* 1c. No keywords are provided.
-
-    * 1a1. Coach2K22 shows an error message.
+    * 1b1. Coach2K22 shows an error message.
 
       Use case ends.
     
+* 1c. No keywords are provided.
+
+    * 1c1. Coach2K22 shows an error message.
+
+      Use case ends.
+    
+**Use case: Add a tag to a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to attach a new tag to a person
+4. Coach2k22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The persons list is empty
+
+      Use case ends.
+
+**Use case: Delete a tag from a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to remove an existing tag from a person
+4. Coach2k22 shows the updated details of the person
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+      Use case ends.
+
+* 3a. The tag requested to remove does not exist for the person.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3b. No argument for tag removal is provided.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+>>>>>>> e3476ba738786f81e0c7152cd2449fd7f92efa7f
 *{More to be added}*
 
 ### Non-Functional Requirements
