@@ -426,7 +426,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. Coach2K22 shows an error message.
 
       Use case ends.
-    
+
 * 1c. No keywords are provided.
 
     * 1c1. Coach2K22 shows an error message.
@@ -478,8 +478,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. Coach2K22 shows an error message.
 
       Use case ends.
-
->>>>>>> e3476ba738786f81e0c7152cd2449fd7f92efa7f
+    
 *{More to be added}*
 
 ### Non-Functional Requirements
