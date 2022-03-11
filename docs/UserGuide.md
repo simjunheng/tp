@@ -1,10 +1,10 @@
 ---
 layout: page
-title: User Guide for Coach2K22
+title: User Guide
 ---
 [![codecov](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp/branch/master/graph/badge.svg?token=N3IGRH3TN0)](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp)
 
-#User Guide for Coach2K22
+#User Guide
 
 Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
 
