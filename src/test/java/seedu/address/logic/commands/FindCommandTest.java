@@ -13,7 +13,6 @@ import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -21,9 +20,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.name.Name;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.TagContainsKeywordsPredicate;
 
 /**

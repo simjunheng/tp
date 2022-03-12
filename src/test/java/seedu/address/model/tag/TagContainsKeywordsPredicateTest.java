@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -72,7 +71,7 @@ public class TagContainsKeywordsPredicateTest {
 
         // Keywords match name, phone, and address, but does not match tag
         predicate = new TagContainsKeywordsPredicate(
-                Arrays.asList("Alice" ,"12345", "Main", "Street"));
+                Arrays.asList("Alice" , "12345", "Main", "Street"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").withTags("Family", "Colleague").build()));
     }

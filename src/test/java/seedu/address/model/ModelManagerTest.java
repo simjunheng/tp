@@ -18,10 +18,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.name.Name;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
 import seedu.address.model.name.TaskNameContainsKeywordsPredicate;
-import seedu.address.model.task.Task;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.TaskBookBuilder;
 

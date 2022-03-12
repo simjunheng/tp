@@ -5,15 +5,12 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindCommand;
-import seedu.address.model.name.Name;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.TagContainsKeywordsPredicate;
 
 public class FindCommandParserTest {
@@ -31,7 +28,8 @@ public class FindCommandParserTest {
         List<String> tagList = Arrays.asList("friends", "neighbours");
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new PersonNameContainsKeywordsPredicate(nameList), new TagContainsKeywordsPredicate(tagList));
+                new FindCommand(new PersonNameContainsKeywordsPredicate(nameList),
+                        new TagContainsKeywordsPredicate(tagList));
         assertParseSuccess(parser, " n/Alex n/Bob t/friends t/neighbours", expectedFindCommand);
 
         // multiple whitespaces between keywords

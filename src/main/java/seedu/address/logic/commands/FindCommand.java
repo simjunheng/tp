@@ -6,8 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.tag.TagContainsKeywordsPredicate;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
+import seedu.address.model.tag.TagContainsKeywordsPredicate;
+
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
