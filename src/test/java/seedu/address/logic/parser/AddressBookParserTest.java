@@ -9,7 +9,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +24,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.TagContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -70,10 +70,12 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
+        List<String> nameList = Arrays.asList("foo", "bar", "baz");
+        List<String> tagList = Arrays.asList("friends", "colleagues");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new PersonNameContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " " + "n/foo n/bar n/baz t/friends t/colleagues");
+        assertEquals(new FindCommand(new PersonNameContainsKeywordsPredicate(nameList),
+                new TagContainsKeywordsPredicate(tagList)), command);
     }
 
     @Test
