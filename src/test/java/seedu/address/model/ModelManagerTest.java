@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalTasks.FIRST_TASK;
+import static seedu.address.testutil.TypicalTasks.SECOND_TASK;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,9 +18,12 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.name.Name;
+import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
+import seedu.address.model.name.TaskNameContainsKeywordsPredicate;
+import seedu.address.model.task.Task;
 import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.TaskBookBuilder;
 
 public class ModelManagerTest {
 
@@ -28,6 +34,7 @@ public class ModelManagerTest {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
+        assertEquals(new TaskBook(), new TaskBook(modelManager.getTaskBook()));
     }
 
     @Test
@@ -74,6 +81,18 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void setTaskBookFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setTaskBookFilePath(null));
+    }
+
+    @Test
+    public void setTaskBookFilePath_validPath_setsTaskBookFilePath() {
+        Path path = Paths.get("task/book/file/path");
+        modelManager.setTaskBookFilePath(path);
+        assertEquals(path, modelManager.getTaskBookFilePath());
+    }
+
+    @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
     }
@@ -95,14 +114,37 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void hasTask_nullTask_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
+    }
+
+    @Test
+    public void hasTask_taskNotInTaskBook_returnsFalse() {
+        assertFalse(modelManager.hasTask(FIRST_TASK));
+    }
+
+    @Test
+    public void hasTask_taskInTaskBook_returnsTrue() {
+        modelManager.addTask(FIRST_TASK);
+        assertTrue(modelManager.hasTask(FIRST_TASK));
+    }
+
+    @Test
+    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
     public void equals() {
         AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
+        TaskBook taskBook = new TaskBookBuilder().withTask(FIRST_TASK).withTask(SECOND_TASK).build();
+        TaskBook differentTaskBook = new TaskBook();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
+        modelManager = new ModelManager(addressBook, taskBook, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, taskBook, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -115,20 +157,30 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, taskBook, userPrefs)));
 
-        // different filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
-
-        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(new Name(keywords[0]))));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
+        // different filteredPersonList -> returns false
+        String[] pKeywords = ALICE.getName().fullName.split("\\s+");
+        modelManager.updateFilteredPersonList(new PersonNameContainsKeywordsPredicate(Arrays.asList(pKeywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
+        // different taskBook -> returns false
+        assertFalse(modelManager.equals(new ModelManager(addressBook, differentTaskBook, userPrefs)));
+
+        // different filteredTaskList -> returns false
+        String[] tKeywords = FIRST_TASK.getName().fullName.split("\\s+");
+        modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(tKeywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, userPrefs)));
+
+        // resets modelManager to initial state for upcoming tests
+        modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, differentUserPrefs)));
     }
 }

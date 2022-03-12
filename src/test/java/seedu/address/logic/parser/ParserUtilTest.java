@@ -15,9 +15,9 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.name.Name;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -79,24 +79,6 @@ public class ParserUtilTest {
         String nameWithWhitespace = WHITESPACE + VALID_NAME_1 + WHITESPACE;
         Name expectedName = new Name(VALID_NAME_1);
         assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));
-    }
-
-    @Test
-    public void parseNames_collectionWithInvalidNames_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseNames(Arrays.asList(VALID_NAME_1, INVALID_NAME)));
-    }
-
-    @Test
-    public void parseNames_emptyCollection_returnsEmptySet() throws Exception {
-        assertTrue(ParserUtil.parseNames(Collections.emptyList()).isEmpty());
-    }
-
-    @Test
-    public void parseNames_collectionWithValidNames_returnsNameList() throws Exception {
-        List<Name> actualNameList = ParserUtil.parseNames(Arrays.asList(VALID_NAME_1, VALID_NAME_2));
-        List<Name> expectedNameList = Arrays.asList(new Name(VALID_NAME_1), new Name(VALID_NAME_2));
-
-        assertEquals(expectedNameList, actualNameList);
     }
 
     @Test

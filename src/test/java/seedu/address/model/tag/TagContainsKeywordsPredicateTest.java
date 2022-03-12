@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,8 @@ public class TagContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
-        HashSet<Tag> firstPredicateKeywordList = new HashSet<>(Collections.singletonList(new Tag("first")));
-        HashSet<Tag> secondPredicateKeywordList = new HashSet<>(Arrays.asList(new Tag("first"), new Tag("second")));
+        List<String> firstPredicateKeywordList = Collections.singletonList("first");
+        List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
         TagContainsKeywordsPredicate firstPredicate = new TagContainsKeywordsPredicate(firstPredicateKeywordList);
         TagContainsKeywordsPredicate secondPredicate = new TagContainsKeywordsPredicate(secondPredicateKeywordList);
@@ -42,37 +43,37 @@ public class TagContainsKeywordsPredicateTest {
     public void test_tagContainsKeywords_returnsTrue() {
         // One keyword
         TagContainsKeywordsPredicate predicate =
-                new TagContainsKeywordsPredicate(new HashSet<>(Collections.singletonList(new Tag("Alice"))));
-        assertTrue(predicate.test(new PersonBuilder().withTags("Alice", "Bob").build()));
+                new TagContainsKeywordsPredicate(Collections.singletonList("Family"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("Family", "Colleague").build()));
 
         // Multiple keywords
-        predicate = new TagContainsKeywordsPredicate(new HashSet<>(Arrays.asList(new Tag("Alice"), new Tag("Bob"))));
-        assertTrue(predicate.test(new PersonBuilder().withTags("Alice", "Bob").build()));
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("Family", "Colleague"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("Family", "Colleague").build()));
 
         // Only one matching keyword
-        predicate = new TagContainsKeywordsPredicate(new HashSet<>(Arrays.asList(new Tag("Bob"), new Tag("Carol"))));
-        assertTrue(predicate.test(new PersonBuilder().withTags("Alice", "Carol").build()));
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("Colleague", "Team"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("Family", "Team").build()));
 
         // Mixed-case keywords
-        predicate = new TagContainsKeywordsPredicate(new HashSet<>(Arrays.asList(new Tag("aLIce"), new Tag("bOB"))));
-        assertTrue(predicate.test(new PersonBuilder().withTags("Alice", "Bob").build()));
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("fAmiLy", "coLLEague"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("Family", "Colleague").build()));
     }
 
     @Test
     public void test_nameDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         TagContainsKeywordsPredicate predicate =
-                new TagContainsKeywordsPredicate(new HashSet<>(Collections.emptyList()));
-        assertFalse(predicate.test(new PersonBuilder().withTags("Alice").build()));
+                new TagContainsKeywordsPredicate(Collections.emptyList());
+        assertFalse(predicate.test(new PersonBuilder().withTags("Family").build()));
 
         // Non-matching keyword
-        predicate = new TagContainsKeywordsPredicate(new HashSet<>(Arrays.asList(new Tag("Carol"))));
-        assertFalse(predicate.test(new PersonBuilder().withTags("Alice", "Bob").build()));
+        predicate = new TagContainsKeywordsPredicate(Arrays.asList("Team"));
+        assertFalse(predicate.test(new PersonBuilder().withTags("Family", "Colleague").build()));
 
-        // Keywords match phone, and address, but does not match name
+        // Keywords match name, phone, and address, but does not match tag
         predicate = new TagContainsKeywordsPredicate(
-                new HashSet<>(Arrays.asList(new Tag("12345"), new Tag("Main"), new Tag("Street"))));
+                Arrays.asList("Alice" ,"12345", "Main", "Street"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .withEmail("alice@email.com").withAddress("Main Street").withTags("Family", "Colleague").build()));
     }
 }

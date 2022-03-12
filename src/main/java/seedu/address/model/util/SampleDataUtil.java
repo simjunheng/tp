@@ -6,12 +6,18 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyTaskBook;
+import seedu.address.model.TaskBook;
+import seedu.address.model.name.Name;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Date;
+import seedu.address.model.task.EndTime;
+import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -40,6 +46,19 @@ public class SampleDataUtil {
         };
     }
 
+    public static Task[] getSampleTasks() {
+        return new Task[] {
+            new Task(new Name("Shareholders Meeting"), new Date("10-04-2022"), new StartTime("09:00"),
+                    new EndTime("12:00"), getTagSet("team1")),
+            new Task(new Name("Team Training"), new Date("11-04-2022"), new StartTime("09:00"),
+                    new EndTime("12:00"), getTagSet("team1")),
+            new Task(new Name("Annual Dinner"), new Date("11-04-2022"), new StartTime("18:00"),
+                    new EndTime("20:00"), getTagSet("family", "friends")),
+            new Task(new Name("Recruitment Talk"), new Date("12-04-2022"), new StartTime("15:00"),
+                    new EndTime("18:00"), getTagSet("school"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -48,6 +67,13 @@ public class SampleDataUtil {
         return sampleAb;
     }
 
+    public static ReadOnlyTaskBook getSampleTaskBook() {
+        TaskBook sampleTb = new TaskBook();
+        for (Task sampleTask : getSampleTasks()) {
+            sampleTb.addTask(sampleTask);
+        }
+        return sampleTb;
+    }
     /**
      * Returns a tag set containing the list of strings given.
      */
@@ -56,5 +82,4 @@ public class SampleDataUtil {
                 .map(Tag::new)
                 .collect(Collectors.toSet());
     }
-
 }

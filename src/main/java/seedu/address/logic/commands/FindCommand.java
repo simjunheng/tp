@@ -6,9 +6,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.tag.TagContainsKeywordsPredicate;
-
+import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
@@ -26,13 +25,13 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "Alex " + PREFIX_NAME + "Charlotte "
             + PREFIX_TAG + "friends";
 
-    private final NameContainsKeywordsPredicate namePredicate;
+    private final PersonNameContainsKeywordsPredicate namePredicate;
     private final TagContainsKeywordsPredicate tagPredicate;
 
     /**
      * Initialises new object using {@code namePredicate} and {@code tagPredicate}
      */
-    public FindCommand(NameContainsKeywordsPredicate namePredicate, TagContainsKeywordsPredicate tagPredicate) {
+    public FindCommand(PersonNameContainsKeywordsPredicate namePredicate, TagContainsKeywordsPredicate tagPredicate) {
         this.namePredicate = namePredicate;
         this.tagPredicate = tagPredicate;
     }

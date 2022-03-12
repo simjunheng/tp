@@ -338,8 +338,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-
-
+    
 **Use case: Add a note to a person**
 
 **MSS**
@@ -447,14 +446,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Coach2K22 shows a list of persons
 3. User requests to attach a new tag to a person
 4. Coach2k22 shows the new details of the person
-
-    Use case ends.
+   
+   Use case ends.
 
 **Extensions**
 
-* 1a. The persons list is empty
+* 2a. The list is empty
 
-      Use case ends.
+  Use case ends.
 
 **Use case: Delete a tag from a person**
 
@@ -471,7 +470,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-      Use case ends.
+  Use case ends.
 
 * 3a. The tag requested to remove does not exist for the person.
 
