@@ -1,0 +1,22 @@
+{
+  "_comment": "TaskBook save file which contains the same Task values as in TypicalTasks#getTypicalTaskBook()",
+  "tasks" : [ {
+    "name" : "Meeting",
+    "date" : "09-10-2022",
+    "startTime" : "09:00",
+    "endTime" : "10:00",
+    "tagged" : [ "friends", "colleagues" ]
+  }, {
+    "name" : "Training",
+    "date" : "29-02-2020",
+    "startTime" : "14:00",
+    "endTime" : "16:00",
+    "tagged" : [ "colleagues" ]
+  }, {
+    "name" : "Shareholder Meeting",
+    "date" : "29-02-2020",
+    "startTime" : "14:00",
+    "endTime" : "16:00",
+    "tagged" : [ "colleagues" ]
+  }]
+}

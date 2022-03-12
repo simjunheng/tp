@@ -338,8 +338,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-
-
+    
 **Use case: Add a note to a person**
 
 **MSS**
@@ -403,7 +402,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. Coach2K22 shows an error message.
 
       Use case resumes at step 1.
-
+    
 **Use case: Filter persons by tag**
 
 **MSS**
@@ -415,9 +414,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The given tag description cannot be found in Coach2K22.
+* 1a. The given name and tag keywords cannot be found in Coach2K22.
 
-    * 1a1. Coach2K22 shows an error message and an empty list.
+    * 1a1. Coach2K22 shows an empty list.
+
+      Use case ends.
+    
+* 1b. The keyword provided does not indicate any prefix e.g. `n/` or `t/`.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 1c. No keywords are provided.
+
+    * 1c1. Coach2K22 shows an error message.
 
       Use case ends.
 
@@ -466,7 +477,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. Coach2K22 shows an error message.
 
       Use case ends.
-
+    
 *{More to be added}*
 
 ### Non-Functional Requirements

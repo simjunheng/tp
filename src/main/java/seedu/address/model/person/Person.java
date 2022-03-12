@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.name.Name;
 import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
 
