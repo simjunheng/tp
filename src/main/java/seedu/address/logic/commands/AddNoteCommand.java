@@ -23,9 +23,9 @@ public class AddNoteCommand extends Command {
             + ": Add a note to a selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
-            + "NOTE_DESCRIPTION (must be non-empty)\n"
+            + "NOTE_DESCRIPTION (must be non-empty and not more than 50 characters)\n"
             + "Example: " + COMMAND_WORD + " "
-            + "1"
+            + "1 "
             + "Surgery Scheduled for tomorrow";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET =
