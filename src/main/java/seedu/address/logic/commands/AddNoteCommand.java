@@ -33,7 +33,7 @@ public class AddNoteCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New note added: %1$s";
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
+    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Note: %2$s";
 
     private final Index index;
     private final Note note;

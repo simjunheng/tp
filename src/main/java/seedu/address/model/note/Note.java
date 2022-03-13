@@ -49,7 +49,7 @@ public class Note {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + note + ']';
+        return note;
     }
 
 }

@@ -12,6 +12,7 @@ import java.util.Set;
 import seedu.address.model.name.Name;
 import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.util.ListUtil;
 
 /**
  * Represents a Person in the address book.
@@ -135,10 +136,10 @@ public class Person {
 
         List<Note> notes = getNotes();
         if (!notes.isEmpty()) {
-            builder.append("; Note: ");
-            notes.forEach(builder::append);
+            builder.append("; Notes: ");
+            ListUtil.toIndexedStringList(notes)
+                    .forEach(builder::append);
         }
         return builder.toString();
     }
-
 }
