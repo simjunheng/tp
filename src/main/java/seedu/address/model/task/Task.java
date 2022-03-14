@@ -51,6 +51,14 @@ public class Task {
     }
 
     /**
+     * Returns the start and end time values joined together for Task Card label
+     * @return appended values of start and end time
+     */
+    public String appendStartAndEndTime() {
+        return startTime.value + " - " + endTime.value;
+    }
+
+    /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
