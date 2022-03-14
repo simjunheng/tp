@@ -24,6 +24,7 @@ public class StrategyPanel extends UiPart<Region> {
     @FXML
     private Circle player3;
 
+    // Credit to http://java-buddy.blogspot.com/2013/07/move-node-to-front.html
     private EventHandler<MouseEvent> pressHandler =
             new EventHandler<MouseEvent>() {
 
@@ -36,6 +37,7 @@ public class StrategyPanel extends UiPart<Region> {
             }
     };
 
+    // Credit to http://java-buddy.blogspot.com/2013/07/move-node-to-front.html
     private EventHandler<MouseEvent> dragHandler =
             new EventHandler<MouseEvent>() {
 
