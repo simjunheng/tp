@@ -2,13 +2,17 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.name.Name;
+import seedu.address.model.note.Note;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.util.ListUtil;
 
 /**
  * Represents a Person in the address book.
@@ -24,17 +28,19 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final List<Note> notes = new ArrayList<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, List<Note> notes) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.notes.addAll(notes);
     }
 
     public Name getName() {
@@ -59,6 +65,14 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns an immutable note list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public List<Note> getNotes() {
+        return Collections.unmodifiableList(notes);
     }
 
     /**
@@ -93,13 +107,14 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getNotes().equals(getNotes());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, notes);
     }
 
     @Override
@@ -118,7 +133,13 @@ public class Person {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+
+        List<Note> notes = getNotes();
+        if (!notes.isEmpty()) {
+            builder.append("; Notes: ");
+            ListUtil.toIndexedStringList(notes)
+                    .forEach(builder::append);
+        }
         return builder.toString();
     }
-
 }
