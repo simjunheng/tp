@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddTagCommand;
+import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 public class AddTagCommandParser implements Parser {
@@ -35,4 +36,5 @@ public class AddTagCommandParser implements Parser {
 
         return new AddTagCommand(index, tagName);
     }
+
 }
