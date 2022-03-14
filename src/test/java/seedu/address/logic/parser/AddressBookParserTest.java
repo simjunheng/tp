@@ -6,8 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.NOTE_FIRST_INDEX;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteNoteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -54,14 +51,6 @@ public class AddressBookParserTest {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
-    }
-
-    @Test
-    public void parseCommand_deleteNote() throws Exception {
-        DeleteNoteCommand command = (DeleteNoteCommand) parser.parseCommand(
-                DeleteNoteCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
-                        + " " + NOTE_FIRST_INDEX.getOneBased());
-        assertEquals(new DeleteNoteCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
     }
 
     @Test
