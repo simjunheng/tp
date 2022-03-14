@@ -402,12 +402,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. Coach2K22 shows an error message.
 
       Use case resumes at step 1.
-    
-**Use case: Filter persons by tag**
+
+**Use case: Find persons by name or tag**
 
 **MSS**
 
-1.  User requests to list persons with a specific tag description
+1.  User requests to list persons with a specific name or tag
 2.  Coach2K22 shows a list of filtered persons
 
     Use case ends.
@@ -420,18 +420,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
     
-* 1b. The keyword provided does not indicate any prefix e.g. `n/` or `t/`.
+* 1b. The keyword provided is not indicated by a prefix e.g. `n/` or `t/`.
 
     * 1b1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1c. No keywords are provided.
+* 1c. No keywords are provided after the `find` command.
 
     * 1c1. Coach2K22 shows an error message.
 
       Use case ends.
+    
+* 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
+  
+    * 1d1. Coach2K22 shows an error message.
 
+      Use case ends.    
+    
 **Use case: Add a tag to a person**
 
 **MSS**
@@ -440,8 +446,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Coach2K22 shows a list of persons
 3. User requests to attach a new tag to a person
 4. Coach2k22 shows the new details of the person
-
-    Use case ends.
+   
+   Use case ends.
 
 **Extensions**
 
