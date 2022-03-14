@@ -66,6 +66,14 @@ public class DeleteNoteCommandTest {
     }
 
     @Test
+    public void execute_invalidPersonIndexUnfilteredList_throwsCommandException() {
+        Index outOfBoundNoteIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        DeleteNoteCommand deleteNoteCommand = new DeleteNoteCommand(outOfBoundNoteIndex, NOTE_FIRST_INDEX);
+
+        assertCommandFailure(deleteNoteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
     public void equals() {
         DeleteNoteCommand deleteNoteFirstCommand = new DeleteNoteCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX);
         DeleteNoteCommand deleteNoteSecondCommand = new DeleteNoteCommand(INDEX_SECOND_PERSON, NOTE_SECOND_INDEX);
