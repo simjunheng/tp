@@ -64,7 +64,7 @@ public class AddressBookParser {
             return new HelpCommand();
 
         case AddTagCommand.COMMAND_WORD:
-            return new AddTagCommand();
+            return new AddTagCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
