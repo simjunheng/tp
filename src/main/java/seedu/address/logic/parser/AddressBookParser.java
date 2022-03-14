@@ -69,6 +69,9 @@ public class AddressBookParser {
             case AddNoteCommand.COMMAND_WORD:
                 return new AddNoteCommandParser().parse(arguments);
 
+            case DeleteNoteCommand.COMMAND_WORD:
+                return new DeleteNoteCommandParser().parse(arguments);
+
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
 
