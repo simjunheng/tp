@@ -36,6 +36,11 @@ public class AddTagCommand extends Command {
     private final Index index;
     private final String tagName;
 
+    /**
+     * Public constructor for AddTagCommand
+     * @param index Index of person to add tag to
+     * @param tagName Name of tag
+     */
     public AddTagCommand(Index index, String tagName) {
         requireAllNonNull(index, tagName);
 

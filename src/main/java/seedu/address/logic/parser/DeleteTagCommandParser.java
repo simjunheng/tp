@@ -27,7 +27,8 @@ public class DeleteTagCommandParser implements Parser {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTagCommand.MESSAGE_USAGE), ive);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    DeleteTagCommand.MESSAGE_USAGE), ive);
         }
 
         // Get tag name with ArgumentTokenizer

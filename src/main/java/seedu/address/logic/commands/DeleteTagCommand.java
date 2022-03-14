@@ -36,6 +36,12 @@ public class DeleteTagCommand extends Command {
     private final Index index;
     private final String tagName;
 
+    /**
+     * Public constructor for DeleteTagCommand
+     * @param index Index of person to delete tag from
+     * @param tagName Name of tag
+     */
+
     public DeleteTagCommand(Index index, String tagName) {
         requireAllNonNull(index, tagName);
 
