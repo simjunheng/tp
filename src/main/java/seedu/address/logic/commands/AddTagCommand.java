@@ -31,6 +31,7 @@ public class AddTagCommand extends Command {
             + "1 "
             + "friend";
     public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tag: %1$s";
+    public static final String MESSAGE_DUPLICATE_TAG = "This person already has this tag!";
 
     private final Index index;
     private final String tagName;
@@ -52,10 +53,15 @@ public class AddTagCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
+
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = addTagToPerson(personToEdit);
 
-        //TODO Add exception for adding duplicate tags
+        // Exception when a duplicate tag is added
+        Tag testTag = new Tag(this.tagName);
+        if (personToEdit.getTags().contains(testTag)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TAG);
+        }
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
