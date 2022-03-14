@@ -3,8 +3,10 @@ package seedu.address.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_NOTE_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.NOTE_FIRST_INDEX;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -55,6 +57,26 @@ public class ParserUtilTest {
 
         // Leading and trailing whitespaces
         assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex("  1  "));
+    }
+
+    @Test
+    public void parseNoteIndex_invalidInput_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNoteIndex("10 a"));
+    }
+
+    @Test
+    public void parseNoteIndex_outOfRangeInput_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_INVALID_NOTE_INDEX, ()
+            -> ParserUtil.parseNoteIndex(Long.toString(Integer.MAX_VALUE + 1)));
+    }
+
+    @Test
+    public void parseNoteIndex_validInput_success() throws Exception {
+        // No whitespaces
+        assertEquals(NOTE_FIRST_INDEX, ParserUtil.parseNoteIndex("1"));
+
+        // Leading and trailing whitespaces
+        assertEquals(NOTE_FIRST_INDEX, ParserUtil.parseIndex("  1  "));
     }
 
     @Test
