@@ -85,9 +85,9 @@ public class DeleteNoteCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof DeleteNoteCommand // instanceof handles nulls
-                && (index.equals(((DeleteNoteCommand) other).index)
-                && noteIndex.equals(((DeleteNoteCommand) other).noteIndex)));
+        return other == this
+                || (other instanceof DeleteNoteCommand
+                && index.equals(((DeleteNoteCommand) other).index)
+                && noteIndex.equals(((DeleteNoteCommand) other).noteIndex));
     }
 }
