@@ -74,7 +74,14 @@
                   </Tab>
                   <Tab text="Strategy">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <VBox fx:id="strategy" minWidth="340" prefWidth="340" styleClass="pane-with-boarder">
+                           <padding>
+                               <Insets bottom="10" left="10" right="10" top="10" />
+                           </padding>
+                           <children>
+                               <AnchorPane fx:id="strategyPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                          </children>
+                       </VBox>
                     </content>
                   </Tab>
               </tabs>
