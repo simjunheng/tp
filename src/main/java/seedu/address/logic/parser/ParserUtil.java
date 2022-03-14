@@ -39,16 +39,16 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
-     * trimmed.
+     * Parses {@code oneBasedNoteIndex} into an {@code NoteIndex} and returns it. Leading and trailing whitespaces
+     * will be trimmed.
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
-    public static Index parseNoteIndex(String oneBasedIndex) throws ParseException {
-        String trimmedIndex = oneBasedIndex.trim();
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
+    public static Index parseNoteIndex(String oneBasedNoteIndex) throws ParseException {
+        String trimmedNoteIndex = oneBasedNoteIndex.trim();
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedNoteIndex)) {
             throw new ParseException(MESSAGE_INVALID_NOTE_INDEX);
         }
-        return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+        return Index.fromOneBased(Integer.parseInt(trimmedNoteIndex));
     }
 
     /**
