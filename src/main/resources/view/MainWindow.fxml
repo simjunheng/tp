@@ -61,9 +61,16 @@
                      </content>
                   </Tab>
                   <Tab text="Schedule">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
+                     <content>
+                        <VBox fx:id="taskList" minWidth="340" prefWidth="340" styleClass="pane-with-border">
+                           <padding>
+                              <Insets bottom="10" left="10" right="10" top="10" />
+                           </padding>
+                           <children>
+                              <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </content>
                   </Tab>
                   <Tab text="Strategy">
                     <content>
