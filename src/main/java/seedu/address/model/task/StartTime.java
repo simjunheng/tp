@@ -61,5 +61,7 @@ public class StartTime {
     }
 
     @Override
-    public String toString() {return String.valueOf(timeValue);}
+    public String toString() {
+        return String.valueOf(timeValue);
+    }
 }

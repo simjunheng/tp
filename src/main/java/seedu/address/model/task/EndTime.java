@@ -60,6 +60,8 @@ public class EndTime {
     }
 
     @Override
-    public String toString() {return String.valueOf(timeValue);}
+    public String toString() {
+        return String.valueOf(timeValue);
+    }
 }
 
