@@ -56,5 +56,10 @@ public class EndTime {
     public int hashCode() {
         return value.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }
 
