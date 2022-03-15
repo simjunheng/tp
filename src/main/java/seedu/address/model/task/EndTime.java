@@ -19,7 +19,6 @@ public class EndTime {
             + "2. MM should be a 2-digit numeric in the range of 00 to 59";
 
     public final String value;
-    public final LocalTime timeValue;
 
     /**
      * Constructs a {@code EndTime}.
@@ -30,7 +29,6 @@ public class EndTime {
         requireNonNull(time);
         checkArgument(isValidEndTime(time), MESSAGE_CONSTRAINTS);
         value = time;
-        timeValue = LocalTime.parse(time);
     }
 
     /**
@@ -61,7 +59,7 @@ public class EndTime {
 
     @Override
     public String toString() {
-        return String.valueOf(timeValue);
+        return value;
     }
 }
 

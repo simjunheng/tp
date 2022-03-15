@@ -19,7 +19,6 @@ public class StartTime {
             + "2. MM should be a 2-digit numeric in the range of 00 to 59";
 
     public final String value;
-    public final LocalTime timeValue;
 
     /**
      * Constructs a {@code StartTime}.
@@ -30,7 +29,6 @@ public class StartTime {
         requireNonNull(time);
         checkArgument(isValidStartTime(time), MESSAGE_CONSTRAINTS);
         value = time;
-        timeValue = LocalTime.parse(time);
     }
 
     /**
@@ -62,6 +60,6 @@ public class StartTime {
 
     @Override
     public String toString() {
-        return String.valueOf(timeValue);
+        return value;
     }
 }
