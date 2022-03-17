@@ -25,7 +25,7 @@ import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
-public class AddNoteCommandTest {
+public class AddStrengthCommandTest {
 
     private static final String NOTE_STUB_1 = "Some note 1";
     private static final String NOTE_STUB_2 = "Some note 2";
@@ -33,16 +33,16 @@ public class AddNoteCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
 
     @Test
-    public void execute_addNoteUnfilteredList_success() {
+    public void execute_addStrengthUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withNotes(NOTE_STUB_1).build();
+        Person editedPerson = new PersonBuilder(firstPerson).withStrengths(NOTE_STUB_1).build();
 
-        AddNoteCommand addNoteCommand = new AddNoteCommand(
+        AddStrengthCommand addStrengthCommand = new AddStrengthCommand(
                 INDEX_FIRST_PERSON,
-                new Note(editedPerson.getNotes().get(0).note));
+                new Note(NOTE_STUB_1));
 
         String expectedMessage = String.format(
-                seedu.address.logic.commands.AddNoteCommand.MESSAGE_SUCCESS, editedPerson);
+                AddStrengthCommand.MESSAGE_SUCCESS, editedPerson);
 
         Model expectedModel = new ModelManager(
                 new AddressBook(model.getAddressBook()),
@@ -50,15 +50,15 @@ public class AddNoteCommandTest {
                 new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(addNoteCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(addStrengthCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        AddNoteCommand addNoteCommand = new AddNoteCommand(outOfBoundIndex, new Note(VALID_NOTE_BOB));
+        AddStrengthCommand addStrengthCommand = new AddStrengthCommand(outOfBoundIndex, new Note(VALID_NOTE_BOB));
 
-        assertCommandFailure(addNoteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(addStrengthCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     /**
@@ -72,18 +72,18 @@ public class AddNoteCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
 
-        AddNoteCommand addNoteCommand = new AddNoteCommand(outOfBoundIndex, new Note(VALID_NOTE_BOB));
+        AddStrengthCommand addStrengthCommand = new AddStrengthCommand(outOfBoundIndex, new Note(VALID_NOTE_BOB));
 
-        assertCommandFailure(addNoteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(addStrengthCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final AddNoteCommand standardCommand = new AddNoteCommand(INDEX_FIRST_PERSON,
+        final AddStrengthCommand standardCommand = new AddStrengthCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_AMY));
 
         // same values -> returns true
-        AddNoteCommand commandWithSameValues = new AddNoteCommand(INDEX_FIRST_PERSON,
+        AddStrengthCommand commandWithSameValues = new AddStrengthCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_AMY));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -97,11 +97,11 @@ public class AddNoteCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new AddNoteCommand(INDEX_SECOND_PERSON,
+        assertFalse(standardCommand.equals(new AddStrengthCommand(INDEX_SECOND_PERSON,
                 new Note(VALID_NOTE_AMY))));
 
         // different Note -> returns false
-        assertFalse(standardCommand.equals(new AddNoteCommand(INDEX_FIRST_PERSON,
+        assertFalse(standardCommand.equals(new AddStrengthCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_BOB))));
     }
 }

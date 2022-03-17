@@ -30,7 +30,9 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private final List<JsonAdaptedNote> notes = new ArrayList<>();
+    private final List<JsonAdaptedNote> strengths = new ArrayList<>();
+    private final List<JsonAdaptedNote> weaknesses = new ArrayList<>();
+    private final List<JsonAdaptedNote> misc = new ArrayList<>();
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
@@ -38,7 +40,9 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-            @JsonProperty("notes") List<JsonAdaptedNote> notes) {
+            @JsonProperty("strengths") List<JsonAdaptedNote> strengths,
+            @JsonProperty("weaknesses") List<JsonAdaptedNote> weaknesses,
+            @JsonProperty("misc") List<JsonAdaptedNote> misc) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -46,8 +50,14 @@ class JsonAdaptedPerson {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
-        if (notes != null) {
-            this.notes.addAll(notes);
+        if (strengths != null) {
+            this.strengths.addAll(strengths);
+        }
+        if (weaknesses != null) {
+            this.weaknesses.addAll(weaknesses);
+        }
+        if (misc != null) {
+            this.misc.addAll(misc);
         }
     }
 
@@ -62,7 +72,7 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        notes.addAll(source.getNotes().stream()
+        misc.addAll(source.getMiscellaneous().stream()
                 .map(JsonAdaptedNote::new)
                 .collect(Collectors.toList()));
     }
@@ -74,12 +84,20 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
-        final List<Note> personNotes = new ArrayList<>();
+        final List<Note> personStrengths = new ArrayList<>();
+        final List<Note> personWeaknesses = new ArrayList<>();
+        final List<Note> personMisc = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
         }
-        for (JsonAdaptedNote note : notes) {
-            personNotes.add(note.toModelType());
+        for (JsonAdaptedNote note : strengths) {
+            personStrengths.add(note.toModelType());
+        }
+        for (JsonAdaptedNote note : weaknesses) {
+            personWeaknesses.add(note.toModelType());
+        }
+        for (JsonAdaptedNote note : misc) {
+            personMisc.add(note.toModelType());
         }
 
         if (name == null) {
@@ -115,8 +133,11 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        final List<Note> modelNotes = new ArrayList<>(personNotes);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelNotes);
+        final List<Note> modelStrengths = new ArrayList<>(personStrengths);
+        final List<Note> modelWeaknesses = new ArrayList<>(personWeaknesses);
+        final List<Note> modelMisc = new ArrayList<>(personMisc);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelStrengths, modelWeaknesses,
+                modelMisc);
     }
 
 }

@@ -5,12 +5,16 @@
     "email": "alice@example.com",
     "address": "123, Jurong West Ave 6, #08-111",
     "tagged": [ "friends" ],
-    "notes": [ "likes bing chilling" ]
+    "strengths": [ "good offence" ],
+    "weaknesses": [ "bad defense" ],
+    "misc": [ "likes bing chilling" ]
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "pauline@example.com",
     "address": "4th street",
-    "notes": [ "likes bing chilling" ]
+    "strengths": [ "good offence" ],
+    "weaknesses": [ "bad defense" ],
+    "misc": [ "likes bing chilling" ]
   } ]
 }

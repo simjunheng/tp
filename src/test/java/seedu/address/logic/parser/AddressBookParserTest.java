@@ -17,7 +17,10 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteMiscCommand;
 import seedu.address.logic.commands.DeleteNoteCommand;
+import seedu.address.logic.commands.DeleteStrengthCommand;
+import seedu.address.logic.commands.DeleteWeaknessCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -57,11 +60,27 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_deleteNote() throws Exception {
-        DeleteNoteCommand command = (DeleteNoteCommand) parser.parseCommand(
-                DeleteNoteCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+    public void parseCommand_deleteStrength() throws Exception {
+        DeleteStrengthCommand command = (DeleteStrengthCommand) parser.parseCommand(
+                DeleteStrengthCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
                         + " " + NOTE_FIRST_INDEX.getOneBased());
-        assertEquals(new DeleteNoteCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+        assertEquals(new DeleteStrengthCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+    }
+
+    @Test
+    public void parseCommand_deleteWeakness() throws Exception {
+        DeleteWeaknessCommand command = (DeleteWeaknessCommand) parser.parseCommand(
+                DeleteWeaknessCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + NOTE_FIRST_INDEX.getOneBased());
+        assertEquals(new DeleteWeaknessCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+    }
+
+    @Test
+    public void parseCommand_deleteMisc() throws Exception {
+        DeleteMiscCommand command = (DeleteMiscCommand) parser.parseCommand(
+                DeleteMiscCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + NOTE_FIRST_INDEX.getOneBased());
+        assertEquals(new DeleteMiscCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
     }
 
     @Test

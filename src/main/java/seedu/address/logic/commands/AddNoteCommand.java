@@ -14,7 +14,7 @@ import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
- * Adds a note to a person in the address book.
+ * Adds a note to a person in the address book. (DEPRECIATED)
  */
 public class AddNoteCommand extends Command {
     public static final String COMMAND_WORD = "note-add";
@@ -58,12 +58,13 @@ public class AddNoteCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newNotes = new ArrayList<>(personToEdit.getNotes());
+        List<Note> newNotes = new ArrayList<>(personToEdit.getMiscellaneous());
         newNotes.add(note);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), newNotes);
+                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(),
+                personToEdit.getWeaknesses(), newNotes);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

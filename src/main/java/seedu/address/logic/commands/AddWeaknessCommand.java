@@ -14,39 +14,39 @@ import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
- * Delete a note from a person in the address book
+ * Adds a weakness note to a person in the address book.
  */
-public class DeleteNoteCommand extends Command {
-    public static final String COMMAND_WORD = "note-del";
+public class AddWeaknessCommand extends Command {
+    public static final String COMMAND_WORD = "weakness-add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Delete a note from the note-list of selected person from our contact list. "
+            + ": Add a weakness to a selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
-            + "NOTE-INDEX (must be a positive)\n"
+            + "NOTE_DESCRIPTION (must be non-empty and not more than 50 characters)\n"
             + "Example: " + COMMAND_WORD + " "
             + "1 "
-            + "2";
+            + "Poor endurance";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "DeleteNote command not implemented yet";
+            "AddWeakness command not implemented yet";
 
-    public static final String MESSAGE_SUCCESS = "Note has been deleted: %1$s";
+    public static final String MESSAGE_SUCCESS = "New weakness added: %1$s";
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Index: %2$d";
+    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Weakness: %2$s";
 
     private final Index index;
-    private final Index noteIndex;
+    private final Note weakness;
 
     /**
-     * Constructor of DeleteNoteCommand class
-     * @param index index of the person in the filtered person list
-     * @param noteIndex index of the note from the person's note-list to be deleted
+     * @param index of the person in the filtered person list to add the weakness
+     * @param weakness of the person to be added
      */
-    public DeleteNoteCommand(Index index, Index noteIndex) {
-        requireAllNonNull(index, noteIndex);
+    public AddWeaknessCommand(Index index, Note weakness) {
+        requireAllNonNull(index, weakness);
+
         this.index = index;
-        this.noteIndex = noteIndex;
+        this.weakness = weakness;
     }
 
     @Override
@@ -58,17 +58,13 @@ public class DeleteNoteCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newNotes = new ArrayList<>(personToEdit.getMiscellaneous());
-
-        if (noteIndex.getZeroBased() >= newNotes.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
-        }
-        newNotes.remove(noteIndex.getZeroBased());
+        List<Note> newWeakness = new ArrayList<>(personToEdit.getWeaknesses());
+        newWeakness.add(weakness);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(),
-                personToEdit.getStrengths(), personToEdit.getWeaknesses(), newNotes);
+                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(), newWeakness,
+                personToEdit.getMiscellaneous());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -86,9 +82,9 @@ public class DeleteNoteCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this
-                || (other instanceof DeleteNoteCommand
-                && index.equals(((DeleteNoteCommand) other).index)
-                && noteIndex.equals(((DeleteNoteCommand) other).noteIndex));
+        return other == this // short circuit if same object
+                || (other instanceof AddWeaknessCommand // instanceof handles nulls
+                && (index.equals(((AddWeaknessCommand) other).index)
+                    && weakness.equals(((AddWeaknessCommand) other).weakness)));
     }
 }

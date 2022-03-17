@@ -14,13 +14,13 @@ import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
- * Delete a note from a person in the address book
+ * Delete a miscellaneous note from a person in the address book
  */
-public class DeleteNoteCommand extends Command {
-    public static final String COMMAND_WORD = "note-del";
+public class DeleteMiscCommand extends Command {
+    public static final String COMMAND_WORD = "misc-del";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Delete a note from the note-list of selected person from our contact list. "
+            + ": Delete a miscellaneous note from the note-list of selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
             + "NOTE-INDEX (must be a positive)\n"
@@ -29,9 +29,9 @@ public class DeleteNoteCommand extends Command {
             + "2";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "DeleteNote command not implemented yet";
+            "DeleteMisc command not implemented yet";
 
-    public static final String MESSAGE_SUCCESS = "Note has been deleted: %1$s";
+    public static final String MESSAGE_SUCCESS = "Miscellaneous note has been deleted: %1$s";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Index: %2$d";
 
@@ -41,9 +41,9 @@ public class DeleteNoteCommand extends Command {
     /**
      * Constructor of DeleteNoteCommand class
      * @param index index of the person in the filtered person list
-     * @param noteIndex index of the note from the person's note-list to be deleted
+     * @param noteIndex index of the misc. note from the person's misc-list to be deleted
      */
-    public DeleteNoteCommand(Index index, Index noteIndex) {
+    public DeleteMiscCommand(Index index, Index noteIndex) {
         requireAllNonNull(index, noteIndex);
         this.index = index;
         this.noteIndex = noteIndex;
@@ -58,17 +58,17 @@ public class DeleteNoteCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newNotes = new ArrayList<>(personToEdit.getMiscellaneous());
+        List<Note> newMisc = new ArrayList<>(personToEdit.getMiscellaneous());
 
-        if (noteIndex.getZeroBased() >= newNotes.size()) {
+        if (noteIndex.getZeroBased() >= newMisc.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
         }
-        newNotes.remove(noteIndex.getZeroBased());
+        newMisc.remove(noteIndex.getZeroBased());
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getTags(),
-                personToEdit.getStrengths(), personToEdit.getWeaknesses(), newNotes);
+                personToEdit.getStrengths(), personToEdit.getWeaknesses(), newMisc);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -87,8 +87,8 @@ public class DeleteNoteCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || (other instanceof DeleteNoteCommand
-                && index.equals(((DeleteNoteCommand) other).index)
-                && noteIndex.equals(((DeleteNoteCommand) other).noteIndex));
+                || (other instanceof DeleteMiscCommand
+                && index.equals(((DeleteMiscCommand) other).index)
+                && noteIndex.equals(((DeleteMiscCommand) other).noteIndex));
     }
 }
