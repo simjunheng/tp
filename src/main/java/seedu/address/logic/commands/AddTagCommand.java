@@ -38,7 +38,8 @@ public class AddTagCommand extends Command {
 
     /**
      * Public constructor for AddTagCommand
-     * @param index Index of person to add tag to
+     *
+     * @param index   Index of person to add tag to
      * @param tagName Name of tag
      */
     public AddTagCommand(Index index, String tagName) {
@@ -100,15 +101,6 @@ public class AddTagCommand extends Command {
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
-        if (other == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
-            return false;
-        }
-
-        return false;
+        return (other == this);
     }
 }

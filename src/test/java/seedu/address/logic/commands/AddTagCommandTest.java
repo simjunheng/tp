@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NOTE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -72,5 +74,14 @@ class AddTagCommandTest {
         AddTagCommand addTagCommand = new AddTagCommand(outOfBoundIndex, TAG_1);
 
         assertCommandFailure(addTagCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void equals() {
+        final AddTagCommand command = new AddTagCommand(INDEX_FIRST_PERSON, TAG_1);
+
+        // If they are the same objects, they are equal
+        assertTrue(command.equals(command));
+
     }
 }
