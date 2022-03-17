@@ -3,9 +3,12 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDTIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTTIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -39,6 +42,19 @@ public class CommandTestUtil {
     public static final String VALID_NOTE_AMY = "Amy";
     public static final String VALID_NOTE_BOB = "Bob";
 
+    public static final String VALID_NAME_TASK1 = "Task 1";
+    public static final String VALID_NAME_TASK2 = "Task 2";
+    public static final String VALID_DATE_TASK1 = "16-05-2022";
+    public static final String VALID_DATE_TASK2 = "04-08-2022";
+    public static final String VALID_STARTTIME_TASK1 = "09:00";
+    public static final String VALID_STARTTIME_TASK2 = "10:00";
+    public static final String VALID_ENDTIME_TASK1 = "12:00";
+    public static final String VALID_ENDTIME_TASK2 = "13:00";
+    public static final String VALID_TAG_EVENT = "Event";
+    public static final String VALID_TAG_MEET = "Meet";
+
+
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -50,11 +66,23 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
+    public static final String NAME_DESC_TASK1 = " " + PREFIX_NAME + VALID_NAME_TASK1;
+    public static final String NAME_DESC_TASK2 = " " + PREFIX_NAME + VALID_NAME_TASK2;
+    public static final String DATE_DESC_TASK1 = " " + PREFIX_DATE + VALID_DATE_TASK1;
+    public static final String DATE_DESC_TASK2 = " " + PREFIX_DATE + VALID_DATE_TASK2;
+    public static final String STARTTIME_DESC_TASK1 = " " + PREFIX_STARTTIME + VALID_STARTTIME_TASK1;
+    public static final String STARTTIME_DESC_TASK2 = " " + PREFIX_STARTTIME + VALID_STARTTIME_TASK2;
+    public static final String ENDTIME_DESC_TASK1 = " " + PREFIX_ENDTIME + VALID_ENDTIME_TASK1;
+    public static final String ENDTIME_DESC_TASK2 = " " + PREFIX_ENDTIME + VALID_ENDTIME_TASK2;
+    public static final String TAG_DESC_EVENT = " " + PREFIX_TAG + VALID_TAG_EVENT;
+    public static final String TAG_DESC_MEET = " " + PREFIX_TAG + VALID_TAG_MEET;
+
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -77,7 +105,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -92,7 +120,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
