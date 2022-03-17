@@ -33,8 +33,8 @@ public class AddTagCommand extends Command {
     public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tag: %1$s";
     public static final String MESSAGE_DUPLICATE_TAG = "This person already has this tag!";
 
-    private final Index index;
-    private final String tagName;
+    public final Index index;
+    public final String tagName;
 
     /**
      * Public constructor for AddTagCommand
@@ -100,7 +100,12 @@ public class AddTagCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        // short circuit if same object
-        return (other == this);
+
+        return other == this // short circuit if same object
+                || (other instanceof AddTagCommand // instanceof handles nulls
+                && (index.equals(((AddTagCommand) other).index)
+                && tagName.equals((((AddTagCommand) other).tagName))));
     }
+
 }
+
