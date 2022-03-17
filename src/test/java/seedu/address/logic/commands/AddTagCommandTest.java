@@ -28,7 +28,7 @@ import seedu.address.testutil.PersonBuilder;
 class AddTagCommandTest {
     // Test tags
     // Because PersonBuilder#withTags takes String ... instead of Set<Tag>
-    private final String TAG_1 = "TAG1";
+    private static final String TAG1 = "TAG1";
 
     // Test model
     private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
@@ -39,7 +39,7 @@ class AddTagCommandTest {
 
         // Adding 1 more tag to the editedPerson
         Set<Tag> firstPersonTags = new HashSet<>(firstPerson.getTags()); // Copy of Set<Tag> of ALICE (first person)
-        firstPersonTags.add(new Tag(TAG_1));
+        firstPersonTags.add(new Tag(TAG1));
 
         // Convert Set<Tag> to array for PersonBuilder#withTags
         String[] firstPersonTagsStringArray = firstPersonTags
@@ -49,9 +49,9 @@ class AddTagCommandTest {
 
         Person editedPerson = new PersonBuilder(firstPerson).withTags(firstPersonTagsStringArray).build();
 
-        AddTagCommand addTagCommand = new AddTagCommand(INDEX_FIRST_PERSON, TAG_1);
+        AddTagCommand addTagCommand = new AddTagCommand(INDEX_FIRST_PERSON, TAG1);
 
-        String expectedMessage = String.format(AddTagCommand.MESSAGE_ADD_TAG_SUCCESS, TAG_1);
+        String expectedMessage = String.format(AddTagCommand.MESSAGE_ADD_TAG_SUCCESS, TAG1);
 
         Model expectedModel = new ModelManager(
                 new AddressBook(model.getAddressBook()),
@@ -69,14 +69,14 @@ class AddTagCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
 
-        AddTagCommand addTagCommand = new AddTagCommand(outOfBoundIndex, TAG_1);
+        AddTagCommand addTagCommand = new AddTagCommand(outOfBoundIndex, TAG1);
 
         assertCommandFailure(addTagCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final AddTagCommand command = new AddTagCommand(INDEX_FIRST_PERSON, TAG_1);
+        final AddTagCommand command = new AddTagCommand(INDEX_FIRST_PERSON, TAG1);
 
         // If they are the same objects, they are equal
         assertTrue(command.equals(command));

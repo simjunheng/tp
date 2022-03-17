@@ -11,13 +11,13 @@ import seedu.address.logic.commands.DeleteTagCommand;
 
 class DeleteTagCommandParserTest {
 
-    private final String TAG_1 = "friends";
+    private static final String TAG1 = "friends";
     private DeleteTagCommandParser parser = new DeleteTagCommandParser();
 
 
     @Test
     void parse_validArgs_returnsDeleteTagCommand() {
-        DeleteTagCommand expectedDeleteTagCommand = new DeleteTagCommand(INDEX_FIRST_PERSON, TAG_1);
+        DeleteTagCommand expectedDeleteTagCommand = new DeleteTagCommand(INDEX_FIRST_PERSON, TAG1);
         assertParseSuccess(parser, "1 t/friends", expectedDeleteTagCommand);
         // Messy user input with multiple whitespaces
         assertParseSuccess(parser, " 1 t/  friends", expectedDeleteTagCommand);

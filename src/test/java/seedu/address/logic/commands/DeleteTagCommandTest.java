@@ -28,7 +28,7 @@ import seedu.address.testutil.PersonBuilder;
 class DeleteTagCommandTest {
     // Test tags
     // Because PersonBuilder#withTags takes String ... instead of Set<Tag>
-    private final String TAG_1 = "friends"; // ALICE has a tag called "friends"
+    private static final String TAG_1 = "friends"; // ALICE has a tag called "friends"
 
     // Test model
     private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());

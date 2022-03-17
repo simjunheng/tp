@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -12,13 +11,13 @@ import seedu.address.logic.commands.AddTagCommand;
 
 class AddTagCommandParserTest {
 
-    private final String TAG_1 = "TAG1";
+    private static final String TAG1 = "TAG1";
     private AddTagCommandParser parser = new AddTagCommandParser();
 
 
     @Test
     void parse_validArgs_returnsAddTagCommand() {
-        AddTagCommand expectedAddTagCommand = new AddTagCommand(INDEX_FIRST_PERSON, TAG_1);
+        AddTagCommand expectedAddTagCommand = new AddTagCommand(INDEX_FIRST_PERSON, TAG1);
         assertParseSuccess(parser, "1 t/TAG1", expectedAddTagCommand);
         // Messy user input with multiple whitespaces
         assertParseSuccess(parser, " 1 t/  TAG1", expectedAddTagCommand);
