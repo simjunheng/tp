@@ -32,12 +32,28 @@
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\Strengths:'}" />
-      <Label fx:id="notes" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$strengths" />
-         <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nWeaknesses:'}" />
-         <Label fx:id="notes1" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$weaknesses" />
-         <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nMisc:'}" />
-         <Label fx:id="notes11" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$misc" />
+         <HBox alignment="CENTER_LEFT" spacing="5">
+            <children>
+               <VBox maxWidth="300.0">
+                  <children>
+                  <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nStrengths:'}" />
+                  <Label fx:id="strengths" maxWidth="150.0" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$strengths" wrapText="true" />
+                  </children>
+               </VBox>
+               <VBox>
+                  <children>
+                     <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nWeaknesses:'}" />
+                     <Label fx:id="weaknesses" maxWidth="150.0" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$weaknesses" wrapText="true" />
+                  </children>
+               </VBox>
+               <VBox>
+                  <children>
+                     <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nMisc:'}" />
+                     <Label fx:id="misc" maxWidth="150.0" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$misc" wrapText="true" />
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
     </VBox>
       <rowConstraints>
          <RowConstraints />
