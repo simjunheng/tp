@@ -32,28 +32,12 @@
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-         <HBox alignment="CENTER_LEFT" spacing="5">
-            <children>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                  <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nNotes:'}" />
-                  <Label fx:id="notes" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$strengths" />
-                  </children>
-               </VBox>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nNotes:'}" />
-                     <Label fx:id="notes1" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$weaknesses" />
-                  </children>
-               </VBox>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nNotes:'}" />
-                     <Label fx:id="notes11" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$misc" />
-                  </children>
-               </VBox>
-            </children>
-         </HBox>
+      <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\Strengths:'}" />
+      <Label fx:id="notes" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$strengths" />
+         <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nWeaknesses:'}" />
+         <Label fx:id="notes1" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$weaknesses" />
+         <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nMisc:'}" />
+         <Label fx:id="notes11" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$misc" />
     </VBox>
       <rowConstraints>
          <RowConstraints />

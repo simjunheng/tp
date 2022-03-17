@@ -72,6 +72,12 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        strengths.addAll(source.getStrengths().stream()
+                .map(JsonAdaptedNote::new)
+                .collect(Collectors.toList()));
+        weaknesses.addAll(source.getWeaknesses().stream()
+                .map(JsonAdaptedNote::new)
+                .collect(Collectors.toList()));
         misc.addAll(source.getMiscellaneous().stream()
                 .map(JsonAdaptedNote::new)
                 .collect(Collectors.toList()));
