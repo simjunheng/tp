@@ -83,6 +83,12 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
+    public static final String INVALID_TASK_NAME_DESC = " " + PREFIX_NAME + "$hareholder"; // '$' not allowed in names
+    public static final String INVALID_TASK_DATE_DESC = " " + PREFIX_DATE + "24/02/2022"; // DD-MM-YYYY format required
+    public static final String INVALID_TASK_STARTTIME_DESC = " " + PREFIX_STARTTIME + "2pm"; // MM:HH format required
+    public static final String INVALID_TASK_ENDTIME_DESC = " " + PREFIX_ENDTIME + "1030"; // MM:HH format required
+    public static final String INVALID_TASK_TAG_DESC = " " + PREFIX_TAG + "test!"; // '!' not allowed in tags
+
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
