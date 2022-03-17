@@ -62,6 +62,7 @@ public class AddTagCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = addTagToPerson(personToEdit);
 
+
         // Exception when a duplicate tag is added
         Tag testTag = new Tag(this.tagName);
         if (personToEdit.getTags().contains(testTag)) {
