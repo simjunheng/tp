@@ -124,7 +124,7 @@ public class ParserUtil {
         requireNonNull(date);
         String trimmedDate = date.trim();
         if (!Date.isValidDate(trimmedDate)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
         }
         return new Date(trimmedDate);
     }
@@ -139,7 +139,7 @@ public class ParserUtil {
         requireNonNull(startTime);
         String trimmedStartTime = startTime.trim();
         if (!StartTime.isValidStartTime(trimmedStartTime)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(StartTime.MESSAGE_CONSTRAINTS);
         }
         return new StartTime(trimmedStartTime);
     }
@@ -154,7 +154,7 @@ public class ParserUtil {
         requireNonNull(endTime);
         String trimmedEndTime = endTime.trim();
         if (!EndTime.isValidEndTime(trimmedEndTime)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(EndTime.MESSAGE_CONSTRAINTS);
         }
         return new EndTime(trimmedEndTime);
     }
