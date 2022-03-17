@@ -125,6 +125,14 @@ public class EditCommand extends Command {
                 && editPersonDescriptor.equals(e.editPersonDescriptor);
     }
 
+    @Override
+    public String toString() {
+        return "EditCommand{"
+                + "index=" + index
+                + ", editPersonDescriptor=" + editPersonDescriptor
+                + '}';
+    }
+
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the
      * corresponding field value of the person.
@@ -285,6 +293,20 @@ public class EditCommand extends Command {
                     && getStrengths().equals(e.getStrengths())
                     && getWeaknesses().equals(e.getWeaknesses())
                     && getMiscellaneous().equals(e.getMiscellaneous());
+        }
+
+        @Override
+        public String toString() {
+            return "EditPersonDescriptor{"
+                    + "name=" + name
+                    + ", phone=" + phone
+                    + ", email=" + email
+                    + ", address=" + address
+                    + ", tags=" + tags
+                    + ", strengths=" + strengths
+                    + ", weaknesses=" + weaknesses
+                    + ", miscellaneous=" + miscellaneous
+                    + '}';
         }
     }
 }
