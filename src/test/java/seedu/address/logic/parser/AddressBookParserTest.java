@@ -41,7 +41,7 @@ import seedu.address.testutil.PersonUtil;
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
-    private final Note note_stub_1 = new Note("Note Stub 1");
+    private final Note noteStub = new Note("Note Stub 1");
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -67,24 +67,24 @@ public class AddressBookParserTest {
     public void parseCommand_addStrength() throws Exception {
         AddStrengthCommand command = (AddStrengthCommand) parser.parseCommand(
                 AddStrengthCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
-                        + " " + note_stub_1);
-        assertEquals(new AddStrengthCommand(INDEX_SECOND_PERSON, note_stub_1), command);
+                        + " " + noteStub);
+        assertEquals(new AddStrengthCommand(INDEX_SECOND_PERSON, noteStub), command);
     }
 
     @Test
     public void parseCommand_addWeakness() throws Exception {
         AddWeaknessCommand command = (AddWeaknessCommand) parser.parseCommand(
                 AddWeaknessCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
-                        + " " + note_stub_1);
-        assertEquals(new AddWeaknessCommand(INDEX_SECOND_PERSON, note_stub_1), command);
+                        + " " + noteStub);
+        assertEquals(new AddWeaknessCommand(INDEX_SECOND_PERSON, noteStub), command);
     }
 
     @Test
     public void parseCommand_addMisc() throws Exception {
         AddMiscCommand command = (AddMiscCommand) parser.parseCommand(
                 AddMiscCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
-                        + " " + note_stub_1);
-        assertEquals(new AddMiscCommand(INDEX_SECOND_PERSON, note_stub_1), command);
+                        + " " + noteStub);
+        assertEquals(new AddMiscCommand(INDEX_SECOND_PERSON, noteStub), command);
     }
 
     @Test
