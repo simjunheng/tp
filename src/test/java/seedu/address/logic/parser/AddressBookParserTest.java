@@ -15,6 +15,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddMiscCommand;
+import seedu.address.logic.commands.AddStrengthCommand;
+import seedu.address.logic.commands.AddWeaknessCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteMiscCommand;
@@ -28,6 +31,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.TagContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -37,6 +41,7 @@ import seedu.address.testutil.PersonUtil;
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
+    private final Note note_stub_1 = new Note("Note Stub 1");
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -56,6 +61,30 @@ public class AddressBookParserTest {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_addStrength() throws Exception {
+        AddStrengthCommand command = (AddStrengthCommand) parser.parseCommand(
+                AddStrengthCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + note_stub_1);
+        assertEquals(new AddStrengthCommand(INDEX_SECOND_PERSON, note_stub_1), command);
+    }
+
+    @Test
+    public void parseCommand_addWeakness() throws Exception {
+        AddWeaknessCommand command = (AddWeaknessCommand) parser.parseCommand(
+                AddWeaknessCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + note_stub_1);
+        assertEquals(new AddWeaknessCommand(INDEX_SECOND_PERSON, note_stub_1), command);
+    }
+
+    @Test
+    public void parseCommand_addMisc() throws Exception {
+        AddMiscCommand command = (AddMiscCommand) parser.parseCommand(
+                AddMiscCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + note_stub_1);
+        assertEquals(new AddMiscCommand(INDEX_SECOND_PERSON, note_stub_1), command);
     }
 
     @Test
