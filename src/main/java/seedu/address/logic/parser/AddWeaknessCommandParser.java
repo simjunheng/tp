@@ -12,8 +12,8 @@ import seedu.address.model.note.Note;
  */
 public class AddWeaknessCommandParser implements Parser<AddWeaknessCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the {@code AddNoteCommand}
-     * and returns a {@code AddNoteCommand} object for execution.
+     * Parses the given {@code String} of arguments in the context of the {@code AddWeaknessCommand}
+     * and returns a {@code AddWeaknessCommand} object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddWeaknessCommand parse(String args) throws ParseException {

@@ -101,7 +101,7 @@ public class AddWeaknessCommandTest {
                 new Note(VALID_NOTE_AMY))));
 
         // different Note -> returns false
-        assertFalse(standardCommand.equals(new AddNoteCommand(INDEX_FIRST_PERSON,
+        assertFalse(standardCommand.equals(new AddWeaknessCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_BOB))));
     }
 }

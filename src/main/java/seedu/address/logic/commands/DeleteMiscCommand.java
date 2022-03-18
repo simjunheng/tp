@@ -39,7 +39,7 @@ public class DeleteMiscCommand extends Command {
     private final Index noteIndex;
 
     /**
-     * Constructor of DeleteNoteCommand class
+     * Constructor of DeleteMiscCommand class
      * @param index index of the person in the filtered person list
      * @param noteIndex index of the misc. note from the person's misc-list to be deleted
      */
