@@ -18,7 +18,6 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteMiscCommand;
-import seedu.address.logic.commands.DeleteNoteCommand;
 import seedu.address.logic.commands.DeleteStrengthCommand;
 import seedu.address.logic.commands.DeleteWeaknessCommand;
 import seedu.address.logic.commands.EditCommand;
