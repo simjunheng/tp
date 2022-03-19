@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,6 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<stylesheets>
+    <URL value="@NoteStyle.css" />
+</stylesheets>
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -36,8 +40,8 @@
             <children>
                <VBox maxWidth="300.0">
                   <children>
-                  <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nStrengths:'}" />
-                  <Label fx:id="strengths" maxWidth="150.0" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$strengths" wrapText="true" />
+                  <Label fx:id="strengthTitle" styleClass="cell_small_label" text="${'\nStrengths:'}" />
+                  <Label fx:id="strengths" styleClass="cell_small_label" text="\$strengths" wrapText="true" />
                   </children>
                   <HBox.margin>
                      <Insets right="20.0" />
@@ -45,14 +49,14 @@
                </VBox>
                <VBox>
                   <children>
-                     <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nWeaknesses:'}" />
-                     <Label fx:id="weaknesses" maxWidth="150.0" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$weaknesses" wrapText="true" />
+                     <Label fx:id="weaknessTitle" styleClass="cell_small_label" text="${'\nWeaknesses:'}" />
+                     <Label fx:id="weaknesses" styleClass="cell_small_label" text="\$weaknesses" wrapText="true" />
                   </children>
                </VBox>
                <VBox>
                   <children>
-                     <Label style="-fx-font-weight: bold;" styleClass="cell_small_label" text="${'\nMisc:'}" />
-                     <Label fx:id="misc" maxWidth="150.0" style="-fx-background-color: #fff2cd; -fx-text-fill: #000000;" styleClass="cell_small_label" text="\$misc" wrapText="true" />
+                     <Label fx:id="miscTitle" styleClass="cell_small_label" text="${'\nMisc:'}" />
+                     <Label fx:id="misc" styleClass="cell_small_label" text="\$misc" wrapText="true" />
                   </children>
                   <HBox.margin>
                      <Insets left="20.0" />

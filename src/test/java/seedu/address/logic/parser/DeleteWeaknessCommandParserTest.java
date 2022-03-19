@@ -8,7 +8,8 @@ import static seedu.address.testutil.TypicalIndexes.NOTE_FIRST_INDEX;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.DeleteWeaknessCommand;
+import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
+import seedu.address.logic.parser.notecommandparsers.DeleteWeaknessCommandParser;
 
 /**
  * Contains tests for

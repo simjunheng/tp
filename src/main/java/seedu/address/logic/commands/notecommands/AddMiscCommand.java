@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.notecommands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -8,45 +8,47 @@ import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
- * Adds a weakness note to a person in the address book.
+ * Adds a miscellaneous note to a person in the address book.
  */
-public class AddWeaknessCommand extends Command {
-    public static final String COMMAND_WORD = "weakness-add";
+public class AddMiscCommand extends Command {
+    public static final String COMMAND_WORD = "misc-add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Add a weakness to a selected person from our contact list. "
+            + ": Add a miscellaneous note to a selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
             + "NOTE_DESCRIPTION (must be non-empty and not more than 50 characters)\n"
             + "Example: " + COMMAND_WORD + " "
             + "1 "
-            + "Poor endurance";
+            + "Surgery Scheduled for tomorrow";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "AddWeakness command not implemented yet";
+            "AddMisc command not implemented yet";
 
-    public static final String MESSAGE_SUCCESS = "New weakness added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New miscellaneous note added: %1$s";
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Weakness: %2$s";
+    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Misc: %2$s";
 
     private final Index index;
-    private final Note weakness;
+    private final Note misc;
 
     /**
-     * @param index of the person in the filtered person list to add the weakness
-     * @param weakness of the person to be added
+     * @param index of the person in the filtered person list to add the misc
+     * @param misc note of the person to be added
      */
-    public AddWeaknessCommand(Index index, Note weakness) {
-        requireAllNonNull(index, weakness);
+    public AddMiscCommand(Index index, Note misc) {
+        requireAllNonNull(index, misc);
 
         this.index = index;
-        this.weakness = weakness;
+        this.misc = misc;
     }
 
     @Override
@@ -58,13 +60,13 @@ public class AddWeaknessCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newWeakness = new ArrayList<>(personToEdit.getWeaknesses());
-        newWeakness.add(weakness);
+        List<Note> newMisc = new ArrayList<>(personToEdit.getMiscellaneous());
+        newMisc.add(misc);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(), newWeakness,
-                personToEdit.getMiscellaneous());
+                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(),
+                personToEdit.getWeaknesses(), newMisc);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -83,8 +85,8 @@ public class AddWeaknessCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddWeaknessCommand // instanceof handles nulls
-                && (index.equals(((AddWeaknessCommand) other).index)
-                    && weakness.equals(((AddWeaknessCommand) other).weakness)));
+                || (other instanceof AddMiscCommand // instanceof handles nulls
+                && (index.equals(((AddMiscCommand) other).index)
+                    && misc.equals(((AddMiscCommand) other).misc)));
     }
 }

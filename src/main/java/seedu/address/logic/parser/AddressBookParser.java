@@ -7,25 +7,31 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddMiscCommand;
-import seedu.address.logic.commands.AddStrengthCommand;
+import seedu.address.logic.commands.notecommands.AddMiscCommand;
+import seedu.address.logic.commands.notecommands.AddStrengthCommand;
 import seedu.address.logic.commands.AddTagCommand;
 import seedu.address.logic.commands.AddTaskCommand;
-import seedu.address.logic.commands.AddWeaknessCommand;
+import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteMiscCommand;
-import seedu.address.logic.commands.DeleteStrengthCommand;
+import seedu.address.logic.commands.notecommands.DeleteMiscCommand;
+import seedu.address.logic.commands.notecommands.DeleteStrengthCommand;
 import seedu.address.logic.commands.DeleteTagCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
-import seedu.address.logic.commands.DeleteWeaknessCommand;
+import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.notecommandparsers.AddMiscCommandParser;
+import seedu.address.logic.parser.notecommandparsers.AddStrengthCommandParser;
+import seedu.address.logic.parser.notecommandparsers.AddWeaknessCommandParser;
+import seedu.address.logic.parser.notecommandparsers.DeleteMiscCommandParser;
+import seedu.address.logic.parser.notecommandparsers.DeleteStrengthCommandParser;
+import seedu.address.logic.parser.notecommandparsers.DeleteWeaknessCommandParser;
 
 /**
  * Parses user input.

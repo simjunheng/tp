@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.notecommands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -8,19 +8,21 @@ import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
- * Delete a miscellaneous note from a person in the address book
+ * Delete a weakness from a person in the address book
  */
-public class DeleteMiscCommand extends Command {
-    public static final String COMMAND_WORD = "misc-del";
+public class DeleteWeaknessCommand extends Command {
+    public static final String COMMAND_WORD = "weakness-del";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Delete a miscellaneous note from the note-list of selected person from our contact list. "
+            + ": Delete a weakness from the weakness-list of a selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
             + "NOTE-INDEX (must be a positive)\n"
@@ -29,9 +31,9 @@ public class DeleteMiscCommand extends Command {
             + "2";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "DeleteMisc command not implemented yet";
+            "DeleteWeakness command not implemented yet";
 
-    public static final String MESSAGE_SUCCESS = "Miscellaneous note has been deleted: %1$s";
+    public static final String MESSAGE_SUCCESS = "Weakness has been deleted: %1$s";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Index: %2$d";
 
@@ -39,11 +41,11 @@ public class DeleteMiscCommand extends Command {
     private final Index noteIndex;
 
     /**
-     * Constructor of DeleteMiscCommand class
+     * Constructor of DeleteWeaknessCommand class
      * @param index index of the person in the filtered person list
-     * @param noteIndex index of the misc. note from the person's misc-list to be deleted
+     * @param noteIndex index of the weakness from the person's weakness-list to be deleted
      */
-    public DeleteMiscCommand(Index index, Index noteIndex) {
+    public DeleteWeaknessCommand(Index index, Index noteIndex) {
         requireAllNonNull(index, noteIndex);
         this.index = index;
         this.noteIndex = noteIndex;
@@ -58,17 +60,17 @@ public class DeleteMiscCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newMisc = new ArrayList<>(personToEdit.getMiscellaneous());
+        List<Note> newWeaknesses = new ArrayList<>(personToEdit.getWeaknesses());
 
-        if (noteIndex.getZeroBased() >= newMisc.size()) {
+        if (noteIndex.getZeroBased() >= newWeaknesses.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
         }
-        newMisc.remove(noteIndex.getZeroBased());
+        newWeaknesses.remove(noteIndex.getZeroBased());
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getTags(),
-                personToEdit.getStrengths(), personToEdit.getWeaknesses(), newMisc);
+                personToEdit.getStrengths(), newWeaknesses, personToEdit.getMiscellaneous());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -87,8 +89,8 @@ public class DeleteMiscCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || (other instanceof DeleteMiscCommand
-                && index.equals(((DeleteMiscCommand) other).index)
-                && noteIndex.equals(((DeleteMiscCommand) other).noteIndex));
+                || (other instanceof DeleteWeaknessCommand
+                && index.equals(((DeleteWeaknessCommand) other).index)
+                && noteIndex.equals(((DeleteWeaknessCommand) other).noteIndex));
     }
 }

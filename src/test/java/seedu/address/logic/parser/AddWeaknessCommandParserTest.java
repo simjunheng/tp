@@ -8,7 +8,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddWeaknessCommand;
+import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
+import seedu.address.logic.parser.notecommandparsers.AddWeaknessCommandParser;
 import seedu.address.model.note.Note;
 
 class AddWeaknessCommandParserTest {
