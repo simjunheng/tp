@@ -20,17 +20,19 @@ public class Task {
 
     //Data fields
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<Name> persons = new HashSet<>(); //persons are represented by their names
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Date date, StartTime startTime, EndTime endTime, Set<Tag> tags) {
-        requireAllNonNull(name, date, startTime, endTime, tags);
+    public Task(Name name, Date date, StartTime startTime, EndTime endTime, Set<Tag> tags, Set<Name> persons) {
+        requireAllNonNull(name, date, startTime, endTime, tags, persons);
         this.name = name;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.tags.addAll(tags);
+        this.persons.addAll(persons);
     }
 
     //Getters
@@ -67,6 +69,14 @@ public class Task {
     }
 
     /**
+     * Returns an immutable persons set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Name> getPersons() {
+        return Collections.unmodifiableSet(persons);
+    }
+
+    /**
      * Returns true if both tasks have the same name.
      * This defines a weaker notion of equality between two tasks.
      */
@@ -98,13 +108,14 @@ public class Task {
                 && otherTask.getDate().equals(getDate())
                 && otherTask.getStartTime().equals(getStartTime())
                 && otherTask.getEndTime().equals(getEndTime())
-                && otherTask.getTags().equals(getTags());
+                && otherTask.getTags().equals(getTags())
+                && otherTask.getPersons().equals(getPersons());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, startTime, endTime, tags);
+        return Objects.hash(name, date, startTime, endTime, tags, persons);
     }
 
     @Override
@@ -123,6 +134,16 @@ public class Task {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+        Set<Name> persons = getPersons();
+        if (!persons.isEmpty()) {
+            builder.append("; Persons: ");
+            int count = 0;
+            for (Name name: persons) {
+                builder.append(name);
+                builder.append(" ");
+            }
+        }
+
         return builder.toString();
     }
 }

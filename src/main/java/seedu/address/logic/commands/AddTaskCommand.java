@@ -9,7 +9,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.name.Name;
+import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * Adds a task to the task list.
@@ -34,7 +39,8 @@ public class AddTaskCommand extends Command {
             + PREFIX_TAG + "meeting ";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the TaskList";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task book";
+    public static final String MESSAGE_CONTACT_NOT_FOUND = "The person cannot be found in the current address book";
 
     private final Task toAdd;
 
@@ -49,6 +55,20 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        List<Person> lastShownList = model.getFilteredPersonList();
+        Set<Name> persons = toAdd.getPersons();
+        //Checks if persons are in lastShownList
+        for (Name name: persons) {
+            boolean notFound = true;
+            for (Person person: lastShownList) {
+                if (person.getName().equals(name)) {
+                    notFound = false;
+                }
+            }
+            if (notFound) {
+                throw new CommandException(MESSAGE_CONTACT_NOT_FOUND);
+            }
+        }
 
         if (model.hasTask(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);

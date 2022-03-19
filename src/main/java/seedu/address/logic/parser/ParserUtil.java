@@ -70,6 +70,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses {@code Collection<String> names} into a {@code Set<Name>}.
+     */
+    public static Set<Name> parseNames(Collection<String> names) throws ParseException {
+        requireNonNull(names);
+        final Set<Name> nameSet = new HashSet<>();
+        for (String name : names) {
+            String trimmedName = name.trim();
+            if (!Name.isValidName(trimmedName)) {
+                throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            }
+            nameSet.add(new Name(name));
+        }
+        return nameSet;
+    }
+    /**
      * Parses a {@code String phone} into a {@code Phone}.
      * Leading and trailing whitespaces will be trimmed.
      *

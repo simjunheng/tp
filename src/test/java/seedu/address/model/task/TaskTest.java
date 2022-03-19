@@ -3,6 +3,8 @@ package seedu.address.model.task;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalTasks.FIRST_TASK;
 import static seedu.address.testutil.TypicalTasks.SECOND_TASK;
 
@@ -48,7 +50,9 @@ public class TaskTest {
         // same values -> returns true
         Task firstTaskCopy = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
                 .withStartTime("09:00").withEndTime("10:00")
-                .withTags("friends", "colleagues").build();
+                .withTags("friends", "colleagues")
+                .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
+
         assertTrue(FIRST_TASK.equals(firstTaskCopy));
 
         // same object -> returns true
@@ -81,6 +85,10 @@ public class TaskTest {
 
         // different tags -> returns false
         editedFirstTask = new TaskBuilder(firstTaskCopy).withTags("neighbours").build();
+        assertFalse(FIRST_TASK.equals(editedFirstTask));
+
+        // different persons (represented by names) -> returns false
+        editedFirstTask = new TaskBuilder(firstTaskCopy).withPersons("Alex").build();
         assertFalse(FIRST_TASK.equals(editedFirstTask));
     }
 }

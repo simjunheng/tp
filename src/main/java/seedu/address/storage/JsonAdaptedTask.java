@@ -25,6 +25,7 @@ public class JsonAdaptedTask {
     private final String startTime;
     private final String endTime;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final List<JsonAdaptedName> persons = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -32,13 +33,17 @@ public class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("date") String date,
             @JsonProperty("startTime") String startTime, @JsonProperty("endTime") String endTime,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("persons") List<JsonAdaptedName> persons) {
         this.name = name;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         if (tagged != null) {
             this.tagged.addAll(tagged);
+        }
+        if (persons != null) {
+            this.persons.addAll(persons);
         }
     }
 
@@ -53,10 +58,14 @@ public class JsonAdaptedTask {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        persons.addAll(source.getPersons().stream()
+                .map(JsonAdaptedName::new)
+                .collect(Collectors.toList()));
     }
 
     /**
      * Converts this Jackson-friendly adapted task object into the model's {@code Task} object.
+     * Does not check if names in {@code persons} are in the address book.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted task.
      */
@@ -65,6 +74,11 @@ public class JsonAdaptedTask {
         for (JsonAdaptedTag tag : tagged) {
             taskTags.add(tag.toModelType());
         }
+        final List<Name> taskPersons = new ArrayList<>();
+        for (JsonAdaptedName person : persons) {
+            taskPersons.add(person.toModelType());
+        }
+
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -100,6 +114,7 @@ public class JsonAdaptedTask {
         final EndTime modelEndTime = new EndTime(endTime);
 
         final Set<Tag> modelTags = new HashSet<>(taskTags);
-        return new Task(modelName, modelDate, modelStartTime, modelEndTime, modelTags);
+        final Set<Name> modelPersons = new HashSet<>(taskPersons);
+        return new Task(modelName, modelDate, modelStartTime, modelEndTime, modelTags, modelPersons);
     }
 }
