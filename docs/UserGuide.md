@@ -133,28 +133,104 @@ Examples:
 * `find n/Alex n/Charlotte t/team1 t/team2`
 
 
-### Adding a note : `note-add`
+### Adding a strength : `strength-add`
 
-Add a note to a selected person from our contact list.
+Add a strength to a selected person from our contact list.
 
-Format: `note-add INDEX  NOTE_DESCRIPTION`
+Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 
 Examples:
-* `note-add 1 Surgery Scheduled for tomorrow` adds the note "Surgery Scheduled for tomorrow" to the 1st person in the contact list.
+* `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
+
+### Adding a weakness : `weakness-add`
+
+Add a weakness to a selected person from our contact list.
+
+Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
+
+Examples:
+* `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
 
 
-### Deleting a note : `note-del`
+### Adding a miscellaneous note : `misc-add`
 
-Delete the note to a selected person from our contact list.
+Add a miscellaneous note to a selected person from our contact list.
 
-Format: `note-del INDEX  NOTE_INDEX`
+Format: `misc-add INDEX  NOTE_DESCRIPTION`
 
-* Deletes the person at the specified `INDEX`.
+Examples:
+* `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
+
+
+### Deleting a strength : `strength-del`
+
+Delete a strength from a selected person from our contact list.
+
+Format: `strength-del INDEX  STRENGTH_INDEX`
+
+* Deletes the strength at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The strength index refers to the index number shown in the strength list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `note-del 1 1` deletes the first note from the first person in the contact list.
+* `strength-del 1 1` deletes the first strength from the first person in the contact list.
+
+
+### Deleting a weakness : `weakness-del`
+
+Delete the weakness from a selected person from our contact list.
+
+Format: `weakness-del INDEX  WEAKNESS_INDEX`
+
+* Deletes the WEAKNESS at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The weakness index refers to the index number shown in the weakness list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `weakness-del 1 1` deletes the first weakness from the first person in the contact list.
+
+
+### Deleting a miscellaneous  note : `misc-del`
+
+Delete the miscellaneous note from a selected person from our contact list.
+
+Format: `misc-del INDEX  NOTE_INDEX`
+
+* Deletes the miscellaneous note at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The note index refers to the index number shown in the misc. list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `misc-del 1 1` deletes the first miscellaneous note from the first person in the contact list.
+
+
+### Clear all task entries : `clear-t`
+
+Clear all tasks or tasks on a selected date from our task list.
+
+Format: `clear-t [d/DATE]`
+
+* Clears all tasks on the specified `INDEX`.
+* Date must be in the format `yyyy-mm-dd`.
+
+Examples:
+* `clear-t 2022-10-10` clears all tasks on the date given.
+
+
+### Load new background image : `load-court`
+
+Load a new background image in the strategy tab.
+
+Format: `load-court FILEPATH`
+
+* Loads the given image from the specified `FILEPATH`.
+* File must exist and be in `png` format.
+
+Examples:
+* `load-court images/basketball.png` loads and sets the image `basketball.png` as the background image of strategy tab.
 
 
 ### Listing all the commands : `help`
