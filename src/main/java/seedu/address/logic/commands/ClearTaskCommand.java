@@ -86,7 +86,7 @@ public class ClearTaskCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        //check to make sure boolean variable is correctly referencing date object
+        //check to make sure boolean variable is correctly representing date object value
         assert (hasDate && date != null) || (!hasDate && date == null)
                 : "Boolean variable does not represent date object";
         return other == this //check if both are the same object reference
