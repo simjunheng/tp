@@ -7,22 +7,22 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.List;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
-import seedu.address.model.tag.PersonTagContainsKeywordsPredicate;
+import seedu.address.model.name.TaskNameContainsKeywordsPredicate;
+import seedu.address.model.tag.TaskTagContainsKeywordsPredicate;
 
 /**
- * Parses input arguments and creates a new FindCommand object
+ * Parses input arguments and creates a new FindTaskCommand object
  */
-public class FindCommandParser implements Parser<FindCommand> {
+public class FindTaskCommandParser implements Parser<FindTaskCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the FindCommand
-     * and returns a FindCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the FindTaskCommand
+     * and returns a FindTaskCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public FindCommand parse(String args) throws ParseException {
+    public FindTaskCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TAG);
@@ -30,14 +30,14 @@ public class FindCommandParser implements Parser<FindCommand> {
         if ((!arePrefixesPresent(argMultimap, PREFIX_NAME) && !arePrefixesPresent(argMultimap, PREFIX_TAG))
                 || trimmedArgs.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindTaskCommand.MESSAGE_USAGE));
         }
 
         List<String> nameKeywords = argMultimap.getAllValues(PREFIX_NAME);
         List<String> tagKeywords = argMultimap.getAllValues(PREFIX_TAG);
 
-        return new FindCommand(new PersonNameContainsKeywordsPredicate(nameKeywords),
-                new PersonTagContainsKeywordsPredicate(tagKeywords));
+        return new FindTaskCommand(new TaskNameContainsKeywordsPredicate(nameKeywords),
+                new TaskTagContainsKeywordsPredicate(tagKeywords));
     }
 
     /**
