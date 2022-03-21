@@ -213,7 +213,7 @@ Clear all tasks or tasks on a selected date from our task list.
 
 Format: `clear-t [d/DATE]`
 
-* Clears all tasks on the specified `INDEX`.
+* Clears all tasks on the specified `DATE`.
 * Date must be in the format `yyyy-mm-dd`.
 
 Examples:
@@ -257,15 +257,21 @@ Format: `exit`
 
 ## Command summary
 
-| Action       | Format, Examples                                                                                                   |
-|--------------|--------------------------------------------------------------------------------------------------------------------|
-| **List**     | `list`                                                                                                             |
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
-| **Del**      | `del INDEX`<br> e.g., `del 1`                                                                                      |
-| **Add Tag**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
-| **Del Tag**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
-| **Find**     | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                                     |
-| **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
-| **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
-| **Help**     | `help`                                                                                                             |
-| **Exit**     | `exit`                                                                                                             |
+| Action       | Format, Examples                                                                                                               |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------   |
+| **List**              | `list`                                                                                                                |
+| **Add**               | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
+| **Del**               | `del INDEX`<br> e.g., `del 1`                                                                                         |
+| **Add Tag**           | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                      |
+| **Del Tag**           | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                    |
+| **Find**              | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                 |
+| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                   |
+| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                        |
+| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                             |
+| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                     |
+| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                     |
+| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                 |
+| **Clear Tasks**       | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                     |
+| **Load BG Image**     | `load-court FILEPATH`<br> e.g., `load-court images/basketball.png`                                                    |
+| **Help**              | `help`                                                                                                                |
+| **Exit**              | `exit`                                                                                                                |
