@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.notecommands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -8,45 +8,47 @@ import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 
 /**
- * Adds a note to a person in the address book.
+ * Delete a miscellaneous note from a person in the address book
  */
-public class AddNoteCommand extends Command {
-    public static final String COMMAND_WORD = "note-add";
+public class DeleteMiscCommand extends Command {
+    public static final String COMMAND_WORD = "misc-del";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Add a note to a selected person from our contact list. "
+            + ": Delete a miscellaneous note from the note-list of selected person from our contact list. "
             + "Parameters: "
             + "INDEX (must be a positive integer) "
-            + "NOTE_DESCRIPTION (must be non-empty and not more than 50 characters)\n"
+            + "NOTE-INDEX (must be a positive)\n"
             + "Example: " + COMMAND_WORD + " "
             + "1 "
-            + "Surgery Scheduled for tomorrow";
+            + "2";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "AddNote command not implemented yet";
+            "DeleteMisc command not implemented yet";
 
-    public static final String MESSAGE_SUCCESS = "New note added: %1$s";
+    public static final String MESSAGE_SUCCESS = "Miscellaneous note has been deleted: %1$s";
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Note: %2$s";
+    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Index: %2$d";
 
     private final Index index;
-    private final Note note;
+    private final Index noteIndex;
 
     /**
-     * @param index of the person in the filtered person list to add the note
-     * @param note of the person to be added
+     * Constructor of DeleteMiscCommand class
+     * @param index index of the person in the filtered person list
+     * @param noteIndex index of the misc. note from the person's misc-list to be deleted
      */
-    public AddNoteCommand(Index index, Note note) {
-        requireAllNonNull(index, note);
-
+    public DeleteMiscCommand(Index index, Index noteIndex) {
+        requireAllNonNull(index, noteIndex);
         this.index = index;
-        this.note = note;
+        this.noteIndex = noteIndex;
     }
 
     @Override
@@ -58,12 +60,17 @@ public class AddNoteCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newNotes = new ArrayList<>(personToEdit.getNotes());
-        newNotes.add(note);
+        List<Note> newMisc = new ArrayList<>(personToEdit.getMiscellaneous());
+
+        if (noteIndex.getZeroBased() >= newMisc.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
+        }
+        newMisc.remove(noteIndex.getZeroBased());
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), newNotes);
+                personToEdit.getAddress(), personToEdit.getTags(),
+                personToEdit.getStrengths(), personToEdit.getWeaknesses(), newMisc);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -81,9 +88,9 @@ public class AddNoteCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof AddNoteCommand // instanceof handles nulls
-                && (index.equals(((AddNoteCommand) other).index)
-                    && note.equals(((AddNoteCommand) other).note)));
+        return other == this
+                || (other instanceof DeleteMiscCommand
+                && index.equals(((DeleteMiscCommand) other).index)
+                && noteIndex.equals(((DeleteMiscCommand) other).noteIndex));
     }
 }

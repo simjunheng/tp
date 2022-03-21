@@ -17,15 +17,21 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteNoteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.notecommands.AddMiscCommand;
+import seedu.address.logic.commands.notecommands.AddStrengthCommand;
+import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
+import seedu.address.logic.commands.notecommands.DeleteMiscCommand;
+import seedu.address.logic.commands.notecommands.DeleteStrengthCommand;
+import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.TagContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -35,6 +41,7 @@ import seedu.address.testutil.PersonUtil;
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
+    private final Note noteStub = new Note("Note Stub 1");
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -57,11 +64,51 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_deleteNote() throws Exception {
-        DeleteNoteCommand command = (DeleteNoteCommand) parser.parseCommand(
-                DeleteNoteCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+    public void parseCommand_addStrength() throws Exception {
+        AddStrengthCommand command = (AddStrengthCommand) parser.parseCommand(
+                AddStrengthCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + noteStub);
+        assertEquals(new AddStrengthCommand(INDEX_SECOND_PERSON, noteStub), command);
+    }
+
+    @Test
+    public void parseCommand_addWeakness() throws Exception {
+        AddWeaknessCommand command = (AddWeaknessCommand) parser.parseCommand(
+                AddWeaknessCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + noteStub);
+        assertEquals(new AddWeaknessCommand(INDEX_SECOND_PERSON, noteStub), command);
+    }
+
+    @Test
+    public void parseCommand_addMisc() throws Exception {
+        AddMiscCommand command = (AddMiscCommand) parser.parseCommand(
+                AddMiscCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + noteStub);
+        assertEquals(new AddMiscCommand(INDEX_SECOND_PERSON, noteStub), command);
+    }
+
+    @Test
+    public void parseCommand_deleteStrength() throws Exception {
+        DeleteStrengthCommand command = (DeleteStrengthCommand) parser.parseCommand(
+                DeleteStrengthCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
                         + " " + NOTE_FIRST_INDEX.getOneBased());
-        assertEquals(new DeleteNoteCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+        assertEquals(new DeleteStrengthCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+    }
+
+    @Test
+    public void parseCommand_deleteWeakness() throws Exception {
+        DeleteWeaknessCommand command = (DeleteWeaknessCommand) parser.parseCommand(
+                DeleteWeaknessCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + NOTE_FIRST_INDEX.getOneBased());
+        assertEquals(new DeleteWeaknessCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+    }
+
+    @Test
+    public void parseCommand_deleteMisc() throws Exception {
+        DeleteMiscCommand command = (DeleteMiscCommand) parser.parseCommand(
+                DeleteMiscCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
+                        + " " + NOTE_FIRST_INDEX.getOneBased());
+        assertEquals(new DeleteMiscCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
     }
 
     @Test

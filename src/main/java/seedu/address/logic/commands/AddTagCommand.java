@@ -88,14 +88,17 @@ public class AddTagCommand extends Command {
         Phone updatedPhone = personToEdit.getPhone();
         Email updatedEmail = personToEdit.getEmail();
         Address updatedAddress = personToEdit.getAddress();
-        List<Note> updatedNotes = personToEdit.getNotes();
+        List<Note> updatedStrengths = personToEdit.getStrengths();
+        List<Note> updatedWeaknesses = personToEdit.getWeaknesses();
+        List<Note> updatedMisc = personToEdit.getMiscellaneous();
 
         // Changing tags
         // Make modifiable copy since Person#getTags returns an unmodifiable Set
         Set<Tag> tagList = new HashSet<>(personToEdit.getTags());
         tagList.add(new Tag(this.tagName));
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, tagList, updatedNotes);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, tagList,
+                updatedStrengths, updatedWeaknesses, updatedMisc);
     }
 
     @Override

@@ -43,7 +43,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
-    private Label notes;
+    private Label strengths;
+    @FXML
+    private Label weaknesses;
+    @FXML
+    private Label misc;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -59,7 +63,13 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        notes.setText(ListUtil.toIndexedStringList(person.getNotes())
+        strengths.setText(ListUtil.toIndexedStringList(person.getStrengths())
+                .stream()
+                .collect(Collectors.joining("\n")));
+        weaknesses.setText(ListUtil.toIndexedStringList(person.getWeaknesses())
+                .stream()
+                .collect(Collectors.joining("\n")));
+        misc.setText(ListUtil.toIndexedStringList(person.getMiscellaneous())
                 .stream()
                 .collect(Collectors.joining("\n")));
     }
