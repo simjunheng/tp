@@ -340,70 +340,210 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
     
-**Use case: Add a note to a person**
+**Use case: Add a strength to a person**
 
 **MSS**
 
-1.  User requests to add a note to a person
-2.  Coach2K22 shows the new details of the person
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a strength to a person
+4. Coach2K22 shows the new details of the person
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 2a. The person list is empty.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 2a1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1b. The given list index cannot be found in Coach2K22.
+* 3a. The given list index cannot be found in Coach2K22.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1c. The note provided is an empty string.
+* 3b. The strength provided is an empty string.
 
-    * 1c1. Coach2K22 shows an error message.
+    * 3b1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-**Use case: Delete a note from a person**
+**Use case: Add a weakness to a person**
 
 **MSS**
 
-1.  User requests to delete a note for a person
-2.  Coach2K22 shows the new details of the person
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a weakness to a person
+4. Coach2K22 shows the new details of the person
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 2a. The person list is empty.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 2a1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1b. The given list index is invalid.
+* 3a. The given list index cannot be found in Coach2K22.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1c. Notes have not been assigned to the person.
+* 3b. The weakness provided is an empty string.
 
-    * 1c1. Coach2K22 shows an error message.
-
-      Use case resumes at step 1.
-
-* 1d. The given note index is invalid.
-
-    * 1d1. Coach2K22 shows an error message.
+    * 3b1. Coach2K22 shows an error message.
 
       Use case resumes at step 1.
 
+**Use case: Add a miscellaneous note to a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a miscellaneous note to a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index cannot be found in Coach2K22.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The miscellaneous note provided is an empty string.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+    
+**Use case: Delete a strength from a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a strength for a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index is invalid.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. Strengths have not been assigned to the person.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given strength index is invalid.
+
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete a weakness from a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a weakness for a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index is invalid.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. Weaknesses have not been assigned to the person.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given weakness index is invalid.
+
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete a miscellaneous note from a person**
+
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a miscellaneous  note for a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index is invalid.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. Miscellaneous notes have not been assigned to the person.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given note index is invalid.
+
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+    
 **Use case: Find persons by name or tag**
 
 **MSS**
@@ -484,7 +624,72 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. Coach2K22 shows an error message.
 
       Use case ends.
-    
+
+**Use case: Clear all tasks from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to clear the task list
+4. Coach2k22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The task list is empty.
+
+  Use case ends.
+
+**Use case: Clear all tasks for a specified date from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to clear all tasks of a specified date from the task list
+4. Coach2k22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The task list is empty.
+
+  Use case ends.
+
+* 3a. The provided date is not in the correct format.
+
+  Use case resumes at step 2.
+
+**Use case: Load new background image for strategy tab**
+
+**MSS**
+
+1. User requests load a new background image.
+2. Coach2k22 shows the updated strategy tab with the new background image.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Provided filepath of image is invalid.
+
+  Use case ends.
+
+* 1b. Provided name of image is invalid.
+
+  Use case ends.
+
+* 1c. Image does not exist.
+
+  Use case ends.
+
+* 1d. Image is not in `png` format.
+
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
