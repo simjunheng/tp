@@ -66,6 +66,14 @@ public class ClearTaskCommandTest {
     }
 
     @Test
+    public void execute_emptyTaskList_throwsCommandException() {
+        Model emptyTaskListModel = new ModelManager(getTypicalAddressBook(), new TaskBook(), new UserPrefs());
+        ClearTaskCommand clearTaskCommand = new ClearTaskCommand();
+
+        assertCommandFailure(clearTaskCommand, emptyTaskListModel, ClearTaskCommand.MESSAGE_EMPTY_LIST);
+    }
+
+    @Test
     public void equals() {
         Date dateStub2 = new Date("03-03-2001");
         ClearTaskCommand clearTaskFirstCommand = new ClearTaskCommand(dateStub);
