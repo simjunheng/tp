@@ -62,7 +62,10 @@ public class ClearTaskCommand extends Command {
         }
 
         //check if task list contains given date
-        if (hasDate && !lastShownList.stream().anyMatch((task) -> task.getDate().equals(date))) {
+        if (hasDate && !lastShownList
+                .stream()
+                .anyMatch((task) -> task.getDate()
+                .equals(date))) {
             throw new CommandException(String.format(MESSAGE_INVALID_DATE, date));
         }
 
@@ -83,9 +86,13 @@ public class ClearTaskCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this
+        //check to make sure boolean variable is correctly referencing date object
+        assert (hasDate && date != null) || (!hasDate && date == null)
+                : "Boolean variable does not represent date object";
+        return other == this //check if both are the same object reference
                 || (other instanceof ClearTaskCommand
-                && hasDate == (((ClearTaskCommand) other).hasDate)
-                && (!hasDate || date.equals(((ClearTaskCommand) other).date)));
+                && hasDate == (((ClearTaskCommand) other).hasDate) //check if both have dates
+                && (!hasDate || date.equals(((ClearTaskCommand) other).date))); //if they both don't have dates,
+                //return true. Otherwise, check if dates are equivalent
     }
 }
