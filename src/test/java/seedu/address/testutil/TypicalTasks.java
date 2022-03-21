@@ -33,7 +33,7 @@ public class TypicalTasks {
             .withTags("colleagues").withPersons(CARL.getName().fullName).build();
     public static final Task THIRD_TASK = new TaskBuilder().withName("Shareholder Meeting").withDate("29-02-2020")
             .withStartTime("14:00").withEndTime("16:00")
-            .withTags("colleagues").withPersons(CARL.getName().fullName, BENSON.getName().fullName).build();
+            .withTags("colleagues").withPersons(BENSON.getName().fullName).build();
 
     // Manually added
     public static final Task FOURTH_TASK = new TaskBuilder().withName("Soccer Training").withDate("01-03-2020")

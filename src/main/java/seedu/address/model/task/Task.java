@@ -2,6 +2,7 @@ package seedu.address.model.task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -87,6 +88,30 @@ public class Task {
 
         return otherTask != null
                 && otherTask.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both tasks have the same date and conflicting time ranges.
+     */
+    public boolean hasDateTimeConflict(Task otherTask) {
+        if (otherTask == this) {
+            return true;
+        }
+
+        LocalTime thisTaskStart = LocalTime.parse(startTime.value);
+        LocalTime thisTaskEnd = LocalTime.parse(endTime.value);
+        LocalTime otherTaskStart = LocalTime.parse(otherTask.startTime.value);
+        LocalTime otherTaskEnd = LocalTime.parse(otherTask.endTime.value);
+
+        // Solution below adapted from https://stackoverflow.com/q/325933
+        // checks if time ranges overlap (exclusive)
+        boolean timeConflict =
+                thisTaskStart.isBefore(otherTaskEnd)
+                && otherTaskStart.isBefore(thisTaskEnd);
+
+        return otherTask != null
+                && otherTask.getDate().equals(getDate()) //test for same dates
+                && timeConflict;
     }
 
     /**

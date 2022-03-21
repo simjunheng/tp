@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.FIRST_TASK;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
@@ -53,22 +55,55 @@ public class AddTaskCommandTest {
         Task invalidTask = new TaskBuilder().withPersons("Johnson").build();
         AddTaskCommand addTaskCommand = new AddTaskCommand(invalidTask);
 
+        String expectedMessage = String.format(AddTaskCommand.MESSAGE_CONTACT_NOT_FOUND, "Johnson");
         assertThrows(CommandException.class,
-                AddTaskCommand.MESSAGE_CONTACT_NOT_FOUND, () -> addTaskCommand.execute(model));
+                expectedMessage, () -> addTaskCommand.execute(model));
 
         // task with only one person out of the rest found in the address book -> throws an error
         invalidTask = new TaskBuilder().withPersons("Johnson", "Alice Pauline").build();
         AddTaskCommand addTaskCommand2 = new AddTaskCommand(invalidTask);
 
         assertThrows(CommandException.class,
-                AddTaskCommand.MESSAGE_CONTACT_NOT_FOUND, () -> addTaskCommand2.execute(model));
+                expectedMessage, () -> addTaskCommand2.execute(model));
 
         // task with multiple persons not found in the address book -> throws an error
-        invalidTask = new TaskBuilder().withPersons("Johnson", "Alex", "Kenny").build();
+        invalidTask = new TaskBuilder().withPersons("Johnson", "Kenny").build();
         AddTaskCommand addTaskCommand3 = new AddTaskCommand(invalidTask);
 
         assertThrows(CommandException.class,
-                AddTaskCommand.MESSAGE_CONTACT_NOT_FOUND, () -> addTaskCommand3.execute(model));
+                expectedMessage, () -> addTaskCommand3.execute(model));
+    }
+
+    @Test
+    public void execute_personsInConflictingTask_throwsCommandException() {
+        // task with same date, same time range, and same persons -> throws an error
+        Task invalidTask = new TaskBuilder()
+                .withDate("09-10-2022").withStartTime("09:00").withEndTime("10:00")
+                .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
+        AddTaskCommand addTaskCommand = new AddTaskCommand(invalidTask);
+
+        String expectedMessage
+                = String.format(AddTaskCommand.MESSAGE_SCHEDULE_CONFLICT, ALICE.getName().fullName);
+        assertThrows(CommandException.class,
+                expectedMessage, () -> addTaskCommand.execute(model));
+
+        // task with same date, overlapping time range, and same persons -> throws an error
+        invalidTask = new TaskBuilder()
+                .withDate("09-10-2022").withStartTime("09:30").withEndTime("10:30")
+                .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
+        AddTaskCommand addTaskCommand2 = new AddTaskCommand(invalidTask);
+
+        assertThrows(CommandException.class,
+                expectedMessage, () -> addTaskCommand2.execute(model));
+
+        // task with same date, overlapping time range, and only ALICE -> throws an error
+        invalidTask = new TaskBuilder()
+                .withDate("09-10-2022").withStartTime("09:30").withEndTime("10:30")
+                .withPersons(ALICE.getName().fullName).build();
+        AddTaskCommand addTaskCommand3 = new AddTaskCommand(invalidTask);
+
+        assertThrows(CommandException.class,
+                expectedMessage, () -> addTaskCommand3.execute(model));
     }
 
     @Test

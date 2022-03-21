@@ -41,8 +41,10 @@ public class AddTaskCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task book";
-    public static final String MESSAGE_CONTACT_NOT_FOUND = "The person cannot be found in the current address book";
-
+    public static final String MESSAGE_CONTACT_NOT_FOUND =
+            "The person %1$s cannot be found in the current address book";
+    public static final String MESSAGE_SCHEDULE_CONFLICT =
+            "The person %1$s is already involved in a task at this date and time";
     private final Task toAdd;
 
     /**
@@ -56,18 +58,33 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Person> unfilteredPersonList = model.getUnfilteredPersonList();
+        List<Task> unfilteredTaskList = model.getUnfilteredTaskList();
         Set<Name> persons = toAdd.getPersons();
-        //Checks if persons are in lastShownList
+
+        //checks if persons exist in the current list
         for (Name name: persons) {
             boolean notFound = true;
-            for (Person person: lastShownList) {
+            for (Person person: unfilteredPersonList) {
                 if (person.getName().equals(name)) {
                     notFound = false;
                 }
             }
             if (notFound) {
-                throw new CommandException(MESSAGE_CONTACT_NOT_FOUND);
+                throw new CommandException(String.format(MESSAGE_CONTACT_NOT_FOUND, name));
+            }
+        }
+
+        //checks if persons are already involved in tasks with conflicting time ranges to the newly added task
+        for (Name name: persons) {
+            for (Task task: unfilteredTaskList) {
+                Set<Name> nameList = task.getPersons();
+                if (nameList.contains(name)) {
+                    boolean conflictExist = task.hasDateTimeConflict(toAdd);
+                    if (conflictExist) {
+                        throw new CommandException(String.format(MESSAGE_SCHEDULE_CONFLICT, name));
+                    }
+                }
             }
         }
 

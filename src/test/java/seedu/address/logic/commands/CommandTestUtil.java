@@ -17,12 +17,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.EditPersonDescriptor;
+import seedu.address.logic.EditTaskDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.EditTaskDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -52,6 +55,8 @@ public class CommandTestUtil {
     public static final String VALID_ENDTIME_TASK2 = "13:00";
     public static final String VALID_TAG_EVENT = "Event";
     public static final String VALID_TAG_MEET = "Meet";
+    public static final String VALID_PERSON1 = "Amy Bee";
+    public static final String VALID_PERSON2 = "Bob Choo";
 
 
 
@@ -93,8 +98,11 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+    public static final EditPersonDescriptor DESC_AMY;
+    public static final EditPersonDescriptor DESC_BOB;
+
+    public static final EditTaskDescriptor DESC_TASK1;
+    public static final EditTaskDescriptor DESC_TASK2;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -103,7 +111,14 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_TASK1 = new EditTaskDescriptorBuilder().withName(VALID_NAME_TASK1)
+                .withDate(VALID_DATE_TASK1).withStartTime(VALID_STARTTIME_TASK1)
+                .withEndTime(VALID_ENDTIME_TASK1).withTags(VALID_TAG_EVENT).withPersons(VALID_PERSON1).build();
+        DESC_TASK2 = new EditTaskDescriptorBuilder().withName(VALID_NAME_TASK2)
+                .withDate(VALID_DATE_TASK2).withStartTime(VALID_STARTTIME_TASK2)
+                .withEndTime(VALID_ENDTIME_TASK2).withTags(VALID_TAG_EVENT).withPersons(VALID_PERSON2).build();
     }
+
 
     /**
      * Executes the given {@code command}, confirms that <br>
