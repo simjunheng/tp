@@ -2,7 +2,14 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_TASK1;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ENDTIME_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PERSON2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARTTIME_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 
 import org.junit.jupiter.api.Test;
 

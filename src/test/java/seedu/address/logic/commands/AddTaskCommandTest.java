@@ -82,8 +82,8 @@ public class AddTaskCommandTest {
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
         AddTaskCommand addTaskCommand = new AddTaskCommand(invalidTask);
 
-        String expectedMessage
-                = String.format(AddTaskCommand.MESSAGE_SCHEDULE_CONFLICT, ALICE.getName().fullName);
+        String expectedMessage =
+                String.format(AddTaskCommand.MESSAGE_SCHEDULE_CONFLICT, ALICE.getName().fullName);
         assertThrows(CommandException.class,
                 expectedMessage, () -> addTaskCommand.execute(model));
 
