@@ -36,6 +36,16 @@ public class FindCommandParser implements Parser<FindCommand> {
         List<String> nameKeywords = argMultimap.getAllValues(PREFIX_NAME);
         List<String> tagKeywords = argMultimap.getAllValues(PREFIX_TAG);
 
+        // checks if names are valid
+        for (String name: nameKeywords) {
+            ParserUtil.parseName(name);
+        }
+
+        // check if tags are valid
+        for (String tag: tagKeywords) {
+            ParserUtil.parseTag(tag);
+        }
+
         return new FindCommand(new PersonNameContainsKeywordsPredicate(nameKeywords),
                 new PersonTagContainsKeywordsPredicate(tagKeywords));
     }
