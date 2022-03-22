@@ -47,6 +47,7 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
 * **Contributions beyond the project team:**
   * Evidence of helping others:
     * [#197](https://github.com/nus-cs2103-AY2122S2/forum/issues/197)
+    * [#221](https://github.com/nus-cs2103-AY2122S2/forum/issues/221)
     * [#222](https://github.com/nus-cs2103-AY2122S2/forum/issues/222)
   * Evidence of technical leadership
     * _to be added soon_
