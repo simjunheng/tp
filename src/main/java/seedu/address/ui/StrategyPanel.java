@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -79,20 +80,33 @@ public class StrategyPanel extends UiPart<Region> {
         playerList.addListener((ListChangeListener<String>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
-                    for (String playerName : change.getAddedSubList()) {
-                        if (table.containsKey(playerName)) {
-                            continue;
-                        }
-                        StackPane stack = new StackPane();
-                        initStack(stack, playerName, 100, 100, 50, Color.BLUE);
-                        playerView.getChildren().add(stack);
-                        table.put(playerName, stack);
-                    }
+                    changeOnAdd(change.getAddedSubList());
                 } else if (change.wasRemoved()) {
-                    ;
+                    changeOnDelete(change.getRemoved());
                 }
             }
         });
+    }
+
+    private void changeOnAdd(List<? extends String> addedSubList) {
+        for (String playerName : addedSubList) {
+            if (table.containsKey(playerName)) {
+                continue;
+            }
+            StackPane stack = new StackPane();
+            initStack(stack, playerName, 100, 100, 50, Color.BLUE);
+            playerView.getChildren().add(stack);
+            table.put(playerName, stack);
+        }
+    }
+
+    private void changeOnDelete(List<? extends String> removeList) {
+        for (String playerName : removeList) {
+            if (table.containsKey(playerName)) {
+                playerView.getChildren().remove(table.get(playerName));
+                table.remove(playerName);
+            }
+        }
     }
 
     private void initCircle(Circle circle, double rad, double x, double y, Paint color) {
