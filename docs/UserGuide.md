@@ -298,11 +298,6 @@ Format: `exit`
 
 ### 4.1 Contact Management
 
-| Action              | Format, Examples                                             |
-|--------------------|---------------------------------------------------------------|
-|:information_source:| This icon indicates important information to be taken note of |
-|:bulb:               | This icon indicates useful tips for the users                |
-
 | Action       | Format, Examples                                                                                                                                              |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **List**     | `list-p`                                                                                                                                                      |
@@ -343,13 +338,8 @@ Format: `exit`
 --------------------------------------------------------------------------------------------------------------------
 
 ## **5. Glossary**
-| Term           | Definition                                                                       |
-|----------------|---------------------------------------------------------------|
-| **GUI**        | The *Graphical User Interface (GUI)* allows program interaction through graphics |
-| **CLI**        | The *Command Line Interface (CLI)* allows program interaction through commands   |
 
-
-| Term               | Definition                                                       |
-|--------------------|---------------------------------------------------------------|
-|**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics |
-|**CLI**               | The *Command Line Interface (CLI)* allows program interaction through commands                |
+| Term               | Definition                                                                       |
+|--------------------|----------------------------------------------------------------------------------|
+|**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics             |
+|**CLI** | The *Command Line Interface (CLI)* allows program interaction through commands               |
