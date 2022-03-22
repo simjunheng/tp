@@ -41,9 +41,12 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 ## Features
 
+
+<details>
+<summary> Notes about the command format </summary>
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+**:information_source:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
@@ -64,6 +67,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 </div>
+</details>
 
 ## Contact Management
 
@@ -81,11 +85,11 @@ Adds a person to our contact list.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG_NAME]…​`
 
 <details>
-<summary> Contact Management </summary>
+<summary> Click for more tips </summary>
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
-</details>>
+</details>
 
 
 Examples:
