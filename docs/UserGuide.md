@@ -158,7 +158,7 @@ Examples:
 * The search is case-insensitive e.g. `hans` will match `Hans`.
 * The order of the keywords does not matter e.g. `n/hans n/bo` will return the same result as `n/bo n/hans`.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
-* Persons matching at least one keyword will be returned e.g. `n/Hans n/Bo` will return the persons `Hans Gruber` and `Bo Yang`. 
+* Persons matching at least one keyword will be returned e.g. `n/Hans n/Bo` will return the persons `Hans Gruber` and `Bo Yang`.
 
 </div>
 
