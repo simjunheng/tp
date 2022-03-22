@@ -65,8 +65,9 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 </div>
 
+## Contact Management
 
-### Listing all contacts : `list`
+### Listing all contacts : `list-t`
 
 Shows a list of all persons in our contact list.
 
@@ -79,9 +80,13 @@ Adds a person to our contact list.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG_NAME]…​`
 
+<details>
+<summary> Contact Management </summary>
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
+</details>>
+
 
 Examples:
 * `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers`
