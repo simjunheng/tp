@@ -5,13 +5,9 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.MainApp;
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.strategy.exceptions.DuplicatePlayerException;
 import seedu.address.model.strategy.exceptions.PlayerNotFoundException;
 
@@ -21,7 +17,6 @@ import seedu.address.model.strategy.exceptions.PlayerNotFoundException;
  * Supports a minimal set of list operations.
  */
 public class UniquePlayerList implements Iterable<String> {
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
     private final ObservableList<String> internalList = FXCollections.observableArrayList();
     private final ObservableList<String> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
@@ -43,7 +38,6 @@ public class UniquePlayerList implements Iterable<String> {
         if (contains(toAdd)) {
             throw new DuplicatePlayerException();
         }
-        logger.log(Level.INFO, "toAdd: {0}", new Object[]{toAdd});
         internalList.add(toAdd);
     }
 

@@ -1,7 +1,10 @@
 package seedu.address.ui;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,11 +21,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.task.Task;
 
 public class StrategyPanel extends UiPart<Region> {
     private static final String FXML = "StrategyPanel.fxml";
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+    private static final Map<String, StackPane> table = new HashMap<>();
 
     private static double orgSceneX;
     private static double orgSceneY;
@@ -73,11 +76,23 @@ public class StrategyPanel extends UiPart<Region> {
     public StrategyPanel(ObservableList<String> playerList) {
         super(FXML);
 
-        StackPane stack = new StackPane();
-        for (String playerName : playerList) {
-            initStack(stack, playerName, 100, 100, 50, Color.BLUE);
-        }
-        playerView.getChildren().addAll(stack);
+        playerList.addListener((ListChangeListener<String>) change -> {
+            while (change.next()) {
+                if (change.wasAdded()) {
+                    for (String playerName : change.getAddedSubList()) {
+                        if(table.containsKey(playerName)) {
+                            continue;
+                        }
+                        StackPane stack = new StackPane();
+                        initStack(stack, playerName, 100, 100, 50, Color.BLUE);
+                        playerView.getChildren().add(stack);
+                        table.put(playerName, stack);
+                    }
+                } else if (change.wasRemoved()) {
+                    ;
+                }
+            }
+        });
     }
 
     private void initCircle(Circle circle, double rad, double x, double y, Paint color) {

@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -249,7 +248,6 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<String> getFilteredPlayerList() {
-        logger.log(Level.INFO, "size: {0}", new Object[]{filteredPlayers.size()});
         return filteredPlayers;
     }
 

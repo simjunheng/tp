@@ -3,12 +3,8 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import seedu.address.MainApp;
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.strategy.UniquePlayerList;
 
 /**
@@ -16,7 +12,6 @@ import seedu.address.model.strategy.UniquePlayerList;
  * Duplicates are not allowed (by .equals comparison)
  */
 public class StrategyBoard implements  ReadOnlyStrategyBoard {
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
     private final UniquePlayerList players;
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -69,7 +64,6 @@ public class StrategyBoard implements  ReadOnlyStrategyBoard {
      * The player must not already exist in the strategy board.
      */
     public void addPlayer(String t) {
-        logger.log(Level.INFO, "addPlayer: {0}", new Object[]{t});
         players.add(t);
     }
 
