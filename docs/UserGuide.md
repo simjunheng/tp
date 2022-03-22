@@ -14,7 +14,7 @@ title: User Guide
 ## 1. Introduction
 Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
 
-## 1.1 Quick Start
+### 1.1 Quick Start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -38,7 +38,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 1. Refer to the [Features](#features) below for details of each command.
 
-## 1.2 User Guide Icons
+### 1.2 User Guide Icons
 
 | Icon               | Meaning                                                       |
 |--------------------|---------------------------------------------------------------|
@@ -73,15 +73,15 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 </div>
 
-## 2.1 Contact Management
+### 2.1 Contact Management
 
-### 2.1.1 Listing all contacts : `list-p`
+#### 2.1.1 Listing all contacts : `list-p`
 
 Shows a list of all persons in our contact list.
 
 Format: `list-p`
 
-### 2.1.2 Adding a person: `add-p`
+#### 2.1.2 Adding a person: `add-p`
 
 Adds a person to our contact list.
 
@@ -94,7 +94,7 @@ Examples:
 A person can have any number of tags (including 0)
 </div>
 
-### 2.1.3 Deleting a person: `del-p`
+#### 2.1.3 Deleting a person: `del-p`
 
 Delete a person from our contact list.
 
@@ -103,7 +103,7 @@ Format: `del INDEX`
 Examples:
 * `del-p 1` deletes the first person in the contact list.
 
-### 2.1.4 Editing a person: `edit-p`
+#### 2.1.4 Editing a person: `edit-p`
 
 Edit a person from our contact list.
 
@@ -113,13 +113,13 @@ Examples:
 * `edit-p 1 p/98273712 e/johndoe@example.com` edits the phone number and email addresses of the 1st person into `98273712` and  `johndoe@example.com` respectively.
 * `edit-p 2 n/Alan Walker t/` edits the name of the 2nd person and clear all existing tags.
 
-### 2.1.5 Clearing all entries: `clear-p`
+#### 2.1.5 Clearing all entries: `clear-p`
 
 Clear all entries from our contact list.
 
 Format: `clear-p`
 
-### 2.1.6 Adding a tag : `tag-add-p`
+#### 2.1.6 Adding a tag : `tag-add-p`
 
 Add tags to a selected person from our contact list.
 
@@ -129,7 +129,7 @@ Examples:
 * `tag-add 1 Public Relations` adds the tag `Public Relations` to the first person in the contact list.
 
 
-### 2.1.7 Deleting a tag : `tag-del-p`
+#### 2.1.7 Deleting a tag : `tag-del-p`
 
 Add tags to a selected person from our contact list.
 
@@ -139,7 +139,7 @@ Examples:
 * `tag-del 1 Team` deletes the tag `Team` from the first person in the contact list.
 
 
-### 2.1.8 Locating persons by keyword : `find-p`
+#### 2.1.8 Locating persons by keyword : `find-p`
 
 Find persons matching any of the given keywords from our contact list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
@@ -165,7 +165,7 @@ Examples:
 </div>
 
 
-### 2.1.9 Adding a note : `note-add`
+#### 2.1.9 Adding a note : `note-add`
 
 Add a note to a selected person from our contact list.
 
@@ -175,7 +175,7 @@ Examples:
 * `note-add 1 Surgery Scheduled for tomorrow` adds the note "Surgery Scheduled for tomorrow" to the 1st person in the contact list.
 
 
-### 2.1.10 Deleting a note : `note-del`
+#### 2.1.10 Deleting a note : `note-del`
 
 Delete the note to a selected person from our contact list.
 
@@ -189,15 +189,15 @@ Examples:
 * `note-del 1 1` deletes the first note from the first person in the contact list.
 
 
-## 2.2 Task Management
+### 2.2 Task Management
 
-### 2.2.1 Listing all tasks : `list-t`
+#### 2.2.1 Listing all tasks : `list-t`
 
 Shows a list of all tasks in our task list.
 
 Format: `list-t`
 
-### 2.2.2 Adding a task: `add-t`
+#### 2.2.2 Adding a task: `add-t`
 
 * (To be filled up by @pragya)
 
@@ -212,27 +212,27 @@ Format: `list-t`
 A task can have any number of tags (including 0)
 </div>
 
-### 2.2.3 Deleting a task: `del-t`
+#### 2.2.3 Deleting a task: `del-t`
 
 * (To be filled up by @pragya)
 
-### 2.2.4 Editing a person: `edit-t`
+#### 2.2.4 Editing a person: `edit-t`
 
 * (To be filled up by @pragya)
 
-### 2.2.5 Clearing all entries: `clear-t`
+#### 2.2.5 Clearing all entries: `clear-t`
 
 * (To be filled up by @abdul)
 
-### 2.2.6 Adding a tag : `tag-add-t`
+#### 2.2.6 Adding a tag : `tag-add-t`
 
 * (To be filled up by @juayhee)
 
-### 2.2.7 Deleting a tag : `tag-del-t`
+#### 2.2.7 Deleting a tag : `tag-del-t`
 
 * (To be filled up by @juayhee)
 
-### 2.2.8 Locating tasks by keyword : `find-t`
+#### 2.2.8 Locating tasks by keyword : `find-t`
 
 Find tasks matching any of the given keywords from our task list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
@@ -257,29 +257,29 @@ Examples:
 
 </div>
 
-## 2.3 Strategic Planning
+### 2.3 Strategic Planning
 
-### 2.3.1 Load new background image: `load-court`
+#### 2.3.1 Load new background image: `load-court`
 
 * (To be filled up by @abdul)
 
-### 2.3.2 Clearing all entries: `clear-s`
+#### 2.3.2 Clearing all entries: `clear-s`
 
 * (To be filled up by @xiaoteng)
 
-### 2.3.2 Adding new players: `add-s`
+#### 2.3.2 Adding new players: `add-s`
 
 * (To be filled up by @xiaoteng)
 
-### 2.3.3 Moving a player to a coordinate: `move`
+#### 2.3.3 Moving a player to a coordinate: `move`
 
 * (To be filled up by @xiaoteng)
 
-### 2.3.4 Export strategy board as image file: `export`
+#### 2.3.4 Export strategy board as image file: `export`
 
 * (To be filled up by pragya)
 
-### 2.3.5 Exiting the program : `exit`
+#### 2.3.5 Exiting the program : `exit`
 
 Exits the program.
 
@@ -297,7 +297,7 @@ Format: `exit`
 
 ## 4. Command summary
 
-## 4.1 Contact Management
+### 4.1 Contact Management
 | Action       | Format, Examples                                                                                                                                              |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **List**     | `list-p`                                                                                                                                                      |
@@ -311,7 +311,7 @@ Format: `exit`
 | **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                                                                      |
 | **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
 
-## 4.2 Task Management
+### 4.2 Task Management
 | Action       | Format, Examples                                                                           |
 |--------------|--------------------------------------------------------------------------------------------|
 | **List**     | `list-p`                                                                                   |
@@ -323,7 +323,7 @@ Format: `exit`
 | **Del Tag**  | (to be filled up by @juayhee)                                                              |
 | **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`|
 
-## 4.2 Strategic Planning
+### 4.3 Strategic Planning
 | Action         | Format, Examples                                                                           |
 |----------------|--------------------------------------------------------------------------------------------|
 | **Load Court** | (to be filled up by @abdul)                                                                |
@@ -339,4 +339,4 @@ Format: `exit`
 | Term           | Definition                                                                       |
 |----------------|----------------------------------------------------------------------------------|
 | **GUI**        | The *Graphical User Interface (GUI)* allows program interaction through graphics |
-| **CLI**        | The *Command Line Interface (CLI)* allows program interaction through commands   |                                                                        \|
+| **CLI**        | The *Command Line Interface (CLI)* allows program interaction through commands   |
