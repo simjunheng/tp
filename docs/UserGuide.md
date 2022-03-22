@@ -4,14 +4,12 @@ title: User Guide
 ---
 [![codecov](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp/branch/master/graph/badge.svg?token=N3IGRH3TN0)](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp)
 
-#User Guide
-
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 1. Introduction
+## **1. Introduction**
 Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
 
 ### 1.1 Quick Start
@@ -47,7 +45,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 2. Features
+## **2. Features**
 
 <div markdown="block" class="alert alert-info">
 
@@ -289,16 +287,21 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 3. FAQ
+## **3. FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. Command summary
+## **4. Command summary**
 
 ### 4.1 Contact Management
+
+| Action              | Format, Examples                                             |
+|--------------------|---------------------------------------------------------------|
+|:information_source:| This icon indicates important information to be taken note of |
+|:bulb:               | This icon indicates useful tips for the users                |
 
 | Action       | Format, Examples                                                                                                                                              |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -339,8 +342,14 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 5. Glossary
+## **5. Glossary**
 | Term           | Definition                                                                       |
-|----------------|----------------------------------------------------------------------------------|
+|----------------|---------------------------------------------------------------|
 | **GUI**        | The *Graphical User Interface (GUI)* allows program interaction through graphics |
 | **CLI**        | The *Command Line Interface (CLI)* allows program interaction through commands   |
+
+
+| Term               | Definition                                                       |
+|--------------------|---------------------------------------------------------------|
+|**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics |
+|**CLI**               | The *Command Line Interface (CLI)* allows program interaction through commands                |
