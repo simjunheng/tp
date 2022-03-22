@@ -3,7 +3,10 @@ package seedu.address.ui;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -17,6 +20,10 @@ public class StrategyPanel extends UiPart<Region> {
     private static double orgTranslateX;
     private static double orgTranslateY;
 
+    @FXML
+    private ImageView strategyImage;
+    @FXML
+    private AnchorPane strategyAnchorPane;
     @FXML
     private Circle player1;
     @FXML
@@ -58,6 +65,10 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel() {
         super(FXML);
+        strategyImage.setImage((new Image(this.getClass().getResourceAsStream(("/images/basketball.png")))));
+        strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
+        strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
+        strategyImage.toBack();
         initCircle(player1, 50, 100, 100, Color.RED);
         initCircle(player2, 50, 200, 200, Color.LIGHTBLUE);
         initCircle(player3, 30, 200, 200, Color.YELLOW);
