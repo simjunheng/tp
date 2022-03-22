@@ -201,7 +201,8 @@ Format: `list-t`
 
 * (To be filled up by @pragya)
 
-<div>
+<div markdown="block" class="alert alert-info">
+
 **:information_source: Key things to take note of:**<br>
 
 * `PERSON_NAME` has to be present in the contact list for them to be tagged to a task.
@@ -298,6 +299,7 @@ Format: `exit`
 ## 4. Command summary
 
 ### 4.1 Contact Management
+
 | Action       | Format, Examples                                                                                                                                              |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **List**     | `list-p`                                                                                                                                                      |
@@ -312,6 +314,7 @@ Format: `exit`
 | **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
 
 ### 4.2 Task Management
+
 | Action       | Format, Examples                                                                           |
 |--------------|--------------------------------------------------------------------------------------------|
 | **List**     | `list-p`                                                                                   |
@@ -324,6 +327,7 @@ Format: `exit`
 | **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`|
 
 ### 4.3 Strategic Planning
+
 | Action         | Format, Examples                                                                           |
 |----------------|--------------------------------------------------------------------------------------------|
 | **Load Court** | (to be filled up by @abdul)                                                                |
