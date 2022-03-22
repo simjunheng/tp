@@ -58,7 +58,7 @@ public class DeletePlayerCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddPlayerCommand // instanceof handles nulls
+                || (other instanceof DeletePlayerCommand // instanceof handles nulls
                 && (playerName.equals(((DeletePlayerCommand) other).playerName)));
     }
 }
