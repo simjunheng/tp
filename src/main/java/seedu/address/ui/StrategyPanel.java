@@ -80,7 +80,7 @@ public class StrategyPanel extends UiPart<Region> {
             while (change.next()) {
                 if (change.wasAdded()) {
                     for (String playerName : change.getAddedSubList()) {
-                        if(table.containsKey(playerName)) {
+                        if (table.containsKey(playerName)) {
                             continue;
                         }
                         StackPane stack = new StackPane();

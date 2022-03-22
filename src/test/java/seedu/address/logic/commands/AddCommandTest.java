@@ -19,6 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyStrategyBoard;
 import seedu.address.model.ReadOnlyTaskBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
@@ -196,6 +197,41 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setStrategyBoard(ReadOnlyStrategyBoard strategyBoard) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyStrategyBoard getStrategyBoard() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasPlayer(String player) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deletePlayer(String target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addPlayer(String player) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<String> getFilteredPlayerList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredPlayerList(Predicate<String> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

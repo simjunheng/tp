@@ -11,7 +11,7 @@ import seedu.address.model.strategy.UniquePlayerList;
  * Wraps all data at the strategy-board level
  * Duplicates are not allowed (by .equals comparison)
  */
-public class StrategyBoard implements  ReadOnlyStrategyBoard {
+public class StrategyBoard implements ReadOnlyStrategyBoard {
     private final UniquePlayerList players;
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +26,9 @@ public class StrategyBoard implements  ReadOnlyStrategyBoard {
 
     public StrategyBoard() {}
 
+    /**
+     * Creates an StrategyBoard using the Players in the {@code toBeCopied}
+     */
     public StrategyBoard(ReadOnlyStrategyBoard toBeCopied) {
         this();
         resetData(toBeCopied);
