@@ -399,21 +399,27 @@ Format: `exit`
 
 ## **4. Command summary**
 
-<<<<<<< HEAD
 ### 4.1 Contact Management
 
-| Action       | Format, Examples                                                                                                                                              |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **List**     | `list-p`                                                                                                                                                      |
-| **Add**      | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
-| **Del**      | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                             |
-| **Edit**     | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
-| **Clear**    | `clear-p`                                                                                                                                                     |
-| **Add Tag**  | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                           |
-| **Del Tag**  | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                       |
-| **Find**     | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
-| **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                                                                      |
-| **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
+| Action                | Format, Examples                                                                                                                                              |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **List**              | `list-p`                                                                                                                                                      |
+| **Add**               | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
+| **Del**               | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                             |
+| **Edit**              | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
+| **Clear**             | `clear-p`                                                                                                                                                     |
+| **Add Tag**           | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                           |
+| **Del Tag**           | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                       |
+| **Find**              | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
+| **Add Note**          | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                                                                      |
+| **Del Note**          | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
+| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                           |
+| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                                |
+| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                     |
+| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                             |
+| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                             |
+| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                         |
+
 
 ### 4.2 Task Management
 
@@ -423,21 +429,21 @@ Format: `exit`
 | **Add**      | (to be filled up by @pragya)                                                               |
 | **Del**      | (to be filled up by @pragya)                                                               | 
 | **Edit**     | (to be filled up by @pragya)                                                               |
-| **Clear**    | (to be filled up by @abdul)                                                                |
+| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                          |
 | **Add Tag**  | (to be filled up by @juayhee)                                                              |
 | **Del Tag**  | (to be filled up by @juayhee)                                                              |
 | **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`|
 
 ### 4.3 Strategic Planning
 
-| Action         | Format, Examples                                                                           |
-|----------------|--------------------------------------------------------------------------------------------|
-| **Load Court** | (to be filled up by @abdul)                                                                |
-| **Add**        | (to be filled up by @xiaoteng)                                                             |
-| **Clear**      | (to be filled up by @xiaoteng)                                                             |
-| **Move**       | (to be filled up by @xiaoteng)                                                             |
-| **Export**     | (to be filled up by @pragya)                                                               |
-| **Exit**       | `exit`                                                                                     |
+| Action            | Format, Examples                                                                           |
+|-------------------|--------------------------------------------------------------------------------------------|
+| **Load BG Image** | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`                                  |
+| **Add**           | (to be filled up by @xiaoteng)                                                             |
+| **Clear**         | (to be filled up by @xiaoteng)                                                             |
+| **Move**          | (to be filled up by @xiaoteng)                                                             |
+| **Export**        | (to be filled up by @pragya)                                                               |
+
 
 ### 4.4 General
 
@@ -454,23 +460,4 @@ Format: `exit`
 |--------------------|----------------------------------------------------------------------------------|
 |**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics             |
 |**CLI** | The *Command Line Interface (CLI)* allows program interaction through commands               |
-=======
-| Action       | Format, Examples                                                                                                               |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------   |
-| **List**              | `list`                                                                                                                |
-| **Add**               | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
-| **Del**               | `del INDEX`<br> e.g., `del 1`                                                                                         |
-| **Add Tag**           | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                      |
-| **Del Tag**           | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                    |
-| **Find**              | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                 |
-| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                   |
-| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                        |
-| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                             |
-| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                     |
-| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                     |
-| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                 |
-| **Clear Tasks**       | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                     |
-| **Load BG Image**     | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`                                                             |
-| **Help**              | `help`                                                                                                                |
-| **Exit**              | `exit`                                                                                                                |
->>>>>>> update-command-format
+
