@@ -7,26 +7,26 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Acknowledgements**
+## **1. Acknowledgements**
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## **2. Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## **3. Design**
 
 <div markdown="span" class="alert alert-primary">
 
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
-### Architecture
+### 3.1 Architecture
 
 <img src="images/ArchitectureDiagram.png" width="280" />
 
@@ -59,7 +59,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -67,7 +67,7 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
-### UI component
+### 3.2 UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
@@ -84,7 +84,7 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
-### Logic component
+### 3.3 Logic component
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
@@ -113,7 +113,7 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### 3.4 Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
@@ -124,16 +124,10 @@ The `Model` component,
 * stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores `Note` objects in three separate lists for each `Person` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="450" />
-
-</div>
-
-
-### Storage component
+### 3.5 Storage component
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -144,15 +138,47 @@ The `Storage` component,
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
-### Common classes
+### 3.6 Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **4. Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### 4.1 Find persons feature
+
+#### 4.1.1 Implementation
+
+This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which 
+makes use of the method `#updateFilteredPersonList()` to find persons by name or tag.
+
+Given below is an example usage scenario of how the find person mechanism behaves at each step.
+
+Step 1: The user inputs `find n/Alex t/friends` to find selected persons.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs. 
+
+Step 3: It then returns a newly initialised `FindPersonCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called which updates the GUI display with only selected persons shown in the contact list. The command results are then generated and shown to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![FindPersonSequenceDiagram](images/FindPersonSequenceDiagram.png)
+
+#### 4.1.2 Design consideration
+
+**Aspect: Should there be a separate find command for name and tag:**
+
+* **Alternative 1 (current choice):** A combined command for finding name and tag.
+    * Pros: Easy to implement.
+    * Cons: Users may have to remember more prefixes.
+
+* **Alternative 2:** A separate command for finding name and tag.
+    * Pros: Commands may be more intuitive to the users.
+    * Cons: Possible violation of the DRY principle.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -241,7 +267,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **5. Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -251,11 +277,11 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **6. Appendix: Requirements**
 
-### Product scope
+### 6.1 Product scope
 
-**Target user profile**:
+**Target user profile**:  
 
 * is a coach managing a team of players
 * has a need to manage a significant number of players
@@ -271,25 +297,26 @@ schedules, and provides them with a platform to visualise defensive and offensiv
 
 
 
-### User stories
+### 6.2 User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                         |
-|----------|--------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
-| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                               |
-| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date          |
-| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                           |
-| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                    |
-| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                   |
-| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person      |
-| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                 |
-| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                           |
-| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs |
+| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                                             |
+|----------|--------------------------|-----------------------------------------------------------------|------------------------------------------------------------------------------|
+| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                                                    |
+| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date                               |
+| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                                                |
+| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                                         |
+| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                                        |
+| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person                           |
+| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                                      |
+| `* *`    | organised coach          | view players by their strengths and weaknesses                  | make informed decisions on choosing the best person for a specific objective |
+| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                                                |
+| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs                      |
 
 
 
-### Use cases
+### 6.3 Use cases
 
 (For all use cases below, the **System** is `Coach2K22` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -305,9 +332,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. The parameters supplied by the user is invalid.
-
+  
     * 1a1. Coach2K22 shows an error message.
-
+      
       Use case ends.
 
 * 1b. Compulsory parameters not supplied by the user.
@@ -338,71 +365,95 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-
-**Use case: Add a note to a person**
+    
+**Use case: Add a strength to a person**
 
 **MSS**
 
-1.  User requests to add a note to a person
-2.  Coach2K22 shows the new details of the person
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a strength to a person
+4. Coach2K22 shows the new details of the person
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 2a. The person list is empty.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 2a1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1b. The given list index cannot be found in Coach2K22.
+* 3a. The given list index cannot be found in Coach2K22.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1c. The note provided is an empty string.
+* 3b. The strength provided is an empty string.
 
-    * 1c1. Coach2K22 shows an error message.
+    * 3b1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-**Use case: Delete a note from a person**
+**Use case: Add a weakness to a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Add a strength to a person`
+  * Takes in a weakness instead of a strength
+
+**Use case: Add a miscellaneous note to a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Add a strength to a person`
+    * Takes in a miscellaneous note instead of a strength
+
+**Use case: Delete a strength from a person**
 
 **MSS**
 
-1.  User requests to delete a note for a person
-2.  Coach2K22 shows the new details of the person
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a strength for a person
+4. Coach2K22 shows the new details of the person
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 2a. The person list is empty.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 2a1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1b. The given list index is invalid.
+* 3a. The given list index is invalid.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1c. Notes have not been assigned to the person.
+* 3b. Strengths have not been assigned to the person.
 
-    * 1c1. Coach2K22 shows an error message.
+    * 3b1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1d. The given note index is invalid.
+* 3c. The given strength index is invalid.
 
-    * 1d1. Coach2K22 shows an error message.
+    * 3c1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
+**Use case: Delete a weakness from a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
+    * Takes in a weakness index instead of a strength index
+
+**Use case: Delete a miscellaneous note from a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
+    * Takes in a misc. index instead of a strength index
+    
 **Use case: Find persons by name or tag**
 
 **MSS**
@@ -419,7 +470,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Coach2K22 shows an empty list.
 
       Use case ends.
-
+    
 * 1b. The keyword provided is not indicated by a prefix e.g. `n/` or `t/`.
 
     * 1b1. Coach2K22 shows an error message.
@@ -431,13 +482,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. Coach2K22 shows an error message.
 
       Use case ends.
-
+    
 * 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
-
+  
     * 1d1. Coach2K22 shows an error message.
-      
-      Use case ends.
 
+      Use case ends.    
+    
 **Use case: Add a tag to a person**
 
 **MSS**
@@ -446,7 +497,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Coach2K22 shows a list of persons
 3. User requests to attach a new tag to a person
 4. Coach2k22 shows the new details of the person
-
+   
    Use case ends.
 
 **Extensions**
@@ -484,9 +535,70 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+**Use case: Clear all tasks from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to clear the task list
+4. Coach2k22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The task list is empty.
+
+  Use case ends.
+
+**Use case: Clear all tasks for a specified date from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to clear all tasks of a specified date from the task list
+4. Coach2k22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The task list is empty.
+
+  Use case ends.
+
+* 3a. The provided date is not in the correct format.
+
+  Use case resumes at step 2.
+
+**Use case: Load new background image for strategy tab**
+
+**MSS**
+
+1. User requests load a new background image.
+2. Coach2k22 shows the updated strategy tab with the new background image.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Provided name of image is invalid.
+
+  Use case ends.
+
+* 1b. Image does not exist.
+
+  Use case ends.
+
+* 1c. Image is not in `png` format.
+
+  Use case ends.
+
 *{More to be added}*
 
-### Non-Functional Requirements
+### 6.4 Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
@@ -497,18 +609,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 7. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 
-### Glossary
+### 6.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Time-clash**: An error where the user attempts to schedule an event at the same time as another
 * **Switchover**: The action of switching a player for another on a given field
 * **Liability-Potential** The statistics of a player's overall penalties and injuries across games
+* **DRY Principle** The *Don't Repeat Yourself (DRY)* is a Software Engineering principle of reducing repetition in the code
 
 *{More to be added}*
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **7. Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -517,7 +630,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+### 7.1 Launch and shutdown
 
 1. Initial launch
 
@@ -534,7 +647,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### 7.2 Deleting a person
 
 1. Deleting a person while all persons are being shown
 
@@ -551,7 +664,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Saving data
+### 7.3 Saving data
 
 1. Dealing with missing/corrupted data files
 

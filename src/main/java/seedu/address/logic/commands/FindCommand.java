@@ -15,7 +15,7 @@ import seedu.address.model.tag.TagContainsKeywordsPredicate;
  */
 public class FindCommand extends Command {
 
-    public static final String COMMAND_WORD = "find";
+    public static final String COMMAND_WORD = "find-p";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all persons whose names or tags contain any of "

@@ -4,16 +4,15 @@ title: User Guide
 ---
 [![codecov](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp/branch/master/graph/badge.svg?token=N3IGRH3TN0)](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp)
 
-#User Guide
-
-Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
-
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## **1. Introduction**
+Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
+
+### 1.1 Quick Start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -23,23 +22,30 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
-
+    
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all the possible commands.<br>
    Some example commands you can try:
 
-   * **`list`** : Lists all contacts.
+   * **`list-p`** : Lists all contacts.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com` : Adds a contact named `John Doe`.
+   * **`add-p`**`n/John Doe p/98765432 e/johnd@example.com` : Adds a contact named `John Doe`.
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
+   * **`del-p`**`3` : Deletes the 3rd contact shown in the current list.
 
    * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
+### 1.2 User Guide Icons
+
+| Icon               | Meaning                                                       |
+|--------------------|---------------------------------------------------------------|
+|:information_source:| This icon indicates important information to be taken note of |
+|:bulb:               | This icon indicates useful tips for the users                |
+
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## **2. Features**
 
 <div markdown="block" class="alert alert-info">
 
@@ -65,131 +71,393 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 </div>
 
+### 2.1 Contact Management
 
-### Listing all contacts : `list`
+#### 2.1.1 Listing all contacts : `list-p`
 
 Shows a list of all persons in our contact list.
 
-Format: `list`
+Format: `list-p`
 
-
-### Adding a person: `add`
+#### 2.1.2 Adding a person: `add-p`
 
 Adds a person to our contact list.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG_NAME]…​`
+Format: `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​`
+
+Examples:
+* `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
-Examples:
-* `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers`
-
-
-### Deleting a person: `del`
+#### 2.1.3 Deleting a person: `del-p`
 
 Delete a person from our contact list.
 
 Format: `del INDEX`
 
 Examples:
-* `del 1` deletes the first person in the contact list.
+* `del-p 1` deletes the first person in the contact list.
 
+#### 2.1.4 Editing a person: `edit-p`
 
-### Adding a tag : `tag-add`
+Edit a person from our contact list.
+
+Format: `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​`
+
+Examples:
+* `edit-p 1 p/98273712 e/johndoe@example.com` edits the phone number and email addresses of the 1st person into `98273712` and  `johndoe@example.com` respectively.
+* `edit-p 2 n/Alan Walker t/` edits the name of the 2nd person and clear all existing tags.
+
+#### 2.1.5 Clearing all contact entries: `clear-p`
+
+Clear all entries from our contact list.
+
+Format: `clear-p`
+
+#### 2.1.6 Adding a tag : `tag-add-p`
 
 Add tags to a selected person from our contact list.
 
-Format: `tag-add INDEX  TAG_NAME`
+Format: `tag-add INDEX TAG_NAME`
 
 Examples:
 * `tag-add 1 Public Relations` adds the tag `Public Relations` to the first person in the contact list.
 
 
-### Deleting a tag : `tag-del`
+#### 2.1.7 Deleting a tag : `tag-del-p`
 
 Add tags to a selected person from our contact list.
 
-Format: `tag-del INDEX  TAG_INDEX`
+Format: `tag-del-p INDEX TAG_NAME`
 
 Examples:
-* `tag-del 1 1` deletes the first tag from the first person in the contact list.
+* `tag-del 1 Team` deletes the tag `Team` from the first person in the contact list.
 
 
-### Locating persons by keyword : `find`
+#### 2.1.8 Locating persons by keyword : `find-p`
 
 Find persons matching any of the given keywords from our contact list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
 Format: `find [n/NAME]…​ [t/TAG]…​`
 
+Examples:
+* `find-p n/Alan t/team1`
+* `find-p n/Alan`
+* `find-p t/team1`
+* `find-p n/Alex n/Charlotte t/team1 t/team2`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
 * One of the optional items e.g. `[n/NAME]` must be present for the command to work.
+* The search is case-insensitive e.g. `hans` will match `Hans`.
+* The order of the keywords does not matter e.g. `n/hans n/bo` will return the same result as `n/bo n/hans`.
+* Only full words will be matched e.g. `Han` will not match `Hans`.
+* Persons matching at least one keyword will be returned e.g. `n/Hans n/Bo` will return the persons `Hans Gruber` and `Bo Yang`.
+
+</div>
+
+
+#### 2.1.9 Adding a strength : `strength-add`
+
+Add a strength to a selected person from our contact list.
+
+Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 
 Examples:
-* `find n/Alan t/team1`
-* `find n/Alan`
-* `find t/team1`
-* `find n/Alex n/Charlotte t/team1 t/team2`
+* `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
 
+#### 2.1.10 Adding a weakness : `weakness-add`
 
-### Adding a note : `note-add`
+Add a weakness to a selected person from our contact list.
 
-Add a note to a selected person from our contact list.
-
-Format: `note-add INDEX  NOTE_DESCRIPTION`
+Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
 
 Examples:
-* `note-add 1 Surgery Scheduled for tomorrow` adds the note "Surgery Scheduled for tomorrow" to the 1st person in the contact list.
+* `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
+
+#### 2.1.11 Adding a miscellaneous note : `misc-add`
+
+Add a miscellaneous note to a selected person from our contact list.
+
+Format: `misc-add INDEX  NOTE_DESCRIPTION`
+
+Examples:
+* `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
 
-### Deleting a note : `note-del`
+#### 2.1.12 Deleting a strength : `strength-del`
 
-Delete the note to a selected person from our contact list.
+Delete a strength from a selected person from our contact list.
 
-Format: `note-del INDEX  NOTE_INDEX`
+Format: `strength-del INDEX  STRENGTH_INDEX`
 
-* Deletes the person at the specified `INDEX`.
+Examples:
+* `strength-del 1 1` deletes the first strength from the first person in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the strength at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The strength index refers to the index number shown in the strength list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+</div>
+
+
+#### 2.1.13 Deleting a weakness : `weakness-del`
+
+Delete the weakness from a selected person from our contact list.
+
+Format: `weakness-del INDEX  WEAKNESS_INDEX`
 
 Examples:
-* `note-del 1 1` deletes the first note from the first person in the contact list.
+* `weakness-del 1 1` deletes the first weakness from the first person in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the weakness at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The weakness index refers to the index number shown in the weakness list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+</div>
 
 
-### Listing all the commands : `help`
+#### 2.1.14 Deleting a miscellaneous note : `misc-del`
 
-Show a list of all the commands with their respective format and a short description of what they do.
+Delete the miscellaneous note from a selected person from our contact list.
+
+Format: `misc-del INDEX  NOTE_INDEX`
+
+Examples:
+* `misc-del 1 1` deletes the first miscellaneous note from the first person in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the miscellaneous note at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The note index refers to the index number shown in the misc. list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+</div>
+
+
+### 2.2 Task Management
+
+#### 2.2.1 Listing all tasks : `list-t`
+
+Shows a list of all tasks in our task list.
+
+Format: `list-t`
+
+#### 2.2.2 Adding a task: `add-t`
+
+* (To be filled up by @pragya)
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* `PERSON_NAME` has to be present in the contact list for them to be tagged to a task.
+
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A task can have any number of tags (including 0)
+</div>
+
+#### 2.2.3 Deleting a task: `del-t`
+
+* (To be filled up by @pragya)
+
+#### 2.2.4 Editing a person: `edit-t`
+
+* (To be filled up by @pragya)
+
+#### 2.2.5 Clear all task entries : `clear-t`
+
+Clear all tasks or tasks on a selected date from our task list.
+
+Format: `clear-t [d/DATE]`
+
+Examples:
+* `clear-t 2022-10-10` clears all tasks on the date given.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Clears all tasks on the specified `DATE`.
+* Date must be in the format `yyyy-mm-dd`.
+
+</div>
+
+#### 2.2.6 Adding a tag : `tag-add-t`
+
+* (To be filled up by @juayhee)
+
+#### 2.2.7 Deleting a tag : `tag-del-t`
+
+* (To be filled up by @juayhee)
+
+#### 2.2.8 Locating tasks by keyword : `find-t`
+
+Find tasks matching any of the given keywords from our task list.
+Users can choose to find by `NAME`(s), `TAG`(s), or both.
+
+Format: `find-t [n/NAME]…​ [t/TAG]…​`
+
+Examples:
+* `find-t n/Meeting t/team1`
+* `find-t n/Meeting`
+* `find-t t/team1`
+* `find-t n/Meeting n/Training t/team1 t/team2`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* One of the optional items e.g. `[n/NAME]` must be present for the command to work.
+* The search is case-insensitive e.g. `meeting` will match `Meeting`.
+* The order of the keywords does not matter e.g. `n/meeting n/shareholder` will return the same result as `n/shareholder n/meeting`.
+* Only full words will be matched e.g. `Meeting` will not match `Meetings`.
+* Tasks matching at least one keyword will be returned e.g. `n/Meeting n/Shareholders` will return the persons `Engagement with Shareholders` and `Annual Meeting`.
+
+</div>
+
+### 2.3 Strategic Planning
+
+#### 2.3.1 Load new background image : `load-court`
+
+Load a new background image in the strategy tab.
+
+Format: `load-court IMAGE_NAME`
+
+Examples:
+* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Loads the given image from the filepath `courts/IMAGE_NAME.png`.
+* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (will be automatically generated).
+
+</div>
+
+#### 2.3.2 Clearing all entries: `clear-s`
+
+* (To be filled up by @xiaoteng)
+
+#### 2.3.2 Adding new players: `add-s`
+
+* (To be filled up by @xiaoteng)
+
+#### 2.3.3 Moving a player to a coordinate: `move`
+
+* (To be filled up by @xiaoteng)
+
+#### 2.3.4 Export strategy board as image file: `export`
+
+* (To be filled up by pragya)
+
+### 2.4 General
+
+#### 2.4.1 Viewing help: `help`
+
+Shows a message explaining how to access the help page.
 
 Format: `help`
 
-
-### Exiting the program : `exit`
+#### 2.4.2 Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
+
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## **3. FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## **4. Command summary**
 
-| Action       | Format, Examples                                                                                                   |
-|--------------|--------------------------------------------------------------------------------------------------------------------|
-| **List**     | `list`                                                                                                             |
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
-| **Del**      | `del INDEX`<br> e.g., `del 1`                                                                                      |
-| **Add Tag**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
-| **Del Tag**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
-| **Find**     | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                                     |
-| **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
-| **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
-| **Help**     | `help`                                                                                                             |
-| **Exit**     | `exit`                                                                                                             |
+### 4.1 Contact Management
+
+| Action                | Format, Examples                                                                                                                                              |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **List**              | `list-p`                                                                                                                                                      |
+| **Add**               | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
+| **Del**               | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                             |
+| **Edit**              | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
+| **Clear**             | `clear-p`                                                                                                                                                     |
+| **Add Tag**           | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                           |
+| **Del Tag**           | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                       |
+| **Find**              | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
+| **Add Note**          | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                                                                      |
+| **Del Note**          | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
+| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                           |
+| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                                |
+| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                     |
+| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                             |
+| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                             |
+| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                         |
+
+
+### 4.2 Task Management
+
+| Action       | Format, Examples                                                                           |
+|--------------|--------------------------------------------------------------------------------------------|
+| **List**     | `list-p`                                                                                   |
+| **Add**      | (to be filled up by @pragya)                                                               |
+| **Del**      | (to be filled up by @pragya)                                                               | 
+| **Edit**     | (to be filled up by @pragya)                                                               |
+| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                          |
+| **Add Tag**  | (to be filled up by @juayhee)                                                              |
+| **Del Tag**  | (to be filled up by @juayhee)                                                              |
+| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`|
+
+### 4.3 Strategic Planning
+
+| Action            | Format, Examples                                                                           |
+|-------------------|--------------------------------------------------------------------------------------------|
+| **Load BG Image** | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`                                  |
+| **Add**           | (to be filled up by @xiaoteng)                                                             |
+| **Clear**         | (to be filled up by @xiaoteng)                                                             |
+| **Move**          | (to be filled up by @xiaoteng)                                                             |
+| **Export**        | (to be filled up by @pragya)                                                               |
+
+
+### 4.4 General
+
+| Action       | Format, Examples        |
+|--------------|-------------------------|
+|  **Help**    | `help`                  |
+|  **Exit**    | `exit`                  |
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **5. Glossary**
+
+| Term               | Definition                                                                       |
+|--------------------|----------------------------------------------------------------------------------|
+|**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics             |
+|**CLI** | The *Command Line Interface (CLI)* allows program interaction through commands               |
+

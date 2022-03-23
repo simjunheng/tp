@@ -21,7 +21,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
 public class AddTagCommand extends Command {
-    public static final String COMMAND_WORD = "tag-add";
+    public static final String COMMAND_WORD = "tag-add-p";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Add a tag to a person from our contact list. "
             + "Parameters: "
