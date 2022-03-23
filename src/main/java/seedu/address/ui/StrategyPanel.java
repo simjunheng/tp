@@ -85,7 +85,6 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel(ObservableList<String> playerList) {
         super(FXML);
-        //strategyImage.setImage((new Image((new File("courts/basketball.png").toURI().toString()))));
         strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
         strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
         strategyImage.toBack();
