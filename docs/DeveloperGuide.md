@@ -59,7 +59,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -124,14 +124,8 @@ The `Model` component,
 * stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores `Note` objects in three separate lists for each `Person` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="450" />
-
-</div>
-
 
 ### 3.5 Storage component
 
@@ -307,17 +301,18 @@ schedules, and provides them with a platform to visualise defensive and offensiv
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                         |
-|----------|--------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
-| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                               |
-| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date          |
-| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                           |
-| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                    |
-| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                   |
-| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person      |
-| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                 |
-| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                           |
-| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs |
+| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                                             |
+|----------|--------------------------|-----------------------------------------------------------------|------------------------------------------------------------------------------|
+| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                                                    |
+| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date                               |
+| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                                                |
+| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                                         |
+| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                                        |
+| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person                           |
+| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                                      |
+| `* *`    | organised coach          | view players by their strengths and weaknesses                  | make informed decisions on choosing the best person for a specific objective |
+| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                                                |
+| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs                      |
 
 
 
@@ -371,70 +366,94 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
     
-**Use case: Add a note to a person**
+**Use case: Add a strength to a person**
 
 **MSS**
 
-1.  User requests to add a note to a person
-2.  Coach2K22 shows the new details of the person
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a strength to a person
+4. Coach2K22 shows the new details of the person
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 2a. The person list is empty.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 2a1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1b. The given list index cannot be found in Coach2K22.
+* 3a. The given list index cannot be found in Coach2K22.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1c. The note provided is an empty string.
+* 3b. The strength provided is an empty string.
 
-    * 1c1. Coach2K22 shows an error message.
+    * 3b1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-**Use case: Delete a note from a person**
+**Use case: Add a weakness to a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Add a strength to a person`
+  * Takes in a weakness instead of a strength
+
+**Use case: Add a miscellaneous note to a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Add a strength to a person`
+    * Takes in a miscellaneous note instead of a strength
+
+**Use case: Delete a strength from a person**
 
 **MSS**
 
-1.  User requests to delete a note for a person
-2.  Coach2K22 shows the new details of the person
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a strength for a person
+4. Coach2K22 shows the new details of the person
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 2a. The person list is empty.
 
-    * 1a1. Coach2K22 shows an error message.
+    * 2a1. Coach2K22 shows an error message.
 
       Use case ends.
 
-* 1b. The given list index is invalid.
+* 3a. The given list index is invalid.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1c. Notes have not been assigned to the person.
+* 3b. Strengths have not been assigned to the person.
 
-    * 1c1. Coach2K22 shows an error message.
+    * 3b1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-* 1d. The given note index is invalid.
+* 3c. The given strength index is invalid.
 
-    * 1d1. Coach2K22 shows an error message.
+    * 3c1. Coach2K22 shows an error message.
 
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
+**Use case: Delete a weakness from a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
+    * Takes in a weakness index instead of a strength index
+
+**Use case: Delete a miscellaneous note from a person**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
+    * Takes in a misc. index instead of a strength index
+    
 **Use case: Find persons by name or tag**
 
 **MSS**
@@ -515,7 +534,68 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. Coach2K22 shows an error message.
 
       Use case ends.
-    
+
+**Use case: Clear all tasks from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to clear the task list
+4. Coach2k22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The task list is empty.
+
+  Use case ends.
+
+**Use case: Clear all tasks for a specified date from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to clear all tasks of a specified date from the task list
+4. Coach2k22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The task list is empty.
+
+  Use case ends.
+
+* 3a. The provided date is not in the correct format.
+
+  Use case resumes at step 2.
+
+**Use case: Load new background image for strategy tab**
+
+**MSS**
+
+1. User requests load a new background image.
+2. Coach2k22 shows the updated strategy tab with the new background image.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Provided name of image is invalid.
+
+  Use case ends.
+
+* 1b. Image does not exist.
+
+  Use case ends.
+
+* 1c. Image is not in `png` format.
+
+  Use case ends.
+
 *{More to be added}*
 
 ### 6.4 Non-Functional Requirements

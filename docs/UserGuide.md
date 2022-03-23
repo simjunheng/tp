@@ -111,7 +111,7 @@ Examples:
 * `edit-p 1 p/98273712 e/johndoe@example.com` edits the phone number and email addresses of the 1st person into `98273712` and  `johndoe@example.com` respectively.
 * `edit-p 2 n/Alan Walker t/` edits the name of the 2nd person and clear all existing tags.
 
-#### 2.1.5 Clearing all entries: `clear-p`
+#### 2.1.5 Clearing all contact entries: `clear-p`
 
 Clear all entries from our contact list.
 
@@ -163,28 +163,95 @@ Examples:
 </div>
 
 
-#### 2.1.9 Adding a note : `note-add`
+### 2.1.9 Adding a strength : `strength-add`
 
-Add a note to a selected person from our contact list.
+Add a strength to a selected person from our contact list.
 
-Format: `note-add INDEX  NOTE_DESCRIPTION`
+Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 
 Examples:
-* `note-add 1 Surgery Scheduled for tomorrow` adds the note "Surgery Scheduled for tomorrow" to the 1st person in the contact list.
+* `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
+
+### 2.1.10 Adding a weakness : `weakness-add`
+
+Add a weakness to a selected person from our contact list.
+
+Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
+
+Examples:
+* `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
+
+### 2.1.11 Adding a miscellaneous note : `misc-add`
+
+Add a miscellaneous note to a selected person from our contact list.
+
+Format: `misc-add INDEX  NOTE_DESCRIPTION`
+
+Examples:
+* `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
 
-#### 2.1.10 Deleting a note : `note-del`
+### 2.1.12 Deleting a strength : `strength-del`
 
-Delete the note to a selected person from our contact list.
+Delete a strength from a selected person from our contact list.
 
-Format: `note-del INDEX  NOTE_INDEX`
+Format: `strength-del INDEX  STRENGTH_INDEX`
 
-* Deletes the person at the specified `INDEX`.
+Examples:
+* `strength-del 1 1` deletes the first strength from the first person in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the strength at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The strength index refers to the index number shown in the strength list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+</div>
+
+
+### 2.1.13 Deleting a weakness : `weakness-del`
+
+Delete the weakness from a selected person from our contact list.
+
+Format: `weakness-del INDEX  WEAKNESS_INDEX`
 
 Examples:
-* `note-del 1 1` deletes the first note from the first person in the contact list.
+* `weakness-del 1 1` deletes the first weakness from the first person in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the weakness at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The weakness index refers to the index number shown in the weakness list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+</div>
+
+
+### 2.1.14 Deleting a miscellaneous note : `misc-del`
+
+Delete the miscellaneous note from a selected person from our contact list.
+
+Format: `misc-del INDEX  NOTE_INDEX`
+
+Examples:
+* `misc-del 1 1` deletes the first miscellaneous note from the first person in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the miscellaneous note at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The note index refers to the index number shown in the misc. list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+</div>
 
 
 ### 2.2 Task Management
@@ -219,9 +286,23 @@ A task can have any number of tags (including 0)
 
 * (To be filled up by @pragya)
 
-#### 2.2.5 Clearing all entries: `clear-t`
+### 2.2.5 Clear all task entries : `clear-t`
 
-* (To be filled up by @abdul)
+Clear all tasks or tasks on a selected date from our task list.
+
+Format: `clear-t [d/DATE]`
+
+Examples:
+* `clear-t 2022-10-10` clears all tasks on the date given.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Clears all tasks on the specified `DATE`.
+* Date must be in the format `yyyy-mm-dd`.
+
+</div>
 
 #### 2.2.6 Adding a tag : `tag-add-t`
 
@@ -258,9 +339,23 @@ Examples:
 
 ### 2.3 Strategic Planning
 
-#### 2.3.1 Load new background image: `load-court`
+### 2.3.1 Load new background image : `load-court`
 
-* (To be filled up by @abdul)
+Load a new background image in the strategy tab.
+
+Format: `load-court IMAGE_NAME`
+
+Examples:
+* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* Loads the given image from the filepath `courts/IMAGE_NAME.png`.
+* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (will be automatically generated).
+
+</div>
 
 #### 2.3.2 Clearing all entries: `clear-s`
 
@@ -304,6 +399,7 @@ Format: `exit`
 
 ## **4. Command summary**
 
+<<<<<<< HEAD
 ### 4.1 Contact Management
 
 | Action       | Format, Examples                                                                                                                                              |
@@ -358,3 +454,23 @@ Format: `exit`
 |--------------------|----------------------------------------------------------------------------------|
 |**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics             |
 |**CLI** | The *Command Line Interface (CLI)* allows program interaction through commands               |
+=======
+| Action       | Format, Examples                                                                                                               |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------   |
+| **List**              | `list`                                                                                                                |
+| **Add**               | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
+| **Del**               | `del INDEX`<br> e.g., `del 1`                                                                                         |
+| **Add Tag**           | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                      |
+| **Del Tag**           | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                    |
+| **Find**              | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                 |
+| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                   |
+| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                        |
+| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                             |
+| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                     |
+| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                     |
+| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                 |
+| **Clear Tasks**       | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                     |
+| **Load BG Image**     | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`                                                             |
+| **Help**              | `help`                                                                                                                |
+| **Exit**              | `exit`                                                                                                                |
+>>>>>>> update-command-format
