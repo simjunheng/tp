@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTACT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDTIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -33,7 +34,7 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
     public AddTaskCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DATE,
-                        PREFIX_STARTTIME, PREFIX_ENDTIME, PREFIX_TAG);
+                        PREFIX_STARTTIME, PREFIX_ENDTIME, PREFIX_TAG, PREFIX_CONTACT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DATE, PREFIX_STARTTIME, PREFIX_ENDTIME)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -44,9 +45,10 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         StartTime startTime = ParserUtil.parseStartTime(argMultimap.getValue(PREFIX_STARTTIME).get());
         EndTime endTime = ParserUtil.parseEndTime(argMultimap.getValue(PREFIX_ENDTIME).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<Tag> tagSet = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<Name> nameSet = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_CONTACT));
 
-        Task task = new Task(name, date, startTime, endTime, tagList);
+        Task task = new Task(name, date, startTime, endTime, tagSet, nameSet);
 
         return new AddTaskCommand(task);
     }

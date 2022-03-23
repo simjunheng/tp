@@ -30,6 +30,8 @@ public class TaskCard extends UiPart<Region> {
     private Label time;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane persons;
 
     /**
      * Creates a {@code TaskCode} with the given {@code Task} and index to display.
@@ -44,6 +46,9 @@ public class TaskCard extends UiPart<Region> {
         task.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        task.getPersons().stream()
+                .sorted(Comparator.comparing(name -> name.fullName))
+                .forEach(name -> persons.getChildren().add(new Label(name.fullName)));
     }
 
     @Override

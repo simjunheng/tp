@@ -57,13 +57,13 @@ public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         return new Task[] {
             new Task(new Name("Shareholders Meeting"), new Date("10-04-2022"), new StartTime("09:00"),
-                    new EndTime("12:00"), getTagSet("team1")),
+                    new EndTime("12:00"), getTagSet("team1"), getPersonSet("Alex Yeoh")),
             new Task(new Name("Team Training"), new Date("11-04-2022"), new StartTime("09:00"),
-                    new EndTime("12:00"), getTagSet("team1")),
+                    new EndTime("12:00"), getTagSet("team1"), getPersonSet("Alex Yeoh", "Bernice Yu")),
             new Task(new Name("Annual Dinner"), new Date("11-04-2022"), new StartTime("18:00"),
-                    new EndTime("20:00"), getTagSet("family", "friends")),
+                    new EndTime("20:00"), getTagSet("family", "friends"), getPersonSet("Irfan Ibrahim")),
             new Task(new Name("Recruitment Talk"), new Date("12-04-2022"), new StartTime("15:00"),
-                    new EndTime("18:00"), getTagSet("school"))
+                    new EndTime("18:00"), getTagSet("school"), getPersonSet("Irfan Ibrahim"))
         };
     }
 
@@ -82,12 +82,22 @@ public class SampleDataUtil {
         }
         return sampleTb;
     }
+
     /**
      * Returns a tag set containing the list of strings given.
      */
     public static Set<Tag> getTagSet(String... strings) {
         return Arrays.stream(strings)
                 .map(Tag::new)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a person set containing the list of strings given.
+     */
+    public static Set<Name> getPersonSet(String... strings) {
+        return Arrays.stream(strings)
+                .map(Name::new)
                 .collect(Collectors.toSet());
     }
 

@@ -127,6 +127,11 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public ObservableList<Person> getUnfilteredPersonList() {
+        return addressBook.getPersonList();
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -178,6 +183,11 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedTask);
 
         taskBook.setTask(target, editedTask);
+    }
+
+    @Override
+    public ObservableList<Task> getUnfilteredTaskList() {
+        return taskBook.getTaskList();
     }
 
     //=========== Filtered Task List Accessors =============================================================
