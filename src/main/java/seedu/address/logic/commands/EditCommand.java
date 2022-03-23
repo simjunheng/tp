@@ -118,8 +118,11 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        List<Note> updatedNotes = editPersonDescriptor.getNotes().orElse(personToEdit.getNotes());
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedNotes);
+        List<Note> updatedStrengthNotes = editPersonDescriptor.getStrengths().orElse(personToEdit.getStrengths());
+        List<Note> updatedWeaknessNotes = editPersonDescriptor.getWeaknesses().orElse(personToEdit.getWeaknesses());
+        List<Note> updatedMisc = editPersonDescriptor.getMiscellaneous().orElse(personToEdit.getMiscellaneous());
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedStrengthNotes, updatedWeaknessNotes, updatedMisc);
     }
 
     /**

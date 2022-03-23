@@ -26,7 +26,9 @@ public class EditPersonDescriptor {
     private Email email;
     private Address address;
     private Set<Tag> tags;
-    private List<Note> notes;
+    private List<Note> strengths;
+    private List<Note> weaknesses;
+    private List<Note> miscellaneous;
 
     public EditPersonDescriptor() {}
 
@@ -40,7 +42,9 @@ public class EditPersonDescriptor {
         setEmail(toCopy.email);
         setAddress(toCopy.address);
         setTags(toCopy.tags);
-        setNotes(toCopy.notes);
+        setStrengths(toCopy.strengths);
+        setWeaknesses(toCopy.weaknesses);
+        setMiscellaneous(toCopy.miscellaneous);
     }
 
     /**
@@ -100,11 +104,45 @@ public class EditPersonDescriptor {
     }
 
     /**
-     * Sets {@code notes} to this object's {@code notes}.
-     * A defensive copy of {@code notes} is used internally.
+     * Sets {@code strengths} to this object's {@code strengths}.
+     * A defensive copy of {@code strengths} is used internally.
      */
-    public void setNotes(List<Note> notes) {
-        this.notes = (notes != null) ? new ArrayList<>(notes) : null;
+    public void setStrengths(List<Note> strengths) {
+        this.strengths = (strengths != null) ? new ArrayList<>(strengths) : null;
+    }
+
+    /**
+     * Returns an unmodifiable note list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     * Returns {@code Optional#empty()} if {@code strengths} is null.
+     */
+    public Optional<List<Note>> getStrengths() {
+        return (strengths != null) ? Optional.of(Collections.unmodifiableList(strengths)) : Optional.empty();
+    }
+
+    /**
+     * Sets {@code weaknesses} to this object's {@code weaknesses}.
+     * A defensive copy of {@code weaknesses} is used internally.
+     */
+    public void setWeaknesses(List<Note> weaknesses) {
+        this.weaknesses = (weaknesses != null) ? new ArrayList<>(weaknesses) : null;
+    }
+
+    /**
+     * Returns an unmodifiable note list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     * Returns {@code Optional#empty()} if {@code weaknesses} is null.
+     */
+    public Optional<List<Note>> getWeaknesses() {
+        return (weaknesses != null) ? Optional.of(Collections.unmodifiableList(weaknesses)) : Optional.empty();
+    }
+
+    /**
+     * Sets {@code miscellaneous} to this object's {@code miscellaneous}.
+     * A defensive copy of {@code miscellaneous} is used internally.
+     */
+    public void setMiscellaneous(List<Note> miscellaneous) {
+        this.miscellaneous = (miscellaneous != null) ? new ArrayList<>(miscellaneous) : null;
     }
 
     /**
@@ -112,10 +150,10 @@ public class EditPersonDescriptor {
      * if modification is attempted.
      * Returns {@code Optional#empty()} if {@code notes} is null.
      */
-    public Optional<List<Note>> getNotes() {
-        return (notes != null) ? Optional.of(Collections.unmodifiableList(notes)) : Optional.empty();
+    public Optional<List<Note>> getMiscellaneous() {
+        return (miscellaneous != null)
+                ? Optional.of(Collections.unmodifiableList(miscellaneous)) : Optional.empty();
     }
-
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -136,6 +174,8 @@ public class EditPersonDescriptor {
                 && getEmail().equals(e.getEmail())
                 && getAddress().equals(e.getAddress())
                 && getTags().equals(e.getTags())
-                && getNotes().equals(e.getNotes());
+                && getStrengths().equals(e.getStrengths())
+                && getWeaknesses().equals(e.getWeaknesses())
+                && getMiscellaneous().equals(e.getMiscellaneous());
     }
 }

@@ -8,36 +8,37 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddNoteCommand;
+import seedu.address.logic.commands.notecommands.AddStrengthCommand;
+import seedu.address.logic.parser.notecommandparsers.AddStrengthCommandParser;
 import seedu.address.model.note.Note;
 
-class AddNoteCommandParserTest {
+class AddStrengthCommandParserTest {
 
-    private AddNoteCommandParser parser = new AddNoteCommandParser();
+    private AddStrengthCommandParser parser = new AddStrengthCommandParser();
 
     @Test
     public void parse_emptyArg_throwsParseException() {
         assertParseFailure(parser, "     ",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddStrengthCommand.MESSAGE_USAGE));
     }
 
     @Test
-    public void parse_validArgs_returnsAddNoteCommand() {
+    public void parse_validArgs_returnsAddStrengthCommand() {
         // no leading and trailing whitespaces
-        AddNoteCommand expectedAddNoteCommand =
-                new AddNoteCommand(INDEX_FIRST_PERSON, new Note(VALID_NOTE_AMY));
-        assertParseSuccess(parser, "1 Amy", expectedAddNoteCommand);
+        AddStrengthCommand expectedAddStrengthCommand =
+                new AddStrengthCommand(INDEX_FIRST_PERSON, new Note(VALID_NOTE_AMY));
+        assertParseSuccess(parser, "1 Amy", expectedAddStrengthCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " \n 1 \n \t Amy  \t", expectedAddNoteCommand);
+        assertParseSuccess(parser, " \n 1 \n \t Amy  \t", expectedAddStrengthCommand);
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser, "2           ",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddStrengthCommand.MESSAGE_USAGE));
 
         assertParseFailure(parser, "         Amy",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddNoteCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddStrengthCommand.MESSAGE_USAGE));
     }
 }
