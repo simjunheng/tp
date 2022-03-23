@@ -255,7 +255,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:  
+**Target user profile**:
 
 * is a coach managing a team of players
 * has a need to manage a significant number of players
@@ -305,9 +305,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. The parameters supplied by the user is invalid.
-  
+
     * 1a1. Coach2K22 shows an error message.
-      
+
       Use case ends.
 
 * 1b. Compulsory parameters not supplied by the user.
@@ -338,7 +338,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-    
+
 **Use case: Add a note to a person**
 
 **MSS**
@@ -419,7 +419,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Coach2K22 shows an empty list.
 
       Use case ends.
-    
+
 * 1b. The keyword provided is not indicated by a prefix e.g. `n/` or `t/`.
 
     * 1b1. Coach2K22 shows an error message.
@@ -431,13 +431,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. Coach2K22 shows an error message.
 
       Use case ends.
-    
-* 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
-  
-    * 1d1. Coach2K22 shows an error message.
 
-      Use case ends.    
-    
+* 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
+
+    * 1d1. Coach2K22 shows an error message.
+      
+      Use case ends.
+
 **Use case: Add a tag to a person**
 
 **MSS**
@@ -446,7 +446,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Coach2K22 shows a list of persons
 3. User requests to attach a new tag to a person
 4. Coach2k22 shows the new details of the person
-   
+
    Use case ends.
 
 **Extensions**
@@ -483,7 +483,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. Coach2K22 shows an error message.
 
       Use case ends.
-    
+
 *{More to be added}*
 
 ### Non-Functional Requirements
