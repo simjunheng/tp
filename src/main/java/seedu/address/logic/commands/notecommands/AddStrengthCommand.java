@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.notecommands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -30,12 +31,7 @@ public class AddStrengthCommand extends Command {
             + "1 "
             + "Good at defense";
 
-    public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "AddStrength command not implemented yet";
-
     public static final String MESSAGE_SUCCESS = "New strength added: %1$s";
-
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Strength: %2$s";
 
     private final Index index;
     private final Note strength;
@@ -53,6 +49,7 @@ public class AddStrengthCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
