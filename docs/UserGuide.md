@@ -418,7 +418,7 @@ Format: `exit`
 | **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                     |
 | **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                             |
 | **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                             |
-| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`  
+| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                         |
 |
 ### 4.2 Task Management
 
@@ -428,7 +428,7 @@ Format: `exit`
 | **Add**      | (to be filled up by @pragya)                                                               |
 | **Del**      | (to be filled up by @pragya)                                                               | 
 | **Edit**     | (to be filled up by @pragya)                                                               |
-| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                               |
+| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                          |
 | **Add Tag**  | (to be filled up by @juayhee)                                                              |
 | **Del Tag**  | (to be filled up by @juayhee)                                                              |
 | **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`|
