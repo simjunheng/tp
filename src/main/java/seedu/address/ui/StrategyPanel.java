@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.io.File;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -65,7 +66,7 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel() {
         super(FXML);
-        strategyImage.setImage((new Image(this.getClass().getResourceAsStream(("/images/basketball.png")))));
+        strategyImage.setImage((new Image((new File("courts/basketball.png").toURI().toString()))));
         strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
         strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
         strategyImage.toBack();
