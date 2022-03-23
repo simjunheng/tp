@@ -234,6 +234,20 @@ corresponding tasks from the internal task list. Inside the function call, the `
 is also called, which updates the GUI to display the new task list. The command results are then generated and shown to
 the user.
 
+The steps above are summarised using a sequence diagram as shown below.
+![AddPlayerSequenceDiagram](images/ClearTaskSequenceDiagram.png)
+
+#### 4.3.2 Design consideration
+
+**Aspect: Should there be separate clear commands for clearing tasks and players:**
+
+* **Alternative 1 (current choice):** A separate command for clearing tasks and players.
+    * Pros: Easy to implement.
+    * Cons: Hard to extend.
+* **Alternative 2:** A combined command for clearing tasks and player.
+    * Pros: Easier and more intuitive for the user to understand
+    * Cons: Hard to implement.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
