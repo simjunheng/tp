@@ -300,7 +300,7 @@ Examples:
 
 * Deletes the task at the specified `INDEX`.
 * The index can be obtained by referring to the indicated task index on the displayed task list.
-*  Index values start from 1 and are always a positive integers.
+* Index values start from 1 and are always positive integers.
 
 #### 2.2.4 Editing a task: `edit-t`
 

@@ -332,7 +332,7 @@ schedules, and provides them with a platform to visualise defensive and offensiv
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                                             |
+| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                                              |
 |----------|--------------------------|-----------------------------------------------------------------|------------------------------------------------------------------------------|
 | `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                                                    |
 | `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date                               |
@@ -340,6 +340,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                                         |
 | `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                                        |
 | `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person                           |
+| `* * *`  | disorganized coach       | add existing and upcoming tasks                                 | keep track of my schedule easily                                             |
+| `* * *`  | disorganized coach       | delete wrongly added or past tasks                              | organize my schedule better                                                  |
+| `* * *`  | strategic coach          | save current formation information                              | plan my game plays and save strategies                                       |
 | `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                                      |
 | `* *`    | organised coach          | view players by their strengths and weaknesses                  | make informed decisions on choosing the best person for a specific objective |
 | `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                                                |
@@ -566,6 +569,53 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+
+**Use case: Add a task to the task list**
+
+**MSS**
+
+1.  User requests to add a new task to the list
+2.  Coach2K22 shows a list with the newly added task
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The parameters supplied by the user is invalid.
+
+    * 1a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 1b. Compulsory parameters not supplied by the user.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+**Use case: Delete a task from the task list**
+
+**MSS**
+
+1. User requests to view the list of tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to delete a specific task from the list
+4. Coach2K22 deletes the task
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The task list is empty.
+
+  Use case ends.
+
+* 1b. The index requested does not exist.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
 **Use case: Clear all tasks from task list**
 
 **MSS**
@@ -694,6 +744,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 *{More to be added}*
+
+**Use case: Save current strategy board**
+
+**MSS**
+
+1. User requests to save a snapshot of the strategy board.
+2. Coach2k22 returns an image file of the strategy board.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. User is not viewing the strategy board.
+
+  Use case ends.
 
 ### 6.4 Non-Functional Requirements
 
