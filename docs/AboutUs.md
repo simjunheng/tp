@@ -18,7 +18,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[blog](https://x1a0teng.page/posts/about/)]
 
 * Role: Documentation and Integration
-* Responsibilities: Ensure project documentation in good quality 
+* Responsibilities: Ensure project documentation in good quality
 and various parts of codes can be integrated to create a whole.
 
 ### Tan Juay Hee

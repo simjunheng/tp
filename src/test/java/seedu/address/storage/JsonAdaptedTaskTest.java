@@ -16,7 +16,12 @@ import seedu.address.model.name.Name;
 import seedu.address.model.task.Date;
 import seedu.address.model.task.StartTime;
 
+
+/**
+ * Contains unit tests for JsonAdaptedTaskTest
+ */
 public class JsonAdaptedTaskTest {
+
     private static final String INVALID_NAME = "m33@TING";
     private static final String INVALID_DATE = "29-02-2022";
     private static final String INVALID_START_TIME = "9:90";
@@ -30,6 +35,9 @@ public class JsonAdaptedTaskTest {
     private static final List<JsonAdaptedTag> VALID_TAGS = FIRST_TASK.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
+    private static final List<JsonAdaptedName> VALID_PERSONS = FIRST_TASK.getPersons().stream()
+            .map(JsonAdaptedName::new)
+            .collect(Collectors.toList());
 
     @Test
     public void toModelType_validTaskDetails_returnsTask() throws Exception {
@@ -40,14 +48,16 @@ public class JsonAdaptedTaskTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedTask task =
-                new JsonAdaptedTask(INVALID_NAME, VALID_DATE, VALID_START_TIME, VALID_END_TIME, VALID_TAGS);
+                new JsonAdaptedTask(INVALID_NAME, VALID_DATE, VALID_START_TIME,
+                        VALID_END_TIME, VALID_TAGS, VALID_PERSONS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(null, VALID_DATE, VALID_START_TIME, VALID_END_TIME, VALID_TAGS);
+        JsonAdaptedTask task = new JsonAdaptedTask(null, VALID_DATE, VALID_START_TIME,
+                VALID_END_TIME, VALID_TAGS, VALID_PERSONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
@@ -55,14 +65,16 @@ public class JsonAdaptedTaskTest {
     @Test
     public void toModelType_invalidDate_throwsIllegalValueException() {
         JsonAdaptedTask task =
-                new JsonAdaptedTask(VALID_NAME, INVALID_DATE, VALID_START_TIME, VALID_END_TIME, VALID_TAGS);
+                new JsonAdaptedTask(VALID_NAME, INVALID_DATE, VALID_START_TIME, VALID_END_TIME,
+                        VALID_TAGS, VALID_PERSONS);
         String expectedMessage = Date.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
 
     @Test
     public void toModelType_nullDate_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, null, VALID_START_TIME, VALID_END_TIME, VALID_TAGS);
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, null, VALID_START_TIME, VALID_END_TIME,
+                VALID_TAGS, VALID_PERSONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
@@ -70,14 +82,16 @@ public class JsonAdaptedTaskTest {
     @Test
     public void toModelType_invalidStartTime_throwsIllegalValueException() {
         JsonAdaptedTask task =
-                new JsonAdaptedTask(VALID_NAME, VALID_DATE, INVALID_START_TIME, VALID_END_TIME, VALID_TAGS);
+                new JsonAdaptedTask(VALID_NAME, VALID_DATE, INVALID_START_TIME, VALID_END_TIME,
+                        VALID_TAGS, VALID_PERSONS);
         String expectedMessage = StartTime.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
 
     @Test
     public void toModelType_nullStartTime_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_DATE, null, VALID_END_TIME, VALID_TAGS);
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_DATE, null, VALID_END_TIME,
+                VALID_TAGS, VALID_PERSONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, StartTime.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
@@ -105,7 +119,18 @@ public class JsonAdaptedTaskTest {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedTask task =
-                new JsonAdaptedTask(VALID_NAME, VALID_DATE, VALID_START_TIME, VALID_END_TIME, invalidTags);
+                new JsonAdaptedTask(VALID_NAME, VALID_DATE, VALID_START_TIME, VALID_END_TIME, invalidTags,
+                        VALID_PERSONS);
+        assertThrows(IllegalValueException.class, task::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidPersons_throwsIllegalValueException() {
+        List<JsonAdaptedName> invalidPersons = new ArrayList<>(VALID_PERSONS);
+        invalidPersons.add(new JsonAdaptedName(INVALID_NAME));
+        JsonAdaptedTask task =
+                new JsonAdaptedTask(VALID_NAME, VALID_DATE, VALID_START_TIME, VALID_END_TIME,
+                        VALID_TAGS, invalidPersons);
         assertThrows(IllegalValueException.class, task::toModelType);
     }
 }

@@ -2,13 +2,22 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.EditTaskDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.name.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Date;
+import seedu.address.model.task.EndTime;
+import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
@@ -33,15 +42,45 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Person> lastShownPersonList = model.getFilteredPersonList();
+        List<Task> unfilteredTaskList = model.getUnfilteredTaskList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= lastShownPersonList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
+        Person personToDelete = lastShownPersonList.get(targetIndex.getZeroBased());
+
+        // update tasks after the deletion of person
+        for (Task task: unfilteredTaskList) {
+            if (task.getPersons().contains(personToDelete.getName())) {
+                EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
+                Set<Name> persons = new HashSet<>(task.getPersons());
+                persons.remove(personToDelete.getName());
+                editTaskDescriptor.setPersons(persons);
+                Task editedTask = createEditedTask(task, editTaskDescriptor);
+                model.setTask(task, editedTask);
+            }
+        }
         model.deletePerson(personToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
+    }
+
+    /**
+     * Creates and returns a {@code Task} with the details of {@code taskToEdit}
+     * edited with {@code editTaskDescriptor}.
+     */
+    public static Task createEditedTask(Task taskToEdit, EditTaskDescriptor editTaskDescriptor) {
+        assert taskToEdit != null;
+
+        Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
+        Date updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
+        StartTime updatedStartTime = editTaskDescriptor.getStartTime().orElse(taskToEdit.getStartTime());
+        EndTime updatedEndTime = editTaskDescriptor.getEndTime().orElse(taskToEdit.getEndTime());
+        Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
+        Set<Name> updatedPersons = editTaskDescriptor.getPersons().orElse(taskToEdit.getPersons());
+        return new Task(updatedName, updatedDate,
+                updatedStartTime, updatedEndTime, updatedTags, updatedPersons);
     }
 
     @Override

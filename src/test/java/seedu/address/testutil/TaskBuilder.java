@@ -12,7 +12,7 @@ import seedu.address.model.task.Task;
 import seedu.address.model.util.SampleDataUtil;
 
 public class TaskBuilder {
-    public static final String DEFAULT_NAME = "Meeting";
+    public static final String DEFAULT_NAME = "Unique Meeting";
     public static final String DEFAULT_DATE = "09-10-2022";
     public static final String DEFAULT_START_TIME = "08:00";
     public static final String DEFAULT_END_TIME = "12:00";
@@ -22,6 +22,7 @@ public class TaskBuilder {
     private StartTime startTime;
     private EndTime endTime;
     private Set<Tag> tags;
+    private Set<Name> persons; //persons are represented by their names
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -32,6 +33,7 @@ public class TaskBuilder {
         this.startTime = new StartTime(DEFAULT_START_TIME);
         this.endTime = new EndTime(DEFAULT_END_TIME);
         this.tags = new HashSet<>();
+        this.persons = new HashSet<>();
     }
 
     /**
@@ -43,6 +45,7 @@ public class TaskBuilder {
         this.startTime = taskToCopy.getStartTime();
         this.endTime = taskToCopy.getEndTime();
         this.tags = taskToCopy.getTags();
+        this.persons = taskToCopy.getPersons();
     }
 
     /**
@@ -86,10 +89,18 @@ public class TaskBuilder {
     }
 
     /**
+     * Parses the {@code persons} into a {@code Set<Name>} and set it to the {@code Task} that we are building.
+     */
+    public TaskBuilder withPersons(String ... persons) {
+        this.persons = SampleDataUtil.getPersonSet(persons);
+        return this;
+    }
+
+    /**
      * Creates {@code Task} and returns it.
      */
     public Task build() {
-        return new Task(name, date, startTime, endTime, tags);
+        return new Task(name, date, startTime, endTime, tags, persons);
     }
 }
 

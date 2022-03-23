@@ -2,6 +2,7 @@ package seedu.address.model.task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,17 +21,19 @@ public class Task {
 
     //Data fields
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<Name> persons = new HashSet<>(); //persons are represented by their names
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Date date, StartTime startTime, EndTime endTime, Set<Tag> tags) {
-        requireAllNonNull(name, date, startTime, endTime, tags);
+    public Task(Name name, Date date, StartTime startTime, EndTime endTime, Set<Tag> tags, Set<Name> persons) {
+        requireAllNonNull(name, date, startTime, endTime, tags, persons);
         this.name = name;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.tags.addAll(tags);
+        this.persons.addAll(persons);
     }
 
     //Getters
@@ -67,6 +70,14 @@ public class Task {
     }
 
     /**
+     * Returns an immutable persons set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Name> getPersons() {
+        return Collections.unmodifiableSet(persons);
+    }
+
+    /**
      * Returns true if both tasks have the same name.
      * This defines a weaker notion of equality between two tasks.
      */
@@ -77,6 +88,30 @@ public class Task {
 
         return otherTask != null
                 && otherTask.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both tasks have the same date and conflicting time ranges.
+     */
+    public boolean hasDateTimeConflict(Task otherTask) {
+        if (otherTask == this) {
+            return true;
+        }
+
+        LocalTime thisTaskStart = LocalTime.parse(startTime.value);
+        LocalTime thisTaskEnd = LocalTime.parse(endTime.value);
+        LocalTime otherTaskStart = LocalTime.parse(otherTask.startTime.value);
+        LocalTime otherTaskEnd = LocalTime.parse(otherTask.endTime.value);
+
+        // Solution below adapted from https://stackoverflow.com/q/325933
+        // checks if time ranges overlap (exclusive)
+        boolean timeConflict =
+                thisTaskStart.isBefore(otherTaskEnd)
+                && otherTaskStart.isBefore(thisTaskEnd);
+
+        return otherTask != null
+                && otherTask.getDate().equals(getDate()) //test for same dates
+                && timeConflict;
     }
 
     /**
@@ -98,13 +133,14 @@ public class Task {
                 && otherTask.getDate().equals(getDate())
                 && otherTask.getStartTime().equals(getStartTime())
                 && otherTask.getEndTime().equals(getEndTime())
-                && otherTask.getTags().equals(getTags());
+                && otherTask.getTags().equals(getTags())
+                && otherTask.getPersons().equals(getPersons());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, date, startTime, endTime, tags);
+        return Objects.hash(name, date, startTime, endTime, tags, persons);
     }
 
     @Override
@@ -123,6 +159,16 @@ public class Task {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+        Set<Name> persons = getPersons();
+        if (!persons.isEmpty()) {
+            builder.append("; Persons: ");
+            int count = 0;
+            for (Name name: persons) {
+                builder.append(name);
+                builder.append(" ");
+            }
+        }
+
         return builder.toString();
     }
 }
