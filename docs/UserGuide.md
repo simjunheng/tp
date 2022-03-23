@@ -278,7 +278,15 @@ Examples:
 
 * (To be filled up by pragya)
 
-#### 2.3.5 Exiting the program : `exit`
+### 2.4 General
+
+#### 2.4.1 Viewing help: `help`
+
+Shows a message explaining how to access the help page.
+
+Format: `help`
+
+#### 2.4.2 Exiting the program : `exit`
 
 Exits the program.
 
@@ -334,6 +342,13 @@ Format: `exit`
 | **Move**       | (to be filled up by @xiaoteng)                                                             |
 | **Export**     | (to be filled up by @pragya)                                                               |
 | **Exit**       | `exit`                                                                                     |
+
+### 4.4 General
+
+| Action       | Format, Examples        |
+|--------------|-------------------------|
+|  **Help**    | `help`                  |
+|  **Exit**    | `exit`                  |
 
 --------------------------------------------------------------------------------------------------------------------
 
