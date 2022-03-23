@@ -17,13 +17,25 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The background image of StrategyBoard should be changed*/
+    private final boolean isLoadImage;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean isLoadImage) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
+        this.isLoadImage = isLoadImage;
         this.exit = exit;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields,
+     * and isLoadImage set to false.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+        this(feedbackToUser, showHelp, exit, false);
     }
 
     /**
@@ -45,6 +57,11 @@ public class CommandResult {
     public boolean isExit() {
         return exit;
     }
+
+    public boolean isLoadImage() {
+        return isLoadImage;
+    }
+
 
     @Override
     public boolean equals(Object other) {

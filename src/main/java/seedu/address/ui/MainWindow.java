@@ -176,6 +176,10 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    private void handleLoadImage() {
+        strategyPanel.changeImageBackground(logic.getBackgroundImage().getImagePath());
+    }
+
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
@@ -197,6 +201,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isLoadImage()) {
+                handleLoadImage();
             }
 
             return commandResult;

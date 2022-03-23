@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.image.Image;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -169,6 +170,12 @@ public interface Model {
      * {@code player} must not already exist in the strategy board.
      */
     void addPlayer(String player);
+
+    /**
+     * Replaces the image contained in StrategyBoard with this image.
+     * {@code image} must be a valid image.
+     */
+    void replaceBackgroundImage(Image image);
 
     /** Returns an unmodifiable view of the filtered player list */
     ObservableList<String> getFilteredPlayerList();

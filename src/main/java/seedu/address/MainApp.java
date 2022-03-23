@@ -1,5 +1,6 @@
 package seedu.address;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -24,6 +25,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.image.Image;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
@@ -109,6 +111,12 @@ public class MainApp extends Application {
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty TaskBook");
             initialTaskData = new TaskBook();
+        }
+
+        File courtsDirectory = new File(Image.FILE_PATH);
+        if (!courtsDirectory.exists()) {
+            logger.warning("Courts directory not found. Will create an empty directory.");
+            courtsDirectory.mkdir();
         }
         return new ModelManager(initialAddressData, initialTaskData, new StrategyBoard(), userPrefs);
     }

@@ -2,9 +2,6 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.image.Image;
@@ -16,7 +13,7 @@ public class LoadCourtCommand extends Command {
     public static final String COMMAND_WORD = "load-court";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Load an image from \'/courts/\' directory and sets as background image for the Strategy Panel. "
+            + ": Load an image from '/courts/' directory and sets as background image for the Strategy Panel. "
             + "Parameters: "
             + "IMAGE_NAME (" + Image.MESSAGE_CONSTRAINTS + ") "
             + "Example: " + COMMAND_WORD + " "
@@ -38,7 +35,10 @@ public class LoadCourtCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        return null;
+        requireAllNonNull(model);
+        model.replaceBackgroundImage(image);
+
+        return new CommandResult(generateSuccessMessage(image), false, false, true);
     }
 
     /**

@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.image.Image;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -239,6 +240,11 @@ public class ModelManager implements Model {
     public void addPlayer(String player) {
         strategyBoard.addPlayer(player);
         updateFilteredPlayerList(PREDICATE_SHOW_ALL_PLAYERS);
+    }
+
+    @Override
+    public void replaceBackgroundImage(Image image) {
+        strategyBoard.replaceImage(image);
     }
 
     /*

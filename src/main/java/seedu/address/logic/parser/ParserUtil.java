@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +34,9 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_IMAGE_NAME = "Image should not contain \'/\' characters.";
 
+    public static final String MESSAGE_DIRECTORY_NOT_EXIST = "The " + Image.FILE_PATH + " directory does not exist!";
+
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -53,6 +57,10 @@ public class ParserUtil {
      */
     public static Image parseImage(String imageName) throws ParseException {
         String trimmedName = imageName.trim();
+        File folder = new File(Image.FILE_PATH);
+        if (!folder.exists()) {
+            throw new ParseException(MESSAGE_DIRECTORY_NOT_EXIST);
+        }
         if (trimmedName.contains("/")) {
             throw new ParseException(MESSAGE_INVALID_IMAGE_NAME);
         }

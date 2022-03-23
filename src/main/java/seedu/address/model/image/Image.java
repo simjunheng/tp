@@ -6,7 +6,7 @@ import java.io.File;
  * Represents an Image in Coack2K22.
  */
 public class Image {
-    private static final String FILE_PATH = "courts/"; //todo: Change filepath to reflect creating new directory outside of JAR file
+    public static final String FILE_PATH = "courts/";
 
     public static final String MESSAGE_CONSTRAINTS =
             "Image must be a valid .png image and contained in \'" + FILE_PATH + "\'";

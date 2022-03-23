@@ -1,9 +1,7 @@
 package seedu.address.ui;
 
-<<<<<<< HEAD
 import java.io.File;
 
-=======
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +9,6 @@ import java.util.logging.Logger;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
->>>>>>> 7d7daaf7f11c014f341a1b965e78a2d20fced49c
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
@@ -19,11 +16,8 @@ import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-<<<<<<< HEAD
 import javafx.scene.layout.AnchorPane;
-=======
 import javafx.scene.layout.Pane;
->>>>>>> 7d7daaf7f11c014f341a1b965e78a2d20fced49c
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;

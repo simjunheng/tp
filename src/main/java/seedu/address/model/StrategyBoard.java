@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.image.Image;
 import seedu.address.model.strategy.UniquePlayerList;
 
 /**
@@ -13,6 +14,7 @@ import seedu.address.model.strategy.UniquePlayerList;
  */
 public class StrategyBoard implements ReadOnlyStrategyBoard {
     private final UniquePlayerList players;
+    private Image backgroundImage;
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -41,6 +43,20 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
      */
     public void setPlayers(List<String> players) {
         this.players.setPlayers(players);
+    }
+
+    /**
+     * Replaces the contents of {@code backgroundImage} with {@code image}.
+     */
+    public void replaceImage(Image image) {
+        this.backgroundImage = image;
+    }
+
+    /**
+     * Returns the contents of {@code backgroundImage}.
+     */
+    public Image getImage() {
+        return this.backgroundImage;
     }
 
     /**
