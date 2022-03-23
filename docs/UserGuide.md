@@ -419,7 +419,8 @@ Format: `exit`
 | **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                             |
 | **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                             |
 | **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                         |
-|
+
+
 ### 4.2 Task Management
 
 | Action       | Format, Examples                                                                           |
