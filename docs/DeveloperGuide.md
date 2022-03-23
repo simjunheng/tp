@@ -182,6 +182,8 @@ The steps above are summarised using a sequence diagram as shown below.
 
 ### 4.2 Add players feature
 
+#### 4.2.1 Implementation
+
 This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which 
 makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
 
@@ -650,7 +652,46 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
    
-  
+**Use case: Remove a player from the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to remove a player from the strategy board
+4. Coach2K22 shows the updated strategy board without the player
+
+   Use case ends.
+
+**Extensions**
+* 3a. The player name is invalid.
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3b. The player name is not on the strategy board.
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3c. The player name is not provided.
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Clear all players from the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to clear all players from the strategy board
+4. Coach2K22 shows the updated strategy board without any players
+
+   Use case ends.
+
+**Extensions**
+* 2a. The strategy board is empty.
+
+  Use case ends.
 
 *{More to be added}*
 
