@@ -180,6 +180,37 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Commands may be more intuitive to the users.
     * Cons: Possible violation of the DRY principle.
 
+### 4.2 Add players feature
+
+#### 4.2.1 Implementation
+
+This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which 
+makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
+
+Given below is an example usage scenario of how the add player mechanism behaves at each step.
+
+Step 1: The user inputs `add-player Cena` to add a new player to the strategy board.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs. 
+
+Step 3: It then returns a newly initialised `AddPlayerCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#addPlayer()` is called which adds the new player to an internal list. Inside the function call, the `ModelManager#updateFilteredPlayerList()` is also called which updates the GUI display a new player named "Cena" shown in the strategy board. The command results are then generated and shown to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![AddPlayerSequenceDiagram](images/AddPlayerSequenceDiagram.png)
+
+#### 4.2.2 Design consideration
+
+**Aspect: Should there be an abstraction for players:**
+
+* **Alternative 1 (current choice):** A player is a String of player name.
+    * Pros: Easy to implement.
+    * Cons: Hard to extend.
+* **Alternative 2:** A player is an object of class `Player`.
+    * Pros: Easy to extend and manipulate attributes of a player.
+    * Cons: Hard to implement.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -593,6 +624,72 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 * 1c. Image is not in `png` format.
+
+  Use case ends.
+
+**Use case: Add a new player to the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to add a new player to the strategy board
+4. Coach2K22 shows the updated strategy board with the new player
+
+   Use case ends.
+
+**Extensions**
+* 3a. The player name is invalid.
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3b. The player name is already on the strategy board.
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3c. The player name is not provided.
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+   
+**Use case: Remove a player from the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to remove a player from the strategy board
+4. Coach2K22 shows the updated strategy board without the player
+
+   Use case ends.
+
+**Extensions**
+* 3a. The player name is invalid.
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3b. The player name is not on the strategy board.
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3c. The player name is not provided.
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Clear all players from the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to clear all players from the strategy board
+4. Coach2K22 shows the updated strategy board without any players
+
+   Use case ends.
+
+**Extensions**
+* 2a. The strategy board is empty.
 
   Use case ends.
 
