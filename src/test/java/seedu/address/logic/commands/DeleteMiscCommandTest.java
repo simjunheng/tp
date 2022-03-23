@@ -21,6 +21,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.notecommands.DeleteMiscCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
@@ -31,7 +32,8 @@ import seedu.address.model.person.Person;
  */
 public class DeleteMiscCommandTest {
 
-    private final Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void constructor_nullIndex_throwsNullPointerException() {
@@ -53,7 +55,7 @@ public class DeleteMiscCommandTest {
         String expectedMessage = String.format(DeleteMiscCommand.MESSAGE_SUCCESS, personWithModifiedMisc);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(),
-                model.getTaskBook(), new UserPrefs());
+                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
         deleteMiscCommand.execute(expectedModel);
         assertCommandSuccess(deleteMiscCommand, model, expectedMessage, expectedModel);
     }

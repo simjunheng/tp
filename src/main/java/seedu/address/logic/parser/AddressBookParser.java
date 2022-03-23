@@ -27,6 +27,8 @@ import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
 import seedu.address.logic.commands.notecommands.DeleteMiscCommand;
 import seedu.address.logic.commands.notecommands.DeleteStrengthCommand;
 import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
+import seedu.address.logic.commands.strategy.AddPlayerCommand;
+import seedu.address.logic.commands.strategy.DeletePlayerCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.notecommandparsers.AddMiscCommandParser;
 import seedu.address.logic.parser.notecommandparsers.AddStrengthCommandParser;
@@ -34,6 +36,8 @@ import seedu.address.logic.parser.notecommandparsers.AddWeaknessCommandParser;
 import seedu.address.logic.parser.notecommandparsers.DeleteMiscCommandParser;
 import seedu.address.logic.parser.notecommandparsers.DeleteStrengthCommandParser;
 import seedu.address.logic.parser.notecommandparsers.DeleteWeaknessCommandParser;
+import seedu.address.logic.parser.strategy.AddPlayerCommandParser;
+import seedu.address.logic.parser.strategy.DeletePlayerCommandParser;
 
 /**
  * Parses user input.
@@ -121,6 +125,12 @@ public class AddressBookParser {
 
         case LoadCourtCommand.COMMAND_WORD:
             return new LoadCourtCommandParser().parse(arguments);
+
+        case AddPlayerCommand.COMMAND_WORD:
+            return new AddPlayerCommandParser().parse(arguments);
+
+        case DeletePlayerCommand.COMMAND_WORD:
+            return new DeletePlayerCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

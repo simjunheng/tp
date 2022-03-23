@@ -139,10 +139,11 @@ public class ModelManagerTest {
         UserPrefs userPrefs = new UserPrefs();
         TaskBook taskBook = new TaskBookBuilder().withTask(FIRST_TASK).withTask(SECOND_TASK).build();
         TaskBook differentTaskBook = new TaskBook();
+        StrategyBoard strategyBoard = new StrategyBoard();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, taskBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, taskBook, userPrefs);
+        modelManager = new ModelManager(addressBook, taskBook, strategyBoard, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, taskBook, strategyBoard, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -155,23 +156,23 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, taskBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, taskBook, strategyBoard, userPrefs)));
 
         // different filteredPersonList -> returns false
         String[] pKeywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new PersonNameContainsKeywordsPredicate(Arrays.asList(pKeywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, strategyBoard, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         // different taskBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentTaskBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, differentTaskBook, strategyBoard, userPrefs)));
 
         // different filteredTaskList -> returns false
         String[] tKeywords = FIRST_TASK.getName().fullName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(tKeywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, strategyBoard, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
@@ -179,6 +180,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, taskBook, strategyBoard, differentUserPrefs)));
     }
 }
