@@ -211,6 +211,29 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easy to extend and manipulate attributes of a player.
     * Cons: Hard to implement.
 
+### 4.3 Clear Tasks feature
+
+#### 4.3.1 Implementation
+
+This feature allows users to clear all tasks from the task list, or only tasks that correspond with a given date.
+It is facilitated by the `ModelManager` which utilizes the method `deleteTask()` to delete each corresponding task one
+by one, or sets a new `TaskBook` object to the `ModelManager` to refresh the task list.
+
+Given below is an example usage scenario of how the clear task mechanism behaves at each step.
+
+Step 1: The user inputs `clear-t 2022-10-10` to clear all tasks that correspond with the date `2022-10-10` in the task list.
+
+Step 2: This argument is passed into the `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable
+parser class which corresponds with the provided command to parse the user's inputs. This initializes the `ClearTaskCommandParser`,
+where its method `parse()` is called to process the user inputs.
+
+Step 3: The newly initialized `ClearTaskCommandParser` is then returned to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#deleteTask()` method is called multiple times to remove the 
+corresponding tasks from the internal task list. Inside the function call, the `ModelManager#updateFilteredTaskList()`
+is also called, which updates the GUI to display the new task list. The command results are then generated and shown to
+the user.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
