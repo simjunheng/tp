@@ -100,8 +100,11 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        List<Note> updatedNotes = editPersonDescriptor.getNotes().orElse(personToEdit.getNotes());
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedNotes);
+        List<Note> updatedStrengthNotes = editPersonDescriptor.getStrengths().orElse(personToEdit.getStrengths());
+        List<Note> updatedWeaknessNotes = editPersonDescriptor.getWeaknesses().orElse(personToEdit.getWeaknesses());
+        List<Note> updatedMisc = editPersonDescriptor.getMiscellaneous().orElse(personToEdit.getMiscellaneous());
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedStrengthNotes, updatedWeaknessNotes, updatedMisc);
     }
 
     @Override
@@ -132,7 +135,9 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
-        private List<Note> notes;
+        private List<Note> strengths;
+        private List<Note> weaknesses;
+        private List<Note> miscellaneous;
 
         public EditPersonDescriptor() {}
 
@@ -146,7 +151,9 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
-            setNotes(toCopy.notes);
+            setStrengths(toCopy.strengths);
+            setWeaknesses(toCopy.weaknesses);
+            setMiscellaneous(toCopy.miscellaneous);
         }
 
         /**
@@ -197,6 +204,30 @@ public class EditCommand extends Command {
         }
 
         /**
+         * Sets {@code strengths} to this object's {@code strengths}.
+         * A defensive copy of {@code strengths} is used internally.
+         */
+        public void setStrengths(List<Note> strengths) {
+            this.strengths = (strengths != null) ? new ArrayList<>(strengths) : null;
+        }
+
+        /**
+         * Sets {@code weaknesses} to this object's {@code weaknesses}.
+         * A defensive copy of {@code weaknesses} is used internally.
+         */
+        public void setWeaknesses(List<Note> weaknesses) {
+            this.weaknesses = (weaknesses != null) ? new ArrayList<>(weaknesses) : null;
+        }
+
+        /**
+         * Sets {@code miscellaneous} to this object's {@code miscellaneous}.
+         * A defensive copy of {@code miscellaneous} is used internally.
+         */
+        public void setMiscellaneous(List<Note> miscellaneous) {
+            this.miscellaneous = (miscellaneous != null) ? new ArrayList<>(miscellaneous) : null;
+        }
+
+        /**
          * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
@@ -206,20 +237,29 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Sets {@code notes} to this object's {@code notes}.
-         * A defensive copy of {@code notes} is used internally.
+         * Returns an unmodifiable note list, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code strengths} is null.
          */
-        public void setNotes(List<Note> notes) {
-            this.notes = (notes != null) ? new ArrayList<>(notes) : null;
+        public Optional<List<Note>> getStrengths() {
+            return (strengths != null) ? Optional.of(Collections.unmodifiableList(strengths)) : Optional.empty();
         }
-
+        /**
+         * Returns an unmodifiable note list, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code weaknesses} is null.
+         */
+        public Optional<List<Note>> getWeaknesses() {
+            return (weaknesses != null) ? Optional.of(Collections.unmodifiableList(weaknesses)) : Optional.empty();
+        }
         /**
          * Returns an unmodifiable note list, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code notes} is null.
          */
-        public Optional<List<Note>> getNotes() {
-            return (notes != null) ? Optional.of(Collections.unmodifiableList(notes)) : Optional.empty();
+        public Optional<List<Note>> getMiscellaneous() {
+            return (miscellaneous != null)
+                    ? Optional.of(Collections.unmodifiableList(miscellaneous)) : Optional.empty();
         }
 
         @Override
@@ -242,7 +282,9 @@ public class EditCommand extends Command {
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags())
-                    && getNotes().equals(e.getNotes());
+                    && getStrengths().equals(e.getStrengths())
+                    && getWeaknesses().equals(e.getWeaknesses())
+                    && getMiscellaneous().equals(e.getMiscellaneous());
         }
     }
 }

@@ -28,19 +28,24 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-    private final List<Note> notes = new ArrayList<>();
+    private final List<Note> strengths = new ArrayList<>();
+    private final List<Note> weaknesses = new ArrayList<>();
+    private final List<Note> miscellaneous = new ArrayList<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, List<Note> notes) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  List<Note> strength, List<Note> weaknesses, List<Note> misc) {
+        requireAllNonNull(name, phone, email, address, tags, strength, weaknesses, misc);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.notes.addAll(notes);
+        this.strengths.addAll(strength);
+        this.weaknesses.addAll(weaknesses);
+        this.miscellaneous.addAll(misc);
     }
 
     public Name getName() {
@@ -71,8 +76,22 @@ public class Person {
      * Returns an immutable note list, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public List<Note> getNotes() {
-        return Collections.unmodifiableList(notes);
+    public List<Note> getStrengths() {
+        return Collections.unmodifiableList(strengths);
+    }
+    /**
+     * Returns an immutable note list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public List<Note> getWeaknesses() {
+        return Collections.unmodifiableList(weaknesses);
+    }
+    /**
+     * Returns an immutable note list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public List<Note> getMiscellaneous() {
+        return Collections.unmodifiableList(miscellaneous);
     }
 
     /**
@@ -108,13 +127,15 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getTags().equals(getTags())
-                && otherPerson.getNotes().equals(getNotes());
+                && otherPerson.getStrengths().equals(getStrengths())
+                && otherPerson.getWeaknesses().equals(getWeaknesses())
+                && otherPerson.getMiscellaneous().equals(getMiscellaneous());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, notes);
+        return Objects.hash(name, phone, email, address, tags, strengths, weaknesses, miscellaneous);
     }
 
     @Override
@@ -134,10 +155,24 @@ public class Person {
             tags.forEach(builder::append);
         }
 
-        List<Note> notes = getNotes();
-        if (!notes.isEmpty()) {
-            builder.append("; Notes: ");
-            ListUtil.toIndexedStringList(notes)
+        List<Note> strengths = getStrengths();
+        if (!strengths.isEmpty()) {
+            builder.append("; Strengths: ");
+            ListUtil.toIndexedStringList(strengths)
+                    .forEach(builder::append);
+        }
+
+        List<Note> weaknesses = getWeaknesses();
+        if (!weaknesses.isEmpty()) {
+            builder.append("; Weaknesses: ");
+            ListUtil.toIndexedStringList(weaknesses)
+                    .forEach(builder::append);
+        }
+
+        List<Note> miscellaneous = getMiscellaneous();
+        if (!miscellaneous.isEmpty()) {
+            builder.append("; Misc: ");
+            ListUtil.toIndexedStringList(miscellaneous)
                     .forEach(builder::append);
         }
         return builder.toString();

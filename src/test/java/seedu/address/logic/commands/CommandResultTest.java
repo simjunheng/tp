@@ -51,4 +51,12 @@ public class CommandResultTest {
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true).hashCode());
     }
+
+    @Test
+    public void toStringTest() {
+        CommandResult commandResult = new CommandResult("feedback", true, false);
+        // same values -> returns same String
+        assertEquals(commandResult.toString(),
+                new CommandResult("feedback", true, false).toString());
+    }
 }

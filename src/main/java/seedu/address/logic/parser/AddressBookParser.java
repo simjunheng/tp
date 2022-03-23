@@ -7,13 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddNoteCommand;
 import seedu.address.logic.commands.AddTagCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteNoteCommand;
 import seedu.address.logic.commands.DeleteTagCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -23,7 +21,19 @@ import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListTaskCommand;
+import seedu.address.logic.commands.notecommands.AddMiscCommand;
+import seedu.address.logic.commands.notecommands.AddStrengthCommand;
+import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
+import seedu.address.logic.commands.notecommands.DeleteMiscCommand;
+import seedu.address.logic.commands.notecommands.DeleteStrengthCommand;
+import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.notecommandparsers.AddMiscCommandParser;
+import seedu.address.logic.parser.notecommandparsers.AddStrengthCommandParser;
+import seedu.address.logic.parser.notecommandparsers.AddWeaknessCommandParser;
+import seedu.address.logic.parser.notecommandparsers.DeleteMiscCommandParser;
+import seedu.address.logic.parser.notecommandparsers.DeleteStrengthCommandParser;
+import seedu.address.logic.parser.notecommandparsers.DeleteWeaknessCommandParser;
 
 /**
  * Parses user input.
@@ -82,11 +92,23 @@ public class AddressBookParser {
         case ListTaskCommand.COMMAND_WORD:
             return new ListTaskCommand();
 
-        case AddNoteCommand.COMMAND_WORD:
-            return new AddNoteCommandParser().parse(arguments);
+        case AddStrengthCommand.COMMAND_WORD:
+            return new AddStrengthCommandParser().parse(arguments);
 
-        case DeleteNoteCommand.COMMAND_WORD:
-            return new DeleteNoteCommandParser().parse(arguments);
+        case AddWeaknessCommand.COMMAND_WORD:
+            return new AddWeaknessCommandParser().parse(arguments);
+
+        case AddMiscCommand.COMMAND_WORD:
+            return new AddMiscCommandParser().parse(arguments);
+
+        case DeleteStrengthCommand.COMMAND_WORD:
+            return new DeleteStrengthCommandParser().parse(arguments);
+
+        case DeleteWeaknessCommand.COMMAND_WORD:
+            return new DeleteWeaknessCommandParser().parse(arguments);
+
+        case DeleteMiscCommand.COMMAND_WORD:
+            return new DeleteMiscCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
