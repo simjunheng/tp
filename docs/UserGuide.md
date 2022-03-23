@@ -133,28 +133,104 @@ Examples:
 * `find n/Alex n/Charlotte t/team1 t/team2`
 
 
-### Adding a note : `note-add`
+### Adding a strength : `strength-add`
 
-Add a note to a selected person from our contact list.
+Add a strength to a selected person from our contact list.
 
-Format: `note-add INDEX  NOTE_DESCRIPTION`
+Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 
 Examples:
-* `note-add 1 Surgery Scheduled for tomorrow` adds the note "Surgery Scheduled for tomorrow" to the 1st person in the contact list.
+* `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
+
+### Adding a weakness : `weakness-add`
+
+Add a weakness to a selected person from our contact list.
+
+Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
+
+Examples:
+* `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
 
 
-### Deleting a note : `note-del`
+### Adding a miscellaneous note : `misc-add`
 
-Delete the note to a selected person from our contact list.
+Add a miscellaneous note to a selected person from our contact list.
 
-Format: `note-del INDEX  NOTE_INDEX`
+Format: `misc-add INDEX  NOTE_DESCRIPTION`
 
-* Deletes the person at the specified `INDEX`.
+Examples:
+* `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
+
+
+### Deleting a strength : `strength-del`
+
+Delete a strength from a selected person from our contact list.
+
+Format: `strength-del INDEX  STRENGTH_INDEX`
+
+* Deletes the strength at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The strength index refers to the index number shown in the strength list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `note-del 1 1` deletes the first note from the first person in the contact list.
+* `strength-del 1 1` deletes the first strength from the first person in the contact list.
+
+
+### Deleting a weakness : `weakness-del`
+
+Delete the weakness from a selected person from our contact list.
+
+Format: `weakness-del INDEX  WEAKNESS_INDEX`
+
+* Deletes the WEAKNESS at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The weakness index refers to the index number shown in the weakness list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `weakness-del 1 1` deletes the first weakness from the first person in the contact list.
+
+
+### Deleting a miscellaneous  note : `misc-del`
+
+Delete the miscellaneous note from a selected person from our contact list.
+
+Format: `misc-del INDEX  NOTE_INDEX`
+
+* Deletes the miscellaneous note at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The note index refers to the index number shown in the misc. list of the respective person.
+* Both indices **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `misc-del 1 1` deletes the first miscellaneous note from the first person in the contact list.
+
+
+### Clear all task entries : `clear-t`
+
+Clear all tasks or tasks on a selected date from our task list.
+
+Format: `clear-t [d/DATE]`
+
+* Clears all tasks on the specified `DATE`.
+* Date must be in the format `yyyy-mm-dd`.
+
+Examples:
+* `clear-t 2022-10-10` clears all tasks on the date given.
+
+
+### Load new background image : `load-court`
+
+Load a new background image in the strategy tab.
+
+Format: `load-court IMAGE_NAME`
+
+* Loads the given image from the filepath `courts/IMAGE_NAME.png`.
+* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (will be automatically generated).
+
+Examples:
+* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
 
 
 ### Listing all the commands : `help`
@@ -181,15 +257,21 @@ Format: `exit`
 
 ## Command summary
 
-| Action       | Format, Examples                                                                                                   |
-|--------------|--------------------------------------------------------------------------------------------------------------------|
-| **List**     | `list`                                                                                                             |
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
-| **Del**      | `del INDEX`<br> e.g., `del 1`                                                                                      |
-| **Add Tag**  | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                   |
-| **Del Tag**  | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                 |
-| **Find**     | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                                     |
-| **Add Note** | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                           |
-| **Del Note** | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                              |
-| **Help**     | `help`                                                                                                             |
-| **Exit**     | `exit`                                                                                                             |
+| Action       | Format, Examples                                                                                                               |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------   |
+| **List**              | `list`                                                                                                                |
+| **Add**               | `add n/NAME p/PHONE_NUMBER e/EMAIL [t/TAG]…​` <br> e.g., `add n/Johnson p/83918273 e/johnson@gmail.com t/Hustlers` |
+| **Del**               | `del INDEX`<br> e.g., `del 1`                                                                                         |
+| **Add Tag**           | `tag-add INDEX  TAG_NAME`<br> e.g., `tag-add 1 Public Relations`                                                      |
+| **Del Tag**           | `tag-del INDEX  TAG_INDEX`<br> e.g., `tag-del 1 1`                                                                    |
+| **Find**              | `find [n/NAME]…​ [t/TAG]…​`<br> e.g., `find n/Alex n/Charlotte t/team1 t/team2`                                 |
+| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                   |
+| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                        |
+| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                             |
+| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                     |
+| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                     |
+| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                 |
+| **Clear Tasks**       | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                     |
+| **Load BG Image**     | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`                                                             |
+| **Help**              | `help`                                                                                                                |
+| **Exit**              | `exit`                                                                                                                |
