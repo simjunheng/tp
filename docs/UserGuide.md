@@ -124,7 +124,7 @@ Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
 Format: `find [n/NAME]…​ [t/TAG]…​`
 
-* One of the optional items e.g. `[n/NAME]` must be present for the command to work. 
+* One of the optional items e.g. `[n/NAME]` must be present for the command to work.
 
 Examples:
 * `find n/Alan t/team1`

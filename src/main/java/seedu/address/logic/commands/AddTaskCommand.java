@@ -7,9 +7,15 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTTIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.List;
+import java.util.Set;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.name.Name;
+import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+
 
 /**
  * Adds a task to the task list.
@@ -34,8 +40,11 @@ public class AddTaskCommand extends Command {
             + PREFIX_TAG + "meeting ";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the TaskList";
-
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task book";
+    public static final String MESSAGE_CONTACT_NOT_FOUND =
+            "The person %1$s cannot be found in the current address book";
+    public static final String MESSAGE_SCHEDULE_CONFLICT =
+            "The person %1$s is already involved in a task at this date and time";
     private final Task toAdd;
 
     /**
@@ -49,6 +58,35 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        List<Person> unfilteredPersonList = model.getUnfilteredPersonList();
+        List<Task> unfilteredTaskList = model.getUnfilteredTaskList();
+        Set<Name> persons = toAdd.getPersons();
+
+        //checks if persons exist in the current list
+        for (Name name: persons) {
+            boolean notFound = true;
+            for (Person person: unfilteredPersonList) {
+                if (person.getName().equals(name)) {
+                    notFound = false;
+                }
+            }
+            if (notFound) {
+                throw new CommandException(String.format(MESSAGE_CONTACT_NOT_FOUND, name));
+            }
+        }
+
+        //checks if persons are already involved in tasks with conflicting time ranges to the newly added task
+        for (Name name: persons) {
+            for (Task task: unfilteredTaskList) {
+                Set<Name> nameList = task.getPersons();
+                if (nameList.contains(name)) {
+                    boolean conflictExist = task.hasDateTimeConflict(toAdd);
+                    if (conflictExist) {
+                        throw new CommandException(String.format(MESSAGE_SCHEDULE_CONFLICT, name));
+                    }
+                }
+            }
+        }
 
         if (model.hasTask(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
