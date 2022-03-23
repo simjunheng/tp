@@ -668,19 +668,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Provided filepath of image is invalid.
+* 1a. Provided name of image is invalid.
 
   Use case ends.
 
-* 1b. Provided name of image is invalid.
+* 1b. Image does not exist.
 
   Use case ends.
 
-* 1c. Image does not exist.
-
-  Use case ends.
-
-* 1d. Image is not in `png` format.
+* 1c. Image is not in `png` format.
 
   Use case ends.
 

@@ -224,13 +224,13 @@ Examples:
 
 Load a new background image in the strategy tab.
 
-Format: `load-court FILEPATH`
+Format: `load-court IMAGE_NAME`
 
-* Loads the given image from the specified `FILEPATH`.
-* File must exist and be in `png` format.
+* Loads the given image from the filepath `courts/IMAGE_NAME.png`.
+* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (will be automatically generated).
 
 Examples:
-* `load-court images/basketball.png` loads and sets the image `basketball.png` as the background image of strategy tab.
+* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
 
 
 ### Listing all the commands : `help`
