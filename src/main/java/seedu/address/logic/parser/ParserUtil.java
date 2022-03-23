@@ -31,6 +31,8 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_IMAGE = "Image does not exit.";
 
+    public static final String MESSAGE_INVALID_IMAGE_NAME = "Image should not contain \'/\' characters.";
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -51,6 +53,9 @@ public class ParserUtil {
      */
     public static Image parseImage(String imageName) throws ParseException {
         String trimmedName = imageName.trim();
+        if (trimmedName.contains("/")) {
+            throw new ParseException(MESSAGE_INVALID_IMAGE_NAME);
+        }
         if (!Image.isValidImage(trimmedName)) {
             throw new ParseException(MESSAGE_INVALID_IMAGE);
         }
