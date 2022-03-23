@@ -21,7 +21,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
 public class DeleteTagCommand extends Command {
-    public static final String COMMAND_WORD = "tag-del";
+    public static final String COMMAND_WORD = "tag-del-p";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Delete a tag from a person in our contact list. "
             + "Parameters: "

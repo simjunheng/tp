@@ -22,7 +22,7 @@ import seedu.address.model.task.Task;
  */
 public class AddTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "add-task";
+    public static final String COMMAND_WORD = "add-t";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the TaskList. "
             + "Parameters: "
