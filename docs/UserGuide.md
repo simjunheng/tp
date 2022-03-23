@@ -163,7 +163,7 @@ Examples:
 </div>
 
 
-### 2.1.9 Adding a strength : `strength-add`
+#### 2.1.9 Adding a strength : `strength-add`
 
 Add a strength to a selected person from our contact list.
 
@@ -172,7 +172,7 @@ Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 Examples:
 * `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
 
-### 2.1.10 Adding a weakness : `weakness-add`
+#### 2.1.10 Adding a weakness : `weakness-add`
 
 Add a weakness to a selected person from our contact list.
 
@@ -181,7 +181,7 @@ Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
 Examples:
 * `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
 
-### 2.1.11 Adding a miscellaneous note : `misc-add`
+#### 2.1.11 Adding a miscellaneous note : `misc-add`
 
 Add a miscellaneous note to a selected person from our contact list.
 
@@ -191,7 +191,7 @@ Examples:
 * `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
 
-### 2.1.12 Deleting a strength : `strength-del`
+#### 2.1.12 Deleting a strength : `strength-del`
 
 Delete a strength from a selected person from our contact list.
 
@@ -212,7 +212,7 @@ Examples:
 </div>
 
 
-### 2.1.13 Deleting a weakness : `weakness-del`
+#### 2.1.13 Deleting a weakness : `weakness-del`
 
 Delete the weakness from a selected person from our contact list.
 
@@ -233,7 +233,7 @@ Examples:
 </div>
 
 
-### 2.1.14 Deleting a miscellaneous note : `misc-del`
+#### 2.1.14 Deleting a miscellaneous note : `misc-del`
 
 Delete the miscellaneous note from a selected person from our contact list.
 
@@ -286,7 +286,7 @@ A task can have any number of tags (including 0)
 
 * (To be filled up by @pragya)
 
-### 2.2.5 Clear all task entries : `clear-t`
+#### 2.2.5 Clear all task entries : `clear-t`
 
 Clear all tasks or tasks on a selected date from our task list.
 
@@ -339,7 +339,7 @@ Examples:
 
 ### 2.3 Strategic Planning
 
-### 2.3.1 Load new background image : `load-court`
+#### 2.3.1 Load new background image : `load-court`
 
 Load a new background image in the strategy tab.
 
