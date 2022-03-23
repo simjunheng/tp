@@ -272,6 +272,6 @@ Format: `exit`
 | **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                     |
 | **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                 |
 | **Clear Tasks**       | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                     |
-| **Load BG Image**     | `load-court FILEPATH`<br> e.g., `load-court images/basketball.png`                                                    |
+| **Load BG Image**     | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`                                                             |
 | **Help**              | `help`                                                                                                                |
 | **Exit**              | `exit`                                                                                                                |
