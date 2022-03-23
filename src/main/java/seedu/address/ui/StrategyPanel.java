@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.io.File;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -66,13 +67,21 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel() {
         super(FXML);
-        strategyImage.setImage((new Image((new File("courts/basketball.png").toURI().toString()))));
+        //strategyImage.setImage((new Image((new File("courts/basketball.png").toURI().toString()))));
         strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
         strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
         strategyImage.toBack();
         initCircle(player1, 50, 100, 100, Color.RED);
         initCircle(player2, 50, 200, 200, Color.LIGHTBLUE);
         initCircle(player3, 30, 200, 200, Color.YELLOW);
+    }
+
+    /**
+     * Changes the image contained in ImageView.
+     * @param file the file reference for the image to be loaded
+     */
+    public void changeImageBackground(File file) {
+        strategyImage.setImage((new Image((file.toURI().toString()))));
     }
 
     private void initCircle(Circle circle, double rad, double x, double y, Paint color) {

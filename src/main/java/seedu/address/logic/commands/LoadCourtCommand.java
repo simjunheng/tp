@@ -16,7 +16,7 @@ public class LoadCourtCommand extends Command {
     public static final String COMMAND_WORD = "load-court";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Load an image from \'/docs/images/courts/\' and sets as background image for the Strategy Panel. "
+            + ": Load an image from \'/courts/\' directory and sets as background image for the Strategy Panel. "
             + "Parameters: "
             + "IMAGE_NAME (" + Image.MESSAGE_CONSTRAINTS + ") "
             + "Example: " + COMMAND_WORD + " "
@@ -28,12 +28,12 @@ public class LoadCourtCommand extends Command {
 
     /**
      * Constructor for LoadCourtCommand class.
-     * @param imageName The name of an image
+     * @param image The image file.
      */
-    public LoadCourtCommand(String imageName) {
-        requireAllNonNull(imageName);
+    public LoadCourtCommand(Image image) {
+        requireAllNonNull(image);
 
-        this.image = new Image(imageName);
+        this.image = image;
     }
 
     @Override

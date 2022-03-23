@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.image.Image;
 import seedu.address.model.name.Name;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Address;
@@ -28,6 +29,8 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_NOTE_INDEX = "Note index is not a non-zero unsigned integer.";
 
+    public static final String MESSAGE_INVALID_IMAGE = "Image does not exit.";
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -39,6 +42,19 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses {@code imageName} into a {@code Image} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws ParseException if the specified imageName is invalid.
+     */
+    public static Image parseImage(String imageName) throws ParseException {
+        String trimmedName = imageName.trim();
+        if (!Image.isValidImage(trimmedName)) {
+            throw new ParseException(MESSAGE_INVALID_IMAGE);
+        }
+        return new Image(trimmedName);
     }
 
     /**
