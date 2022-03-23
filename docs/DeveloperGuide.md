@@ -59,7 +59,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -367,14 +367,66 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Add a weakness to a person**
 
-* This use case describes a similar interaction between the user and Coach2K22 to that of `Add a strength to a person`
-  * Takes in a weakness instead of a strength
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a weakness to a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index cannot be found in Coach2K22.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The weakness provided is an empty string.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 1.
 
 **Use case: Add a miscellaneous note to a person**
 
-* This use case describes a similar interaction between the user and Coach2K22 to that of `Add a strength to a person`
-    * Takes in a miscellaneous note instead of a strength
+**MSS**
 
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to add a miscellaneous note to a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index cannot be found in Coach2K22.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The miscellaneous note provided is an empty string.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+    
 **Use case: Delete a strength from a person**
 
 **MSS**
@@ -414,13 +466,77 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Delete a weakness from a person**
 
-* This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
-    * Takes in a weakness index instead of a strength index
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a weakness for a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index is invalid.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. Weaknesses have not been assigned to the person.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given weakness index is invalid.
+
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
 
 **Use case: Delete a miscellaneous note from a person**
 
-* This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
-    * Takes in a misc. index instead of a strength index
+**MSS**
+
+1. User requests to list persons
+2. Coach2K22 shows a list of persons
+3. User requests to delete a miscellaneous  note for a person
+4. Coach2K22 shows the new details of the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The person list is empty.
+
+    * 2a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 3a. The given list index is invalid.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. Miscellaneous notes have not been assigned to the person.
+
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given note index is invalid.
+
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
     
 **Use case: Find persons by name or tag**
 
