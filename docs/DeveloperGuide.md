@@ -228,7 +228,7 @@ Step 3: It then returns a newly initialised `AddTagCommand` back to the `LogicMa
 Step 4: During the command execution, the `ModelManager#setPerson()` is called which edits the tags of the person with the user-supplied tags. The filtered person list is updated with `ModelManager#updateFilteredPersonList` to display the new information to the user.
 
 The steps above are summarised using a sequence diagram as shown below.
-![AddTagSequenceDiagram] (images/AddTagSequenceDiagram.png)
+![AddTagSequenceDiagram](images/AddTagSequenceDiagram.png)
 
 
 #### 4.3.2 Design consideration
@@ -585,7 +585,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
+@
 * 3a. The tag requested to remove does not exist for the person.
 
     * 3a1. Coach2K22 shows an error message.
@@ -635,6 +635,41 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. The provided date is not in the correct format.
 
   Use case resumes at step 2.
+
+**Use case: Add a tag to a task from task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to add a tag to a task of a specified index in the task list
+4. Coach2k22 shows the updated details of the task list
+
+  Use case ends.
+
+**Extensions**
+
+* 3a. The task list is empty.
+
+  Use case ends.
+
+**Use case: Remove a tag from a task in task list**
+
+**MSS**
+
+1. User requests to list tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to remove a tag from a task of a specified index in the task list
+4. Coach2K22 shows the updated details of the task list
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. The task does not have that specified tag.
+
+  Use case resumes at step 2.
+
 
 **Use case: Load new background image for strategy tab**
 
