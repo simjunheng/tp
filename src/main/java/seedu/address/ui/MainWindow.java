@@ -17,6 +17,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.image.Image;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -176,8 +177,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    private void handleLoadImage() {
-        strategyPanel.changeImageBackground(logic.getBackgroundImage().getImagePath());
+    private void handleLoadImage(Image image) {
+        strategyPanel.changeImageBackground(image.getImagePath());
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -203,8 +204,8 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isLoadImage()) {
-                handleLoadImage();
+            if (commandResult.isLoadImageCommand()) {
+                handleLoadImage(commandResult.getBackgroundImage());
             }
 
             return commandResult;

@@ -12,9 +12,4 @@ public interface ReadOnlyStrategyBoard {
      * This list will not contain any duplicate players.
      */
     ObservableList<String> getPlayerList();
-
-    /**
-     * Returns the background image of the Strategy Board.
-     */
-    Image getImage();
 }

@@ -171,12 +171,6 @@ public interface Model {
      */
     void addPlayer(String player);
 
-    /**
-     * Replaces the image contained in StrategyBoard with this image.
-     * {@code image} must be a valid image.
-     */
-    void replaceBackgroundImage(Image image);
-
     /** Returns an unmodifiable view of the filtered player list */
     ObservableList<String> getFilteredPlayerList();
 

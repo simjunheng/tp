@@ -36,9 +36,8 @@ public class LoadCourtCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireAllNonNull(model);
-        model.replaceBackgroundImage(image);
 
-        return new CommandResult(generateSuccessMessage(image), false, false, true);
+        return new CommandResult(generateSuccessMessage(image), false, false, true, this.image);
     }
 
     /**

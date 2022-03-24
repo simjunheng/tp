@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import seedu.address.model.image.Image;
+
+
 /**
  * Represents the result of a command execution.
  */
@@ -11,22 +14,36 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
+    /**
+     * Help information should be shown to the user.
+     */
     private final boolean showHelp;
 
-    /** The application should exit. */
+    /**
+     * The application should exit.
+     */
     private final boolean exit;
 
-    /** The background image of StrategyBoard should be changed*/
+    /**
+     * The background image of StrategyBoard should be changed
+     */
     private final boolean isLoadImage;
 
     /**
-     * Constructs a {@code CommandResult} with the specified fields.
+     * The background image of StrategyBoard
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean isLoadImage) {
+    private final Image image;
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     * <p>
+     * Specifically used for loading background image for Strategy Panel.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean isLoadImage, Image image) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.isLoadImage = isLoadImage;
+        this.image = image;
         this.exit = exit;
     }
 
@@ -35,7 +52,7 @@ public class CommandResult {
      * and isLoadImage set to false.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this(feedbackToUser, showHelp, exit, false);
+        this(feedbackToUser, showHelp, exit, false, null);
     }
 
     /**
@@ -58,8 +75,12 @@ public class CommandResult {
         return exit;
     }
 
-    public boolean isLoadImage() {
+    public boolean isLoadImageCommand() {
         return isLoadImage;
+    }
+
+    public Image getBackgroundImage() {
+        return image;
     }
 
 
