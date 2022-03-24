@@ -23,7 +23,7 @@ public class LoadCourtCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Image has been loaded: %1$s";
 
-    public static final String MESSAGE_IMAGE_INVALID = "Provided image name is invalid!";
+    public static final String MESSAGE_IMAGE_INVALID = "Provided image cannot be loaded!";
 
     private final Image image;
 
