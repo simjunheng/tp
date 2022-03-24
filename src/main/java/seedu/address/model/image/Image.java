@@ -1,8 +1,8 @@
 package seedu.address.model.image;
 
-import java.io.File;
-import seedu.address.logic.commands.exceptions.CommandException;
+import static java.util.Objects.requireNonNull;
 
+import java.io.File;
 /**
  * Represents an Image in Coack2K22.
  */
@@ -19,6 +19,7 @@ public class Image {
      * @param imageName The name of an image
      */
     public Image(String imageName) {
+        requireNonNull(imageName);
         this.imageName = imageName;
     }
 
