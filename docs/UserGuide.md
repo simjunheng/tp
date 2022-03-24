@@ -327,7 +327,7 @@ Examples:
 
 **:information_source: Key things to take note of:**<br>
 
-* `TAG must be an exact match for it to be recognised.
+* `TAG` must be an exact match for it to be recognised.
 </div>
 
 #### 2.2.8 Locating tasks by keyword : `find-t`
