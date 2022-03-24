@@ -205,7 +205,8 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isLoadImageCommand()) {
-                handleLoadImage(commandResult.getBackgroundImage());
+                Image backGroundImage = commandResult.getBackgroundImage();
+                handleLoadImage(backGroundImage);
             }
 
             return commandResult;
