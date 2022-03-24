@@ -41,7 +41,7 @@ import seedu.address.model.tag.TagContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
-import seedu.address.testutil.TestImage;
+import seedu.address.testutil.TestImageCreator;
 
 public class AddressBookParserTest {
 
@@ -124,9 +124,9 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_loadCourt() throws Exception {
-        TestImage.createTestImage();
+        TestImageCreator.createTestImage();
 
-        Image imageStub = TestImage.getTestImage();
+        Image imageStub = TestImageCreator.getTestImage();
         String imageName = imageStub.imageName;
 
         LoadCourtCommand command = (LoadCourtCommand) parser.parseCommand(
@@ -134,7 +134,7 @@ public class AddressBookParserTest {
         );
         assertEquals(new LoadCourtCommand(imageStub), command);
 
-        TestImage.deleteTestImage();
+        TestImageCreator.deleteTestImage();
 
     }
 

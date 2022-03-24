@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.LoadCourtCommand;
 import seedu.address.model.image.Image;
-import seedu.address.testutil.TestImage;
+import seedu.address.testutil.TestImageCreator;
 
 public class LoadCourtCommandParserTest {
     private LoadCourtCommandParser parser = new LoadCourtCommandParser();
@@ -20,14 +20,14 @@ public class LoadCourtCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsLoadCourtCommand() {
-        TestImage.createTestImage();
-        Image testImage = TestImage.getTestImage();
+        TestImageCreator.createTestImage();
+        Image testImage = TestImageCreator.getTestImage();
         String testImageName = testImage.imageName;
         LoadCourtCommand expectedLoadCourtCommand = new LoadCourtCommand(testImage);
 
         assertParseSuccess(parser, testImageName, expectedLoadCourtCommand);
 
-        TestImage.deleteTestImage();
+        TestImageCreator.deleteTestImage();
     }
 
     @Test

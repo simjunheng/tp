@@ -8,7 +8,7 @@ import seedu.address.model.image.Image;
 /**
  * Contains static methods to create sample png files for testing Image-related classes.
  */
-public class TestImage {
+public class TestImageCreator {
 
     public static final String TEST_IMAGE_NAME = "testFile";
 

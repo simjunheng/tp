@@ -22,7 +22,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
-import seedu.address.testutil.TestImage;
+import seedu.address.testutil.TestImageCreator;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -233,13 +233,13 @@ public class ParserUtilTest {
 
     @Test
     public void parseImage_validArgs_returnsImage() throws ParseException {
-        TestImage testImageFile = new TestImage();
-        Image expectedImage = testImageFile.getTestImage();
+        TestImageCreator testImageCreatorFile = new TestImageCreator();
+        Image expectedImage = testImageCreatorFile.getTestImage();
         String testImageName = expectedImage.imageName;
-        testImageFile.createTestImage();
+        testImageCreatorFile.createTestImage();
 
         assertEquals(expectedImage, ParserUtil.parseImage(testImageName));
 
-        testImageFile.deleteTestImage();
+        testImageCreatorFile.deleteTestImage();
     }
 }
