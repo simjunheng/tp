@@ -19,7 +19,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
@@ -32,8 +31,7 @@ class AddTagCommandTest {
     private static final String TAG1 = "TAG1";
 
     // Test model
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
-            new StrategyBoard(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
 
     @Test
     void execute_addTagCommandUnfilteredList_success() {
@@ -58,7 +56,6 @@ class AddTagCommandTest {
         Model expectedModel = new ModelManager(
                 new AddressBook(model.getAddressBook()),
                 new TaskBook(model.getTaskBook()),
-                new StrategyBoard(),
                 new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 

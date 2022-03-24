@@ -22,7 +22,6 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyTaskBook;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.image.Image;
@@ -113,12 +112,7 @@ public class MainApp extends Application {
             initialTaskData = new TaskBook();
         }
 
-        File courtsDirectory = new File(Image.FILE_PATH);
-        if (!courtsDirectory.exists()) {
-            logger.warning("Courts directory not found. Will create an empty directory.");
-            courtsDirectory.mkdir();
-        }
-        return new ModelManager(initialAddressData, initialTaskData, new StrategyBoard(), userPrefs);
+        return new ModelManager(initialAddressData, initialTaskData, userPrefs);
     }
 
     private void initLogging(Config config) {

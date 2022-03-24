@@ -25,7 +25,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
@@ -137,7 +136,7 @@ public class LogicManagerTest {
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
         Model expectedModel = new ModelManager(model.getAddressBook(),
-                new TaskBook(), new StrategyBoard(), new UserPrefs()); // Not fully implemented
+                new TaskBook(), new UserPrefs()); // Not fully implemented
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

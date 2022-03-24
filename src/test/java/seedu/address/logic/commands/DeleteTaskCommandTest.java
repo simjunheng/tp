@@ -15,7 +15,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.Task;
 
@@ -25,8 +24,7 @@ import seedu.address.model.task.Task;
  */
 public class DeleteTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
-            new StrategyBoard(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -36,7 +34,7 @@ public class DeleteTaskCommandTest {
         String expectedMessage = String.format(DeleteTaskCommand.MESSAGE_DELETE_TASK_SUCCESS, taskToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(),
-                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
+                model.getTaskBook(), new UserPrefs());
         expectedModel.deleteTask(taskToDelete);
 
         assertCommandSuccess(deleteTaskCommand, model, expectedMessage, expectedModel);

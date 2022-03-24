@@ -1,7 +1,6 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.image.Image;
 
 /**
  * Unmodifiable view of a strategy board
