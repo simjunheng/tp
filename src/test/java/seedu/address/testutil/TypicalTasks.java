@@ -62,7 +62,7 @@ public class TypicalTasks {
     private TypicalTasks() {} // prevents instantiation
 
     /**
-     * Returns an {@code TaskBook} with all the typical persons.
+     * Returns an {@code TaskBook} with all the typical tasks.
      */
     public static TaskBook getTypicalTaskBook() {
         TaskBook tb = new TaskBook();
