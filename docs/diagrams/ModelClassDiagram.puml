@@ -58,6 +58,7 @@ Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
 
 ModelManager --> "1"  TaskBook
+ModelManager --> "1"  StrategyBoard
 TaskBook *-->"1" UniqueTaskList
 UniqueTaskList --> "*" Task
 ModelManager -->"~* filtered" Person
