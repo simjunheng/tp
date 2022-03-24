@@ -8,9 +8,9 @@ Package Model <<Rectangle>>{
 Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
 Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
 Class "<<interface>>\nModel" as Model
+Class "<<interface>>\nReadOnlyStrategyBoard" as ReadOnlyStrategyBoard
 Class AddressBook
 Class ModelManager
-Class ReadOnlyStrategyBoard
 Class StrategyBoard
 Class TaskBook
 Class UniqueTaskList
