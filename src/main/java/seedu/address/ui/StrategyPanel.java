@@ -67,9 +67,6 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel() {
         super(FXML);
-        strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
-        strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
-        strategyImage.toBack();
         initCircle(player1, 50, 100, 100, Color.RED);
         initCircle(player2, 50, 200, 200, Color.LIGHTBLUE);
         initCircle(player3, 30, 200, 200, Color.YELLOW);
@@ -84,6 +81,11 @@ public class StrategyPanel extends UiPart<Region> {
     }
 
     private void initCircle(Circle circle, double rad, double x, double y, Paint color) {
+        strategyImage.setPreserveRatio(false);
+        strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
+        strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
+        strategyImage.setManaged(false);
+        strategyImage.toBack();
         circle.setRadius(rad);
         circle.setFill(color);
         circle.setCenterX(x);
