@@ -235,7 +235,7 @@ is also called, which updates the GUI to display the new task list. The command 
 the user.
 
 The steps above are summarised using a sequence diagram as shown below.
-![AddPlayerSequenceDiagram](images/ClearTaskSequenceDiagram.png)
+![ClearTaskSequenceDiagram](images/ClearTaskSequenceDiagram.png)
 
 #### 4.3.2 Design consideration
 
