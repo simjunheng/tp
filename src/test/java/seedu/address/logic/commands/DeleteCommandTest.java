@@ -7,6 +7,8 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.TASK_FIRST_INDEX;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
@@ -14,11 +16,14 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.EditTaskDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.task.Task;
+import seedu.address.testutil.EditTaskDescriptorBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -39,6 +44,12 @@ public class DeleteCommandTest {
         ModelManager expectedModel = new ModelManager(model.getAddressBook(),
                 model.getTaskBook(), new StrategyBoard(), new UserPrefs());
         expectedModel.deletePerson(personToDelete);
+
+        Task taskToAmend = model.getFilteredTaskList().get(TASK_FIRST_INDEX.getZeroBased());
+        EditTaskDescriptor editTaskDescriptor =
+                new EditTaskDescriptorBuilder().withPersons(BENSON.getName().fullName).build();
+        Task editedTask = DeleteCommand.createEditedTask(taskToAmend, editTaskDescriptor);
+        expectedModel.setTask(taskToAmend, editedTask);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
@@ -64,6 +75,12 @@ public class DeleteCommandTest {
                 model.getTaskBook(), new StrategyBoard(), new UserPrefs());
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
+
+        Task taskToAmend = model.getFilteredTaskList().get(TASK_FIRST_INDEX.getZeroBased());
+        EditTaskDescriptor editTaskDescriptor =
+                new EditTaskDescriptorBuilder().withPersons(BENSON.getName().fullName).build();
+        Task editedTask = DeleteCommand.createEditedTask(taskToAmend, editTaskDescriptor);
+        expectedModel.setTask(taskToAmend, editedTask);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }

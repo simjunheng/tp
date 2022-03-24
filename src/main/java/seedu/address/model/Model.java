@@ -89,6 +89,9 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+    /** Returns an unmodifiable view of the unfiltered person list */
+    ObservableList<Person> getUnfilteredPersonList();
+
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
@@ -129,6 +132,9 @@ public interface Model {
      * The task identity of {@code editedTask} must not be the same as another existing task in the task book.
      */
     void setTask(Task target, Task editedTask);
+
+    /** Returns an unmodifiable view of the unfiltered task list */
+    ObservableList<Task> getUnfilteredTaskList();
 
     /** Returns an unmodifiable view of the filtered task list */
     ObservableList<Task> getFilteredTaskList();
