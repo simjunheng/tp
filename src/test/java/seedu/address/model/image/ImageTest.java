@@ -13,7 +13,7 @@ class ImageTest {
 
     private final String imageNameStub = "test";
     private final String imageNameStub1 = "test2";
-    private final String imageNameStub2 = "INCORRECT_FILE.jpeg";
+    private final String imageNameStub2 = "<";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -26,14 +26,14 @@ class ImageTest {
     }
 
     @Test
-    void getImagePath_validPathName() {
+    public void getImagePath_validPathName() {
         Image image = new Image(imageNameStub);
 
         assertDoesNotThrow(() -> image.getImagePath());
     }
 
     @Test
-    void testEquals() {
+    public void equals() {
         Image image = new Image(imageNameStub);
         Image image2 = new Image(imageNameStub);
         Image image3 = new Image(imageNameStub1);

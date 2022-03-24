@@ -56,6 +56,7 @@ public class ParserUtil {
      * @throws ParseException if the specified imageName is invalid.
      */
     public static Image parseImage(String imageName) throws ParseException {
+        requireNonNull(imageName);
         String trimmedName = imageName.trim();
         File folder = new File(Image.FILE_PATH);
         if (!folder.exists()) {

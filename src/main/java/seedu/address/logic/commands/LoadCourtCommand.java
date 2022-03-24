@@ -39,23 +39,22 @@ public class LoadCourtCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireAllNonNull(model);
-        checkIfThrowsException(); //throws if the image file cannot be instantiated
+        if (checkIfThrowsException()) { //throws if the image file cannot be instantiated
+            throw new CommandException(MESSAGE_IMAGE_INVALID);
+
+        }
+
         return new CommandResult(generateSuccessMessage(image), false, false, true, this.image);
     }
 
     /**
      * Creates a test javafx.scene.image object and checks if it throws an Exception.
-     * @return false if the image file can be instantiated
-     * @throws CommandException if png file cannot load
+     * @return false if the image file cannot be instantiated
      */
-    public boolean checkIfThrowsException() throws CommandException {
-        try {
-            File imagePath = image.getImagePath();
-            new javafx.scene.image.Image((imagePath.toURI().toString()));
-        } catch (NullPointerException | IllegalArgumentException e) {
-            throw new CommandException(MESSAGE_IMAGE_INVALID);
-        }
-        return false;
+    public boolean checkIfThrowsException() {
+        File imagePath = image.getImagePath();
+        javafx.scene.image.Image testImage = new javafx.scene.image.Image((imagePath.toURI().toString()));
+        return testImage.isError();
     }
 
     /**
