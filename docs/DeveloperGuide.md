@@ -211,6 +211,37 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easy to extend and manipulate attributes of a player.
     * Cons: Hard to implement.
 
+### 4.3 Add tasks feature
+
+#### 4.3.1 Implementation
+
+This feature allows the user to add tasks to the task list. It is facilitated by `ModelManager` which
+makes use of the method `#addTask()` and `#updateFilteredTaskList()` to add a new task to the task list.
+
+Given below is an example usage scenario of how the add task mechanism behaves at each step.
+
+Step 1: The user inputs `add-t n/Meet d/11-11-2022 st/11:00 et/01:00` to add a new task to the task list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTaskCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `AddTaskCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#addTask()` is called which adds the new task to an internal list. Inside the function call, the `ModelManager#updateFilteredTaskList()` is also called which updates the GUI display. A new task named "Meet" with the subsequent date and time details is then shown in the task list.
+
+The steps above are summarised using a sequence diagram as shown below.
+![AddPlayerSequenceDiagram](images/AddPlayerSequenceDiagram.png)
+
+#### 4.2.2 Design consideration
+
+**Aspect: Should there be an abstraction for players:**
+
+* **Alternative 1 (current choice):** Separate `add-t` command for creating a task.
+    * Pros: Easy to extend and modify.
+    * Cons: Not as intuitive for the user.
+* **Alternative 2:** Single `add` command that adds tasks/persons depending on parameters.
+    * Pros: More intuitive for the user.
+    * Cons: Hard to implement.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
