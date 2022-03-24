@@ -21,7 +21,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
-import seedu.address.model.tag.TagContainsKeywordsPredicate;
+import seedu.address.model.tag.PersonTagContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -37,10 +37,10 @@ public class FindCommandTest {
                 new PersonNameContainsKeywordsPredicate(Collections.singletonList("first"));
         PersonNameContainsKeywordsPredicate secondPredicate =
                 new PersonNameContainsKeywordsPredicate(Collections.singletonList("second"));
-        TagContainsKeywordsPredicate thirdPredicate =
-                new TagContainsKeywordsPredicate(Collections.singletonList("third"));
-        TagContainsKeywordsPredicate fourthPredicate =
-                new TagContainsKeywordsPredicate(Collections.singletonList("fourth"));
+        PersonTagContainsKeywordsPredicate thirdPredicate =
+                new PersonTagContainsKeywordsPredicate(Collections.singletonList("third"));
+        PersonTagContainsKeywordsPredicate fourthPredicate =
+                new PersonTagContainsKeywordsPredicate(Collections.singletonList("fourth"));
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate, thirdPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate, fourthPredicate);
@@ -68,7 +68,7 @@ public class FindCommandTest {
         List<String> tagList = Arrays.asList();
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         PersonNameContainsKeywordsPredicate namePredicate = prepareNamePredicate(nameList);
-        TagContainsKeywordsPredicate tagPredicate = prepareTagPredicate(tagList);
+        PersonTagContainsKeywordsPredicate tagPredicate = prepareTagPredicate(tagList);
         FindCommand command = new FindCommand(namePredicate, tagPredicate);
         expectedModel.updateFilteredPersonList(namePredicate.or(tagPredicate));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -81,7 +81,7 @@ public class FindCommandTest {
         List<String> tagList = Arrays.asList("friends", "neighbours");
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         PersonNameContainsKeywordsPredicate namePredicate = prepareNamePredicate(nameList);
-        TagContainsKeywordsPredicate tagPredicate = prepareTagPredicate(tagList);
+        PersonTagContainsKeywordsPredicate tagPredicate = prepareTagPredicate(tagList);
         FindCommand command = new FindCommand(namePredicate, tagPredicate);
         expectedModel.updateFilteredPersonList(namePredicate.or(tagPredicate));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -89,15 +89,15 @@ public class FindCommandTest {
     }
 
     /**
-     * Creates a {@code NameContainsKeywordsPredicate} using {@code nameList}.
+     * Creates a {@code PersonNameContainsKeywordsPredicate} using {@code nameList}.
      */
     private PersonNameContainsKeywordsPredicate prepareNamePredicate(List<String> nameList) {
         return new PersonNameContainsKeywordsPredicate(nameList);
     }
     /**
-     * Creates a {@code TagContainsKeywordsPredicate} using {@code tagSet}.
+     * Creates a {@code PersonTagContainsKeywordsPredicate} using {@code tagSet}.
      */
-    private TagContainsKeywordsPredicate prepareTagPredicate(List<String> tagList) {
-        return new TagContainsKeywordsPredicate(tagList);
+    private PersonTagContainsKeywordsPredicate prepareTagPredicate(List<String> tagList) {
+        return new PersonTagContainsKeywordsPredicate(tagList);
     }
 }
