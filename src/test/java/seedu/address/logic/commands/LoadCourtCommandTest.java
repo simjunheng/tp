@@ -9,7 +9,6 @@ import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.application.Platform;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -22,21 +21,6 @@ public class LoadCourtCommandTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new LoadCourtCommand(null));
-    }
-
-    @Test
-    public void execute_invalidImage_throwsCommandException() {
-        Image imageTestEmpty = new Image("");
-        Image imageTestInvalidSymbol = new Image("<");
-        LoadCourtCommand command1 = new LoadCourtCommand(imageTestEmpty);
-        LoadCourtCommand command2 = new LoadCourtCommand(imageTestInvalidSymbol);
-
-        Platform.startup(() -> { }); //need to startup Javafx platform before running image functions
-
-        assertCommandFailure(command1, model, LoadCourtCommand.MESSAGE_IMAGE_INVALID);
-        assertCommandFailure(command2, model, LoadCourtCommand.MESSAGE_IMAGE_INVALID);
-
-        Platform.exit();
     }
 
     @Test
