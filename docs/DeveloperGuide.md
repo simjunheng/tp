@@ -229,7 +229,7 @@ Step 3: It then returns a newly initialised `AddTaskCommand` back to the `LogicM
 Step 4: During the command execution, the `ModelManager#addTask()` is called which adds the new task to an internal list. Inside the function call, the `ModelManager#updateFilteredTaskList()` is also called which updates the GUI display. A new task named "Meet" with the subsequent date and time details is then shown in the task list.
 
 The steps above are summarised using a sequence diagram as shown below.
-![AddTaskrSequenceDiagram](images/AddTaskSequenceDiagram.png)
+![AddTaskSequenceDiagram](images/AddTaskSequenceDiagram.png)
 
 #### 4.2.2 Design consideration
 
