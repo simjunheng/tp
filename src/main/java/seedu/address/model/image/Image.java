@@ -1,6 +1,7 @@
 package seedu.address.model.image;
 
 import java.io.File;
+import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
  * Represents an Image in Coack2K22.
@@ -26,11 +27,12 @@ public class Image {
      * @param imageName The name of an image
      * @return true if the image exists
      */
-    public static Boolean isValidImage(String imageName) {
+    public static Boolean isValidFile(String imageName) {
         String filePath = FILE_PATH + imageName + ".png";
         File file = new File(filePath);
         return file.exists();
     }
+
 
     /**
      * Returns the File format of the image.

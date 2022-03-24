@@ -64,7 +64,7 @@ public class ParserUtil {
         if (trimmedName.contains("/")) {
             throw new ParseException(MESSAGE_INVALID_IMAGE_NAME);
         }
-        if (!Image.isValidImage(trimmedName)) {
+        if (!Image.isValidFile(trimmedName)) {
             throw new ParseException(MESSAGE_INVALID_IMAGE);
         }
         return new Image(trimmedName);
