@@ -211,6 +211,38 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easy to extend and manipulate attributes of a player.
     * Cons: Hard to implement.
 
+### 4.3 Add tags feature
+
+#### 4.3.1 Implementation
+This feature allows the user to add tags to contacts in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setPerson()` and `#updateFilteredPersonList()` to add tags to a contact.
+
+Given below is an example usage scenario of how the add tag mechanism behaves at each step.
+
+Step 1: The user inputs `tag-add 1 t/friend` to add the tag "friend" to the first contact in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `AddTagCommand` back to the `LogicManager` for command execution. This `AddTagCommand` contains information about the new tag (in this case, "friend")
+
+Step 4: During the command execution, the `ModelManager#setPerson()` is called which edits the tags of the person with the user-supplied tags. The filtered person list is updated with `ModelManager#updateFilteredPersonList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![AddTagSequenceDiagram] (images/AddTagSequenceDiagram.png)
+
+
+#### 4.3.2 Design consideration
+
+**Aspect: Should the implementation use the existing edit functionalities in AB3:**
+* **Alternative 1:**  Use the current EditCommand class to edit a person's tags.
+  * Pros: Maintains abstraction and reuses code instead of writing new code.
+  * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
+
+* **Alternative 2 (current choice):** Implement AddTagCommand independently, rewriting similar code
+  * Pros: Cleaner code and less dependencies
+  * Cons: Repetitive code that is not abstracted
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
