@@ -29,7 +29,6 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.TASK_FIRST_INDEX;
 import static seedu.address.testutil.TypicalIndexes.TASK_SECOND_INDEX;
-import static seedu.address.testutil.TypicalIndexes.TASK_THIRD_INDEX;
 
 import org.junit.jupiter.api.Test;
 
@@ -134,7 +133,7 @@ public class EditTaskCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = TASK_THIRD_INDEX;
+        Index targetIndex = TASK_SECOND_INDEX;
         String userInput = targetIndex.getOneBased() + NAME_DESC_TASK1;
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(VALID_NAME_TASK1).build();
         EditTaskCommand expectedCommand = new EditTaskCommand(targetIndex, descriptor);
@@ -182,7 +181,7 @@ public class EditTaskCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = TASK_THIRD_INDEX;
+        Index targetIndex = TASK_SECOND_INDEX;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withTags().build();
