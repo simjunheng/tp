@@ -67,6 +67,7 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel() {
         super(FXML);
+        initBackgroundImage();
         initCircle(player1, 50, 100, 100, Color.RED);
         initCircle(player2, 50, 200, 200, Color.LIGHTBLUE);
         initCircle(player3, 30, 200, 200, Color.YELLOW);
@@ -80,12 +81,18 @@ public class StrategyPanel extends UiPart<Region> {
         strategyImage.setImage((new Image((file.toURI().toString()))));
     }
 
-    private void initCircle(Circle circle, double rad, double x, double y, Paint color) {
-        strategyImage.setPreserveRatio(false);
+    /**
+     * Initializes the background image to allow it to resize automatically along with the window.
+     */
+    private void initBackgroundImage() {
+        strategyImage.setPreserveRatio(false); //needs to be marked false to allow image to properly resize with window
         strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
         strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
         strategyImage.setManaged(false);
-        strategyImage.toBack();
+        strategyImage.toBack(); //set image to back to avoid covering player icons
+    }
+
+    private void initCircle(Circle circle, double rad, double x, double y, Paint color) {
         circle.setRadius(rad);
         circle.setFill(color);
         circle.setCenterX(x);
