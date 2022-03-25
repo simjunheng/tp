@@ -32,7 +32,7 @@ public class LoadCourtCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "<test>.jpg", String.format(
+        assertParseFailure(parser, "<test>.jpg", String.format(//'<' symbol is typically illegal for file names
                 MESSAGE_INVALID_COMMAND_FORMAT, LoadCourtCommand.MESSAGE_USAGE));
 
         assertParseFailure(parser, "/", String.format(
