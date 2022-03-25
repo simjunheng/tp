@@ -7,8 +7,8 @@ skinparam classBackgroundColor MODEL_COLOR
 Package Model <<Rectangle>>{
 Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
 Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
-Class "<<interface>>\nModel" as Model
 Class "<<interface>>\nReadOnlyStrategyBoard" as ReadOnlyStrategyBoard
+Class "<<interface>>\nModel" as Model
 Class AddressBook
 Class ModelManager
 Class StrategyBoard
@@ -41,6 +41,7 @@ StrategyBoard *--> "1" UniquePlayerList
 ModelManager .up.|> Model
 Model .right.> ReadOnlyUserPrefs
 Model .left.> ReadOnlyAddressBook
+Model .left.> ReadOnlyStrategyBoard
 ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
