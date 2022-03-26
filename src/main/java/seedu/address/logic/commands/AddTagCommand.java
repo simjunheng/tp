@@ -97,6 +97,7 @@ public class AddTagCommand extends Command {
         Set<Tag> tagList = new HashSet<>(personToEdit.getTags());
         tagList.add(new Tag(this.tagName));
 
+
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, tagList,
                 updatedStrengths, updatedWeaknesses, updatedMisc);
     }
