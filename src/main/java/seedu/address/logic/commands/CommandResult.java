@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import seedu.address.model.image.Image;
+
+
 /**
  * Represents the result of a command execution.
  */
@@ -11,19 +14,45 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
+    /**
+     * Help information should be shown to the user.
+     */
     private final boolean showHelp;
 
-    /** The application should exit. */
+    /**
+     * The application should exit.
+     */
     private final boolean exit;
 
     /**
-     * Constructs a {@code CommandResult} with the specified fields.
+     * The background image of StrategyBoard should be changed
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    private final boolean isLoadImage;
+
+    /**
+     * The background image of StrategyBoard
+     */
+    private final Image image;
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     * <p>
+     * Specifically used for loading background image for Strategy Panel.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean isLoadImage, Image image) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
+        this.isLoadImage = isLoadImage;
+        this.image = image;
         this.exit = exit;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields,
+     * and isLoadImage set to false.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+        this(feedbackToUser, showHelp, exit, false, null);
     }
 
     /**
@@ -45,6 +74,15 @@ public class CommandResult {
     public boolean isExit() {
         return exit;
     }
+
+    public boolean isLoadImageCommand() {
+        return isLoadImage;
+    }
+
+    public Image getBackgroundImage() {
+        return image;
+    }
+
 
     @Override
     public boolean equals(Object other) {
