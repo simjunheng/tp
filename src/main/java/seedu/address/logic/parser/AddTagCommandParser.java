@@ -2,15 +2,13 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddTagCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.tag.Tag;
 
 public class AddTagCommandParser implements Parser {
     /**
@@ -40,6 +38,12 @@ public class AddTagCommandParser implements Parser {
 
         // Get the tagName element in the ArrayList
         String tagName = values.get(2);
+        try {
+            new Tag(tagName);
+        } catch (Exception e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddTagCommand.MESSAGE_USAGE));
+        }
 
         return new AddTagCommand(index, tagName);
     }
