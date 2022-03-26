@@ -109,6 +109,7 @@ public class MainApp extends Application {
             logger.warning("Problem while reading from the file. Will be starting with an empty TaskBook");
             initialTaskData = new TaskBook();
         }
+
         return new ModelManager(initialAddressData, initialTaskData, userPrefs);
     }
 
