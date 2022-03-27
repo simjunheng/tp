@@ -31,6 +31,7 @@ public class AddTagToTaskCommand extends Command {
             + "1 "
             + "important";
     public static final String MESSAGE_DUPLICATE_TAG_T = "This task already has this tag!";
+    public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tag: %1$s";
 
     public final Index index;
     public final String tagName;
