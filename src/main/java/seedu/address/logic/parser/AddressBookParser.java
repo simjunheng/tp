@@ -131,7 +131,7 @@ public class AddressBookParser {
 
         case LoadCourtCommand.COMMAND_WORD:
             return new LoadCourtCommandParser().parse(arguments);
-            
+
         case AddTagToTaskCommand.COMMAND_WORD:
             return new AddTagToTaskCommandParser().parse(arguments);
 
