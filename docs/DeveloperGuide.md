@@ -219,7 +219,7 @@ makes use of the method `#setPerson()` and `#updateFilteredPersonList()` to add 
 
 Given below is an example usage scenario of how the add tag mechanism behaves at each step.
 
-Step 1: The user inputs `tag-add 1 t/friend` to add the tag "friend" to the first contact in the list.
+Step 1: The user inputs `tag-add-p 1 friend` to add the tag "friend" to the first contact in the list.
 
 Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTagCommandParser` where its method `#parse` is called to process the user inputs.
 
@@ -649,7 +649,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 3a. The task list is empty.
+* 2a. The task list is empty.
 
   Use case ends.
 
@@ -666,7 +666,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
+* 1a. The task list is empty.
+
+  Use case ends.
+
 * 3a. The task does not have that specified tag.
+
+  Use case resumes at step 2.
+
+* 3b. The index provided is invalid.
 
   Use case resumes at step 2.
 
