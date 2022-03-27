@@ -35,9 +35,8 @@ activate AddTaskCommand
 
 AddTaskCommand --> AddTaskCommandParser : p
 deactivate AddTaskCommand
-
 AddTaskCommandParser --> Coach2K22Parser : p
-deactivate AddTaskCommandParser.
+
 AddTaskCommandParser -[hidden]-> Coach2K22Parser
 destroy AddTaskCommandParser
 
