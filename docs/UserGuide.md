@@ -264,7 +264,13 @@ Format: `list-t`
 
 #### 2.2.2 Adding a task: `add-t`
 
-* (To be filled up by @pragya)
+Adds a task to our task list.
+
+Format: `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
+
+Examples:
+* `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials`
+
 
 <div markdown="block" class="alert alert-info">
 
@@ -274,17 +280,38 @@ Format: `list-t`
 
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A task can have any number of tags (including 0)
+<div markdown="span" class="alert alert-primary">
+
+:bulb: **Tip:** A task can have any number of tags (including 0)<br>
+
+:bulb: **Tip:** A task can also be assigned to multiple persons (including 0)
+
 </div>
 
 #### 2.2.3 Deleting a task: `del-t`
 
-* (To be filled up by @pragya)
+Delete a task from our task list.
 
-#### 2.2.4 Editing a person: `edit-t`
+Format: `del-t INDEX`
 
-* (To be filled up by @pragya)
+Examples:
+* `del-t 2` deletes the second task in the task list.
+
+**:information_source: Key things to take note of:**<br>
+
+* Deletes the task at the specified `INDEX`.
+* The index can be obtained by referring to the indicated task index on the displayed task list.
+* Index values start from 1 and are always positive integers.
+
+#### 2.2.4 Editing a task: `edit-t`
+
+Edit a task from our task list.
+
+Format: `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
+
+Examples:
+* `edit-t 2 d/29-04-2022 et/10:00` edits the date and end time of the second task into `29-04-2022` and  `10:00` respectively.
+* `edit-t 1 n/PR Event t/` edits the name of the first task to `PR Event` and clears all existing tags.
 
 #### 2.2.5 Clear all task entries : `clear-t`
 
@@ -395,7 +422,9 @@ Example:
 
 #### 2.3.6 Export strategy board as image file: `export`
 
-* (To be filled up by pragya)
+Exports current view of the strategy board as an image to the users local device. 
+
+Format: `export`
 
 ### 2.4 General
 
@@ -447,16 +476,16 @@ Format: `exit`
 
 ### 4.2 Task Management
 
-| Action       | Format, Examples                                                                           |
-|--------------|--------------------------------------------------------------------------------------------|
-| **List**     | `list-p`                                                                                   |
-| **Add**      | (to be filled up by @pragya)                                                               |
-| **Del**      | (to be filled up by @pragya)                                                               | 
-| **Edit**     | (to be filled up by @pragya)                                                               |
-| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                          |
-| **Add Tag**  | (to be filled up by @juayhee)                                                              |
-| **Del Tag**  | (to be filled up by @juayhee)                                                              |
-| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`|
+| Action       | Format, Examples                                                                                                                       |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| **List**     | `list-t`                                                                                                                               |
+| **Add**      | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​` <br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials` |
+| **Del**      | `del-t INDEX`<br> e.g., `del-t 1`                                                                                                      | 
+| **Edit**     | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`                |
+| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                                      |
+| **Add Tag**  | (to be filled up by @juayhee)                                                                                                          |
+| **Del Tag**  | (to be filled up by @juayhee)                                                                                                          |
+| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`                                                  |
 
 ### 4.3 Strategic Planning
 
@@ -467,7 +496,7 @@ Format: `exit`
 | **Del**           | `del-player PLAYER_NAME`<br> e.g., `del-player Messi`                   |
 | **Clear**         | `clear-player`                                                          |
 | **Move**          | `move PLAYER_NAME X_COORDINATE Y_COORDINATE`<br> e.g., `move Messi 0 0` |
-| **Export**        | (to be filled up by @pragya)                                            |
+| **Export**        | `export`                                                                |
 
 
 ### 4.4 General
