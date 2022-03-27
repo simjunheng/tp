@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.showTaskAtName;
 import static seedu.address.testutil.TypicalIndexes.TASK_SECOND_INDEX;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
@@ -35,7 +35,7 @@ public class ListTaskCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showTaskAtIndex(model, TASK_SECOND_INDEX);
+        showTaskAtName(model, TASK_SECOND_INDEX);
         assertCommandSuccess(new ListTaskCommand(), model, ListTaskCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

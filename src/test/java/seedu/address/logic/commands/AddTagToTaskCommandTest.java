@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.showTaskAtName;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.TASK_FIRST_INDEX;
 import static seedu.address.testutil.TypicalIndexes.TASK_SECOND_INDEX;
@@ -68,7 +68,7 @@ class AddTagToTaskCommandTest {
 
     @Test
     public void execute_invalidTagIndexFilteredList_failure() {
-        showTaskAtIndex(model, TASK_FIRST_INDEX);
+        showTaskAtName(model, TASK_FIRST_INDEX);
         Index outOfBoundIndex = TASK_SECOND_INDEX;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getTaskBook().getTaskList().size());
