@@ -101,6 +101,7 @@ public class AddTagCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_TAG);
         }
 
+
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, tagList,
                 updatedStrengths, updatedWeaknesses, updatedMisc);
     }
