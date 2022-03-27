@@ -318,7 +318,7 @@ Examples:
 
 Delete a tag from a selected task in our task list.
 
-Format: `tag-del-t INDEX [t/TAG]`
+Format: `tag-del-t INDEX TAG_NAME`
 
 Examples:
 * `tag-add-t 1 important` removes the tag "important" from the first task in the list.
