@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.AddTagCommand.MESSAGE_ADD_TAG_SUCCESS;
-import static seedu.address.logic.commands.AddTagCommand.MESSAGE_DUPLICATE_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.HashSet;
@@ -13,7 +12,6 @@ import java.util.Set;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.name.Name;
 import seedu.address.model.tag.Tag;
@@ -32,11 +30,16 @@ public class AddTagToTaskCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + "1 "
             + "important";
-    public static final String MESSAGE_DUPlICATE_TAG_T = "This task already has this tag!";
+    public static final String MESSAGE_DUPLICATE_TAG_T = "This task already has this tag!";
 
     public final Index index;
     public final String tagName;
 
+    /**
+     * Public contructor for AddTagToTaskCommand
+     * @param index Index of target task
+     * @param tagName Tag to be added to the target task
+     */
     public AddTagToTaskCommand(Index index, String tagName) {
         requireAllNonNull(index, tagName);
 
@@ -44,6 +47,7 @@ public class AddTagToTaskCommand extends Command {
         this.tagName = tagName;
     }
 
+    @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
@@ -58,7 +62,7 @@ public class AddTagToTaskCommand extends Command {
         // Exception when a duplicate tag is added
         Tag testTag = new Tag(this.tagName);
         if (taskToEdit.getTags().contains(testTag)) {
-            throw new CommandException(MESSAGE_DUPlICATE_TAG_T);
+            throw new CommandException(MESSAGE_DUPLICATE_TAG_T);
         }
 
         model.setTask(taskToEdit, editedTask);

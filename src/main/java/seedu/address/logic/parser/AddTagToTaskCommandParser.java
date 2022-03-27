@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -6,10 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.parser.ArgumentMultimap;
-import seedu.address.logic.parser.ArgumentTokenizer;
-import seedu.address.logic.parser.Parser;
-import seedu.address.logic.parser.Prefix;
+import seedu.address.logic.commands.AddTagToTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
@@ -26,7 +23,7 @@ public class AddTagToTaskCommandParser implements Parser {
      * @throws ParseException If the user input does not conform to the expected format
      */
 
-    public AddTagToTaskCommand parse(String args) throws ParseException{
+    public AddTagToTaskCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         // Tokenize all arguments
