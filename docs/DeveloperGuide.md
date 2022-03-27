@@ -210,8 +210,7 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** A player is an object of class `Player`.
     * Pros: Easy to extend and manipulate attributes of a player.
     * Cons: Hard to implement.
-
-
+    
 ### 4.3 Clear Tasks feature
 
 #### 4.3.1 Implementation
