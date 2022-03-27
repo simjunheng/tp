@@ -266,7 +266,7 @@ Format: `list-t`
 
 Adds a task to our task list.
 
-Format: `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​`
+Format: `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
 
 Examples:
 * `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials`
@@ -280,11 +280,12 @@ Examples:
 
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A task can have any number of tags (including 0)
-</div>
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A task can also be assigned to multiple persons (including 0)
+<div markdown="span" class="alert alert-primary">
+
+:bulb: **Tip:** A task can have any number of tags (including 0)<br>
+
+:bulb: **Tip:** A task can also be assigned to multiple persons (including 0)
+
 </div>
 
 #### 2.2.3 Deleting a task: `del-t`
@@ -306,7 +307,7 @@ Examples:
 
 Edit a task from our task list.
 
-Format: `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​`
+Format: `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
 
 Examples:
 * `edit-t 2 d/29-04-2022 et/10:00` edits the date and end time of the second task into `29-04-2022` and  `10:00` respectively.

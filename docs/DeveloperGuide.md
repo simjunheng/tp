@@ -616,13 +616,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1a1. Coach2K22 shows an error message.
 
-      Use case ends.
+      Use case resumes at step 1.
 
 * 1b. Compulsory parameters not supplied by the user.
 
     * 1b1. Coach2K22 shows an error message.
 
-      Use case ends.
+      Use case resumes at step 1.
 
 **Use case: Delete a task from the task list**
 
@@ -639,7 +639,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The task list is empty.
 
-  Use case ends.
+  Use case resumes at step 2.
 
 * 1b. The index requested does not exist.
 
