@@ -82,7 +82,7 @@ public class AddTagCommand extends Command {
      * @param personToEdit Person to be edited
      * @return New Person object with the tag added (tag list updated)
      */
-    private Person addTagToPerson(Person personToEdit) {
+    private Person addTagToPerson(Person personToEdit) throws CommandException {
         // Keep all other fields the same
         Name updatedName = personToEdit.getName();
         Phone updatedPhone = personToEdit.getPhone();
@@ -95,7 +95,12 @@ public class AddTagCommand extends Command {
         // Changing tags
         // Make modifiable copy since Person#getTags returns an unmodifiable Set
         Set<Tag> tagList = new HashSet<>(personToEdit.getTags());
-        tagList.add(new Tag(this.tagName));
+        try {
+            tagList.add(new Tag(this.tagName));
+        } catch (Exception e) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TAG);
+        }
+
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, tagList,
                 updatedStrengths, updatedWeaknesses, updatedMisc);

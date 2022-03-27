@@ -16,11 +16,13 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.image.Image;
 import seedu.address.model.name.Name;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.testutil.TestImageCreator;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -215,5 +217,29 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseImage_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseImage(null));
+    }
+
+    @Test
+    public void parseImage_invalidArgs_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseImage(" "));
+        assertThrows(ParseException.class, () -> ParserUtil.parseImage("/"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseImage("<.jpg"));
+    }
+
+    @Test
+    public void parseImage_validArgs_returnsImage() throws ParseException {
+        TestImageCreator testImageCreatorFile = new TestImageCreator();
+        Image expectedImage = testImageCreatorFile.getTestImage();
+        String testImageName = expectedImage.imageName;
+        testImageCreatorFile.createTestImage();
+
+        assertEquals(expectedImage, ParserUtil.parseImage(testImageName));
+
+        testImageCreatorFile.deleteTestImage();
     }
 }

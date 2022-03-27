@@ -7,12 +7,12 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.person.Person;
 
 /**
- * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Person}'s {@code Tag} matches any of the keywords given.
  */
-public class TagContainsKeywordsPredicate implements Predicate<Person> {
+public class PersonTagContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
-    public TagContainsKeywordsPredicate(List<String> keywords) {
+    public PersonTagContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
@@ -26,8 +26,8 @@ public class TagContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TagContainsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((TagContainsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof PersonTagContainsKeywordsPredicate // instanceof handles nulls
+                && keywords.equals(((PersonTagContainsKeywordsPredicate) other).keywords)); // state check
     }
 
 }
