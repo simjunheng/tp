@@ -16,7 +16,7 @@ end box
 [-> LogicManager : execute("tag-add 1 t/friend")
 activate LogicManager
 
-LogicManager -> Coach2K22Parser : parseCommand("tag-add 1 t/friend")
+LogicManager -> Coach2K22Parser : parseCommand("tag-add-p 1 friend")
 activate Coach2K22Parser
 
 create AddTagCommandParser
@@ -26,7 +26,7 @@ activate AddTagCommandParser
 AddTagCommandParser --> Coach2K22Parser
 deactivate AddTagCommandParser
 
-Coach2K22Parser -> AddTagCommandParser : parse("1 t/friend")
+Coach2K22Parser -> AddTagCommandParser : parse(" 1 friend")
 activate AddTagCommandParser
 
 create AddTagCommand
