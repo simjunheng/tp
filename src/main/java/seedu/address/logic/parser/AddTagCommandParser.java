@@ -12,8 +12,8 @@ import seedu.address.model.tag.Tag;
 
 public class AddTagCommandParser implements Parser {
     /**
-     * Parses the given {@code String} of arguments in the context of the {@code DeleteTagCommand}
-     * and returns a {@code DeleteTagCommand} object for execution
+     * Parses the given {@code String} of arguments in the context of the {@code AddTagCommand}
+     * and returns a {@code AddTagCommand} object for execution
      * * @param args Input string by user EXCEPT COMMAND WORD
      *
      * @return DeleteTagCommand object with arguments loaded in
