@@ -308,7 +308,7 @@ Examples:
 
 Add a tag to a selected task from our task list.
 
-Format: `tag-add-t INDEX [t/TAG]`
+Format: `tag-add-t INDEX TAG_NAME`
 
 Examples:
 * `tag-add-t 1 important` adds the tag "important" to the first task in the list.
@@ -465,15 +465,15 @@ Format: `exit`
 
 ### 4.2 Task Management
 
-| Action       | Format, Examples                                                                      |
-|--------------|---------------------------------------------------------------------------------------|
-| **List**     | `list-p`                                                                              |
-| **Add**      | (to be filled up by @pragya)                                                          |
-| **Del**      | (to be filled up by @pragya)                                                          | 
-| **Edit**     | (to be filled up by @pragya)                                                          |
-| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                     |
-| **Add Tag**  | `tag-add-t INDEX [t/TAG]` <br> e.g., `tag-add-t 1 t/important`                        |
-| **Del Tag**  | `tag-del-t INDEX [t/TAG]` <br> e.g., `tag-del-t 1 t/important`                        |
+| Action       | Format, Examples                                                                  |
+|--------------|-----------------------------------------------------------------------------------|
+| **List**     | `list-p`                                                                          |
+| **Add**      | (to be filled up by @pragya)                                                      |
+| **Del**      | (to be filled up by @pragya)                                                      | 
+| **Edit**     | (to be filled up by @pragya)                                                      |
+| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
+| **Add Tag**  | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
+| **Del Tag**  | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
 | **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
 
 ### 4.3 Strategic Planning

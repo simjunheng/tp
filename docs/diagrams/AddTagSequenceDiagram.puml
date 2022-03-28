@@ -13,7 +13,7 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("tag-add 1 t/friend")
+[-> LogicManager : execute("tag-add 1 friend")
 activate LogicManager
 
 LogicManager -> Coach2K22Parser : parseCommand("tag-add-p 1 friend")
