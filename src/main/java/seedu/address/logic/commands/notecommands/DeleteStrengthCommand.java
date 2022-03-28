@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.notecommands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -30,12 +31,7 @@ public class DeleteStrengthCommand extends Command {
             + "1 "
             + "2";
 
-    public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "DeleteStrength command not implemented yet";
-
     public static final String MESSAGE_SUCCESS = "Strength has been deleted: %1$s";
-
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Index: %2$d";
 
     private final Index index;
     private final Index noteIndex;
@@ -53,6 +49,7 @@ public class DeleteStrengthCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {

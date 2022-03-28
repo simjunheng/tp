@@ -111,6 +111,7 @@ public class MainApp extends Application {
             initialTaskData = new TaskBook();
         }
         return new ModelManager(initialAddressData, initialTaskData, new StrategyBoard(), userPrefs);
+
     }
 
     private void initLogging(Config config) {

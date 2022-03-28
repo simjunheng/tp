@@ -7,12 +7,17 @@ import java.util.logging.Logger;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import java.io.File;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -35,6 +40,11 @@ public class StrategyPanel extends UiPart<Region> {
 
     @FXML
     private Pane playerView;
+
+    private ImageView strategyImage;
+    @FXML
+    private AnchorPane strategyAnchorPane;
+
 
     // Credit to http://java-buddy.blogspot.com/2013/07/move-node-to-front.html
     private final EventHandler<MouseEvent> pressHandler =
@@ -107,6 +117,26 @@ public class StrategyPanel extends UiPart<Region> {
                 table.remove(playerName);
             }
         }
+        initBackgroundImage();
+    }
+
+    /**
+     * Changes the image contained in ImageView.
+     * @param file the file reference for the image to be loaded
+     */
+    public void changeImageBackground(File file) {
+        strategyImage.setImage((new Image((file.toURI().toString()))));
+    }
+
+    /**
+     * Initializes the background image to allow it to resize automatically along with the window.
+     */
+    private void initBackgroundImage() {
+        strategyImage.setPreserveRatio(false); //needs to be marked false to allow image to properly resize with window
+        strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
+        strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
+        strategyImage.setManaged(false);
+        strategyImage.toBack(); //set image to back to avoid covering player icons
     }
 
     private void initCircle(Circle circle, double rad, double x, double y, Paint color) {
