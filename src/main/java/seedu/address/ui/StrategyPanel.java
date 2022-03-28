@@ -40,7 +40,7 @@ public class StrategyPanel extends UiPart<Region> {
 
     @FXML
     private Pane playerView;
-
+    @FXML
     private ImageView strategyImage;
     @FXML
     private AnchorPane strategyAnchorPane;
@@ -86,7 +86,7 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel(ObservableList<String> playerList) {
         super(FXML);
-
+        initBackgroundImage();
         playerList.addListener((ListChangeListener<String>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
@@ -117,7 +117,6 @@ public class StrategyPanel extends UiPart<Region> {
                 table.remove(playerName);
             }
         }
-        initBackgroundImage();
     }
 
     /**
