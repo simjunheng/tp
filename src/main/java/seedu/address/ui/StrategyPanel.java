@@ -1,9 +1,14 @@
 package seedu.address.ui;
 
+import java.io.File;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -17,6 +22,10 @@ public class StrategyPanel extends UiPart<Region> {
     private static double orgTranslateX;
     private static double orgTranslateY;
 
+    @FXML
+    private ImageView strategyImage;
+    @FXML
+    private AnchorPane strategyAnchorPane;
     @FXML
     private Circle player1;
     @FXML
@@ -58,9 +67,29 @@ public class StrategyPanel extends UiPart<Region> {
      */
     public StrategyPanel() {
         super(FXML);
+        initBackgroundImage();
         initCircle(player1, 50, 100, 100, Color.RED);
         initCircle(player2, 50, 200, 200, Color.LIGHTBLUE);
         initCircle(player3, 30, 200, 200, Color.YELLOW);
+    }
+
+    /**
+     * Changes the image contained in ImageView.
+     * @param file the file reference for the image to be loaded
+     */
+    public void changeImageBackground(File file) {
+        strategyImage.setImage((new Image((file.toURI().toString()))));
+    }
+
+    /**
+     * Initializes the background image to allow it to resize automatically along with the window.
+     */
+    private void initBackgroundImage() {
+        strategyImage.setPreserveRatio(false); //needs to be marked false to allow image to properly resize with window
+        strategyImage.fitWidthProperty().bind(strategyAnchorPane.widthProperty());
+        strategyImage.fitHeightProperty().bind(strategyAnchorPane.heightProperty());
+        strategyImage.setManaged(false);
+        strategyImage.toBack(); //set image to back to avoid covering player icons
     }
 
     private void initCircle(Circle circle, double rad, double x, double y, Paint color) {

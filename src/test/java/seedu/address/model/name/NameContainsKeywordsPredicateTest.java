@@ -13,7 +13,7 @@ import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TaskBuilder;
 
 /**
- * Test class for {@code PersonContainsKeywordsPredicate} and {@code TaskContainsKeywordPredicate}
+ * Test class for {@code PersonNameContainsKeywordsPredicate} and {@code TaskNameContainsKeywordPredicate}
  */
 public class NameContainsKeywordsPredicateTest {
 

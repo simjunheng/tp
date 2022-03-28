@@ -18,15 +18,13 @@ class AddTagCommandParserTest {
     @Test
     void parse_validArgs_returnsAddTagCommand() {
         AddTagCommand expectedAddTagCommand = new AddTagCommand(INDEX_FIRST_PERSON, TAG1);
-        assertParseSuccess(parser, "1 t/TAG1", expectedAddTagCommand);
-        // Messy user input with multiple whitespaces
-        assertParseSuccess(parser, " 1 t/  TAG1", expectedAddTagCommand);
+        assertParseSuccess(parser, " 1 TAG1", expectedAddTagCommand);
     }
 
     @Test
     void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser,
-                "asdkfasdfl",
+                " 1 t/friend",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTagCommand.MESSAGE_USAGE));
     }
 }

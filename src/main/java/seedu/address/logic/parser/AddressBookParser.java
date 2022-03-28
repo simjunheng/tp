@@ -18,8 +18,11 @@ import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListTaskCommand;
+import seedu.address.logic.commands.LoadCourtCommand;
 import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.notecommands.AddStrengthCommand;
 import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
@@ -85,8 +88,14 @@ public class AddressBookParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
+        case FindTaskCommand.COMMAND_WORD:
+            return new FindTaskCommandParser().parse(arguments);
+
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ListTaskCommand.COMMAND_WORD:
+            return new ListTaskCommand();
 
         case AddStrengthCommand.COMMAND_WORD:
             return new AddStrengthCommandParser().parse(arguments);
@@ -117,6 +126,9 @@ public class AddressBookParser {
 
         case DeleteTagCommand.COMMAND_WORD:
             return new DeleteTagCommandParser().parse(arguments);
+
+        case LoadCourtCommand.COMMAND_WORD:
+            return new LoadCourtCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
