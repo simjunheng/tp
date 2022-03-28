@@ -31,7 +31,7 @@ public class TypicalTasks {
     public static final Task SECOND_TASK = new TaskBuilder().withName("Training").withDate("29-02-2020")
             .withStartTime("14:00").withEndTime("16:00")
             .withTags("colleagues").withPersons(CARL.getName().fullName).build();
-    public static final Task THIRD_TASK = new TaskBuilder().withName("Shareholder Meeting").withDate("29-02-2020")
+    public static final Task THIRD_TASK = new TaskBuilder().withName("Shareholder Conference").withDate("29-02-2020")
             .withStartTime("14:00").withEndTime("16:00")
             .withTags("colleagues").withPersons(BENSON.getName().fullName).build();
 
