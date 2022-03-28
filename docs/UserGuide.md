@@ -333,11 +333,29 @@ Examples:
 
 #### 2.2.6 Adding a tag : `tag-add-t`
 
-* (To be filled up by @juayhee)
+Add a tag to a selected task from our task list.
+
+Format: `tag-add-t INDEX TAG_NAME`
+
+Examples:
+* `tag-add-t 1 important` adds the tag "important" to the first task in the list.
+
 
 #### 2.2.7 Deleting a tag : `tag-del-t`
 
-* (To be filled up by @juayhee)
+Delete a tag from a selected task in our task list.
+
+Format: `tag-del-t INDEX TAG_NAME`
+
+Examples:
+* `tag-add-t 1 important` removes the tag "important" from the first task in the list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* `TAG` must be an exact match for it to be recognised.
+</div>
 
 #### 2.2.8 Locating tasks by keyword : `find-t`
 
@@ -476,16 +494,17 @@ Format: `exit`
 
 ### 4.2 Task Management
 
-| Action       | Format, Examples                                                                                                                       |
-|--------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| **List**     | `list-t`                                                                                                                               |
-| **Add**      | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​` <br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials` |
-| **Del**      | `del-t INDEX`<br> e.g., `del-t 1`                                                                                                      | 
-| **Edit**     | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`                |
-| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                                                                      |
-| **Add Tag**  | (to be filled up by @juayhee)                                                                                                          |
-| **Del Tag**  | (to be filled up by @juayhee)                                                                                                          |
-| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2`                                                  |
+| Action       | Format, Examples                                                                  |
+|--------------|-----------------------------------------------------------------------------------|
+| **List**     | `list-p`                                                                          |
+| **Add**      | (to be filled up by @pragya)                                                      |
+| **Del**      | (to be filled up by @pragya)                                                      | 
+| **Edit**     | (to be filled up by @pragya)                                                      |
+| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
+| **Add Tag**  | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
+| **Del Tag**  | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
+| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
+
 
 ### 4.3 Strategic Planning
 
