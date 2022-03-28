@@ -57,13 +57,18 @@ public class AddMiscCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newMisc = new ArrayList<>(personToEdit.getMiscellaneous());
-        newMisc.add(misc);
+        List<Note> newMiscList = new ArrayList<>(personToEdit.getMiscellaneous());
+
+        if (newMiscList.contains(misc)) { //makes sure note does not already exist for given person
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_MISC);
+        }
+
+        newMiscList.add(misc);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(),
-                personToEdit.getWeaknesses(), newMisc);
+                personToEdit.getWeaknesses(), newMiscList);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
