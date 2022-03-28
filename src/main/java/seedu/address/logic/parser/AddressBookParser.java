@@ -136,7 +136,7 @@ public class AddressBookParser {
 
         case DeletePlayerCommand.COMMAND_WORD:
             return new DeletePlayerCommandParser().parse(arguments);
-            
+
         case LoadCourtCommand.COMMAND_WORD:
             return new LoadCourtCommandParser().parse(arguments);
 
