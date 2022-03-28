@@ -21,6 +21,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyTaskBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
@@ -109,8 +110,8 @@ public class MainApp extends Application {
             logger.warning("Problem while reading from the file. Will be starting with an empty TaskBook");
             initialTaskData = new TaskBook();
         }
+        return new ModelManager(initialAddressData, initialTaskData, new StrategyBoard(), userPrefs);
 
-        return new ModelManager(initialAddressData, initialTaskData, userPrefs);
     }
 
     private void initLogging(Config config) {

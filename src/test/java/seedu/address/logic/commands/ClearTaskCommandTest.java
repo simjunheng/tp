@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.Date;
@@ -27,7 +28,8 @@ import seedu.address.model.task.Date;
 public class ClearTaskCommandTest {
 
     private final Date dateStub = new Date("03-03-2000");
-    private final Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void constructor_nullDate_throwsNullPointerException() {
@@ -36,7 +38,8 @@ public class ClearTaskCommandTest {
 
     @Test
     public void execute_clearTaskBook_success() {
-        Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+                new StrategyBoard(), new UserPrefs());
         expectedModel.setTaskBook(new TaskBook());
 
         assertCommandSuccess(new ClearTaskCommand(), model, ClearTaskCommand.MESSAGE_SUCCESS, expectedModel);
@@ -44,7 +47,8 @@ public class ClearTaskCommandTest {
 
     @Test
     public void execute_validDate_success() {
-        Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+                new StrategyBoard(), new UserPrefs());
 
         TaskBook taskBook = new TaskBook();
         taskBook.addTask(FIFTH_TASK);
@@ -67,7 +71,8 @@ public class ClearTaskCommandTest {
 
     @Test
     public void execute_emptyTaskList_throwsCommandException() {
-        Model emptyTaskListModel = new ModelManager(getTypicalAddressBook(), new TaskBook(), new UserPrefs());
+        Model emptyTaskListModel = new ModelManager(getTypicalAddressBook(), new TaskBook(),
+                new StrategyBoard(), new UserPrefs());
         ClearTaskCommand clearTaskCommand = new ClearTaskCommand();
 
         assertCommandFailure(clearTaskCommand, emptyTaskListModel, ClearTaskCommand.MESSAGE_EMPTY_LIST);
