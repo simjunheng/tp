@@ -17,11 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.model.AddressBook;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.TaskBook;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.TaskBuilder;
@@ -32,7 +28,8 @@ class AddTagToTaskCommandTest {
     private static final String TAG1 = "TAG1";
 
     // Test model
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     void execute_addTagCommandUnfilteredList_success() {
@@ -59,6 +56,7 @@ class AddTagToTaskCommandTest {
         Model expectedModel = new ModelManager(
                 new AddressBook(model.getAddressBook()),
                 new TaskBook(model.getTaskBook()),
+                new StrategyBoard(),
                 new UserPrefs());
         expectedModel.setTask(firstTask, editedTask);
 
