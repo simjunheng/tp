@@ -21,6 +21,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
@@ -31,7 +32,8 @@ import seedu.address.model.person.Person;
  */
 public class DeleteWeaknessCommandTest {
 
-    private final Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void constructor_nullIndex_throwsNullPointerException() {
@@ -54,7 +56,7 @@ public class DeleteWeaknessCommandTest {
         String expectedMessage = String.format(DeleteWeaknessCommand.MESSAGE_SUCCESS, personWithModifiedWeakness);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(),
-                model.getTaskBook(), new UserPrefs());
+                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
         deleteWeaknessCommand.execute(expectedModel);
         assertCommandSuccess(deleteWeaknessCommand, model, expectedMessage, expectedModel);
     }

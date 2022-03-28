@@ -3,12 +3,14 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="strategyAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <Circle fx:id="player1" />
-   <Circle fx:id="player2" />
-   <Circle fx:id="player3" />
+<AnchorPane fx:id="strategyAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <Pane fx:id="playerView"/>
    <ImageView fx:id="strategyImage" fitHeight="161.0" fitWidth="204.0" layoutX="25.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
    <Slider layoutY="24.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="25.0" showTickLabels="true" showTickMarks="true" styleClass="axis-left" stylesheets="@Extensions.css" value="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="24.0" />
    <Slider layoutX="26.0" max="200.0" prefHeight="25.0" prefWidth="204.0" showTickLabels="true" showTickMarks="true" styleClass="axis-top" stylesheets="@Extensions.css" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
