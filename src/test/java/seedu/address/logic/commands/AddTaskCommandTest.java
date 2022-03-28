@@ -16,6 +16,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.Task;
@@ -26,7 +27,8 @@ import seedu.address.testutil.TaskBuilder;
  */
 public class AddTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void constructor_nullTask_throwsNullPointerException() {
@@ -43,7 +45,7 @@ public class AddTaskCommandTest {
         String expectedMessage = String.format(AddTaskCommand.MESSAGE_SUCCESS, validTask);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                new TaskBook(model.getTaskBook()), new UserPrefs());
+                new TaskBook(model.getTaskBook()), new StrategyBoard(), new UserPrefs());
         expectedModel.addTask(validTask);
 
         assertCommandSuccess(addTaskCommand, model, expectedMessage, expectedModel);

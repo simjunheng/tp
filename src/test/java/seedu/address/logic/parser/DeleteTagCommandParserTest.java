@@ -18,15 +18,13 @@ class DeleteTagCommandParserTest {
     @Test
     void parse_validArgs_returnsDeleteTagCommand() {
         DeleteTagCommand expectedDeleteTagCommand = new DeleteTagCommand(INDEX_FIRST_PERSON, TAG1);
-        assertParseSuccess(parser, "1 t/friends", expectedDeleteTagCommand);
-        // Messy user input with multiple whitespaces
-        assertParseSuccess(parser, " 1 t/  friends", expectedDeleteTagCommand);
+        assertParseSuccess(parser, " 1 friends", expectedDeleteTagCommand);
     }
 
     @Test
     void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser,
-                "asdkfasdfl",
+                " 1 t/friend",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTagCommand.MESSAGE_USAGE));
     }
 }

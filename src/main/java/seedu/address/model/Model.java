@@ -15,6 +15,7 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
+    Predicate<String> PREDICATE_SHOW_ALL_PLAYERS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -143,4 +144,38 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
+
+    /**
+     * Replaces strategy board data with the data in {@code strategy board}.
+     */
+    void setStrategyBoard(ReadOnlyStrategyBoard strategyBoard);
+
+    /** Returns the Strategy Board. **/
+    ReadOnlyStrategyBoard getStrategyBoard();
+
+    /**
+     * Returns true if a player with the same identity as {@code player} exists in the strategy board.
+     */
+    boolean hasPlayer(String player);
+
+    /**
+     * Deletes the given player.
+     * The task must exist in the strategy board.
+     */
+    void deletePlayer(String target);
+
+    /**
+     * Adds the given player.
+     * {@code player} must not already exist in the strategy board.
+     */
+    void addPlayer(String player);
+
+    /** Returns an unmodifiable view of the filtered player list */
+    ObservableList<String> getFilteredPlayerList();
+
+    /**
+     * Updates the filter of the filtered player list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPlayerList(Predicate<String> predicate);
 }

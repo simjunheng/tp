@@ -20,6 +20,7 @@ import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.TaskBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.note.Note;
@@ -31,7 +32,8 @@ public class AddMiscCommandTest {
     private static final String NOTE_STUB_1 = "Some note 1";
     private static final String NOTE_STUB_2 = "Some note 2";
 
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void execute_addMiscUnfilteredList_success() {
@@ -48,6 +50,7 @@ public class AddMiscCommandTest {
         Model expectedModel = new ModelManager(
                 new AddressBook(model.getAddressBook()),
                 new TaskBook(model.getTaskBook()),
+                new StrategyBoard(),
                 new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 

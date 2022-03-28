@@ -17,6 +17,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TaskBook;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.TaskBuilder;
@@ -33,8 +34,10 @@ public class ClearCommandTest {
 
     @Test
     public void execute_nonEmptyAddressBook_success() {
-        Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
-        Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+        Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+                new StrategyBoard(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+                new StrategyBoard(), new UserPrefs());
 
         Task editedFirstTask = new TaskBuilder(FIRST_TASK).withPersons().build();
         Task editedSecondTask = new TaskBuilder(SECOND_TASK).withPersons().build();
