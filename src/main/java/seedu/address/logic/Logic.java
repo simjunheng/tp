@@ -37,6 +37,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of tasks */
     ObservableList<Task> getFilteredTaskList();
 
+    /** Returns an unmodifiable view of the filtered list of players */
+    ObservableList<String> getFilteredPlayerList();
+
     /**
      * Returns the user prefs' address book file path.
      */

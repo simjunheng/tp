@@ -2,11 +2,14 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="strategyAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <Circle fx:id="player1" />
-   <Circle fx:id="player2" />
-   <Circle fx:id="player3" />
+
+<AnchorPane fx:id="strategyAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <Pane fx:id="playerView"/>
    <ImageView fx:id="strategyImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
 </AnchorPane>
