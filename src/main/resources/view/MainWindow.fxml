@@ -74,12 +74,12 @@
                   </Tab>
                   <Tab text="Strategy">
                     <content>
-                        <VBox fx:id="strategy" minWidth="340" prefWidth="340" styleClass="pane-with-boarder">
+                        <VBox fx:id="strategy" minWidth="340.0" prefWidth="340.0" styleClass="pane-with-boarder">
                            <padding>
                                <Insets bottom="10" left="10" right="10" top="10" />
                            </padding>
                            <children>
-                               <AnchorPane fx:id="strategyPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                               <AnchorPane fx:id="strategyPanelPlaceholder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
                           </children>
                        </VBox>
                     </content>

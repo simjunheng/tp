@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.name.TaskNameContainsKeywordsPredicate;
 import seedu.address.model.tag.TaskTagContainsKeywordsPredicate;
@@ -25,8 +26,10 @@ import seedu.address.model.tag.TaskTagContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindTaskCommand}.
  */
 public class FindTaskCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void equals() {

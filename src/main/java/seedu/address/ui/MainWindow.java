@@ -18,6 +18,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.image.Image;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -127,7 +128,7 @@ public class MainWindow extends UiPart<Stage> {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-        strategyPanel = new StrategyPanel();
+        strategyPanel = new StrategyPanel(logic.getFilteredPlayerList());
         strategyPanelPlaceholder.getChildren().add(strategyPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -180,8 +181,13 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+
     private void switchTab(int index) {
         tabPane.getSelectionModel().select(index);
+    }
+
+    private void handleLoadImage(Image image) {
+        strategyPanel.changeImageBackground(image.getImagePath());
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -209,6 +215,10 @@ public class MainWindow extends UiPart<Stage> {
 
             switchTab(commandResult.getTabPane());
 
+            if (commandResult.isLoadImageCommand()) {
+                Image backGroundImage = commandResult.getBackgroundImage();
+                handleLoadImage(backGroundImage);
+            }
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);

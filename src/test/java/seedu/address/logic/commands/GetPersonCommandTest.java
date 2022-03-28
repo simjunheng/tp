@@ -20,6 +20,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.name.Name;
 import seedu.address.model.task.Task;
@@ -30,8 +31,10 @@ import seedu.address.model.task.Task;
  */
 public class GetPersonCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -49,7 +52,7 @@ public class GetPersonCommandTest {
         String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
                 expectedModel.getFilteredPersonList().size());
         CommandResult expectedCommandResult =
-                new CommandResult(expectedMessage, false, false, CONTACT_TAB);
+                new CommandResult(expectedMessage, false, false, CONTACT_TAB, false, null);
 
         assertCommandSuccess(getPersonCommand, model, expectedCommandResult, expectedModel);
     }
@@ -82,7 +85,7 @@ public class GetPersonCommandTest {
         String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
                 expectedModel.getFilteredPersonList().size());
         CommandResult expectedCommandResult =
-                new CommandResult(expectedMessage, false, false, CONTACT_TAB);
+                new CommandResult(expectedMessage, false, false, CONTACT_TAB, false, null);
 
         assertCommandSuccess(getPersonCommand, model, expectedCommandResult, expectedModel);
     }

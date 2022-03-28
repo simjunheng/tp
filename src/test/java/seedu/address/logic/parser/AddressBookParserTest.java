@@ -25,6 +25,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.LoadCourtCommand;
 import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.notecommands.AddStrengthCommand;
 import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
@@ -32,6 +33,7 @@ import seedu.address.logic.commands.notecommands.DeleteMiscCommand;
 import seedu.address.logic.commands.notecommands.DeleteStrengthCommand;
 import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.image.Image;
 import seedu.address.model.name.PersonNameContainsKeywordsPredicate;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
@@ -39,6 +41,7 @@ import seedu.address.model.tag.PersonTagContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.TestImageCreator;
 
 public class AddressBookParserTest {
 
@@ -117,6 +120,22 @@ public class AddressBookParserTest {
                 DeleteMiscCommand.COMMAND_WORD + " " + INDEX_SECOND_PERSON.getOneBased()
                         + " " + NOTE_FIRST_INDEX.getOneBased());
         assertEquals(new DeleteMiscCommand(INDEX_SECOND_PERSON, NOTE_FIRST_INDEX), command);
+    }
+
+    @Test
+    public void parseCommand_loadCourt() throws Exception {
+        TestImageCreator.createTestImage();
+
+        Image imageStub = TestImageCreator.getTestImage();
+        String imageName = imageStub.imageName;
+
+        LoadCourtCommand command = (LoadCourtCommand) parser.parseCommand(
+                LoadCourtCommand.COMMAND_WORD + " " + imageName
+        );
+        assertEquals(new LoadCourtCommand(imageStub), command);
+
+        TestImageCreator.deleteTestImage();
+
     }
 
     @Test
