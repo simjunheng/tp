@@ -82,6 +82,17 @@ public class AddStrengthCommandTest {
     }
 
     @Test
+    public void execute_duplicateStrength_failure() {
+        Person person = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        assert person.getStrengths().size() > 0;
+        Note duplicateStrength = person.getStrengths().get(0);
+
+        AddStrengthCommand addStrengthCommand = new AddStrengthCommand(INDEX_SECOND_PERSON, duplicateStrength);
+
+        assertCommandFailure(addStrengthCommand, model, Messages.MESSAGE_DUPLICATE_STRENGTH);
+    }
+
+    @Test
     public void equals() {
         final AddStrengthCommand standardCommand = new AddStrengthCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_AMY));
