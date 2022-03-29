@@ -657,6 +657,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. Coach2K22 shows an error message.
 
       Use case ends.    
+
+**Use case: Sort address book by strengths in descending order**
+
+**MSS**
+
+1. User requests to sort the list of persons by total strengths
+2. Coach2K22 shows the new sorted list of persons
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The person list is empty.
+
+    * 1a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+**Use case: Sort address book by weaknesses in descending order**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Sort address book by strengths in descending order`
+    * Sorts list of persons by total weaknesses in descending order instead of total strengths
     
 **Use case: Add a tag to a person**
 
