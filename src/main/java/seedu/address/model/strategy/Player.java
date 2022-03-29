@@ -5,8 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 
 public class Player {
-    private static final int DEF_XCOORD = 100;
-    private static final int DEF_YCOORD = 100;
+    private static final int DEF_XCOORD = 50;
+    private static final int DEF_YCOORD = 50;
 
     private final String name;
     private int xCoord;

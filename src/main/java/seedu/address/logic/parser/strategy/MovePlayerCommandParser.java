@@ -42,6 +42,11 @@ public class MovePlayerCommandParser implements Parser<MovePlayerCommand> {
             int yCoord = Integer.parseInt(argMultimap.getValue(PREFIX_YCOORD).get());
             String playerName = argMultimap.getPreamble();
 
+            if (xCoord < 0 || yCoord < 0) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        MovePlayerCommand.MESSAGE_USAGE));
+            }
+
             return new MovePlayerCommand(playerName, xCoord, yCoord);
         } catch (NumberFormatException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MovePlayerCommand.MESSAGE_USAGE));
