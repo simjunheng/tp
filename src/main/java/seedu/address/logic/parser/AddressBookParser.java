@@ -150,7 +150,7 @@ public class AddressBookParser {
             return new AddTagToTaskCommandParser().parse(arguments);
 
         case SortTaskByDateCommand.COMMAND_WORD:
-            return new SortTaskByDateCommandParser().parse(arguments);
+            return new SortTaskByDateCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
