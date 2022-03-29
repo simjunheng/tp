@@ -82,6 +82,17 @@ public class AddMiscCommandTest {
     }
 
     @Test
+    public void execute_duplicateMisc_failure() {
+        Person person = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        assert person.getMiscellaneous().size() > 0;
+        Note duplicateMisc = person.getMiscellaneous().get(0);
+
+        AddMiscCommand addMiscCommand = new AddMiscCommand(INDEX_SECOND_PERSON, duplicateMisc);
+
+        assertCommandFailure(addMiscCommand, model, Messages.MESSAGE_DUPLICATE_MISC);
+    }
+
+    @Test
     public void equals() {
         final AddMiscCommand standardCommand = new AddMiscCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_AMY));
