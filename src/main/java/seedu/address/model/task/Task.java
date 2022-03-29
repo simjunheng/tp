@@ -2,7 +2,11 @@ package seedu.address.model.task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,13 +15,14 @@ import java.util.Set;
 import seedu.address.model.name.Name;
 import seedu.address.model.tag.Tag;
 
-public class Task {
+public class Task implements Comparable<Task> {
 
     //Identity fields
     private final Name name;
     private final Date date;
     private final StartTime startTime;
     private final EndTime endTime;
+    private String time; // Date + startTime for sorting comparisons in SortTaskByDateCommand
 
     //Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -34,6 +39,7 @@ public class Task {
         this.endTime = endTime;
         this.tags.addAll(tags);
         this.persons.addAll(persons);
+        this.time = this.date.toString() + " " + this.startTime.toString();
     }
 
     //Getters
@@ -53,8 +59,13 @@ public class Task {
         return endTime;
     }
 
+    public String getTime() {
+        return time;
+    }
+
     /**
      * Returns the start and end time values joined together for Task Card label
+     *
      * @return appended values of start and end time
      */
     public String appendStartAndEndTime() {
@@ -107,7 +118,7 @@ public class Task {
         // checks if time ranges overlap (exclusive)
         boolean timeConflict =
                 thisTaskStart.isBefore(otherTaskEnd)
-                && otherTaskStart.isBefore(thisTaskEnd);
+                        && otherTaskStart.isBefore(thisTaskEnd);
 
         return otherTask != null
                 && otherTask.getDate().equals(getDate()) //test for same dates
@@ -163,12 +174,23 @@ public class Task {
         if (!persons.isEmpty()) {
             builder.append("; Persons: ");
             int count = 0;
-            for (Name name: persons) {
+            for (Name name : persons) {
                 builder.append(name);
                 builder.append(" ");
             }
         }
 
         return builder.toString();
+    }
+
+    @Override
+    public int compareTo(Task otherTask) {
+        DateTimeFormatter customFormat = DateTimeFormatter
+                .ofPattern("dd-MM-uuuu HH:mm").withResolverStyle(ResolverStyle.STRICT);
+
+        LocalDateTime date1 = LocalDateTime.parse(this.getTime(), customFormat);
+        LocalDateTime date2 = LocalDateTime.parse(otherTask.getTime(), customFormat);
+
+        return date1.compareTo(date2);
     }
 }

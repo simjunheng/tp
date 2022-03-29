@@ -8,11 +8,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
+import seedu.address.logic.parser.exceptions.ParseException;
+
 /**
  * Represents a Task's date in the schedule book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
-public class Date implements Comparable<Date> {
+public class Date {
     public static final String MESSAGE_CONSTRAINTS = "Date should be in the following format DD-MM-YYYY "
             + "and adhere to the following constraints: \n"
             + "1. YYYY should be a 4-digit numeric \n"
@@ -66,12 +68,5 @@ public class Date implements Comparable<Date> {
         return value.hashCode();
     }
 
-    @Override
-    public int compareTo(Date otherDate) {
-        // Covert to LocalDate and use LocalDate#compareTo since LocalDate implements Comparable
-        LocalDate date1 = LocalDate.parse(this.toString());
-        LocalDate date2 = LocalDate.parse(otherDate.toString());
-        return date1.compareTo(date2); // 1 means date1 is later than date2
-    }
 }
 
