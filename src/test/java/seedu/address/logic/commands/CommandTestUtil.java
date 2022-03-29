@@ -183,7 +183,7 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the tasks with the given {@code Name} in the
      * {@code model}'s task book.
      */
-    public static void showTaskAtName(Model model, Index targetIndex) {
+    public static void showTaskAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredTaskList().size());
 
         Task task = model.getFilteredTaskList().get(targetIndex.getZeroBased());
