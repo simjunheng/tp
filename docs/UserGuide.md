@@ -253,6 +253,18 @@ Examples:
 
 </div>
 
+#### 2.1.15 Sorting list of persons by strengths : `sort-strength`
+
+Sorts the list of persons by total strengths in descending order.
+
+Format: `sort-strength`
+
+#### 2.1.16 Sorting list of persons by weaknesses : `sort-weakness`
+
+Sorts the list of persons by total weaknesses in descending order.
+
+Format: `sort-weaknesses`
+
 
 ### 2.2 Task Management
 
