@@ -3,20 +3,12 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import javax.management.ConstructorParameters;
-
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.TaskBook;
-import seedu.address.model.task.Date;
 import seedu.address.model.task.Task;
 
 /**
@@ -50,7 +42,7 @@ public class SortTaskByDateCommand extends Command {
     }
 
     /**
-     * Sorts a List<Task> by date
+     * Sorts a task list by date
      *
      * @param oldList List to be sorted
      * @return List with tasks sorted by date

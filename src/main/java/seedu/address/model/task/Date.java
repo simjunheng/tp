@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
-import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Represents a Task's date in the schedule book.
