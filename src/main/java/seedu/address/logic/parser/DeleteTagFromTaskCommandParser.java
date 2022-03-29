@@ -6,7 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteTagCommand;
 import seedu.address.logic.commands.DeleteTagFromTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
@@ -46,7 +45,8 @@ public class DeleteTagFromTaskCommandParser implements Parser {
         try {
             tagName = values.get(2);
         } catch (IndexOutOfBoundsException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTagFromTaskCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    DeleteTagFromTaskCommand.MESSAGE_USAGE));
         }
         try {
             new Tag(tagName);
