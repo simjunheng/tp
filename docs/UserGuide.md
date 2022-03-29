@@ -410,7 +410,7 @@ Examples:
 **:information_source: Key things to take note of:**<br>
 
 * Loads the given image from the filepath `courts/IMAGE_NAME.png`.
-* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (will be automatically generated).
+* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (directory will be automatically generated).
 
 </div>
 
