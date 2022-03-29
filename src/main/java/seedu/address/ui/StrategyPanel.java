@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -44,6 +46,8 @@ public class StrategyPanel extends UiPart<Region> {
     private ImageView strategyImage;
     @FXML
     private AnchorPane strategyAnchorPane;
+    @FXML
+    private AnchorPane playerAnchorPane;
     @FXML
     private Slider vSlider;
     @FXML
@@ -91,8 +95,6 @@ public class StrategyPanel extends UiPart<Region> {
     public StrategyPanel(ObservableList<String> playerList) {
         super(FXML);
         initBackgroundImage();
-        vSlider.toBack();
-        hSlider.toBack();
         playerList.addListener((ListChangeListener<String>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
@@ -100,6 +102,29 @@ public class StrategyPanel extends UiPart<Region> {
                 } else if (change.wasRemoved()) {
                     changeOnDelete(change.getRemoved());
                 }
+            }
+        });
+        // brings slider to the back
+        vSlider.toBack();
+        hSlider.toBack();
+        sliderValueChangeOnWindowResize();
+    }
+
+    /**
+     * Listens to changes in the size of strategy anchor pane and reflects the
+     * value on the slider.
+     */
+    private void sliderValueChangeOnWindowResize() {
+        strategyAnchorPane.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                hSlider.setMax(Math.round(strategyAnchorPane.getWidth()));
+            }
+        });
+        strategyAnchorPane.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                vSlider.setMax(Math.round(strategyAnchorPane.getHeight()));
             }
         });
     }
