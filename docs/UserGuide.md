@@ -16,7 +16,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest '.jar' file.
+1. Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2k22.
 
@@ -188,7 +188,7 @@ Add a miscellaneous note to a selected person from our contact list.
 Format: `misc-add INDEX  NOTE_DESCRIPTION`
 
 Examples:
-* `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
+* `misc-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
 
 #### 2.1.12 Deleting a strength : `strength-del`
@@ -478,6 +478,8 @@ Format: `exit`
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
 
+**Q**: What is the purpose of having a separate command for listing player strengths and weaknesses<br>
+**A**: These functions allow coach to judge players based on their respective strengths/weaknesses for improved judgement of abilities, analyzing their liabilities, and strategically choosing the right player for the right purpose.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **4. Command summary**
