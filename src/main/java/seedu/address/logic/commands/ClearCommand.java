@@ -47,7 +47,7 @@ public class ClearCommand extends Command {
      * edited with {@code editTaskDescriptor}.
      */
     public static Task createEditedTask(Task taskToEdit, EditTaskDescriptor editTaskDescriptor) {
-        assert taskToEdit != null;
+        requireNonNull(taskToEdit);
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         Date updatedDate = editTaskDescriptor.getDate().orElse(taskToEdit.getDate());
