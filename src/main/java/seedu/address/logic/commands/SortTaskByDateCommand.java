@@ -22,30 +22,16 @@ public class SortTaskByDateCommand extends Command {
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Sorted tasks by date";
 
-    private final Index targetIndex;
-
-    public SortTaskByDateCommand(Index targetIndex) {
-        this.targetIndex = targetIndex;
-    }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Task> lastShownList = model.getFilteredTaskList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-        }
-
-        Task taskToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteTask(taskToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+        return null;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteTaskCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteTaskCommand) other).targetIndex)); // state check
+                || (other instanceof SortTaskByDateCommand); // instanceof handles nulls
     }
 }
