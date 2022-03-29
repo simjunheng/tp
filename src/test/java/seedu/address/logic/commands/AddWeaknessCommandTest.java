@@ -82,6 +82,17 @@ public class AddWeaknessCommandTest {
     }
 
     @Test
+    public void execute_duplicateWeakness_failure() {
+        Person person = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        assert person.getWeaknesses().size() > 0;
+        Note duplicateWeakness = person.getWeaknesses().get(0);
+
+        AddWeaknessCommand addWeaknessCommand = new AddWeaknessCommand(INDEX_SECOND_PERSON, duplicateWeakness);
+
+        assertCommandFailure(addWeaknessCommand, model, Messages.MESSAGE_DUPLICATE_WEAKNESS);
+    }
+
+    @Test
     public void equals() {
         final AddWeaknessCommand standardCommand = new AddWeaknessCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_AMY));

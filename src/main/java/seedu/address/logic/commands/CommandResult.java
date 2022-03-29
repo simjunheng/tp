@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Tabs.DEFAULT;
 
 import java.util.Objects;
 
@@ -24,6 +25,8 @@ public class CommandResult {
      */
     private final boolean exit;
 
+    private final int tabPane;
+
     /**
      * The background image of StrategyBoard should be changed
      */
@@ -34,25 +37,20 @@ public class CommandResult {
      */
     private final Image image;
 
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      * <p>
      * Specifically used for loading background image for Strategy Panel.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean isLoadImage, Image image) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, int tabPane,
+        boolean isLoadImage, Image image) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.isLoadImage = isLoadImage;
         this.image = image;
         this.exit = exit;
-    }
-
-    /**
-     * Constructs a {@code CommandResult} with the specified fields,
-     * and isLoadImage set to false.
-     */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this(feedbackToUser, showHelp, exit, false, null);
+        this.tabPane = tabPane;
     }
 
     /**
@@ -60,7 +58,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, DEFAULT, false, null);
     }
 
     public String getFeedbackToUser() {
@@ -75,6 +73,10 @@ public class CommandResult {
         return exit;
     }
 
+    public int getTabPane() {
+        return tabPane;
+    }
+
     public boolean isLoadImageCommand() {
         return isLoadImage;
     }
@@ -82,7 +84,6 @@ public class CommandResult {
     public Image getBackgroundImage() {
         return image;
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -98,12 +99,15 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && tabPane == otherCommandResult.tabPane
+                && isLoadImage == otherCommandResult.isLoadImage
+                && image == otherCommandResult.image;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, tabPane, isLoadImage, image);
     }
 
     @Override
@@ -112,6 +116,9 @@ public class CommandResult {
                 + "feedbackToUser='" + feedbackToUser + '\''
                 + ", showHelp=" + showHelp
                 + ", exit=" + exit
+                + ", tabPane=" + tabPane
+                + ", isLoadImage=" + isLoadImage
+                + ", image=" + image
                 + '}';
     }
 }

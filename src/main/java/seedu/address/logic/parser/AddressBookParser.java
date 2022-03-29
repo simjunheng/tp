@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddTagCommand;
+import seedu.address.logic.commands.AddTagToTaskCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ClearTaskCommand;
@@ -19,6 +20,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindTaskCommand;
+import seedu.address.logic.commands.GetPersonCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListTaskCommand;
@@ -97,6 +99,9 @@ public class AddressBookParser {
         case FindTaskCommand.COMMAND_WORD:
             return new FindTaskCommandParser().parse(arguments);
 
+        case GetPersonCommand.COMMAND_WORD:
+            return new GetPersonCommandParser().parse(arguments);
+
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
@@ -147,6 +152,9 @@ public class AddressBookParser {
 
         case LoadCourtCommand.COMMAND_WORD:
             return new LoadCourtCommandParser().parse(arguments);
+
+        case AddTagToTaskCommand.COMMAND_WORD:
+            return new AddTagToTaskCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

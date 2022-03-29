@@ -6,20 +6,24 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddTagCommand;
+import seedu.address.logic.commands.AddTagToTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
-public class AddTagCommandParser implements Parser {
+/**
+ * Parses input arguments and creates a new AddTaskCommand object
+ */
+public class AddTagToTaskCommandParser implements Parser {
     /**
-     * Parses the given {@code String} of arguments in the context of the {@code AddTagCommand}
-     * and returns a {@code AddTagCommand} object for execution
+     * Parses the given {@code String} of arguments in the context of the {@code AddTagToTaskCommandParser}
+     * and returns a {@code AddTagToTaskCommand} object for execution
      * * @param args Input string by user EXCEPT COMMAND WORD
      *
-     * @return DeleteTagCommand object with arguments loaded in
+     * @return AddTagToTaskCommand object with arguments loaded in
      * @throws ParseException If the user input does not conform to the expected format
      */
-    public AddTagCommand parse(String args) throws ParseException {
+
+    public AddTagToTaskCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         // Tokenize all arguments
@@ -42,10 +46,10 @@ public class AddTagCommandParser implements Parser {
             new Tag(tagName);
         } catch (Exception e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddTagCommand.MESSAGE_USAGE));
+                    AddTagToTaskCommand.MESSAGE_USAGE));
         }
 
-        return new AddTagCommand(index, tagName);
+        return new AddTagToTaskCommand(index, tagName);
     }
 
 }
