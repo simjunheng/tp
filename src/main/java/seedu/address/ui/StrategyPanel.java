@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -43,6 +44,10 @@ public class StrategyPanel extends UiPart<Region> {
     private ImageView strategyImage;
     @FXML
     private AnchorPane strategyAnchorPane;
+    @FXML
+    private Slider vSlider;
+    @FXML
+    private Slider hSlider;
 
 
     // Credit to http://java-buddy.blogspot.com/2013/07/move-node-to-front.html
@@ -86,6 +91,8 @@ public class StrategyPanel extends UiPart<Region> {
     public StrategyPanel(ObservableList<String> playerList) {
         super(FXML);
         initBackgroundImage();
+        vSlider.toBack();
+        hSlider.toBack();
         playerList.addListener((ListChangeListener<String>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
