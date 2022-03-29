@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.strategy.Player;
 import seedu.address.model.strategy.UniquePlayerList;
 
 /**
@@ -39,7 +40,7 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
     /**
      * Replaces the contents of the player list with {@code players}.
      */
-    public void setPlayers(List<String> players) {
+    public void setPlayers(List<Player> players) {
         this.players.setPlayers(players);
     }
 
@@ -57,7 +58,7 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
     /**
      * Returns true if a player with the same identity as {@code player} exists in the address book.
      */
-    public boolean hasPlayer(String player) {
+    public boolean hasPlayer(Player player) {
         requireNonNull(player);
         return players.contains(player);
     }
@@ -66,7 +67,7 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
      * Adds a player to the Strategy Board.
      * The player must not already exist in the strategy board.
      */
-    public void addPlayer(String t) {
+    public void addPlayer(Player t) {
         players.add(t);
     }
 
@@ -74,10 +75,15 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
      * Removes {@code key} from this {@code StrategyBoard}.
      * {@code key} must exist in the strategy board.
      */
-    public void removePlayer(String key) {
+    public void removePlayer(Player key) {
         players.remove(key);
     }
 
+    public void setPlayer(Player target, Player editedPlayer) {
+        requireNonNull(editedPlayer);
+
+        players.setPlayer(target, editedPlayer);
+    }
     //// util methods
 
     @Override
@@ -86,7 +92,7 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
     }
 
     @Override
-    public ObservableList<String> getPlayerList() {
+    public ObservableList<Player> getPlayerList() {
         return players.asUnmodifiableObservableList();
     }
 
@@ -101,4 +107,6 @@ public class StrategyBoard implements ReadOnlyStrategyBoard {
     public int hashCode() {
         return players.hashCode();
     }
+
+
 }
