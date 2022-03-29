@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
@@ -38,11 +40,15 @@ public class SortWeaknessCommand extends Command {
     };
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownPersonList = model.getUnfilteredPersonList();
         List<Person> newPersonList = new ArrayList<>(lastShownPersonList);
         AddressBook newAddressBook = new AddressBook();
+
+        if (newPersonList.isEmpty()) {
+            throw new CommandException(Messages.MESSAGE_EMPTY_PERSON_LIST);
+        }
 
         newPersonList.sort(BY_WEAKNESSES);
         for (Person p : newPersonList) {
