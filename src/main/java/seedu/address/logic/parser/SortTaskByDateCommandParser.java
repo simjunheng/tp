@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.SortTaskByDateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.name.Name;
 import seedu.address.model.note.Note;
@@ -25,34 +26,23 @@ import seedu.address.model.tag.Tag;
 /**
  * Parses input arguments and creates a new AddCommand object
  */
-public class SortTaskByDateCommandParser implements Parser<AddCommand> {
+public class SortTaskByDateCommandParser implements Parser<SortTaskByDateCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public SortTaskCommand parse(String args) throws ParseException {
+    public SortTaskByDateCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        List<Note> strengthList = new ArrayList<>();
-        List<Note> weaknessList = new ArrayList<>();
-        List<Note> miscList = new ArrayList<>();
-
-        Person person = new Person(name, phone, email, address, tagList, strengthList, weaknessList, miscList);
-
-        return new AddCommand(person);
+        return new SortTaskByDateCommand();
     }
 
     /**
