@@ -57,12 +57,17 @@ public class AddStrengthCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newStrength = new ArrayList<>(personToEdit.getStrengths());
-        newStrength.add(strength);
+        List<Note> newStrengthList = new ArrayList<>(personToEdit.getStrengths());
+
+        if (newStrengthList.contains(strength)) { //makes sure note does not already exist for given person
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_STRENGTH);
+        }
+
+        newStrengthList.add(strength);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), newStrength, personToEdit.getWeaknesses(),
+                personToEdit.getAddress(), personToEdit.getTags(), newStrengthList, personToEdit.getWeaknesses(),
                 personToEdit.getMiscellaneous());
 
         model.setPerson(personToEdit, editedPerson);

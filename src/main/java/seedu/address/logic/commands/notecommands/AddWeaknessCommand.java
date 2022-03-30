@@ -57,12 +57,17 @@ public class AddWeaknessCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newWeakness = new ArrayList<>(personToEdit.getWeaknesses());
-        newWeakness.add(weakness);
+        List<Note> newWeaknessList = new ArrayList<>(personToEdit.getWeaknesses());
+
+        if (newWeaknessList.contains(weakness)) { //makes sure note does not already exist for given person
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_WEAKNESS);
+        }
+
+        newWeaknessList.add(weakness);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(), newWeakness,
+                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(), newWeaknessList,
                 personToEdit.getMiscellaneous());
 
         model.setPerson(personToEdit, editedPerson);

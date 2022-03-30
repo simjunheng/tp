@@ -28,7 +28,7 @@ public class TaskTest {
         assertFalse(FIRST_TASK.isSameTask(null));
 
         // same name, all other attributes different -> returns true
-        Task editedFirstTask = new TaskBuilder().withName("Meeting").withDate("09-01-2011")
+        Task editedFirstTask = new TaskBuilder().withName("Meetings").withDate("09-01-2011")
                 .withStartTime("00:00").withEndTime("01:00").withTags("hello").build();
         assertTrue(FIRST_TASK.isSameTask(editedFirstTask));
 
@@ -40,7 +40,7 @@ public class TaskTest {
         assertFalse(FIRST_TASK.isSameTask(editedFirstTask));
 
         // name with trailing spaces, all other attributes same -> returns false
-        editedFirstTask = new TaskBuilder().withName("Meeting  ").withDate("09-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Meetings  ").withDate("09-10-2022")
                 .withStartTime("09:00").withEndTime("10:00")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
@@ -54,35 +54,35 @@ public class TaskTest {
         assertTrue(FIRST_TASK.hasDateTimeConflict(FIRST_TASK));
 
         // non-conflicting time range, all attributes remains the same -> returns false
-        Task editedFirstTask = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
+        Task editedFirstTask = new TaskBuilder().withName("Meetings").withDate("09-10-2022")
                 .withStartTime("00:00").withEndTime("01:00")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
         assertFalse(FIRST_TASK.hasDateTimeConflict(editedFirstTask));
 
         // different date, all attributes remains the same -> returns false
-        editedFirstTask = new TaskBuilder().withName("Meeting").withDate("10-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Meetings").withDate("10-10-2022")
                 .withStartTime("09:00").withEndTime("10:00")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
         assertFalse(FIRST_TASK.hasDateTimeConflict(editedFirstTask));
 
         // conflicting time range v1, all attributes remains the same -> returns true
-        editedFirstTask = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Meetings").withDate("09-10-2022")
                 .withStartTime("09:00").withEndTime("10:30")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
         assertTrue(FIRST_TASK.hasDateTimeConflict(editedFirstTask));
 
         // conflicting time range v2, all attributes remains the same -> returns true
-        editedFirstTask = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Meetings").withDate("09-10-2022")
                 .withStartTime("09:30").withEndTime("10:30")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
         assertTrue(FIRST_TASK.hasDateTimeConflict(editedFirstTask));
 
         // edited start time is the same as the original end time, all attributes remains the same -> returns false
-        editedFirstTask = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
+        editedFirstTask = new TaskBuilder().withName("Meetings").withDate("09-10-2022")
                 .withStartTime("10:00").withEndTime("10:30")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
@@ -93,7 +93,7 @@ public class TaskTest {
     @Test
     public void equals() {
         // same values -> returns true
-        Task firstTaskCopy = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
+        Task firstTaskCopy = new TaskBuilder().withName("Meetings").withDate("09-10-2022")
                 .withStartTime("09:00").withEndTime("10:00")
                 .withTags("friends", "colleagues")
                 .withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();

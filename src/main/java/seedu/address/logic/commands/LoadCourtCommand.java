@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.core.Tabs.DEFAULT;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.io.File;
@@ -44,7 +45,8 @@ public class LoadCourtCommand extends Command {
 
         }
 
-        return new CommandResult(generateSuccessMessage(image), false, false, true, this.image);
+        return new CommandResult(generateSuccessMessage(image), false, false,
+                DEFAULT, true, this.image);
     }
 
     /**
