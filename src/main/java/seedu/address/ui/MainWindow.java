@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -17,6 +18,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.image.Image;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -58,6 +60,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabPane;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -123,7 +128,7 @@ public class MainWindow extends UiPart<Stage> {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-        strategyPanel = new StrategyPanel();
+        strategyPanel = new StrategyPanel(logic.getFilteredPlayerList());
         strategyPanelPlaceholder.getChildren().add(strategyPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -176,6 +181,15 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+
+    private void switchTab(int index) {
+        tabPane.getSelectionModel().select(index);
+    }
+
+    private void handleLoadImage(Image image) {
+        strategyPanel.changeImageBackground(image.getImagePath());
+    }
+
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
@@ -199,6 +213,12 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            switchTab(commandResult.getTabPane());
+
+            if (commandResult.isLoadImageCommand()) {
+                Image backGroundImage = commandResult.getBackgroundImage();
+                handleLoadImage(backGroundImage);
+            }
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);

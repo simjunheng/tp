@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.notecommands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -30,12 +31,7 @@ public class AddWeaknessCommand extends Command {
             + "1 "
             + "Poor endurance";
 
-    public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "AddWeakness command not implemented yet";
-
     public static final String MESSAGE_SUCCESS = "New weakness added: %1$s";
-
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Weakness: %2$s";
 
     private final Index index;
     private final Note weakness;
@@ -53,6 +49,7 @@ public class AddWeaknessCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
@@ -60,12 +57,17 @@ public class AddWeaknessCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newWeakness = new ArrayList<>(personToEdit.getWeaknesses());
-        newWeakness.add(weakness);
+        List<Note> newWeaknessList = new ArrayList<>(personToEdit.getWeaknesses());
+
+        if (newWeaknessList.contains(weakness)) { //makes sure note does not already exist for given person
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_WEAKNESS);
+        }
+
+        newWeaknessList.add(weakness);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(), newWeakness,
+                personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(), newWeaknessList,
                 personToEdit.getMiscellaneous());
 
         model.setPerson(personToEdit, editedPerson);

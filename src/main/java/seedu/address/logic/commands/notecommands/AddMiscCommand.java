@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.notecommands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -30,12 +31,7 @@ public class AddMiscCommand extends Command {
             + "1 "
             + "Surgery Scheduled for tomorrow";
 
-    public static final String MESSAGE_NOT_IMPLEMENTED_YET =
-            "AddMisc command not implemented yet";
-
     public static final String MESSAGE_SUCCESS = "New miscellaneous note added: %1$s";
-
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Misc: %2$s";
 
     private final Index index;
     private final Note misc;
@@ -53,6 +49,7 @@ public class AddMiscCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
@@ -60,13 +57,18 @@ public class AddMiscCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        List<Note> newMisc = new ArrayList<>(personToEdit.getMiscellaneous());
-        newMisc.add(misc);
+        List<Note> newMiscList = new ArrayList<>(personToEdit.getMiscellaneous());
+
+        if (newMiscList.contains(misc)) { //makes sure note does not already exist for given person
+            throw new CommandException(Messages.MESSAGE_DUPLICATE_MISC);
+        }
+
+        newMiscList.add(misc);
 
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getTags(), personToEdit.getStrengths(),
-                personToEdit.getWeaknesses(), newMisc);
+                personToEdit.getWeaknesses(), newMiscList);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

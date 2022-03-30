@@ -25,13 +25,13 @@ import seedu.address.model.task.Task;
  * A utility class containing a list of {@code Task} objects to be used in tests.
  */
 public class TypicalTasks {
-    public static final Task FIRST_TASK = new TaskBuilder().withName("Meeting").withDate("09-10-2022")
+    public static final Task FIRST_TASK = new TaskBuilder().withName("Meetings").withDate("09-10-2022")
             .withStartTime("09:00").withEndTime("10:00")
             .withTags("friends", "colleagues").withPersons(ALICE.getName().fullName, BENSON.getName().fullName).build();
     public static final Task SECOND_TASK = new TaskBuilder().withName("Training").withDate("29-02-2020")
             .withStartTime("14:00").withEndTime("16:00")
             .withTags("colleagues").withPersons(CARL.getName().fullName).build();
-    public static final Task THIRD_TASK = new TaskBuilder().withName("Shareholder Meeting").withDate("29-02-2020")
+    public static final Task THIRD_TASK = new TaskBuilder().withName("Shareholder Conference").withDate("29-02-2020")
             .withStartTime("14:00").withEndTime("16:00")
             .withTags("colleagues").withPersons(BENSON.getName().fullName).build();
 
@@ -62,7 +62,7 @@ public class TypicalTasks {
     private TypicalTasks() {} // prevents instantiation
 
     /**
-     * Returns an {@code TaskBook} with all the typical persons.
+     * Returns an {@code TaskBook} with all the typical tasks.
      */
     public static TaskBook getTypicalTaskBook() {
         TaskBook tb = new TaskBook();

@@ -7,7 +7,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_TASKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.FIRST_TASK;
-import static seedu.address.testutil.TypicalTasks.THIRD_TASK;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
 import java.util.Arrays;
@@ -18,6 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.name.TaskNameContainsKeywordsPredicate;
 import seedu.address.model.tag.TaskTagContainsKeywordsPredicate;
@@ -25,8 +25,10 @@ import seedu.address.model.tag.TaskTagContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindTaskCommand}.
  */
 public class FindTaskCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void equals() {
@@ -77,13 +79,13 @@ public class FindTaskCommandTest {
     public void execute_multipleKeywords_multiplePersonsAndTagsFound() {
         List<String> nameList = Arrays.asList("Meeting", "Dinner");
         List<String> tagList = Arrays.asList("friends", "neighbours");
-        String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 2);
+        String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 1);
         TaskNameContainsKeywordsPredicate namePredicate = prepareNamePredicate(nameList);
         TaskTagContainsKeywordsPredicate tagPredicate = prepareTagPredicate(tagList);
         FindTaskCommand command = new FindTaskCommand(namePredicate, tagPredicate);
         expectedModel.updateFilteredTaskList(namePredicate.or(tagPredicate));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(FIRST_TASK, THIRD_TASK), model.getFilteredTaskList());
+        assertEquals(Arrays.asList(FIRST_TASK), model.getFilteredTaskList());
     }
 
     /**
