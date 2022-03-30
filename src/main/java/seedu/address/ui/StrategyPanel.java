@@ -29,6 +29,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.strategy.Player;
 
 public class StrategyPanel extends UiPart<Region> {
     private static final String FXML = "StrategyPanel.fxml";
@@ -92,15 +93,17 @@ public class StrategyPanel extends UiPart<Region> {
     /**
      * Creates a {@code StrategyPanel} with draggable circles.
      */
-    public StrategyPanel(ObservableList<String> playerList) {
+    public StrategyPanel(ObservableList<Player> playerList) {
         super(FXML);
         initBackgroundImage();
-        playerList.addListener((ListChangeListener<String>) change -> {
+        playerList.addListener((ListChangeListener<Player>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
                     changeOnAdd(change.getAddedSubList());
                 } else if (change.wasRemoved()) {
                     changeOnDelete(change.getRemoved());
+                } else if (change.wasReplaced()) {
+                    changeOnReplace(change.getRemoved(), change.getAddedSubList());
                 }
             }
         });
@@ -129,25 +132,32 @@ public class StrategyPanel extends UiPart<Region> {
         });
     }
 
-    private void changeOnAdd(List<? extends String> addedSubList) {
-        for (String playerName : addedSubList) {
+    private void changeOnAdd(List<? extends Player> addedSubList) {
+        for (Player player : addedSubList) {
+            String playerName = player.getName();
             if (table.containsKey(playerName)) {
                 continue;
             }
             StackPane stack = new StackPane();
-            initStack(stack, playerName, 100, 100, 50, Color.BLUE);
+            initStack(stack, playerName, player.getXCoord(), player.getYCoord(), 50, Color.BLUE);
             playerView.getChildren().add(stack);
             table.put(playerName, stack);
         }
     }
 
-    private void changeOnDelete(List<? extends String> removeList) {
-        for (String playerName : removeList) {
+    private void changeOnDelete(List<? extends Player> removeList) {
+        for (Player player : removeList) {
+            String playerName = player.getName();
             if (table.containsKey(playerName)) {
                 playerView.getChildren().remove(table.get(playerName));
                 table.remove(playerName);
             }
         }
+    }
+
+    private void changeOnReplace(List<? extends Player> removeList, List<? extends Player> addSubList) {
+        changeOnDelete(removeList);
+        changeOnAdd(addSubList);
     }
 
     /**
@@ -195,6 +205,8 @@ public class StrategyPanel extends UiPart<Region> {
         text.xProperty().bind(cr.centerXProperty());
         text.yProperty().bind(cr.centerYProperty());
         stack.getChildren().addAll(cr, text);
+        stack.setTranslateX(x);
+        stack.setTranslateY(y);
         stack.setOnMousePressed(pressHandler);
         stack.setOnMouseDragged(dragHandler);
     }

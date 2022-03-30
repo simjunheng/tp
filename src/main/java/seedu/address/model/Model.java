@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
+import seedu.address.model.strategy.Player;
 import seedu.address.model.task.Task;
 
 /**
@@ -15,7 +16,7 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
-    Predicate<String> PREDICATE_SHOW_ALL_PLAYERS = unused -> true;
+    Predicate<Player> PREDICATE_SHOW_ALL_PLAYERS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -156,26 +157,31 @@ public interface Model {
     /**
      * Returns true if a player with the same identity as {@code player} exists in the strategy board.
      */
-    boolean hasPlayer(String player);
+    boolean hasPlayer(Player player);
 
     /**
      * Deletes the given player.
      * The task must exist in the strategy board.
      */
-    void deletePlayer(String target);
+    void deletePlayer(Player target);
 
     /**
      * Adds the given player.
      * {@code player} must not already exist in the strategy board.
      */
-    void addPlayer(String player);
+    void addPlayer(Player player);
+
+    /**
+     * Replaces the given player {@code target} with {@code editedPlayer}.
+     */
+    void setPlayer(Player target, Player editedPlayer);
 
     /** Returns an unmodifiable view of the filtered player list */
-    ObservableList<String> getFilteredPlayerList();
+    ObservableList<Player> getFilteredPlayerList();
 
     /**
      * Updates the filter of the filtered player list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPlayerList(Predicate<String> predicate);
+    void updateFilteredPlayerList(Predicate<Player> predicate);
 }

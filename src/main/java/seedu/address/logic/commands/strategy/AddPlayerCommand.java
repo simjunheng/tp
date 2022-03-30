@@ -8,6 +8,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.strategy.Player;
 
 /**
  * Adds a player in the strategy panel
@@ -47,11 +48,12 @@ public class AddPlayerCommand extends Command {
         }
         requireNonNull(model);
 
-        if (model.hasPlayer(playerName)) {
+        Player player = new Player(playerName);
+        if (model.hasPlayer(player)) {
             throw new CommandException(MESSAGE_DUPLICATE_PLAYER);
         }
 
-        model.addPlayer(playerName);
+        model.addPlayer(player);
         return new CommandResult(String.format(MESSAGE_SUCCESS, playerName));
     }
 

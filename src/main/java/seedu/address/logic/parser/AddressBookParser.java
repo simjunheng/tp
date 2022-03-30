@@ -36,6 +36,7 @@ import seedu.address.logic.commands.notecommands.DeleteStrengthCommand;
 import seedu.address.logic.commands.notecommands.DeleteWeaknessCommand;
 import seedu.address.logic.commands.strategy.AddPlayerCommand;
 import seedu.address.logic.commands.strategy.DeletePlayerCommand;
+import seedu.address.logic.commands.strategy.MovePlayerCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.notecommandparsers.AddMiscCommandParser;
 import seedu.address.logic.parser.notecommandparsers.AddStrengthCommandParser;
@@ -45,6 +46,7 @@ import seedu.address.logic.parser.notecommandparsers.DeleteStrengthCommandParser
 import seedu.address.logic.parser.notecommandparsers.DeleteWeaknessCommandParser;
 import seedu.address.logic.parser.strategy.AddPlayerCommandParser;
 import seedu.address.logic.parser.strategy.DeletePlayerCommandParser;
+import seedu.address.logic.parser.strategy.MovePlayerCommandParser;
 
 /**
  * Parses user input.
@@ -156,6 +158,9 @@ public class AddressBookParser {
 
         case AddTagToTaskCommand.COMMAND_WORD:
             return new AddTagToTaskCommandParser().parse(arguments);
+
+        case MovePlayerCommand.COMMAND_WORD:
+            return new MovePlayerCommandParser().parse(arguments);
 
         case SortTaskByDateCommand.COMMAND_WORD:
             return new SortTaskByDateCommand();

@@ -8,6 +8,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.strategy.Player;
 
 /**
  * Deletes a player in the strategy panel
@@ -45,12 +46,13 @@ public class DeletePlayerCommand extends Command {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPlayerCommand.MESSAGE_USAGE));
         }
 
-        if (!model.hasPlayer(playerName)) {
+        Player player = new Player(playerName);
+        if (!model.hasPlayer(player)) {
             throw new CommandException(
                     String.format(MESSAGE_PLAYER_NOT_FOUND, playerName));
         }
         requireNonNull(model);
-        model.deletePlayer(playerName);
+        model.deletePlayer(player);
         return new CommandResult(String.format(MESSAGE_SUCCESS, playerName));
     }
 

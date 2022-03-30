@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Person;
+import seedu.address.model.strategy.Player;
 import seedu.address.model.task.Task;
 
 /**
@@ -38,7 +39,7 @@ public interface Logic {
     ObservableList<Task> getFilteredTaskList();
 
     /** Returns an unmodifiable view of the filtered list of players */
-    ObservableList<String> getFilteredPlayerList();
+    ObservableList<Player> getFilteredPlayerList();
 
     /**
      * Returns the user prefs' address book file path.
