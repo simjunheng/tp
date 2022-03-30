@@ -6,29 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddTagCommand;
-import seedu.address.logic.commands.AddTagToTaskCommand;
-import seedu.address.logic.commands.AddTaskCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.ClearTaskCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteTagCommand;
-import seedu.address.logic.commands.DeleteTaskCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditTaskCommand;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FindTaskCommand;
-import seedu.address.logic.commands.GetPersonCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.ListTaskCommand;
-import seedu.address.logic.commands.LoadCourtCommand;
-import seedu.address.logic.commands.SortStrengthCommand;
-import seedu.address.logic.commands.SortTaskByDateCommand;
-import seedu.address.logic.commands.SortWeaknessCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.notecommands.AddStrengthCommand;
 import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
@@ -168,6 +146,9 @@ public class AddressBookParser {
 
         case SortTaskByDateCommand.COMMAND_WORD:
             return new SortTaskByDateCommand();
+
+        case ExportCommand.COMMAND_WORD:
+            return new ExportCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

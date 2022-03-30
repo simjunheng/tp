@@ -1,6 +1,8 @@
 package seedu.address.ui;
 
+import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,12 +13,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -27,9 +31,12 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.strategy.Player;
+
+import javax.imageio.ImageIO;
 
 public class StrategyPanel extends UiPart<Region> {
     private static final String FXML = "StrategyPanel.fxml";
@@ -209,5 +216,34 @@ public class StrategyPanel extends UiPart<Region> {
         stack.setTranslateY(y);
         stack.setOnMousePressed(pressHandler);
         stack.setOnMouseDragged(dragHandler);
+    }
+
+    //https://stackoverflow.com/questions/38028825/javafx-save-view-of-pane-to-image
+    public void captureAndSaveStrategyPanel(){
+
+            FileChooser chooser = new FileChooser();
+
+            //include title name randomization
+            chooser.setInitialFileName("title" + ".png");
+            chooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+            File file = chooser.showSaveDialog(null);
+
+        if(file != null){
+            try {
+//                //parameters
+//                SnapshotParameters sp = new SnapshotParameters();
+//                sp.setFill(Color.TRANSPARENT);
+
+                //no edits to capture area
+                WritableImage image = strategyAnchorPane.snapshot(null, null);
+                RenderedImage renderedImage = SwingFXUtils.fromFXImage(image, null);
+
+                //Write the snapshot to the chosen file
+                ImageIO.write(renderedImage, "png", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

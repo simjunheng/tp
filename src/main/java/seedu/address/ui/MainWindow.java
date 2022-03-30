@@ -1,17 +1,29 @@
 package seedu.address.ui;
 
+import java.io.File;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -19,6 +31,8 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.image.Image;
+
+import javax.imageio.ImageIO;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -181,13 +195,16 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-
     private void switchTab(int index) {
         tabPane.getSelectionModel().select(index);
     }
 
     private void handleLoadImage(Image image) {
         strategyPanel.changeImageBackground(image.getImagePath());
+    }
+
+    private void handleExport() {
+        strategyPanel.captureAndSaveStrategyPanel();
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -219,6 +236,11 @@ public class MainWindow extends UiPart<Stage> {
                 Image backGroundImage = commandResult.getBackgroundImage();
                 handleLoadImage(backGroundImage);
             }
+
+            if (commandResult.isExportCommand()) {
+                handleExport();
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
