@@ -153,7 +153,7 @@ public class AddressBookParser {
 
         case MovePlayerCommand.COMMAND_WORD:
             return new MovePlayerCommandParser().parse(arguments);
-            
+
         case SortTaskByDateCommand.COMMAND_WORD:
             return new SortTaskByDateCommand();
 
