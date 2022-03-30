@@ -30,7 +30,7 @@ public class ExportCommand extends Command{
     @Override
     public CommandResult execute(Model model) {
         requireAllNonNull(model);
-        return new CommandResult(SHOWING_EXPORT_MESSAGE, false, true, DEFAULT, false, null, true);
+        return new CommandResult(SHOWING_EXPORT_MESSAGE, false, false, DEFAULT, false, null, true);
     }
 
 
