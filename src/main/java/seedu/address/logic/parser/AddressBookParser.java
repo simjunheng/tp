@@ -25,7 +25,9 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.LoadCourtCommand;
+import seedu.address.logic.commands.SortStrengthCommand;
 import seedu.address.logic.commands.SortTaskByDateCommand;
+import seedu.address.logic.commands.SortWeaknessCommand;
 import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.notecommands.AddStrengthCommand;
 import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
@@ -108,6 +110,12 @@ public class AddressBookParser {
 
         case ListTaskCommand.COMMAND_WORD:
             return new ListTaskCommand();
+
+        case SortStrengthCommand.COMMAND_WORD:
+            return new SortStrengthCommand();
+
+        case SortWeaknessCommand.COMMAND_WORD:
+            return new SortWeaknessCommand();
 
         case AddStrengthCommand.COMMAND_WORD:
             return new AddStrengthCommandParser().parse(arguments);
