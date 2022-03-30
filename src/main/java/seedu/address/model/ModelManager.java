@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.strategy.Player;
 import seedu.address.model.task.Task;
 
 /**
@@ -26,7 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
-    private final FilteredList<String> filteredPlayers;
+    private final FilteredList<Player> filteredPlayers;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -225,30 +226,28 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPlayer(String player) {
+    public boolean hasPlayer(Player player) {
         requireNonNull(player);
         return strategyBoard.hasPlayer(player);
     }
 
     @Override
-    public void deletePlayer(String target) {
+    public void deletePlayer(Player target) {
         strategyBoard.removePlayer(target);
     }
 
     @Override
-    public void addPlayer(String player) {
+    public void addPlayer(Player player) {
         strategyBoard.addPlayer(player);
         updateFilteredPlayerList(PREDICATE_SHOW_ALL_PLAYERS);
     }
 
-    /*
     @Override
-    public void setPlayer(String target,  editedTask) {
-        requireAllNonNull(target, editedTask);
+    public void setPlayer(Player target, Player editedPlayer) {
+        requireAllNonNull(target, editedPlayer);
 
-        taskBook.setTask(target, editedTask);
+        strategyBoard.setPlayer(target, editedPlayer);
     }
-    */
 
     //=========== Filtered Player List Accessors =============================================================
 
@@ -257,12 +256,12 @@ public class ModelManager implements Model {
      * {@code versionedStrategyBoard}
      */
     @Override
-    public ObservableList<String> getFilteredPlayerList() {
+    public ObservableList<Player> getFilteredPlayerList() {
         return filteredPlayers;
     }
 
     @Override
-    public void updateFilteredPlayerList(Predicate<String> predicate) {
+    public void updateFilteredPlayerList(Predicate<Player> predicate) {
         requireNonNull(predicate);
         filteredPlayers.setPredicate(predicate);
     }
