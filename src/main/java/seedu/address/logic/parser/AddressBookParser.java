@@ -26,6 +26,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.LoadCourtCommand;
 import seedu.address.logic.commands.SortStrengthCommand;
+import seedu.address.logic.commands.SortTaskByDateCommand;
 import seedu.address.logic.commands.SortWeaknessCommand;
 import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.notecommands.AddStrengthCommand;
@@ -155,6 +156,9 @@ public class AddressBookParser {
 
         case AddTagToTaskCommand.COMMAND_WORD:
             return new AddTagToTaskCommandParser().parse(arguments);
+
+        case SortTaskByDateCommand.COMMAND_WORD:
+            return new SortTaskByDateCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
