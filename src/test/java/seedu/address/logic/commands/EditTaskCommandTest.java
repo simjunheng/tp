@@ -22,6 +22,7 @@ import seedu.address.logic.EditTaskDescriptor;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.StrategyBoard;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.EditTaskDescriptorBuilder;
@@ -32,7 +33,8 @@ import seedu.address.testutil.TaskBuilder;
  */
 public class EditTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalTaskBook(),
+            new StrategyBoard(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -43,7 +45,7 @@ public class EditTaskCommandTest {
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                model.getTaskBook(), new UserPrefs());
+                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
         expectedModel.setTask(model.getFilteredTaskList().get(0), editedTask);
 
         assertCommandSuccess(editTaskCommand, model, expectedMessage, expectedModel);
@@ -65,7 +67,7 @@ public class EditTaskCommandTest {
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                model.getTaskBook(), new UserPrefs());
+                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
         expectedModel.setTask(lastTask, editedTask);
 
         assertCommandSuccess(editTaskCommand, model, expectedMessage, expectedModel);
@@ -79,7 +81,7 @@ public class EditTaskCommandTest {
         String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                model.getTaskBook(), new UserPrefs());
+                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
 
         assertCommandSuccess(editTaskCommand, model, expectedMessage, expectedModel);
     }
