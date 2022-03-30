@@ -496,8 +496,6 @@ Format: `exit`
 | **Add Tag**            | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                           |
 | **Del Tag**            | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                       |
 | **Find**               | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
-| **Add Note**           | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                                                                      |
-| **Del Note**           | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
 | **Add Strength**       | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                           |
 | **Add Weakness**       | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                                |
 | **Add Miscellaneous**  | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                     |

@@ -477,7 +477,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | organized coach                 | view players by their strengths and weaknesses                  | make informed decision on choosing the best person                           |
 | `* * *`  | disorganized coach              | add existing and upcoming tasks                                 | keep track of my schedule easily                                             |
 | `* * *`  | disorganized coach              | delete wrongly added or past tasks                              | organize my schedule better                                                  |
-| `* * *`  | strategic coach                 | save current formation information                              | plan my game plays and save strategies                                       |
 | `* *`    | lazy and forgetful coach        | view a list of help commands and their descriptions             | easily recall how to do a specific task                                      |
 | `* *`    | organised coach                 | view players by their strengths and weaknesses                  | make informed decisions on choosing the best person for a specific objective |
 | `**`     | organized and data-driven coach | sort my players by strengths and weaknesses                     | get a better understanding of how players compare                            |
@@ -662,7 +661,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to sort the list of persons by total strengths
+1. User requests to sort the list of persons by total number of strengths
 2. Coach2K22 shows the new sorted list of persons
 
    Use case ends.
@@ -678,7 +677,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: Sort address book by weaknesses in descending order**
 
 * This use case describes a similar interaction between the user and Coach2K22 to that of `Sort address book by strengths in descending order`
-    * Sorts list of persons by total weaknesses in descending order instead of total strengths
+    * Sorts list of persons by total number of weaknesses in descending order instead of total number of strengths
     
 **Use case: Add a tag to a person**
 
