@@ -9,8 +9,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MEET;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.TASK_FIRST_INDEX;
 import static seedu.address.testutil.TypicalIndexes.TASK_SECOND_INDEX;
+import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
 
@@ -19,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.EditTaskDescriptor;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -87,7 +90,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void execute_duplicatePersonUnfilteredList_failure() {
+    public void execute_duplicateTaskUnfilteredList_failure() {
         Task firstTask = model.getFilteredTaskList().get(TASK_FIRST_INDEX.getZeroBased());
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder(firstTask).build();
         EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_SECOND_INDEX, descriptor);
@@ -96,12 +99,37 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
+    public void execute_invalidTaskIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredTaskList().size() + 1);
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(VALID_NAME_TASK1).build();
         EditTaskCommand editTaskCommand = new EditTaskCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editTaskCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_personNotInList_throwsCommandException() {
+        // task with one person not found in the address book -> throws an error
+        EditTaskDescriptor invalidTask = new EditTaskDescriptorBuilder().withPersons("Alice").build();
+        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
+
+        String expectedMessage = String.format(EditTaskCommand.MESSAGE_CONTACT_NOT_FOUND_IN_LIST, "Alice");
+        assertThrows(CommandException.class,
+                expectedMessage, () -> editTaskCommand.execute(model));
+
+        // task with only one person out of the rest found in the address book -> throws an error
+        invalidTask = new EditTaskDescriptorBuilder().withPersons("Alice", CARL.getName().fullName).build();
+        EditTaskCommand editTaskCommand2 = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
+
+        assertThrows(CommandException.class,
+                expectedMessage, () -> editTaskCommand2.execute(model));
+
+        // task with multiple persons not found in the address book -> throws an error
+        invalidTask = new EditTaskDescriptorBuilder().withPersons("Alice", "Kenny").build();
+        EditTaskCommand editTaskCommand3 = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
+
+        assertThrows(CommandException.class,
+                expectedMessage, () -> editTaskCommand3.execute(model));
     }
 
     @Test
