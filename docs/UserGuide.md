@@ -382,6 +382,13 @@ Examples:
 * `find-t t/team1`
 * `find-t n/Meeting n/Training t/team1 t/team2`
 
+
+#### 2.2.9 Sorting tasks by date : `sort-date`
+
+Sort the tasklist by date, in order of the task whose deadline is earlier.
+
+Format: `sort-date`
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Key things to take note of:**<br>
@@ -486,37 +493,38 @@ Format: `exit`
 
 ### 4.1 Contact Management
 
-| Action                 | Format, Examples                                                                                                                                              |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **List**               | `list-p`                                                                                                                                                      |
+| Action                 | Format, Examples                                                                                                                                             |
+|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **List**               | `list-p`                                                                                                                                                     |
 | **Add**                | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
-| **Del**                | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                             |
+| **Del**                | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                            |
 | **Edit**               | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
-| **Clear**              | `clear-p`                                                                                                                                                     |
-| **Add Tag**            | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                           |
-| **Del Tag**            | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                       |
+| **Clear**              | `clear-p`                                                                                                                                                    |
+| **Add Tag**            | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                          |
+| **Del Tag**            | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                      |
 | **Find**               | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
-| **Add Strength**       | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                           |
-| **Add Weakness**       | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                                |
-| **Add Miscellaneous**  | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                     |
-| **Del Strength**       | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                             |
-| **Del Weakness**       | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                             |
-| **Del Miscellaneous**  | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                         |
-| **Sort by Strengths**  | `sort-strength`                                                                                                                                               |
-| **Sort by Weaknesses** | `sort-weakness`                                                                                                                                               |
+| **Add Strength**       | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                          |
+| **Add Weakness**       | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                               |
+| **Add Miscellaneous**  | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                    |
+| **Del Strength**       | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                            |
+| **Del Weakness**       | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                            |
+| **Del Miscellaneous**  | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                        |
+| **Sort by Strengths**  | `sort-strength`                                                                                                                                              |
+| **Sort by Weaknesses** | `sort-weakness`<br/>                                                                                                                                              |
 
 ### 4.2 Task Management
 
-| Action       | Format, Examples                                                                  |
-|--------------|-----------------------------------------------------------------------------------|
-| **List**     | `list-p`                                                                          |
-| **Add**      | (to be filled up by @pragya)                                                      |
-| **Del**      | (to be filled up by @pragya)                                                      | 
-| **Edit**     | (to be filled up by @pragya)                                                      |
-| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
-| **Add Tag**  | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
-| **Del Tag**  | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
-| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
+| Action           | Format, Examples                                                                      |
+|------------------|---------------------------------------------------------------------------------------|
+| **List**         | `list-p`                                                                              |
+| **Add**          | (to be filled up by @pragya)                                                          |
+| **Del**          | (to be filled up by @pragya)                                                          | 
+| **Edit**         | (to be filled up by @pragya)                                                          |
+| **Clear**        | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                     |
+| **Add Tag**      | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                         |
+| **Del Tag**      | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                         |
+| **Find**         | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
+| **Sort by Date** | `sort-date`                                                                            |
 
 
 ### 4.3 Strategic Planning
