@@ -429,23 +429,14 @@ Format: `del-player PLAYER_NAME`
 Examples:
 * `del-player Messi` removes the player named `Messi` from the strategy board.
 
-#### 2.3.4 Clearing all players: `clear-player`
-
-Clear all players from the strategy board.
-
-Format: `clear-player`
-
-Examples:
-* `clear-player` clears all players from the strategy board.
-
 #### 2.3.5 Moving a player to a coordinate: `move`
 
 Move a player to a coordinate on the strategy board.
 
-Format: `move PLAYER_NAME X_COORDINATE Y_COORDINATE`
+Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 
 Example:
-* `move Messi 0 0` moves the player named `Messi` to the top left corner of the strategy board.
+* `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
 
 #### 2.3.6 Export strategy board as image file: `export`
 
@@ -522,8 +513,7 @@ Format: `exit`
 | **Load BG Image** | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`               |
 | **Add**           | `add-player PLAYER_NAME`<br> e.g., `add-player Messi`                   |
 | **Del**           | `del-player PLAYER_NAME`<br> e.g., `del-player Messi`                   |
-| **Clear**         | `clear-player`                                                          |
-| **Move**          | `move PLAYER_NAME X_COORDINATE Y_COORDINATE`<br> e.g., `move Messi 0 0` |
+| **Move**          | `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`<br> e.g., `move Messi x/0 y/0` |
 | **Export**        | `export`                                                                |
 
 
