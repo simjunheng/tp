@@ -959,6 +959,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use case: Sort task list by date**
+
+**MSS**
+
+1. User requests to sort the task list by date.
+2. Coach2k22 shows the updated task list, sorted with the tasks with the earliest deadline at the top.
+
 ### 6.4 Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
