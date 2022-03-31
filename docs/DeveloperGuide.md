@@ -743,13 +743,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The task list is empty.
 
-  Use case resumes at step 2.
+  Use case ends.
 
-* 1b. The index requested does not exist.
+* 3a. The index requested does not exist.
 
-    * 1b1. Coach2K22 shows an error message.
+    * 3a1. Coach2K22 shows an error message.
 
-      Use case ends.
+      Use case resumes at step 2
 
 **Use case: Clear all tasks from task list**
 
@@ -831,7 +831,70 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case resumes at step 2.
 
+**Use case: Find tasks by name or tag**
 
+**MSS**
+
+1.  User requests to view the list of tasks
+2.  Coach2K22 shows a list of filtered tasks
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given name and tag keywords cannot be found in Coach2K22.
+
+    * 1a1. Coach2K22 shows an empty list.
+
+      Use case ends.
+
+* 1b. The keyword provided is not indicated by a prefix e.g. `n/` or `t/`.
+
+    * 1b1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 1c. No keywords are provided after the `find` command.
+
+    * 1c1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+* 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
+
+    * 1d1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+**Use case: Find persons tagged to a task**
+
+**MSS**
+
+1. User requests to view the list of tasks
+2. Coach2K22 shows a list of tasks
+3. User requests to find persons tagged to a specified task from the list
+4. Coach2K22 shows a filtered list containing the specified persons 
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The task list is empty.
+
+  Use case ends.
+
+* 3a. The index requested does not exist.
+
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2
+
+* 3b. No persons are tagged to the specified task.
+
+    * 3b1. Coach2K22 shows an empty contact list.
+
+      Use case ends
+    
 **Use case: Load new background image for strategy tab**
 
 **MSS**

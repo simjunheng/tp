@@ -269,7 +269,7 @@ Adds a task to our task list.
 Format: `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
 
 Examples:
-* `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials`
+* `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`
 
 
 <div markdown="block" class="alert alert-info">
@@ -381,6 +381,15 @@ Examples:
 * Tasks matching at least one keyword will be returned e.g. `n/Meeting n/Shareholders` will return the persons `Engagement with Shareholders` and `Annual Meeting`.
 
 </div>
+
+#### 2.2.9 Locating contacts tagged to a task : `get-person`
+
+Pull out the contact information of persons tagged to a task.
+
+Format: `get-person INDEX`
+
+Examples:
+* `get-person 2` pulls out the contact information of persons tagged to the second task.
 
 ### 2.3 Strategic Planning
 
@@ -494,17 +503,17 @@ Format: `exit`
 
 ### 4.2 Task Management
 
-| Action       | Format, Examples                                                                  |
-|--------------|-----------------------------------------------------------------------------------|
-| **List**     | `list-p`                                                                          |
-| **Add**      | (to be filled up by @pragya)                                                      |
-| **Del**      | (to be filled up by @pragya)                                                      | 
-| **Edit**     | (to be filled up by @pragya)                                                      |
-| **Clear**    | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
-| **Add Tag**  | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
-| **Del Tag**  | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
-| **Find**     | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
-
+| Action        | Format, Examples                                                                  |
+|---------------|-----------------------------------------------------------------------------------|
+| **List**      | `list-p`                                                                          |
+| **Add**       | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`<br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`|
+| **Del**       | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
+| **Edit**      | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`|
+| **Clear**     | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
+| **Add Tag**   | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
+| **Del Tag**   | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
+| **Find**      | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
+| **Get Person**| `get-person INDEX`<br> e.g., `get-person 2`                                       |
 
 ### 4.3 Strategic Planning
 
