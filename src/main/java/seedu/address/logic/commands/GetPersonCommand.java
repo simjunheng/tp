@@ -56,7 +56,7 @@ public class GetPersonCommand extends Command {
 
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()),
-                false, false, CONTACT_TAB, false, null);
+                false, false, CONTACT_TAB, false, null, false);
     }
 
     @Override

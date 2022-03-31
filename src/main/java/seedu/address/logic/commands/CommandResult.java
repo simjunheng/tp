@@ -37,20 +37,25 @@ public class CommandResult {
      */
     private final Image image;
 
+    /**
+     * The application should export image in user-selected directory.
+     */
+    private final boolean isExportCommand;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      * <p>
-     * Specifically used for loading background image for Strategy Panel.
+     * Specifically used for load-court and export commands.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, int tabPane,
-        boolean isLoadImage, Image image) {
+                         boolean isLoadImage, Image image, boolean isExportCommand) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.isLoadImage = isLoadImage;
         this.image = image;
         this.exit = exit;
         this.tabPane = tabPane;
+        this.isExportCommand = isExportCommand;
     }
 
     /**
@@ -58,7 +63,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, DEFAULT, false, null);
+        this(feedbackToUser, false, false, DEFAULT, false, null, false);
     }
 
     public String getFeedbackToUser() {
@@ -83,6 +88,10 @@ public class CommandResult {
 
     public Image getBackgroundImage() {
         return image;
+    }
+
+    public boolean isExportCommand() {
+        return isExportCommand;
     }
 
     @Override
@@ -119,6 +128,7 @@ public class CommandResult {
                 + ", tabPane=" + tabPane
                 + ", isLoadImage=" + isLoadImage
                 + ", image=" + image
+                + ", isExportCommand=" + isExportCommand
                 + '}';
     }
 }

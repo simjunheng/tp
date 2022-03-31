@@ -23,6 +23,7 @@ import seedu.address.model.ReadOnlyStrategyBoard;
 import seedu.address.model.ReadOnlyTaskBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.strategy.Player;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
 
@@ -221,27 +222,32 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPlayer(String player) {
+        public boolean hasPlayer(Player player) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePlayer(String target) {
+        public void deletePlayer(Player target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addPlayer(String player) {
+        public void addPlayer(Player player) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<String> getFilteredPlayerList() {
+        public void setPlayer(Player target, Player editedPlayer) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPlayerList(Predicate<String> predicate) {
+        public ObservableList<Player> getFilteredPlayerList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredPlayerList(Predicate<Player> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

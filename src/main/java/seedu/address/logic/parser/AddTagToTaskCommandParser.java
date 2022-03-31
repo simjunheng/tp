@@ -41,7 +41,12 @@ public class AddTagToTaskCommandParser implements Parser {
         Index index = Index.fromOneBased(indexInt); // Convert to fromOneBased index since contact list starts from 1
 
         // Get the tagName element in the ArrayList
-        String tagName = values.get(2);
+        String tagName;
+        try {
+            tagName = values.get(2);
+        } catch (IndexOutOfBoundsException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTagToTaskCommand.MESSAGE_USAGE));
+        }
         try {
             new Tag(tagName);
         } catch (Exception e) {

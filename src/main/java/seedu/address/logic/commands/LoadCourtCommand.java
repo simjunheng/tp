@@ -46,7 +46,7 @@ public class LoadCourtCommand extends Command {
         }
 
         return new CommandResult(generateSuccessMessage(image), false, false,
-                DEFAULT, true, this.image);
+                DEFAULT, true, this.image, false);
     }
 
     /**

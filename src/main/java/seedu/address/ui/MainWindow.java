@@ -181,13 +181,16 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-
     private void switchTab(int index) {
         tabPane.getSelectionModel().select(index);
     }
 
     private void handleLoadImage(Image image) {
         strategyPanel.changeImageBackground(image.getImagePath());
+    }
+
+    private void handleExport() {
+        strategyPanel.captureAndSaveStrategyPanel();
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -219,6 +222,11 @@ public class MainWindow extends UiPart<Stage> {
                 Image backGroundImage = commandResult.getBackgroundImage();
                 handleLoadImage(backGroundImage);
             }
+
+            if (commandResult.isExportCommand()) {
+                handleExport();
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);

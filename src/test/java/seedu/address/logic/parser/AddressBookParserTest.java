@@ -26,6 +26,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoadCourtCommand;
+import seedu.address.logic.commands.SortStrengthCommand;
+import seedu.address.logic.commands.SortWeaknessCommand;
 import seedu.address.logic.commands.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.notecommands.AddStrengthCommand;
 import seedu.address.logic.commands.notecommands.AddWeaknessCommand;
@@ -173,6 +175,18 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_sortStrength() throws Exception {
+        assertTrue(parser.parseCommand(SortStrengthCommand.COMMAND_WORD) instanceof SortStrengthCommand);
+        assertTrue(parser.parseCommand(SortStrengthCommand.COMMAND_WORD + " 3") instanceof SortStrengthCommand);
+    }
+
+    @Test
+    public void parseCommand_sortWeakness() throws Exception {
+        assertTrue(parser.parseCommand(SortWeaknessCommand.COMMAND_WORD) instanceof SortWeaknessCommand);
+        assertTrue(parser.parseCommand(SortWeaknessCommand.COMMAND_WORD + " 3") instanceof SortWeaknessCommand);
     }
 
     @Test

@@ -16,15 +16,15 @@ import seedu.address.model.strategy.exceptions.PlayerNotFoundException;
  *
  * Supports a minimal set of list operations.
  */
-public class UniquePlayerList implements Iterable<String> {
-    private final ObservableList<String> internalList = FXCollections.observableArrayList();
-    private final ObservableList<String> internalUnmodifiableList =
+public class UniquePlayerList implements Iterable<Player> {
+    private final ObservableList<Player> internalList = FXCollections.observableArrayList();
+    private final ObservableList<Player> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
      * Returns true if the list contains an equivalent player as the given argument.
      */
-    public boolean contains(String toCheck) {
+    public boolean contains(Player toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::equals);
     }
@@ -33,7 +33,7 @@ public class UniquePlayerList implements Iterable<String> {
      * Adds a player to the list.
      * The player must not already exist in the list.
      */
-    public void add(String toAdd) {
+    public void add(Player toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
             throw new DuplicatePlayerException();
@@ -45,23 +45,34 @@ public class UniquePlayerList implements Iterable<String> {
      * Removes the equivalent player from the list.
      * The player must exist in the list.
      */
-    public void remove(String toRemove) {
+    public void remove(Player toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new PlayerNotFoundException();
         }
     }
 
-    public void setPlayers(UniquePlayerList replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
+    /**
+     * Replaces the player {@code target} in the list with {@code editedPlayer}.
+     * {@code target} must exist in the list.
+     */
+    public void setPlayer(Player target, Player editedPlayer) {
+        requireNonNull(target);
+        requireNonNull(editedPlayer);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new PlayerNotFoundException();
+        }
+
+        internalList.set(index, editedPlayer);
     }
 
     /**
      * Replaces the contents of this list with {@code players}.
      * {@code players} must not contain duplicate players.
      */
-    public void setPlayers(List<String> players) {
+    public void setPlayers(List<Player> players) {
         requireAllNonNull(players);
         if (!playersAreUnique(players)) {
             throw new DuplicatePlayerException();
@@ -73,12 +84,12 @@ public class UniquePlayerList implements Iterable<String> {
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
-    public ObservableList<String> asUnmodifiableObservableList() {
+    public ObservableList<Player> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
 
     @Override
-    public Iterator<String> iterator() {
+    public Iterator<Player> iterator() {
         return internalList.iterator();
     }
 
@@ -97,7 +108,7 @@ public class UniquePlayerList implements Iterable<String> {
     /**
      * Returns true if {@code players} contains only unique players.
      */
-    private boolean playersAreUnique(List<String> players) {
+    private boolean playersAreUnique(List<Player> players) {
         for (int i = 0; i < players.size() - 1; i++) {
             for (int j = i + 1; j < players.size(); j++) {
                 if (players.get(i).equals(players.get(j))) {

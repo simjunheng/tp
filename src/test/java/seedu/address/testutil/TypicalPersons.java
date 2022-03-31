@@ -60,7 +60,27 @@ public class TypicalPersons {
             .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
-    public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
+    //Manually added - Person's details for sort testing
+    private static final String noteStub1 = "something1";
+    private static final String noteStub2 = "something2";
+    private static final String noteStub3 = "something3";
+
+    public static final Person PERSON_A = new PersonBuilder().withName("PersonA")
+            .withStrengths(noteStub1, noteStub2, noteStub3).build();
+    public static final Person PERSON_B = new PersonBuilder().withName("PersonB").withStrengths(noteStub1, noteStub2)
+            .withWeaknesses(noteStub1).build();
+    public static final Person PERSON_C = new PersonBuilder().withName("PersonC").withStrengths(noteStub1, noteStub2)
+            .withWeaknesses(noteStub1, noteStub2).build();
+    public static final Person PERSON_D = new PersonBuilder().withName("PersonD").withStrengths(noteStub1)
+            .withWeaknesses(noteStub1).build();
+    public static final Person PERSON_E = new PersonBuilder().withName("PersonE")
+            .withWeaknesses(noteStub1, noteStub2, noteStub3).build();
+    public static final Person PERSON_F = new PersonBuilder().withName("PersonF").withStrengths(noteStub1)
+            .withWeaknesses(noteStub1, noteStub2).build();
+    public static final Person PERSON_G = new PersonBuilder().withName("PersonG").withStrengths(noteStub1, noteStub2)
+            .withWeaknesses(noteStub1, noteStub2).build();
+    public static final Person PERSON_H = new PersonBuilder().withName("PersonH").withStrengths(noteStub1)
+            .withWeaknesses(noteStub1).build();
 
     private TypicalPersons() {} // prevents instantiation
 
@@ -75,7 +95,83 @@ public class TypicalPersons {
         return ab;
     }
 
+    /**
+     * Returns an {@code AddressBook} with sorted list of persons for strength-sort test cases.
+     */
+    public static AddressBook getGenericAddressBookWithSortedStrengths() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getGenericPersonsWithSortedStrengths()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
+    /**
+     * Returns an {@code AddressBook} with sorted list of persons for weakness-sort test cases.
+     */
+    public static AddressBook getGenericAddressBookWithSortedWeaknesses() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getGenericPersonsWithSortedWeaknesses()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
+    /**
+     * Returns an {@code AddressBook} with unsorted list of persons for strength-sort test cases.
+     */
+    public static AddressBook getGenericAddressBookWithUnsortedStrengths() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getGenericPersonsWithUnsortedStrengths()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
+    /**
+     * Returns an {@code AddressBook} with unsorted list of persons for weakness-sort test cases.
+     */
+    public static AddressBook getGenericAddressBookWithUnsortedWeaknesses() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getGenericPersonsWithUnsortedWeaknesses()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
     public static List<Person> getTypicalPersons() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+    }
+
+    /**
+     * Returns unsorted persons for sort-strength test cases.
+     * @return list of persons
+     */
+    public static List<Person> getGenericPersonsWithSortedStrengths() {
+        return new ArrayList<>(Arrays.asList(PERSON_A, PERSON_B, PERSON_C, PERSON_D));
+    }
+
+    /**
+     * Returns unsorted persons for sort-weakness test cases.
+     * @return list of persons
+     */
+    public static List<Person> getGenericPersonsWithSortedWeaknesses() {
+        return new ArrayList<>(Arrays.asList(PERSON_E, PERSON_F, PERSON_G, PERSON_H));
+    }
+
+    /**
+     * Returns unsorted persons for sort-strength test cases.
+     * @return list of persons
+     */
+    public static List<Person> getGenericPersonsWithUnsortedStrengths() {
+        return new ArrayList<>(Arrays.asList(PERSON_D, PERSON_A, PERSON_C, PERSON_B));
+    }
+
+    /**
+     * Returns unsorted persons for sort-weakness test cases.
+     * @return list of persons
+     */
+    public static List<Person> getGenericPersonsWithUnsortedWeaknesses() {
+        return new ArrayList<>(Arrays.asList(PERSON_H, PERSON_E, PERSON_G, PERSON_F));
     }
 }
