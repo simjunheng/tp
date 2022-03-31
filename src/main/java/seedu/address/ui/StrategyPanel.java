@@ -239,7 +239,7 @@ public class StrategyPanel extends UiPart<Region> {
                 sp.setFill(Color.TRANSPARENT);
 
                 //no edits to capture area
-                WritableImage image = strategyAnchorPane.snapshot(null, null);
+                WritableImage image = strategyAnchorPane.snapshot(sp, null);
                 RenderedImage renderedImage = SwingFXUtils.fromFXImage(image, null);
 
                 //Write the snapshot to the chosen file
