@@ -429,7 +429,7 @@ Format: `del-player PLAYER_NAME`
 Examples:
 * `del-player Messi` removes the player named `Messi` from the strategy board.
 
-#### 2.3.5 Moving a player to a coordinate: `move`
+#### 2.3.4 Moving a player to a coordinate: `move`
 
 Move a player to a coordinate on the strategy board.
 
@@ -438,7 +438,7 @@ Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 Example:
 * `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
 
-#### 2.3.6 Export strategy board as image file: `export`
+#### 2.3.5 Export strategy board as image file: `export`
 
 Exports current view of the strategy board as an image to the users local device. 
 
