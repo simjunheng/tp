@@ -4,7 +4,7 @@
 
 # Coach2K22
 
-* **Coach2K22** is a contact management appllication that helps busy sports coaches organise their overwhelming lists of contacts and messy weekly schedules. it also provides them with a platform to visualise defensive and offensive plays as the game unfolds.<br>
+* **Coach2K22** is a contact management application that helps busy sports coaches organise their overwhelming lists of contacts and messy weekly schedules. it also provides them with a platform to visualise defensive and offensive plays as the game unfolds.<br>
 
   Example usages:
   * as a contact management utility for his players and relevant contacts
