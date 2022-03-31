@@ -7,7 +7,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddTagToTaskCommand;
 import seedu.address.logic.commands.DeleteTagFromTaskCommand;
 
 class DeleteTagFromTaskCommandParserTest {
@@ -18,7 +17,8 @@ class DeleteTagFromTaskCommandParserTest {
 
     @Test
     void parse_validArgs_returnsDeleteTagFromTasksCommand() {
-        DeleteTagFromTaskCommand expectedDeleteTagFromTaskCommand = new DeleteTagFromTaskCommand(INDEX_FIRST_PERSON, TAG1);
+        DeleteTagFromTaskCommand expectedDeleteTagFromTaskCommand =
+                new DeleteTagFromTaskCommand(INDEX_FIRST_PERSON, TAG1);
         assertParseSuccess(parser, " 1 TAG1", expectedDeleteTagFromTaskCommand);
     }
 
