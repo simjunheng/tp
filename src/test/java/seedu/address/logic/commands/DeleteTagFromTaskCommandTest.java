@@ -76,17 +76,30 @@ class DeleteTagFromTaskCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getTaskBook().getTaskList().size());
 
-        AddTagToTaskCommand addTagToTaskCommand = new AddTagToTaskCommand(outOfBoundIndex, TAG1);
+        DeleteTagFromTaskCommand deleteTagFromTaskCommand = new DeleteTagFromTaskCommand(outOfBoundIndex, TAG1);
 
-        assertCommandFailure(addTagToTaskCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+        assertCommandFailure(deleteTagFromTaskCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_invalidTagName_failure() {
+        String invalidTAG = "";
+
+        DeleteTagFromTaskCommand deleteTagFromTaskCommand = new DeleteTagFromTaskCommand(TASK_FIRST_INDEX, invalidTAG);
+        assertCommandFailure(deleteTagFromTaskCommand, model, Messages.MESSAGE_INVALID_TAG);
+
     }
 
     @Test
     public void equals() {
         final AddTagToTaskCommand command = new AddTagToTaskCommand(INDEX_FIRST_PERSON, TAG1);
+        final AddTagToTaskCommand command2 = new AddTagToTaskCommand(INDEX_FIRST_PERSON, TAG1);
 
         // If they are the same objects, they are equal
         assertTrue(command.equals(command));
+
+        // If they have the same index and tagName, they are equal (even though they are different objects)
+        assertTrue(command.equals(command2));
 
     }
 }
