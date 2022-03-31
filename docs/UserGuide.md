@@ -16,7 +16,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest '.jar' file.
+1. Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2k22.
 
@@ -188,7 +188,7 @@ Add a miscellaneous note to a selected person from our contact list.
 Format: `misc-add INDEX  NOTE_DESCRIPTION`
 
 Examples:
-* `note-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
+* `misc-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
 
 #### 2.1.12 Deleting a strength : `strength-del`
@@ -252,6 +252,18 @@ Examples:
 * Both indices **must be a positive integer** 1, 2, 3, …​
 
 </div>
+
+#### 2.1.15 Sorting list of persons by strengths : `sort-strength`
+
+Sorts the list of persons by total strengths in descending order.
+
+Format: `sort-strength`
+
+#### 2.1.16 Sorting list of persons by weaknesses : `sort-weakness`
+
+Sorts the list of persons by total weaknesses in descending order.
+
+Format: `sort-weaknesses`
 
 
 ### 2.2 Task Management
@@ -391,6 +403,12 @@ Format: `get-person INDEX`
 Examples:
 * `get-person 2` pulls out the contact information of persons tagged to the second task.
 
+#### 2.2.10 Sorting tasks by date : `sort-date`
+
+Sort the task list by date, in order of the task whose deadline is earlier.
+
+Format: `sort-date`
+
 ### 2.3 Strategic Planning
 
 #### 2.3.1 Load new background image : `load-court`
@@ -407,7 +425,7 @@ Examples:
 **:information_source: Key things to take note of:**<br>
 
 * Loads the given image from the filepath `courts/IMAGE_NAME.png`.
-* File must exist and be in `png` format in a folder labelled `courts` in the same directory as the JAR file (will be automatically generated).
+* File must exist and be in `png` format in a folder named `courts` in the same directory as the JAR file (folder will be automatically generated).
 
 </div>
 
@@ -466,45 +484,47 @@ Format: `exit`
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
 
+**Q**: What is the purpose of having a separate command for listing player strengths and weaknesses<br>
+**A**: These functions allow coach to judge players based on their respective strengths/weaknesses for improved judgement of abilities, analyzing their liabilities, and strategically choosing the right player for the right purpose.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **4. Command summary**
 
 ### 4.1 Contact Management
 
-| Action                | Format, Examples                                                                                                                                              |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **List**              | `list-p`                                                                                                                                                      |
-| **Add**               | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
-| **Del**               | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                             |
-| **Edit**              | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
-| **Clear**             | `clear-p`                                                                                                                                                     |
-| **Add Tag**           | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                           |
-| **Del Tag**           | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                       |
-| **Find**              | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
-| **Add Note**          | `note-add INDEX  NOTE_DESCRIPTION`<br> e.g., `note-add 1 Surgery Scheduled for tomorrow`                                                                      |
-| **Del Note**          | `note-del INDEX  NOTE_INDEX`<br> e.g., `note-del 1 1`                                                                                                         |
-| **Add Strength**      | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                           |
-| **Add Weakness**      | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                                |
-| **Add Miscellaneous** | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                     |
-| **Del Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                             |
-| **Del Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                             |
-| **Del Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                         |
-
+| Action                 | Format, Examples                                                                                                                                             |
+|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **List**               | `list-p`                                                                                                                                                     |
+| **Add**                | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
+| **Del**                | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                            |
+| **Edit**               | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
+| **Clear**              | `clear-p`                                                                                                                                                    |
+| **Add Tag**            | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                          |
+| **Del Tag**            | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                      |
+| **Find**               | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
+| **Add Strength**       | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                          |
+| **Add Weakness**       | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                               |
+| **Add Miscellaneous**  | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                    |
+| **Del Strength**       | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                            |
+| **Del Weakness**       | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                            |
+| **Del Miscellaneous**  | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                        |
+| **Sort by Strengths**  | `sort-strength`                                                                                                                                              |
+| **Sort by Weaknesses** | `sort-weakness`<br/>                                                                                                                                              |
 
 ### 4.2 Task Management
 
-| Action         | Format, Examples                                                                  |
-|----------------|-----------------------------------------------------------------------------------|
-| **List**       | `list-p`                                                                          |
-| **Add**        | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`<br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`|
-| **Del**        | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
-| **Edit**       | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`|
-| **Clear**      | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
-| **Add Tag**    | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
-| **Del Tag**    | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
-| **Find**       | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
-| **Get Person** | `get-person INDEX`<br> e.g., `get-person 2`                                       |
+| Action           | Format, Examples                                                                  |
+|------------------|-----------------------------------------------------------------------------------|
+| **List**         | `list-t`                                                                          |
+| **Add**          | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`<br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`|
+| **Del**          | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
+| **Edit**         | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`|
+| **Clear**        | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
+| **Add Tag**      | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
+| **Del Tag**      | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
+| **Find**         | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
+| **Get Person**   | `get-person INDEX`<br> e.g., `get-person 2`                                       |
+| **Sort By Date** | `sort-date`                                                                       |
 
 ### 4.3 Strategic Planning
 

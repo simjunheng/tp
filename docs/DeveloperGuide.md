@@ -467,22 +467,21 @@ schedules, and provides them with a platform to visualise defensive and offensiv
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                                              |
-|----------|--------------------------|-----------------------------------------------------------------|------------------------------------------------------------------------------|
-| `* * *`  | forgetful coach          | enter team-specific or player note                              | look up these information                                                    |
-| `* * *`  | coach                    | delete team-specific or player note                             | keep these information relevant and up-to-date                               |
-| `* * *`  | forgetful coach          | remember the names of players on my team                        | look up them in case I forget                                                |
-| `* * *`  | disorganized             | add and tag new roles/teams to a contact                        | easily retrieve relevant information                                         |
-| `* * *`  | coach                    | easily retrieve contact information of relevant parties         | quickly broadcast information to them                                        |
-| `* * *`  | organized coach          | view players by their strengths and weaknesses                  | make informed decision on choosing the best person                           |
-| `* * *`  | disorganized coach       | add existing and upcoming tasks                                 | keep track of my schedule easily                                             |
-| `* * *`  | disorganized coach       | delete wrongly added or past tasks                              | organize my schedule better                                                  |
-| `* * *`  | strategic coach          | save current formation information                              | plan my game plays and save strategies                                       |
-| `* *`    | lazy and forgetful coach | view a list of help commands and their descriptions             | easily recall how to do a specific task                                      |
-| `* *`    | organised coach          | view players by their strengths and weaknesses                  | make informed decisions on choosing the best person for a specific objective |
-| `*`      | strategic coach          | change the position of players (x-y coordinate) during the game | ensure my team works together                                                |
-| `*`      | coach                    | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs                      |
-
+| Priority | As a …​                  | I want to …​                                                    | So that I can…​                                                            |
+|----------|---------------------------------|-----------------------------------------------------------------|------------------------------------------------------------------------------|
+| `* * *`  | forgetful coach                 | enter team-specific or player note                              | look up these information                                                    |
+| `* * *`  | coach                           | delete team-specific or player note                             | keep these information relevant and up-to-date                               |
+| `* * *`  | forgetful coach                 | remember the names of players on my team                        | look up them in case I forget                                                |
+| `* * *`  | disorganized                    | add and tag new roles/teams to a contact                        | easily retrieve relevant information                                         |
+| `* * *`  | coach                           | easily retrieve contact information of relevant parties         | quickly broadcast information to them                                        |
+| `* * *`  | organized coach                 | view players by their strengths and weaknesses                  | make informed decision on choosing the best person                           |
+| `* * *`  | disorganized coach              | add existing and upcoming tasks                                 | keep track of my schedule easily                                             |
+| `* * *`  | disorganized coach              | delete wrongly added or past tasks                              | organize my schedule better                                                  |
+| `* *`    | lazy and forgetful coach        | view a list of help commands and their descriptions             | easily recall how to do a specific task                                      |
+| `* *`    | organised coach                 | view players by their strengths and weaknesses                  | make informed decisions on choosing the best person for a specific objective |
+| `**`     | organized and data-driven coach | sort my players by strengths and weaknesses                     | get a better understanding of how players compare                            |
+| `*`      | strategic coach                 | change the position of players (x-y coordinate) during the game | ensure my team works together                                                |
+| `*`      | coach                           | drag and drop a player into a calendar                          | plan scheduled events for them according to their needs                      |
 
 
 ### 6.3 Use cases
@@ -657,6 +656,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. Coach2K22 shows an error message.
 
       Use case ends.    
+
+**Use case: Sort address book by strengths in descending order**
+
+**MSS**
+
+1. User requests to sort the list of persons by total number of strengths
+2. Coach2K22 shows the new sorted list of persons
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The person list is empty.
+
+    * 1a1. Coach2K22 shows an error message.
+
+      Use case ends.
+
+**Use case: Sort address book by weaknesses in descending order**
+
+* This use case describes a similar interaction between the user and Coach2K22 to that of `Sort address book by strengths in descending order`
+    * Sorts list of persons by total number of weaknesses in descending order instead of total number of strengths
     
 **Use case: Add a tag to a person**
 

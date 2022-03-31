@@ -50,7 +50,7 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
     public static final String MESSAGE_CONTACT_NOT_FOUND_IN_LIST =
-            "Cannot perform this edit on the task as this person does not exist in the contact list";
+            "Unable to edit task as the person %1$s cannot be found in the current address book";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;

@@ -15,10 +15,12 @@ import seedu.address.logic.commands.ClearTaskCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteTagCommand;
+import seedu.address.logic.commands.DeleteTagFromTaskCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditTaskCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.ExportCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.commands.GetPersonCommand;
@@ -163,11 +165,17 @@ public class AddressBookParser {
         case AddTagToTaskCommand.COMMAND_WORD:
             return new AddTagToTaskCommandParser().parse(arguments);
 
+        case DeleteTagFromTaskCommand.COMMAND_WORD:
+            return new DeleteTagFromTaskCommandParser().parse(arguments);
+
         case MovePlayerCommand.COMMAND_WORD:
             return new MovePlayerCommandParser().parse(arguments);
 
         case SortTaskByDateCommand.COMMAND_WORD:
             return new SortTaskByDateCommand();
+
+        case ExportCommand.COMMAND_WORD:
+            return new ExportCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
