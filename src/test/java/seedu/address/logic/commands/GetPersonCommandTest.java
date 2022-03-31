@@ -52,7 +52,7 @@ public class GetPersonCommandTest {
         String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
                 expectedModel.getFilteredPersonList().size());
         CommandResult expectedCommandResult =
-                new CommandResult(expectedMessage, false, false, CONTACT_TAB, false, null);
+                new CommandResult(expectedMessage, false, false, CONTACT_TAB, false, null, false);
 
         assertCommandSuccess(getPersonCommand, model, expectedCommandResult, expectedModel);
     }
@@ -85,7 +85,7 @@ public class GetPersonCommandTest {
         String expectedMessage = String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
                 expectedModel.getFilteredPersonList().size());
         CommandResult expectedCommandResult =
-                new CommandResult(expectedMessage, false, false, CONTACT_TAB, false, null);
+                new CommandResult(expectedMessage, false, false, CONTACT_TAB, false, null, false);
 
         assertCommandSuccess(getPersonCommand, model, expectedCommandResult, expectedModel);
     }

@@ -7,16 +7,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,8 +37,6 @@ import javafx.stage.FileChooser;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.strategy.Player;
-
-import javax.imageio.ImageIO;
 
 public class StrategyPanel extends UiPart<Region> {
     private static final String FXML = "StrategyPanel.fxml";
@@ -218,22 +218,25 @@ public class StrategyPanel extends UiPart<Region> {
         stack.setOnMouseDragged(dragHandler);
     }
 
+    /**
+     * Captures image of strategyAnchorPane and stores it in users local drive.
+     */
     //https://stackoverflow.com/questions/38028825/javafx-save-view-of-pane-to-image
-    public void captureAndSaveStrategyPanel(){
+    public void captureAndSaveStrategyPanel() {
 
-            FileChooser chooser = new FileChooser();
+        FileChooser chooser = new FileChooser();
 
-            //include title name randomization
-            chooser.setInitialFileName("title" + ".png");
-            chooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("PNG Files", "*.png"));
-            File file = chooser.showSaveDialog(null);
+        //include title name randomization
+        chooser.setInitialFileName("title" + ".png");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+        File file = chooser.showSaveDialog(null);
 
-        if(file != null){
+        if (file != null) {
             try {
-//                //parameters
-//                SnapshotParameters sp = new SnapshotParameters();
-//                sp.setFill(Color.TRANSPARENT);
+                //parameters
+                SnapshotParameters sp = new SnapshotParameters();
+                sp.setFill(Color.TRANSPARENT);
 
                 //no edits to capture area
                 WritableImage image = strategyAnchorPane.snapshot(null, null);

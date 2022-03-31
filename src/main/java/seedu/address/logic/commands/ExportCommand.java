@@ -1,17 +1,13 @@
 package seedu.address.logic.commands;
 
-import seedu.address.ui.MainWindow;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.image.Image;
-import seedu.address.logic.commands.exceptions.CommandException;
-
-import java.util.UUID;
-
 import static seedu.address.commons.core.Tabs.DEFAULT;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-public class ExportCommand extends Command{
+import java.util.UUID;
+
+import seedu.address.model.Model;
+
+public class ExportCommand extends Command {
 
     public static final String COMMAND_WORD = "export";
 
@@ -19,7 +15,7 @@ public class ExportCommand extends Command{
             + ": Exports current Strategy Panel as a .png image into user selected directory. "
             + "Example: " + COMMAND_WORD;
 
-    public static final String SHOWING_EXPORT_MESSAGE = "Strategy Panel is being exported.";
+    public static final String MESSAGE_EXPORT_ACKNOWLEDGEMENT = "Strategy Panel is being exported.";
 
     private String fileName;
 
@@ -30,7 +26,7 @@ public class ExportCommand extends Command{
     @Override
     public CommandResult execute(Model model) {
         requireAllNonNull(model);
-        return new CommandResult(SHOWING_EXPORT_MESSAGE, false, false, DEFAULT, false, null, true);
+        return new CommandResult(MESSAGE_EXPORT_ACKNOWLEDGEMENT, false, false, DEFAULT, false, null, true);
     }
 
 

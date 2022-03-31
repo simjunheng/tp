@@ -38,14 +38,14 @@ public class CommandResult {
     private final Image image;
 
     /**
-     * The application should exit.
+     * The application should export image in user-selected directory.
      */
     private final boolean isExportCommand;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      * <p>
-     * Specifically used for Exporting Strategy panel image.
+     * Specifically used for load-court and export commands.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, int tabPane,
                          boolean isLoadImage, Image image, boolean isExportCommand) {
