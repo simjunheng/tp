@@ -503,17 +503,17 @@ Format: `exit`
 
 ### 4.2 Task Management
 
-| Action        | Format, Examples                                                                  |
-|---------------|-----------------------------------------------------------------------------------|
-| **List**      | `list-p`                                                                          |
-| **Add**       | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`<br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`|
-| **Del**       | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
-| **Edit**      | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`|
-| **Clear**     | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
-| **Add Tag**   | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
-| **Del Tag**   | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
-| **Find**      | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
-| **Get Person**| `get-person INDEX`<br> e.g., `get-person 2`                                       |
+| Action         | Format, Examples                                                                  |
+|----------------|-----------------------------------------------------------------------------------|
+| **List**       | `list-p`                                                                          |
+| **Add**        | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`<br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`|
+| **Del**        | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
+| **Edit**       | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`|
+| **Clear**      | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
+| **Add Tag**    | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
+| **Del Tag**    | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
+| **Find**       | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
+| **Get Person** | `get-person INDEX`<br> e.g., `get-person 2`                                       |
 
 ### 4.3 Strategic Planning
 
