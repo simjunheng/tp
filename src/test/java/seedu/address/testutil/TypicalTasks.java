@@ -51,6 +51,9 @@ public class TypicalTasks {
     public static final Task EIGHTH_TASK = new TaskBuilder().withName("Training3").withDate("03-03-2000")
             .withStartTime("14:30").withEndTime("16:00")
             .withTags("team1").build();
+    public static final Task NINTH_TASK = new TaskBuilder().withName("Training4").withDate("03-03-2000")
+            .withStartTime("13:30").withEndTime("16:00")
+            .withTags("team1").build();
 
     // Manually added - Task details found in {@code CommandTestUtil}
     public static final Task TASK1 = new TaskBuilder().withName(VALID_NAME_TASK1).withDate(VALID_DATE_TASK1)
