@@ -444,7 +444,7 @@ Examples:
 **:information_source: Key things to take note of:**<br>
 
 * `PLAYER_NAME` is case-sensitive e.g. `John Cena` will NOT match `john Cena`.
-* `PLAYER_NAME` name can not be empty and its length must be less or equal to `24` characters.
+* `PLAYER_NAME` can not be empty and its length must be less or equal to `24` characters.
 * `PLAYER_NAME` must be unique and can NOT contain the character `/`.
 
 </div>
