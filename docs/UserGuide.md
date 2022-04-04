@@ -438,11 +438,24 @@ Format: `add-player PLAYER_NAME`
 Examples: 
 * `add-player Messi` adds a new player named `Messi` in the strategy board.
 
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* `PLAYER_NAME` is case-sensitive e.g. `John Cena` will NOT match `john Cena`.
+* `PLAYER_NAME` can not be empty and its length must be less or equal to `24` characters.
+* `PLAYER_NAME` must be unique and can NOT contain the character `/`.
+
+</div>
+
 #### 2.3.3 Removing players: `del-player`
 
 Remove a player from the strategy board.
 
 Format: `del-player PLAYER_NAME`
+
+As mentioned above, the player name is case-sensitive.
 
 Examples:
 * `del-player Messi` removes the player named `Messi` from the strategy board.
@@ -452,6 +465,8 @@ Examples:
 Move a player to a coordinate on the strategy board.
 
 Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
+
+As mentioned above, the player name is case-sensitive.
 
 Example:
 * `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
