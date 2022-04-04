@@ -16,6 +16,7 @@ import seedu.address.model.note.Note;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Phone;
+import seedu.address.model.strategy.Player;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Date;
 import seedu.address.model.task.EndTime;
@@ -244,5 +245,20 @@ public class ParserUtil {
             throw new ParseException(Note.MESSAGE_CONSTRAINTS);
         }
         return new Note(trimmedNote);
+    }
+
+    /**
+     * Parses a {@code String playerName} into a {@code Player}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code playerName} is invalid.
+     */
+    public static Player paresPlayer(String playerName) throws ParseException {
+        requireNonNull(playerName);
+        String trimmedPlayerName = playerName.trim();
+        if (!Player.isValidPlayer(trimmedPlayerName)) {
+            throw new ParseException(Player.MESSAGE_CONSTRAINTS);
+        }
+        return new Player(trimmedPlayerName);
     }
 }

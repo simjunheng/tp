@@ -1,10 +1,14 @@
 package seedu.address.model.strategy;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
 
 public class Player {
+    public static final String MESSAGE_CONSTRAINTS = "Player name cannot be empty"
+            + " and must be not more then 24 characters"
+            + " and must not contain \"/\". \n";
     private static final int DEF_XCOORD = 50;
     private static final int DEF_YCOORD = 50;
 
@@ -17,6 +21,7 @@ public class Player {
      */
     public Player(String name) {
         requireNonNull(name);
+        checkArgument(isValidPlayer(name), MESSAGE_CONSTRAINTS);
         this.name = name;
         this.xCoord = DEF_XCOORD;
         this.yCoord = DEF_YCOORD;
@@ -26,9 +31,18 @@ public class Player {
      * Creates a new player with specified coordinates
      */
     public Player(String name, int xCoord, int yCoord) {
+        requireNonNull(name);
+        checkArgument(isValidPlayer(name), MESSAGE_CONSTRAINTS);
         this.name = name;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
+    }
+
+    /**
+     * Returns true if the given player name is a valid player name.
+     */
+    public static boolean isValidPlayer(String playerName) {
+        return !playerName.isEmpty() && playerName.length() <= 24 && !playerName.contains("/");
     }
 
     //Getters

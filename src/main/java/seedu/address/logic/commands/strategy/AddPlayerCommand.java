@@ -1,7 +1,6 @@
 package seedu.address.logic.commands.strategy;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.logic.commands.Command;
@@ -19,7 +18,8 @@ public class AddPlayerCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Add a player in the strategy panel. "
             + "Parameters: "
-            + "PLAYER_NAME (must be non-empty and not more than 50 characters)\n"
+            + "PLAYER_NAME"
+            + "(must be non-empty, not more than 24 characters and does not contain \"/\")\n"
             + "Example: " + COMMAND_WORD + " "
             + "Lionel Messi";
 
@@ -30,31 +30,26 @@ public class AddPlayerCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PLAYER = "This player already exists in the PlayerList";
 
 
-    private final String playerName;
+    private final Player toAdd;
 
     /**
-     * @param playerName the name of the player to be added
+     * Creates an AddPlayerCommand to add the specified {@code Player}.
      */
-    public AddPlayerCommand(String playerName) {
-        requireAllNonNull(playerName);
-        this.playerName = playerName;
+    public AddPlayerCommand(Player player) {
+        requireAllNonNull(player);
+        this.toAdd = player;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        if (playerName.replace("/s", "").isEmpty()) {
-            throw new CommandException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPlayerCommand.MESSAGE_USAGE));
-        }
         requireNonNull(model);
 
-        Player player = new Player(playerName);
-        if (model.hasPlayer(player)) {
+        if (model.hasPlayer(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PLAYER);
         }
 
-        model.addPlayer(player);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, playerName));
+        model.addPlayer(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd.getName()));
     }
 
 
@@ -62,6 +57,6 @@ public class AddPlayerCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddPlayerCommand // instanceof handles nulls
-                && (playerName.equals(((AddPlayerCommand) other).playerName)));
+                && (toAdd.equals(((AddPlayerCommand) other).toAdd)));
     }
 }
