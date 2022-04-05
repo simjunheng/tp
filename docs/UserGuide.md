@@ -172,13 +172,6 @@ Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 Examples:
 * `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
 
-**:information_source: Key things to take note of:**<br>
-
-* Adds a strength at the specified `INDEX`.
-* `INDEX` refers to the index number shown in the displayed person list.
-* The provided `INDEX` must be a valid (must be an unsigned non-zero integer and exists in the list).
-* The `STRENGTH_DESCRIPTION` must not be greater than 50 characters.
-
 #### 2.1.10 Adding a weakness : `weakness-add`
 
 Add a weakness to a selected person from our contact list.
@@ -187,13 +180,6 @@ Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
 
 Examples:
 * `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
-
-**:information_source: Key things to take note of:**<br>
-
-* Adds a weakness at the specified `INDEX`.
-* `INDEX` refers to the index number shown in the displayed person list.
-* The provided `INDEX` must be a valid (must be an unsigned non-zero integer and exists in the list).
-* The `WEAKNESS_DESCRIPTION` must not be greater than 50 characters.
 
 #### 2.1.11 Adding a miscellaneous note : `misc-add`
 
@@ -204,12 +190,6 @@ Format: `misc-add INDEX  NOTE_DESCRIPTION`
 Examples:
 * `misc-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
-**:information_source: Key things to take note of:**<br>
-
-* Adds a miscellaneous note at the specified `INDEX`.
-* `INDEX` refers to the index number shown in the displayed person list.
-* The provided `INDEX` must be a valid (must be an unsigned non-zero integer and exists in the list).
-* The `NOTE_DESCRIPTION` must not be greater than 50 characters.
 
 #### 2.1.12 Deleting a strength : `strength-del`
 
@@ -228,7 +208,6 @@ Examples:
 * The index refers to the index number shown in the displayed person list.
 * The strength index refers to the index number shown in the strength list of the respective person.
 * Both indices **must be a positive integer** 1, 2, 3, …​
-* Both indices must be valid (existing in their respective lists).
 
 </div>
 
@@ -249,8 +228,7 @@ Examples:
 * Deletes the weakness at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The weakness index refers to the index number shown in the weakness list of the respective person.
-* Both indices **must be a positive integer** 1, 2, 3, …​ 
-* Both indices must be valid (existing in their respective lists).
+* Both indices **must be a positive integer** 1, 2, 3, …​
 
 </div>
 
@@ -272,7 +250,6 @@ Examples:
 * The index refers to the index number shown in the displayed person list.
 * The note index refers to the index number shown in the misc. list of the respective person.
 * Both indices **must be a positive integer** 1, 2, 3, …​
-* Both indices must be valid (existing in their respective lists)
 
 </div>
 
