@@ -141,7 +141,7 @@ Add tags to a selected person from our contact list.
 Format: `tag-del-p INDEX TAG_NAME`
 
 Examples:
-* `tag-del 1 team` deletes the tag `team` from the first person in the contact list.
+* `tag-del-p 1 team` deletes the tag `team` from the first person in the contact list.
 
 <div markdown="block" class="alert alert-info">
 
