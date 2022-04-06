@@ -37,7 +37,7 @@ public class Note {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Note // instanceof handles nulls
-                && note.equals(((Note) other).note)); // state check
+                && note.equalsIgnoreCase(((Note) other).note)); // state check
     }
 
     @Override
