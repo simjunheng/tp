@@ -38,12 +38,12 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         // checks if names are valid
         for (String name: nameKeywords) {
-            ParserUtil.parseName(name);
+            ParserUtil.parseNameKeyword(name);
         }
 
         // check if tags are valid
         for (String tag: tagKeywords) {
-            ParserUtil.parseTag(tag);
+            ParserUtil.parseTagKeyword(tag);
         }
 
         return new FindCommand(new PersonNameContainsKeywordsPredicate(nameKeywords),

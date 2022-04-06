@@ -38,12 +38,12 @@ public class FindTaskCommandParser implements Parser<FindTaskCommand> {
 
         // checks if names are valid
         for (String name: nameKeywords) {
-            ParserUtil.parseName(name);
+            ParserUtil.parseNameKeyword(name);
         }
 
         // check if tags are valid
         for (String tag: tagKeywords) {
-            ParserUtil.parseTag(tag);
+            ParserUtil.parseTagKeyword(tag);
         }
 
         return new FindTaskCommand(new TaskNameContainsKeywordsPredicate(nameKeywords),
