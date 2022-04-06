@@ -35,7 +35,7 @@ public class SortTaskByDateCommand extends Command {
             model.deleteTask(lastShownList.get(i));
             model.addTask(lastShownList.get(i));
         }
-        
+
 
         return new CommandResult(String.format(MESSAGE_SORT_TASKS_SUCCESS));
     }
@@ -56,25 +56,5 @@ public class SortTaskByDateCommand extends Command {
         Collections.sort(oldList, (t1, t2) -> t1.compareTo(t2));
 
         return oldList;
-    }
-
-    /**
-     * Removes all tasks displayed in the current model
-     *
-     * @model Current model object
-     */
-    private void clearAllTasksInModel(Model model) {
-        model.setTaskBook(new TaskBook());
-    }
-
-    /**
-     * Add tasks to the model according to the given list
-     *
-     * @
-     */
-    private void addAllTasksToModel(Model model, List<Task> taskList) {
-        TaskBook t = new TaskBook();
-        t.setTasks(taskList);
-        model.setTaskBook(t);
     }
 }
