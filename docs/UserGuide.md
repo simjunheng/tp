@@ -34,7 +34,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](##2.features) below for details of each command.
+1. Refer to the [Features](#2-features) below for details of each command.
 
 ### 1.2 User Guide Icons
 
