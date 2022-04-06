@@ -28,13 +28,13 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 
    * **`list-p`** : Lists all contacts.
 
-   * **`add-p`**`n/John Doe p/98765432 e/johnd@example.com` : Adds a contact named `John Doe`.
+   * **`add-p`**`n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` : Adds a contact named `Johnson`.
 
    * **`del-p`**`3` : Deletes the 3rd contact shown in the current list.
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. Refer to the [Features](#2-features) below for details of each command.
 
 ### 1.2 User Guide Icons
 
@@ -52,7 +52,7 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `add-p n/NAME`, `NAME` is a parameter which can be used as `add-p n/John Doe`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
@@ -96,7 +96,7 @@ A person can have any number of tags (including 0)
 
 Delete a person from our contact list.
 
-Format: `del INDEX`
+Format: `del-p INDEX`
 
 Examples:
 * `del-p 1` deletes the first person in the contact list.
@@ -121,11 +121,18 @@ Format: `clear-p`
 
 Add tags to a selected person from our contact list.
 
-Format: `tag-add INDEX TAG_NAME`
+Format: `tag-add-p INDEX TAG_NAME`
 
 Examples:
-* `tag-add 1 Public Relations` adds the tag `Public Relations` to the first person in the contact list.
+* `tag-add-p 1 public` adds the tag `public` to the first person in the contact list.
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* The tag name should not contain spaces and should be alphanumeric.
+
+</div>
 
 #### 2.1.7 Deleting a tag : `tag-del-p`
 
@@ -134,15 +141,23 @@ Add tags to a selected person from our contact list.
 Format: `tag-del-p INDEX TAG_NAME`
 
 Examples:
-* `tag-del 1 Team` deletes the tag `Team` from the first person in the contact list.
+* `tag-del-p 1 team` deletes the tag `team` from the first person in the contact list.
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* The tag name should not contain spaces and should be alphanumeric.
+* The tag name is case-sensitive and must be an exact match for it to be recognised.
+
+</div>
 
 #### 2.1.8 Locating persons by keyword : `find-p`
 
 Find persons matching any of the given keywords from our contact list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
-Format: `find [n/NAME]…​ [t/TAG]…​`
+Format: `find-p [n/NAME]…​ [t/TAG]…​`
 
 Examples:
 * `find-p n/Alan t/team1`
@@ -159,6 +174,7 @@ Examples:
 * The order of the keywords does not matter e.g. `n/hans n/bo` will return the same result as `n/bo n/hans`.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned e.g. `n/Hans n/Bo` will return the persons `Hans Gruber` and `Bo Yang`.
+* Keywords should not contain spaces and should be alphanumeric.
 
 </div>
 
@@ -355,14 +371,14 @@ Clear all tasks or tasks on a selected date from our task list.
 Format: `clear-t [d/DATE]`
 
 Examples:
-* `clear-t 2022-10-10` clears all tasks on the date given.
+* `clear-t d/10-10-2022` clears all tasks on the date given.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Key things to take note of:**<br>
 
 * Clears all tasks on the specified `DATE`.
-* Date must be in the format `yyyy-mm-dd`.
+* Date must be in the format `dd-mm-yyyy`.
 
 </div>
 
@@ -375,6 +391,13 @@ Format: `tag-add-t INDEX TAG_NAME`
 Examples:
 * `tag-add-t 1 important` adds the tag "important" to the first task in the list.
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* The tag name should not contain spaces and should be alphanumeric.
+
+</div>
 
 #### 2.2.7 Deleting a tag : `tag-del-t`
 
@@ -383,13 +406,15 @@ Delete a tag from a selected task in our task list.
 Format: `tag-del-t INDEX TAG_NAME`
 
 Examples:
-* `tag-add-t 1 important` removes the tag "important" from the first task in the list.
+* `tag-del-t 1 important` removes the tag "important" from the first task in the list.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Key things to take note of:**<br>
 
-* `TAG` must be an exact match for it to be recognised.
+* The tag name should not contain spaces and should be alphanumeric.
+* The tag name is case-sensitive and must be an exact match for it to be recognised.
+
 </div>
 
 #### 2.2.8 Locating tasks by keyword : `find-t`
@@ -414,6 +439,7 @@ Examples:
 * The order of the keywords does not matter e.g. `n/meeting n/shareholder` will return the same result as `n/shareholder n/meeting`.
 * Only full words will be matched e.g. `Meeting` will not match `Meetings`.
 * Tasks matching at least one keyword will be returned e.g. `n/Meeting n/Shareholders` will return the persons `Engagement with Shareholders` and `Annual Meeting`.
+* Keywords should not contain spaces and should be alphanumeric.
 
 </div>
 
@@ -530,24 +556,24 @@ Format: `exit`
 
 ### 4.1 Contact Management
 
-| Action                 | Format, Examples                                                                                                                                             |
-|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **List**               | `list-p`                                                                                                                                                     |
-| **Add**                | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
-| **Del**                | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                            |
-| **Edit**               | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
-| **Clear**              | `clear-p`                                                                                                                                                    |
-| **Add Tag**            | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 Public Relations`                                                                                          |
-| **Del Tag**            | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 Team`                                                                                                      |
-| **Find**               | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
-| **Add Strength**       | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                          |
-| **Add Weakness**       | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                               |
-| **Add Miscellaneous**  | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                    |
-| **Del Strength**       | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                            |
-| **Del Weakness**       | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                            |
-| **Del Miscellaneous**  | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                        |
-| **Sort by Strengths**  | `sort-strength`                                                                                                                                              |
-| **Sort by Weaknesses** | `sort-weakness`<br/>                                                                                                                                              |
+| Action                   | Format, Examples                                                                                                                                             |
+|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **List**                 | `list-p`                                                                                                                                                     |
+| **Add**                  | `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​` <br> e.g., `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` |
+| **Delete**               | `del-p INDEX`<br> e.g., `del-p 1`                                                                                                                            |
+| **Edit**                 | `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​` <br> e.g., `edit-p 1 p/98273712 e/johndoe@example.com`                                   |
+| **Clear**                | `clear-p`                                                                                                                                                    |
+| **Add Tag**              | `tag-add-p INDEX TAG_NAME`<br> e.g., `tag-add-p 1 public`                                                                                          |
+| **Delete Tag**           | `tag-del-p INDEX TAG_NAME`<br> e.g., `tag-del-p 1 team`                                                                                                      |
+| **Find**                 | `find-p [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Alex n/Charlotte t/team1 t/team2`                                                                     |
+| **Add Strength**         | `strength-add INDEX  STRENGTH_DESCRIPTION`<br> e.g., `strength-add 1 Great stamina`                                                                          |
+| **Add Weakness**         | `weakness-add INDEX  WEAKNESS_DESCRIPTION`<br> e.g., `weakness-add 1 Poor defensive abilities`                                                               |
+| **Add Miscellaneous**    | `misc-add INDEX  NOTE_DESCRIPTION`<br> e.g., `misc-add 1 Likes ice cream`                                                                                    |
+| **Delete Strength**      | `strength-del INDEX  STRENGTH_INDEX`<br> e.g., `strength-del 1 1`                                                                                            |
+| **Delete Weakness**      | `weakness-del INDEX  WEAKNESS_INDEX`<br> e.g., `weakness-del 1 1`                                                                                            |
+| **Delete Miscellaneous** | `misc-del INDEX  NOTE_INDEX`<br> e.g., `misc-del 1 1`                                                                                                        |
+| **Sort by Strengths**    | `sort-strength`                                                                                                                                              |
+| **Sort by Weaknesses**   | `sort-weakness`<br/>                                                                                                                                              |
 
 ### 4.2 Task Management
 
@@ -555,11 +581,11 @@ Format: `exit`
 |------------------|-----------------------------------------------------------------------------------|
 | **List**         | `list-t`                                                                          |
 | **Add**          | `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`<br> e.g., `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`|
-| **Del**          | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
+| **Delete**       | `del-t INDEX`<br> e.g., `del-p 1`                                                 | 
 | **Edit**         | `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​` <br> e.g., `edit-t 2 d/29-04-2022 et/10:00`|
 | **Clear**        | `clear-t [d/DATE]`<br> e.g., `clear-t 2022-10-10`                                 |
 | **Add Tag**      | `tag-add-t INDEX TAG_NAME` <br> e.g., `tag-add-t 1 important`                     |
-| **Del Tag**      | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
+| **Delete Tag**   | `tag-del-t INDEX TAG_NAME` <br> e.g., `tag-del-t 1 important`                     |
 | **Find**         | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
 | **Get Person**   | `get-person INDEX`<br> e.g., `get-person 2`                                       |
 | **Sort By Date** | `sort-date`                                                                       |
@@ -570,7 +596,7 @@ Format: `exit`
 |-------------------|-------------------------------------------------------------------------|
 | **Load BG Image** | `load-court IMAGE_NAME`<br> e.g., `load-court basketball`               |
 | **Add**           | `add-player PLAYER_NAME`<br> e.g., `add-player Messi`                   |
-| **Del**           | `del-player PLAYER_NAME`<br> e.g., `del-player Messi`                   |
+| **Delete**        | `del-player PLAYER_NAME`<br> e.g., `del-player Messi`                   |
 | **Move**          | `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`<br> e.g., `move Messi x/0 y/0` |
 | **Export**        | `export`                                                                |
 
