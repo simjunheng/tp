@@ -29,8 +29,13 @@ public class SortTaskByDateCommand extends Command {
         requireNonNull(model);
         List<Task> lastShownList = new ArrayList<>(model.getFilteredTaskList());
         List<Task> listSortedByDate = new ArrayList<>(sortTaskListByDate(lastShownList));
-        clearAllTasksInModel(model);
-        addAllTasksToModel(model, listSortedByDate);
+
+        int filteredListSize = lastShownList.size();
+        for (int i = 0; i < filteredListSize; i++) {
+            model.deleteTask(lastShownList.get(i));
+            model.addTask(lastShownList.get(i));
+        }
+        
 
         return new CommandResult(String.format(MESSAGE_SORT_TASKS_SUCCESS));
     }
