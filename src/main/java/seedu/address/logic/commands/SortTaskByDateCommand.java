@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.TaskBook;
 import seedu.address.model.task.Task;
@@ -27,15 +28,14 @@ public class SortTaskByDateCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Task> lastShownList = new ArrayList<>(model.getFilteredTaskList());
-        List<Task> listSortedByDate = new ArrayList<>(sortTaskListByDate(lastShownList));
+        List<Task> lastShownTaskList = new ArrayList<>(model.getUnfilteredTaskList());
+        List<Task> listSortedByDate = new ArrayList<>(sortTaskListByDate(lastShownTaskList));
+        TaskBook newTaskBook = new TaskBook();
 
-        int filteredListSize = lastShownList.size();
-        for (int i = 0; i < filteredListSize; i++) {
-            model.deleteTask(lastShownList.get(i));
-            model.addTask(lastShownList.get(i));
+        for (Task t :  listSortedByDate) {
+            newTaskBook.addTask(t);
         }
-
+        model.setTaskBook(newTaskBook);
 
         return new CommandResult(String.format(MESSAGE_SORT_TASKS_SUCCESS));
     }
