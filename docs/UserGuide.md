@@ -348,7 +348,7 @@ Clear all tasks or tasks on a selected date from our task list.
 Format: `clear-t [d/DATE]`
 
 Examples:
-* `clear-t 10-10-2022` clears all tasks on the date given.
+* `clear-t d/10-10-2022` clears all tasks on the date given.
 
 <div markdown="block" class="alert alert-info">
 
