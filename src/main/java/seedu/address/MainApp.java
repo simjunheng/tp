@@ -195,10 +195,12 @@ public class MainApp extends Application {
     protected void initCourtsDirectory() {
         File courtDirectory = new File("courts");
 
+        //Ensures that the "courts" directory exists. If it does, ensure it is not being mistaken for
+        // a similarly named file
         if (!courtDirectory.exists()) {
             courtDirectory.mkdir();
-            logger.warning(
-                    "Problem while reading from courts directory. Will be creating a new courts directory.");
+            logger.info(
+                    "Courts directory cannot be found. Will be creating a new courts directory.");
         }
     }
 
