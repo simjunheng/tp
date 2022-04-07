@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.TaskBook;
 import seedu.address.model.task.Task;
@@ -32,7 +31,7 @@ public class SortTaskByDateCommand extends Command {
         List<Task> listSortedByDate = new ArrayList<>(sortTaskListByDate(lastShownTaskList));
         TaskBook newTaskBook = new TaskBook();
 
-        for (Task t :  listSortedByDate) {
+        for (Task t : listSortedByDate) {
             newTaskBook.addTask(t);
         }
         model.setTaskBook(newTaskBook);
