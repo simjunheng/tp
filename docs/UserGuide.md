@@ -467,7 +467,7 @@ Load a new background image in the strategy tab.
 Format: `load-court IMAGE_NAME`
 
 Examples:
-* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
+* `load-court basketball` loads would set the image from the filepath `courts/basketball.png` as the background image of strategy tab (if it exists).
 
 <div markdown="block" class="alert alert-info">
 
