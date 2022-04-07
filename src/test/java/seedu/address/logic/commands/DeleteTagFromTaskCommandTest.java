@@ -83,9 +83,9 @@ class DeleteTagFromTaskCommandTest {
 
     @Test
     public void execute_invalidTagName_failure() {
-        String invalidTAG = "";
+        String invalidTag = "";
 
-        DeleteTagFromTaskCommand deleteTagFromTaskCommand = new DeleteTagFromTaskCommand(TASK_FIRST_INDEX, invalidTAG);
+        DeleteTagFromTaskCommand deleteTagFromTaskCommand = new DeleteTagFromTaskCommand(TASK_FIRST_INDEX, invalidTag);
         assertCommandFailure(deleteTagFromTaskCommand, model, Messages.MESSAGE_INVALID_TAG);
 
     }

@@ -33,7 +33,7 @@ class DeleteTagFromTaskCommandParserTest {
 
     @Test
     void parse_outOfBoundIndex_throwsCommandException() {
-        try{
+        try {
             parser.parse(" 999 important");
         } catch (ParseException e) {
             assert e.getMessage() == MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
