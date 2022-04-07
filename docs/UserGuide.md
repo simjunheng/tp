@@ -473,8 +473,10 @@ Examples:
 
 **:information_source: Key things to take note of:**<br>
 
+* A folder named `courts` will be automatically generated in the same directory as the JAR file
+* Image must be in `png` format and be contained in the aforementioned `courts` directory.
 * Loads the given image from the filepath `courts/IMAGE_NAME.png`.
-* File must exist and be in `png` format in a folder named `courts` in the same directory as the JAR file (folder will be automatically generated).
+
 
 </div>
 
