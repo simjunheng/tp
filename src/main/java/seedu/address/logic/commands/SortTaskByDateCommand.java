@@ -27,10 +27,14 @@ public class SortTaskByDateCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Task> lastShownList = new ArrayList<>(model.getFilteredTaskList());
-        List<Task> listSortedByDate = new ArrayList<>(sortTaskListByDate(lastShownList));
-        clearAllTasksInModel(model);
-        addAllTasksToModel(model, listSortedByDate);
+        List<Task> lastShownTaskList = new ArrayList<>(model.getUnfilteredTaskList());
+        List<Task> listSortedByDate = new ArrayList<>(sortTaskListByDate(lastShownTaskList));
+        TaskBook newTaskBook = new TaskBook();
+
+        for (Task t : listSortedByDate) {
+            newTaskBook.addTask(t);
+        }
+        model.setTaskBook(newTaskBook);
 
         return new CommandResult(String.format(MESSAGE_SORT_TASKS_SUCCESS));
     }
@@ -51,25 +55,5 @@ public class SortTaskByDateCommand extends Command {
         Collections.sort(oldList, (t1, t2) -> t1.compareTo(t2));
 
         return oldList;
-    }
-
-    /**
-     * Removes all tasks displayed in the current model
-     *
-     * @model Current model object
-     */
-    private void clearAllTasksInModel(Model model) {
-        model.setTaskBook(new TaskBook());
-    }
-
-    /**
-     * Add tasks to the model according to the given list
-     *
-     * @
-     */
-    private void addAllTasksToModel(Model model, List<Task> taskList) {
-        TaskBook t = new TaskBook();
-        t.setTasks(taskList);
-        model.setTaskBook(t);
     }
 }
