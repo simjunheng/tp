@@ -37,7 +37,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_DIRECTORY_NOT_EXIST = "The " + Image.FILE_PATH + " directory does not exist!";
 
-
+    public static final String MESSAGE_INVALID_KEYWORD = "Keywords should be alphanumeric and should not be blank.";
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -96,6 +96,21 @@ public class ParserUtil {
         String trimmedName = name.trim();
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new Name(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String nameKeyword} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nameKeyword} is invalid or contain spaces.
+     */
+    public static Name parseNameKeyword(String nameKeyword) throws ParseException {
+        requireNonNull(nameKeyword);
+        String trimmedName = nameKeyword.trim();
+        if (!Name.isValidName(trimmedName) || trimmedName.split("\\s+").length != 1) {
+            throw new ParseException(MESSAGE_INVALID_KEYWORD);
         }
         return new Name(trimmedName);
     }
@@ -216,6 +231,21 @@ public class ParserUtil {
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+        }
+        return new Tag(trimmedTag);
+    }
+
+    /**
+     * Parses a {@code String tagKeyword} into a {@code Tag}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code tagKeyword} is invalid.
+     */
+    public static Tag parseTagKeyword(String tagKeyword) throws ParseException {
+        requireNonNull(tagKeyword);
+        String trimmedTag = tagKeyword.trim();
+        if (!Tag.isValidTagName(trimmedTag) || trimmedTag.split("\\s+").length != 1) {
+            throw new ParseException(MESSAGE_INVALID_KEYWORD);
         }
         return new Tag(trimmedTag);
     }
