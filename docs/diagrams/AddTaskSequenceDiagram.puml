@@ -5,7 +5,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":Coach2K22Parser" as Coach2K22Parser LOGIC_COLOR
 participant ":AddTaskCommandParser" as AddTaskCommandParser LOGIC_COLOR
-participant "p:AddTaskCommand" as AddTaskCommand LOGIC_COLOR
+participant "t:AddTaskCommand" as AddTaskCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -33,14 +33,14 @@ create AddTaskCommand
 AddTaskCommandParser -> AddTaskCommand
 activate AddTaskCommand
 
-AddTaskCommand --> AddTaskCommandParser : p
+AddTaskCommand --> AddTaskCommandParser : t
 deactivate AddTaskCommand
-AddTaskCommandParser --> Coach2K22Parser : p
+AddTaskCommandParser --> Coach2K22Parser : t
 
 AddTaskCommandParser -[hidden]-> Coach2K22Parser
 destroy AddTaskCommandParser
 
-Coach2K22Parser --> LogicManager : p
+Coach2K22Parser --> LogicManager : t
 deactivate Coach2K22Parser
 
 LogicManager -> AddTaskCommand : execute()
