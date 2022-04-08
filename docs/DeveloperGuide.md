@@ -524,7 +524,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easier and more intuitive for the user to understand.
     * Cons: Hard to implement.
 
-#### 4.2.5 Get Person Feature
+#### 4.2.6 Get Person Feature
 
 ##### Implementation
 
