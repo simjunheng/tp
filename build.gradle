@@ -69,7 +69,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveName = 'addressbook.jar'
+    archiveName = 'Coach2K22.jar'
 }
 
 run {
