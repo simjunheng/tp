@@ -467,14 +467,16 @@ Load a new background image in the strategy tab.
 Format: `load-court IMAGE_NAME`
 
 Examples:
-* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
+* `load-court basketball` loads would set the image from the filepath `courts/basketball.png` as the background image of strategy tab (if it exists).
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Key things to take note of:**<br>
 
+* A folder named `courts` will be automatically generated in the same directory as the JAR file
+* Image must be in `png` format and be contained in the aforementioned `courts` directory.
 * Loads the given image from the filepath `courts/IMAGE_NAME.png`.
-* File must exist and be in `png` format in a folder named `courts` in the same directory as the JAR file (folder will be automatically generated).
+
 
 </div>
 

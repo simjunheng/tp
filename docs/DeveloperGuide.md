@@ -1067,6 +1067,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends
 
+**Use case: Sort task list by date**
+
+**MSS**
+
+1. User requests to sort the task list by date.
+2. Coach2k22 shows the updated task list, sorted with the tasks with the earliest deadline at the top.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The task list is empty.
+
+  Use case ends.
+
 #### 6.3.3 Strategic Planning
 
 **Use case: Add a new player to the strategy board**
@@ -1141,7 +1156,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1c. Image is not in `png` format.
 
   Use case ends.
-
 
 ### 6.4 Non-Functional Requirements
 
