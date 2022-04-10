@@ -12,15 +12,13 @@ import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
-import seedu.address.logic.commands.AddTagToTaskCommand;
-import seedu.address.logic.commands.DeleteTagFromTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddTaskCommand object
  */
-public class DeleteTaskTagCommandParser implements Parser {
+public class DeleteTaskTagCommandParser implements Parser<DeleteTaskTagCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the
      * {@code DeleteTagFromTaskCommandParser}
@@ -51,7 +49,7 @@ public class DeleteTaskTagCommandParser implements Parser {
             indexInt = Integer.parseInt(values.get(1));
         } catch (Exception e) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTagFromTaskCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskTagCommand.MESSAGE_USAGE));
 
         }
         Index index = Index.fromOneBased(indexInt); // Convert to fromOneBased index since contact list starts from 1

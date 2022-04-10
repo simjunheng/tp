@@ -45,7 +45,7 @@ public class AddTaskTagCommandParser implements Parser {
         try {
             indexInt = Integer.parseInt(values.get(1));
         } catch (Exception e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTagToTaskCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskTagCommand.MESSAGE_USAGE));
 
         }
         Index index = Index.fromOneBased(indexInt); // Convert to fromOneBased index since contact list starts from 1
