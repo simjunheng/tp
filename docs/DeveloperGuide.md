@@ -148,139 +148,141 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### 4.1 Find persons feature
+### 4.1 Contact Management
 
-#### 4.1.1 Implementation
+#### 4.1.1 Add Feature
 
-This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which 
-makes use of the method `#updateFilteredPersonList()` to find persons by name or tag.
+##### Implementation
 
-Given below is an example usage scenario of how the find person mechanism behaves at each step.
+This feature allows the user to add persons to the person list. It is facilitated by `ModelManager` which
+makes use of the method `#addPerson()` to add a new person to the person list.
 
-Step 1: The user inputs `find n/Alex t/friends` to find selected persons.
+Given below is an example usage scenario of how the add person mechanism behaves at each step.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs. 
+Step 1: The user inputs `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com` to add a new person to the person list.
 
-Step 3: It then returns a newly initialised `FindPersonCommand` back to the `LogicManager` for command execution.
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPersonCommandParser` where its method `#parse()` is called to process the user inputs.
 
-Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called which updates the GUI display with only selected persons shown in the contact list. The command results are then generated and shown to the user.
+Step 3: It then returns a newly initialised `AddPersonCommand` back to the `LogicManager` for command execution.
 
-The steps above are summarised using a sequence diagram as shown below.
-![FindPersonSequenceDiagram](images/FindPersonSequenceDiagram.png)
-
-#### 4.1.2 Design consideration
-
-**Aspect: Should there be a separate find command for name and tag:**
-
-* **Alternative 1 (current choice):** A combined command for finding name and tag.
-    * Pros: Easy to implement.
-    * Cons: Users may have to remember more prefixes.
-
-* **Alternative 2:** A separate command for finding name and tag.
-    * Pros: Commands may be more intuitive to the users.
-    * Cons: Possible violation of the DRY principle.
-
-### 4.2 Add players feature
-
-#### 4.2.1 Implementation
-
-This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which 
-makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
-
-Given below is an example usage scenario of how the add player mechanism behaves at each step.
-
-Step 1: The user inputs `add-player Cena` to add a new player to the strategy board.
-
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs. 
-
-Step 3: It then returns a newly initialised `AddPlayerCommand` back to the `LogicManager` for command execution.
-
-Step 4: During the command execution, the `ModelManager#addPlayer()` is called which adds the new player to an internal list. Inside the function call, the `ModelManager#updateFilteredPlayerList()` is also called which updates the GUI display a new player named "Cena" shown in the strategy board. The command results are then generated and shown to the user.
+Step 4: During the command execution, the `ModelManager#addPerson()` is called which adds the new person to an internal list and updates the GUI display. A new contact named "Johnson" with his relevant details is then shown in the person list.
 
 The steps above are summarised using a sequence diagram as shown below.
-![AddPlayerSequenceDiagram](images/AddPlayerSequenceDiagram.png)
+![AddPersonSequenceDiagram](images/AddPersonSequenceDiagram.png)
 
-#### 4.2.2 Design consideration
+##### Design Consideration
 
-**Aspect: Should there be an abstraction for players:**
+**Aspect: Should there be an abstraction for persons:**
 
-* **Alternative 1 (current choice):** A player is a String of player name.
-    * Pros: Easy to implement.
-    * Cons: Hard to extend.
-* **Alternative 2:** A player is an object of class `Player`.
-    * Pros: Easy to extend and manipulate attributes of a player.
-    * Cons: Hard to implement.
-    
-### 4.3 Clear Tasks feature
-
-#### 4.3.1 Implementation
-
-This feature allows users to clear all tasks from the task list, or only tasks that correspond with a given date.
-It is facilitated by the `ModelManager` which utilizes the method `deleteTask()` to delete each corresponding task one
-by one, or sets a new `TaskBook` object to the `ModelManager` to refresh the task list.
-
-Given below is an example usage scenario of how the clear task mechanism behaves at each step.
-
-Step 1: The user inputs `clear-t 2022-10-10` to clear all tasks that correspond with the date `2022-10-10` in the task list.
-
-Step 2: This argument is passed into the `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable
-parser class which corresponds with the provided command to parse the user's inputs. This initializes the `ClearTaskCommandParser`,
-where its method `parse()` is called to process the user inputs.
-
-Step 3: The newly initialized `ClearTaskCommandParser` is then returned to the `LogicManager` for command execution.
-
-Step 4: During the command execution, the `ModelManager#deleteTask()` method is called multiple times to remove the 
-corresponding tasks from the internal task list. Inside the function call, the `ModelManager#updateFilteredTaskList()`
-is also called, which updates the GUI to display the new task list. The command results are then generated and shown to
-the user.
-
-The steps above are summarised using a sequence diagram as shown below.
-![ClearTaskSequenceDiagram](images/ClearTaskSequenceDiagram.png)
-
-#### 4.3.2 Design consideration
-
-**Aspect: Should there be separate clear commands for clearing tasks and players:**
-
-* **Alternative 1 (current choice):** A separate command for clearing tasks and players.
-    * Pros: Easy to implement.
-    * Cons: Hard to extend.
-* **Alternative 2:** A combined command for clearing tasks and player.
-    * Pros: Easier and more intuitive for the user to understand
-    * Cons: Hard to implement.
-
-### 4.4 Add tasks feature
-
-#### 4.4.1 Implementation
-
-This feature allows the user to add tasks to the task list. It is facilitated by `ModelManager` which
-makes use of the method `#addTask()` and `#updateFilteredTaskList()` to add a new task to the task list.
-
-Given below is an example usage scenario of how the add task mechanism behaves at each step.
-
-Step 1: The user inputs `add-t n/Meet d/11-11-2022 st/11:00 et/01:00` to add a new task to the task list.
-
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTaskCommandParser` where its method `#parse()` is called to process the user inputs.
-
-Step 3: It then returns a newly initialised `AddTaskCommand` back to the `LogicManager` for command execution.
-
-Step 4: During the command execution, the `ModelManager#addTask()` is called which adds the new task to an internal list. Inside the function call, the `ModelManager#updateFilteredTaskList()` is also called which updates the GUI display. A new task named "Meet" with the subsequent date and time details is then shown in the task list.
-
-The steps above are summarised using a sequence diagram as shown below.
-![AddTaskSequenceDiagram](images/AddTaskSequenceDiagram.png)
-
-#### 4.4.2 Design consideration
-
-**Aspect: Should there be an abstraction for players:**
-
-* **Alternative 1 (current choice):** Separate `add-t` command for creating a task.
+* **Alternative 1 (current choice):** Separate `add-p` command for creating a person.
     * Pros: Easy to extend and modify.
     * Cons: Not as intuitive for the user.
 * **Alternative 2:** Single `add` command that adds tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
 
-### 4.3 Add tags feature
+#### 4.1.2 Delete Feature
 
-#### 4.3.1 Implementation
+##### Implementation
+
+This feature allows the user to delete persons from the person list. It is facilitated by `ModelManager` which
+makes use of the method `#deletePerson()` to delete a person from the person list. The method `#setTask()` is also called to ensure that the deleted person is removed from all tasks.
+
+Given below is an example usage scenario of how the delete person mechanism behaves at each step.
+
+Step 1: The user inputs `del-p 1` to delete the first person in the person list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeletePersonCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeletePersonCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to remove the
+corresponding person from all the tasks in the task list. After which, the `ModelManager#deletePerson()` method is called to delete the specified person from the person list.
+
+Step 5: The GUI display is then updated to show a new contact and task list without the deleted person.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeletePersonSequenceDiagram](images/DeletePersonSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be an abstraction for persons:**
+
+* **Alternative 1 (current choice):** Separate `del-p` command for deleting a person.
+    * Pros: Easy to extend and modify.
+    * Cons: Not as intuitive for the user.
+* **Alternative 2:** Single `del` command that deletes tasks/persons depending on parameters.
+    * Pros: More intuitive for the user.
+
+#### 4.1.3 Edit Feature
+
+##### Implementation
+
+This feature allows the user to edit persons from the person list. It is facilitated by `ModelManager` which
+makes use of the method `#setPerson()` to update a person from the person list. If the person's name is edited in this process, the method `#setTask()` will be called to ensure all tasks tagged with this person is updated according.
+
+Given below is an example usage scenario of how the edit person mechanism behaves at each step.
+
+Step 1: The user inputs `edit-p 1 n/Johnson` to edit the first person in the person list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `EditPersonCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `EditPersonCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to update the
+name of the corresponding person in all the tasks. After which, the `ModelManager#setPerson()` method is called to update the specified person in the person list.
+
+Step 5: The GUI display is then updated to show a new contact and task list with the updated person details.
+
+The steps above are summarised using a sequence diagram as shown below.
+![EditPersonSequenceDiagram](images/EditPersonSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be an abstraction for persons:**
+
+* **Alternative 1 (current choice):** Separate `edit-p` command for editing a person.
+    * Pros: Easy to extend and modify.
+    * Cons: Not as intuitive for the user.
+* **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
+    * Pros: More intuitive for the user.
+
+#### 4.1.4 Clear Feature
+
+##### Implementation
+
+This feature allows users to clear all persons from the person list.
+It is facilitated by the `ModelManager` which sets a new `AddressBook` object to the `ModelManager` to clear the person list. The method `#setTask()` will also be called to ensure all tasks do not have any persons tagged to it.
+
+Given below is an example usage scenario of how the clear person mechanism behaves at each step.
+
+Step 1: The user inputs `clear-p` to clear all persons from the person list.
+
+Step 2: This argument is passed into the `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable
+parser class which corresponds with the provided command to parse the user's inputs.
+
+Step 3: Since there are no arguments for this command, a newly initialised `ClearPersonCommand` is returned to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to delete persons in all the tasks. After which, a new `AddressBook` object is passed into the `ModelManager#setAddressBook()` method which clears out the person list. 
+
+Step 5: The GUI display is then updated to show an empty contact and new task list without any persons tagged to the tasks.
+
+The steps above are summarised using a sequence diagram as shown below.
+![ClearPersonSequenceDiagram](images/ClearPersonSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be separate clear commands for clearing tasks and persons:**
+
+* **Alternative 1 (current choice):** A separate command for clearing tasks and persons.
+    * Pros: Easy to implement.
+    * Cons: Hard to extend.
+* **Alternative 2:** A combined command for clearing tasks and persons.
+  earPer  * Pros: Easier and more intuitive for the user to understand
+    * Cons: Hard to implement.
+
+#### 4.1.5 Add Tags Feature
+
+##### Implementation
 This feature allows the user to add tags to contacts in the list. It is facilitated by `ModelManager` which
 makes use of the method `#setPerson()` and `#updateFilteredPersonList()` to add tags to a contact.
 
@@ -298,20 +300,154 @@ The steps above are summarised using a sequence diagram as shown below.
 ![AddTagSequenceDiagram](images/AddTagSequenceDiagram.png)
 
 
-#### 4.3.2 Design consideration
+##### Design Consideration
 
 **Aspect: Should the implementation use the existing edit functionalities in AB3:**
 * **Alternative 1:**  Use the current EditCommand class to edit a person's tags.
-  * Pros: Maintains abstraction and reuses code instead of writing new code.
-  * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
+    * Pros: Maintains abstraction and reuses code instead of writing new code.
+    * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
 
 * **Alternative 2 (current choice):** Implement AddTagCommand independently, rewriting similar code
-  * Pros: Cleaner code and less dependencies
-  * Cons: Repetitive code that is not abstracted
+    * Pros: Cleaner code and less dependencies
+    * Cons: Repetitive code that is not abstracted
 
-### 4.4 Clear Tasks feature
+#### 4.1.6 Find Feature
 
-#### 4.4.1 Implementation
+##### Implementation
+
+This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which 
+makes use of the method `#updateFilteredPersonList()` to find persons by name or tag.
+
+Given below is an example usage scenario of how the find person mechanism behaves at each step.
+
+Step 1: The user inputs `find n/Alex t/friends` to find selected persons.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs. 
+
+Step 3: It then returns a newly initialised `FindPersonCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called which updates the GUI display with only selected persons shown in the contact list. The command results are then generated and shown to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![FindPersonSequenceDiagram](images/FindPersonSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be a separate find command for name and tag:**
+
+* **Alternative 1 (current choice):** A combined command for finding name and tag.
+    * Pros: Easy to implement.
+    * Cons: Users may have to remember more prefixes.
+
+* **Alternative 2:** A separate command for finding name and tag.
+    * Pros: Commands may be more intuitive to the users.
+    * Cons: Possible violation of the DRY principle.
+
+**Aspect: Should there be separate find commands for finding tasks and persons:**
+
+* **Alternative 1 (current choice):** A separate command for finding tasks and persons.
+    * Pros: Easy to implement.
+    * Cons: Hard to extend.
+
+* **Alternative 2:** A combined command for finding tasks and persons.
+    * Pros: Easier and more intuitive for the user to understand.
+    * Cons: Hard to implement.
+
+### 4.2 Task Management
+
+#### 4.2.1 Add Feature
+
+##### Implementation
+
+This feature allows the user to add tasks to the task list. It is facilitated by `ModelManager` which
+makes use of the method `#addTask()` to add a new task to the task list.
+
+Given below is an example usage scenario of how the add task mechanism behaves at each step.
+
+Step 1: The user inputs `add-t n/Meet d/11-11-2022 st/11:00 et/01:00` to add a new task to the task list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTaskCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `AddTaskCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#addTask()` is called which adds the new task to an internal list and updates the GUI display. A new task named "Meet" with the subsequent date and time details is then shown in the task list.
+
+The steps above are summarised using a sequence diagram as shown below.
+![AddTaskSequenceDiagram](images/AddTaskSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be an abstraction for tasks:**
+
+* **Alternative 1 (current choice):** Separate `add-t` command for creating a task.
+    * Pros: Easy to extend and modify.
+    * Cons: Not as intuitive for the user.
+* **Alternative 2:** Single `add` command that adds tasks/persons depending on parameters.
+    * Pros: More intuitive for the user.
+
+#### 4.2.2 Delete Feature
+
+##### Implementation
+
+This feature allows the user to delete tasks from the task list. It is facilitated by `ModelManager` which
+makes use of the method `#deleteTask()` to delete a task from the task list.
+
+Given below is an example usage scenario of how the delete task mechanism behaves at each step.
+
+Step 1: The user inputs `del-t 1` to delete the first task in the task list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeleteTaskCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeleteTaskCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#deleteTask()` is called which deletes the specified person from an internal list and updates the GUI display. A new task list without the deleted task then shown.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeleteTaskSequenceDiagram](images/DeleteTaskSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be an abstraction for tasks:**
+
+* **Alternative 1 (current choice):** Separate `del-t` command for deleting a task.
+    * Pros: Easy to extend and modify.
+    * Cons: Not as intuitive for the user.
+* **Alternative 2:** Single `del` command that deletes tasks/persons depending on parameters.
+    * Pros: More intuitive for the user.
+
+#### 4.2.3 Edit Feature
+
+##### Implementation
+
+This feature allows the user to edit tasks from the task list. It is facilitated by `ModelManager` which
+makes use of the method `#setTask()` to update a task from the task list.
+
+Given below is an example usage scenario of how the edit task mechanism behaves at each step.
+
+Step 1: The user inputs `edit-p 1 n/Meeting` to edit the first task in the task list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `EditTaskCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `EditTaskCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#setTask()` is called which edits the specified task from an internal list and updates the GUI display. A new task list with the updated task details is then shown.
+
+The steps above are summarised using a sequence diagram as shown below.
+![EditTaskSequenceDiagram](images/EditTaskSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be an abstraction for tasks:**
+
+* **Alternative 1 (current choice):** Separate `edit-t` command for editing a task.
+    * Pros: Easy to extend and modify.
+    * Cons: Not as intuitive for the user.
+* **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
+    * Pros: More intuitive for the user.
+    
+#### 4.2.4 Clear Feature
+
+##### Implementation
 
 This feature allows users to clear all tasks from the task list, or only tasks that correspond with a given date.
 It is facilitated by the `ModelManager` which utilizes the method `deleteTask()` to delete each corresponding task one
@@ -335,7 +471,7 @@ the user.
 The steps above are summarised using a sequence diagram as shown below.
 ![ClearTaskSequenceDiagram](images/ClearTaskSequenceDiagram.png)
 
-#### 4.4.2 Design consideration
+##### Design Consideration
 
 **Aspect: Should there be separate clear commands for clearing tasks and players:**
 
@@ -345,92 +481,103 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** A combined command for clearing tasks and player.
     * Pros: Easier and more intuitive for the user to understand
     * Cons: Hard to implement.
-    * 
-### \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation
+#### 4.2.5 Find Feature
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+##### Implementation
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+This feature allows the user to display selected tasks in the task list. It is facilitated by `ModelManager` which
+makes use of the method `#updateFilteredTaskList()` to find tasks by name or tag.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+Given below is an example usage scenario of how the find task mechanism behaves at each step.
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+Step 1: The user inputs `find n/meeting t/friends` to find selected tasks.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindTaskCommandParser` where its method `#parse()` is called to process the user inputs.
 
-![UndoRedoState0](images/UndoRedoState0.png)
+Step 3: It then returns a newly initialised `FindTaskCommand` back to the `LogicManager` for command execution.
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 4: During the command execution, the `ModelManager#updateFilteredTaskList()` is called which updates the GUI display with only selected tasks shown in the task list. The command results are then generated and shown to the user.
 
-![UndoRedoState1](images/UndoRedoState1.png)
+The steps above are summarised using a sequence diagram as shown below.
+![FindTaskSequenceDiagram](images/FindTaskSequenceDiagram.png)
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+##### Design Consideration
 
-![UndoRedoState2](images/UndoRedoState2.png)
+**Aspect: Should there be a separate find command for name and tag:**
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+* **Alternative 1 (current choice):** A combined command for finding name and tag.
+    * Pros: Easy to implement.
+    * Cons: Users may have to remember more prefixes.
 
-</div>
+* **Alternative 2:** A separate command for finding name and tag.
+    * Pros: Commands may be more intuitive to the users.
+    * Cons: Possible violation of the DRY principle.
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+**Aspect: Should there be separate find commands for finding tasks and persons:**
 
-![UndoRedoState3](images/UndoRedoState3.png)
+* **Alternative 1 (current choice):** A separate command for finding tasks and persons.
+    * Pros: Easy to implement.
+    * Cons: Hard to extend.
+    
+* **Alternative 2:** A combined command for finding tasks and persons.
+    * Pros: Easier and more intuitive for the user to understand.
+    * Cons: Hard to implement.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
+#### 4.2.6 Get Person Feature
 
-</div>
+##### Implementation
 
-The following sequence diagram shows how the undo operation works:
+This feature allows the user to retrieve contact details of persons tagged to a selected task in the task list. It is facilitated by `ModelManager` which
+makes use of the method `#updateFilteredPersonList()` to get persons tagged to a task.
 
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
+Given below is an example usage scenario of how the get person mechanism behaves at each step.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+Step 1: The user inputs `get-person 1` to retrieve contact details of persons tagged to the first task.
 
-</div>
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `GetPersonCommandParser` where its method `#parse()` is called to process the user inputs.
 
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
+Step 3: It then returns a newly initialised `GetPersonCommand` back to the `LogicManager` for command execution.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called. The GUI display then updates the person list - showing only the contact details of persons tagged to the specified task.  
 
-</div>
+The steps above are summarised using a sequence diagram as shown below.
+![GetPersonSequenceDiagram](images/GetPersonSequenceDiagram.png)
+    
+### 4.3 Strategic Planning
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
+#### 4.3.1 Add Feature
 
-![UndoRedoState4](images/UndoRedoState4.png)
+##### Implementation
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which 
+makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
 
-![UndoRedoState5](images/UndoRedoState5.png)
+Given below is an example usage scenario of how the add player mechanism behaves at each step.
 
-The following activity diagram summarizes what happens when a user executes a new command:
+Step 1: The user inputs `add-player Cena` to add a new player to the strategy board.
 
-<img src="images/CommitActivityDiagram.png" width="250" />
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs. 
 
-#### Design considerations:
+Step 3: It then returns a newly initialised `AddPlayerCommand` back to the `LogicManager` for command execution.
 
-**Aspect: How undo & redo executes:**
+Step 4: During the command execution, the `ModelManager#addPlayer()` is called which adds the new player to an internal list and updates the GUI display with a new player named "Cena" shown in the strategy board. The command results are then generated and shown to the user.
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+The steps above are summarised using a sequence diagram as shown below.
+![AddPlayerSequenceDiagram](images/AddPlayerSequenceDiagram.png)
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+##### Design Consideration
 
-_{more aspects and alternatives to be added}_
+**Aspect: Should there be an abstraction for players:**
 
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
+* **Alternative 1 (current choice):** A player is a String of player name.
+    * Pros: Easy to implement.
+    * Cons: Hard to extend.
+* **Alternative 2:** A player is an object of class `Player`.
+    * Pros: Easy to extend and manipulate attributes of a player.
+    * Cons: Hard to implement.
+    
+    
 --------------------------------------------------------------------------------------------------------------------
 
 ## **5. Documentation, logging, testing, configuration, dev-ops**
@@ -487,6 +634,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### 6.3 Use cases
 
 (For all use cases below, the **System** is `Coach2K22` and the **Actor** is the `user`, unless specified otherwise)
+
+#### 6.3.1 Contact Management
 
 **Use case: Add a person**
 
@@ -726,6 +875,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
+#### 6.3.2 Task Management
+
 **Use case: Add a task to the task list**
 
 **MSS**
@@ -915,29 +1066,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. Coach2K22 shows an empty contact list.
 
       Use case ends
-    
-**Use case: Load new background image for strategy tab**
+
+**Use case: Sort task list by date**
 
 **MSS**
 
-1. User requests load a new background image.
-2. Coach2k22 shows the updated strategy tab with the new background image.
+1. User requests to sort the task list by date.
+2. Coach2k22 shows the updated task list, sorted with the tasks with the earliest deadline at the top.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Provided name of image is invalid.
+* 1a. The task list is empty.
 
   Use case ends.
 
-* 1b. Image does not exist.
-
-  Use case ends.
-
-* 1c. Image is not in `png` format.
-
-  Use case ends.
+#### 6.3.3 Strategic Planning
 
 **Use case: Add a new player to the strategy board**
 
@@ -963,7 +1108,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3c1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-   
+
 **Use case: Remove a player from the strategy board**
 
 **MSS**
@@ -989,54 +1134,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Clear all players from the strategy board**
+**Use case: Load new background image for strategy tab**
 
 **MSS**
 
-1. User requests to show all players on the strategy board
-2. Coach2K22 shows players
-3. User requests to clear all players from the strategy board
-4. Coach2K22 shows the updated strategy board without any players
-
-   Use case ends.
-
-**Extensions**
-* 2a. The strategy board is empty.
-
-  Use case ends.
-
-*{More to be added}*
-
-**Use case: Save current strategy board**
-
-**MSS**
-
-1. User requests to save a snapshot of the strategy board.
-2. Coach2k22 returns an image file of the strategy board.
+1. User requests load a new background image.
+2. Coach2k22 shows the updated strategy tab with the new background image.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. User is not viewing the strategy board.
+* 1a. Provided name of image is invalid.
 
   Use case ends.
 
-**Use case: Sort task list by date**
+* 1b. Image does not exist.
 
-**MSS**
+  Use case ends.
 
-1. User requests to sort the task list by date.
-2. Coach2k22 shows the updated task list, sorted with the tasks with the earliest deadline at the top.
+* 1c. Image is not in `png` format.
 
-    Use case ends.
-
-**Extensions**
-
-* 1a. The task list is empty.
-        
-    Use case ends.
-
+  Use case ends.
 
 ### 6.4 Non-Functional Requirements
 
