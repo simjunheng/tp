@@ -7,6 +7,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.person.AddPersonTagCommand;
 import seedu.address.logic.commands.task.DeleteTaskTagCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -52,6 +53,11 @@ public class DeleteTaskTagCommandParser implements Parser<DeleteTaskTagCommand> 
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskTagCommand.MESSAGE_USAGE));
 
         }
+        // Checking if index is a positive integer
+        if (!(indexInt >= 1)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPersonTagCommand.MESSAGE_USAGE));
+        }
+
         Index index = Index.fromOneBased(indexInt); // Convert to fromOneBased index since contact list starts from 1
 
         // Get the tagName element in the ArrayList
