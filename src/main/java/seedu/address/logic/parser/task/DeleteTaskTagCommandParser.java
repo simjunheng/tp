@@ -12,6 +12,8 @@ import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
+import seedu.address.logic.commands.AddTagToTaskCommand;
+import seedu.address.logic.commands.DeleteTagFromTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
@@ -20,12 +22,14 @@ import seedu.address.model.tag.Tag;
  */
 public class DeleteTaskTagCommandParser implements Parser {
     /**
-     * Parses the given {@code String} of arguments in the context of the {@code DeleteTagFromTaskCommandParser}
+     * Parses the given {@code String} of arguments in the context of the
+     * {@code DeleteTagFromTaskCommandParser}
      * and returns a {@code DeleteTagFromTaskCommand} object for execution
      * * @param args Input string by user EXCEPT COMMAND WORD
      *
      * @return DeleteTagFromTaskCommand object with arguments loaded in
-     * @throws ParseException If the user input does not conform to the expected format
+     * @throws ParseException If the user input does not conform to the expected
+     *                        format
      */
 
     public DeleteTaskTagCommand parse(String args) throws ParseException {
@@ -42,7 +46,14 @@ public class DeleteTaskTagCommandParser implements Parser {
         ArrayList<String> values = new ArrayList<>(argMultimap.getAllValues(new Prefix("")));
 
         // Get the index element in the ArrayList
-        int indexInt = Integer.parseInt(values.get(1));
+        int indexInt;
+        try {
+            indexInt = Integer.parseInt(values.get(1));
+        } catch (Exception e) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTagFromTaskCommand.MESSAGE_USAGE));
+
+        }
         Index index = Index.fromOneBased(indexInt); // Convert to fromOneBased index since contact list starts from 1
 
         // Get the tagName element in the ArrayList
