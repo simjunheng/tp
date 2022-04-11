@@ -220,10 +220,10 @@ public class StrategyPanel extends UiPart<Region> {
         stack.getChildren().addAll(cr, text);
         //stack.setTranslateX(x);
         //stack.setTranslateY(y);
-        stack.translateXProperty().
-                bind(strategyAnchorPane.widthProperty().divide(BOARD_WIDTH).multiply(x));
-        stack.translateYProperty().
-                bind(strategyAnchorPane.heightProperty().divide(BOARD_HEIGHT).multiply(BOARD_HEIGHT - y));
+        stack.translateXProperty()
+                .bind(strategyAnchorPane.widthProperty().divide(BOARD_WIDTH).multiply(x));
+        stack.translateYProperty()
+                .bind(strategyAnchorPane.heightProperty().divide(BOARD_HEIGHT).multiply(BOARD_HEIGHT - y));
         stack.setOnMousePressed(pressHandler);
         stack.setOnMouseDragged(dragHandler);
     }
