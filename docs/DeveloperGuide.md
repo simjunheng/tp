@@ -262,7 +262,7 @@ parser class which corresponds with the provided command to parse the user's inp
 
 Step 3: Since there are no arguments for this command, a newly initialised `ClearPersonCommand` is returned to the `LogicManager` for command execution.
 
-Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to delete persons in all the tasks. After which, a new `AddressBook` object is passed into the `ModelManager#setAddressBook()` method which clears out the person list. 
+Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to delete persons in all the tasks. After which, a new `AddressBook` object is passed into the `ModelManager#setAddressBook()` method which clears out the person list.
 
 Step 5: The GUI display is then updated to show an empty contact and new task list without any persons tagged to the tasks.
 
@@ -315,14 +315,14 @@ The steps above are summarised using a sequence diagram as shown below.
 
 ##### Implementation
 
-This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which 
+This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which
 makes use of the method `#updateFilteredPersonList()` to find persons by name or tag.
 
 Given below is an example usage scenario of how the find person mechanism behaves at each step.
 
 Step 1: The user inputs `find n/Alex t/friends` to find selected persons.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs. 
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs.
 
 Step 3: It then returns a newly initialised `FindPersonCommand` back to the `LogicManager` for command execution.
 
@@ -537,7 +537,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Cons: Not as intuitive for the user.
 * **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
-    
+
 #### 4.2.4 Clear Feature
 
 ##### Implementation
@@ -612,7 +612,7 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 1 (current choice):** A separate command for finding tasks and persons.
     * Pros: Easy to implement.
     * Cons: Hard to extend.
-    
+
 * **Alternative 2:** A combined command for finding tasks and persons.
     * Pros: Easier and more intuitive for the user to understand.
     * Cons: Hard to implement.
@@ -632,25 +632,25 @@ Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Par
 
 Step 3: It then returns a newly initialised `GetPersonCommand` back to the `LogicManager` for command execution.
 
-Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called. The GUI display then updates the person list - showing only the contact details of persons tagged to the specified task.  
+Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called. The GUI display then updates the person list - showing only the contact details of persons tagged to the specified task.
 
 The steps above are summarised using a sequence diagram as shown below.
 ![GetPersonSequenceDiagram](images/GetPersonSequenceDiagram.png)
-    
+
 ### 4.3 Strategic Planning
 
 #### 4.3.1 Add Feature
 
 ##### Implementation
 
-This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which 
+This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which
 makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
 
 Given below is an example usage scenario of how the add player mechanism behaves at each step.
 
 Step 1: The user inputs `add-player Cena` to add a new player to the strategy board.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs. 
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs.
 
 Step 3: It then returns a newly initialised `AddPlayerCommand` back to the `LogicManager` for command execution.
 
@@ -700,8 +700,8 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** Allow for different filetypes of images (png, jpeg, etc.).
   * Pros: Easy to extend and more intuitive for the user.
   * Cons: Hard to implement.
-    
-    
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **5. Documentation, logging, testing, configuration, dev-ops**
@@ -773,9 +773,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. The parameters supplied by the user is invalid.
-  
+
     * 1a1. Coach2K22 shows an error message.
-      
+
       Use case ends.
 
 * 1b. Compulsory parameters not supplied by the user.
@@ -806,7 +806,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-    
+
 **Use case: Add a strength to a person**
 
 **MSS**
@@ -894,7 +894,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
     * Takes in a misc. index instead of a strength index
-    
+
 **Use case: Find persons by name or tag**
 
 **MSS**
@@ -911,7 +911,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Coach2K22 shows an empty list.
 
       Use case ends.
-    
+
 * 1b. The keyword provided is not indicated by a prefix e.g. `n/` or `t/`.
 
     * 1b1. Coach2K22 shows an error message.
@@ -923,12 +923,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. Coach2K22 shows an error message.
 
       Use case ends.
-    
+
 * 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
-  
+
     * 1d1. Coach2K22 shows an error message.
 
-      Use case ends.    
+      Use case ends.
 
 **Use case: Sort address book by strengths in descending order**
 
@@ -951,7 +951,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * This use case describes a similar interaction between the user and Coach2K22 to that of `Sort address book by strengths in descending order`
     * Sorts list of persons by total number of weaknesses in descending order instead of total number of strengths
-    
+
 **Use case: Add a tag to a person**
 
 **MSS**
@@ -960,7 +960,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Coach2K22 shows a list of persons
 3. User requests to attach a new tag to a person
 4. Coach2k22 shows the new details of the person
-   
+
    Use case ends.
 
 **Extensions**
@@ -1545,16 +1545,11 @@ Expected: Same as point 3.2.
 
 2. Test case: `clear-p`<br>
    Expected: All entries in the contact list will be cleared. It also clears the participant field of all tasks.
-   
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **8. Appendix: Effort**
 
-1. The team has extended the program to deal with three different entity types: `Person`, `Task`, `Strategy`. These entities
-   are interconnected where features specific to `Person` may directly affect the `Task` entity. Deliberate and extensive checks are implemented
-   across features to ensure functional correctness.
+1. The team has extended the program to deal with three different entity types: `Person`, `Task`, `Strategy`. These entities are interconnected where features specific to `Person` may directly affect the `Task` entity. Deliberate and extensive checks are implemented across features to ensure functional correctness.
    
-2. The team has implemented a JavaFX strategy board with draggable nodes. In addition, a `move` feature is implemented to cater to 
-   existing requirements. It was tough to implement this as nodes placements are determined by its relative position. Our team also
-   tried to get these placements as accurate as possible to ensure functional correctness - increasing the implementation difficulty levels.
-   
+2. The team has implemented a JavaFX strategy board with draggable nodes. In addition, a `move` feature is implemented to cater to existing requirements. It was tough to implement this as nodes placements are determined by its relative position. Our team also tried to get these placements as accurate as possible to ensure functional correctness - increasing the implementation difficulty levels.
