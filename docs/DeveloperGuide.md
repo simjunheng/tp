@@ -444,7 +444,7 @@ The steps above are summarised using a sequence diagram as shown below. Note tha
   * Cons: Difficult to extend and modify.
 * **Alternative 2:** Single `sort` command for sorting the `AddressBook` and `TaskBook`.
   * Pros: Easier to extend and modify.
-  * Cons: Not intuitive for the user and very difficult to implement
+  * Cons: Not intuitive for the user and difficult to implement
 
 ### 4.2 Task Management
 
@@ -669,6 +669,37 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** A player is an object of class `Player`.
     * Pros: Easy to extend and manipulate attributes of a player.
     * Cons: Hard to implement.
+
+#### 4.3.2 Load Court Feature
+
+##### Implementation
+
+This feature allows the user to load an image to serve as the background of the strategy board. It is facilitated by `CommandResult` which
+carries a representation of the image to the `MainWindow` to update the background of the strategy board accordingly.
+
+Given below is an example usage scenario of how the load court mechanism behaves at each step.
+
+Step 1: The user inputs `load-court basketball` to load the image from the filepath `courts/basketball.png` to serve as the background of strategy board.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `LoadCourtCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `LoadCourtCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `CommandResult` object is returned to the `MainWindow`, where `CommandResult#getBackgroundImage()` is called to retrieve the image representation. Then, `MainWindow#handleLoadImage(back)` is called to update the background of the strategy board with a new image. The command results are then generated and shown to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![LoadCourtSequenceDiagram](images/LoadCourtSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be different filetypes for images:**
+
+* **Alternative 1 (current choice):** Only png images are allowed.
+  * Pros: Easy to implement.
+  * Cons: Hard to extend and not intuitive for the user.
+* **Alternative 2:** Allow for different filetypes of images (png, jpeg, etc.).
+  * Pros: Easy to extend and more intuitive for the user.
+  * Cons: Hard to implement.
     
     
 --------------------------------------------------------------------------------------------------------------------
