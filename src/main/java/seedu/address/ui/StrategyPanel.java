@@ -9,8 +9,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
