@@ -57,7 +57,6 @@ Here is a quick tutorial to get your started!
 
 <div style="page-break-after: always"></div>
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **2. About the User Guide**
 
