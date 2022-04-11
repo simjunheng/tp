@@ -18,7 +18,7 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 
 --------------------------------------------------------------------------------------------------------------------
 
-1. Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
+1 Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
 
 2. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2k22.
 
