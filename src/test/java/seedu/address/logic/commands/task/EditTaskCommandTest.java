@@ -79,18 +79,6 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void execute_invalidAdditionOfPersons_failure() {
-        EditTaskDescriptor invalidTask = new EditTaskDescriptorBuilder().withPersons(ALICE.getName().fullName).build();
-        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
-
-        String expectedMessage = String.format(EditTaskCommand.MESSAGE_SCHEDULE_CONFLICT, ALICE.getName().fullName);
-        assertThrows(CommandException.class,
-                expectedMessage, () -> editTaskCommand.execute(model));
-
-        assertCommandFailure(editTaskCommand, model, expectedMessage);
-    }
-
-    @Test
     public void execute_invalidStartEndTime_failure() {
         EditTaskDescriptor invalidTask = new EditTaskDescriptorBuilder().withStartTime("15:00")
                 .withEndTime("13:00").build();
