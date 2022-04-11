@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Player {
     public static final String MESSAGE_CONSTRAINTS = "Player name cannot be empty"
-            + " and must be not more then 24 characters"
+            + " and must be not more then 50 characters"
             + " and must not contain \"/\". \n";
     private static final int DEF_XCOORD = 50;
     private static final int DEF_YCOORD = 500;
@@ -42,7 +42,7 @@ public class Player {
      * Returns true if the given player name is a valid player name.
      */
     public static boolean isValidPlayer(String playerName) {
-        return !playerName.isEmpty() && playerName.length() <= 24 && !playerName.contains("/");
+        return !playerName.isEmpty() && playerName.length() <= 50 && !playerName.contains("/");
     }
 
     //Getters

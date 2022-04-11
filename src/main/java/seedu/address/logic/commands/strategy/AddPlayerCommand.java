@@ -19,7 +19,7 @@ public class AddPlayerCommand extends Command {
             + ": Add a player in the strategy panel. "
             + "Parameters: "
             + "PLAYER_NAME"
-            + "(must be non-empty, not more than 24 characters and does not contain \"/\")\n"
+            + "(must be non-empty, not more than 50 characters and does not contain \"/\")\n"
             + "Example: " + COMMAND_WORD + " "
             + "Lionel Messi";
 
