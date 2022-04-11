@@ -1,5 +1,6 @@
 package seedu.address;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -72,6 +73,8 @@ public class MainApp extends Application {
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
+
+        initCourtsDirectory();
     }
 
     /**
@@ -184,6 +187,21 @@ public class MainApp extends Application {
         }
 
         return initializedPrefs;
+    }
+
+    /**
+     * Creates the "/courts" directory if it does not already exist.
+     */
+    protected void initCourtsDirectory() {
+        File courtDirectory = new File("courts");
+
+        //Ensures that the "courts" directory exists. If it does, ensure it is not being mistaken for
+        // a similarly named file
+        if (!courtDirectory.exists()) {
+            courtDirectory.mkdir();
+            logger.info(
+                    "Courts directory cannot be found. Will be creating a new courts directory.");
+        }
     }
 
     @Override

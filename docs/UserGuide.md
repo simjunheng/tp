@@ -10,41 +10,73 @@ title: User Guide
 --------------------------------------------------------------------------------------------------------------------
 
 ## **1. Introduction**
-Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds
+Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds.
 
 ### 1.1 Installation Instructions
-
-1. Ensure you have Java `11` or above installed in your Computer.
-
-2. Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
-
-3. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2k22.
-
-4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
-    
-5. Type the command in the command box and press Enter to execute it.
-
-6. Refer to the [Features](#2-features) below for details of each command.
-
-<div markdown="span" class="alert alert-primary">:bulb: **Note:**
-1. Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RAM and 500 MB of storage_).
-</div>
-
-### 1.2 User Guide Icons
-
-| Icon               | Meaning                                                       |
-|--------------------|---------------------------------------------------------------|
-|:information_source:| This icon indicates important information to be taken note of |
-|:bulb:               | This icon indicates useful tips for the users                |
+=======
+This application is **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Coach2K22 can get your administrative tasks done faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **2. Features**
+1. Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
 
-<div markdown="block" class="alert alert-info">
+2. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2k22.
 
-**:information_source: Notes about the command format:**<br>
+3. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   ![Ui](images/Ui.png)
+    
+4. Type the command in the command box and press Enter to execute it.
+
+5. Refer to the [Features](#2-features) below for details of each command.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Note:**
+Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RAM and 500 MB of storage_).
+</div>
+
+## **2. About the User Guide**
+
+### 2.1 Purpose
+This User Guide provides an in-depth documentation of our product to help familarise you with Coach2K22. You can refer to [Structure](#22-structure) to find out what's included in this document. 
+
+### 2.2 Structure
+This User Guide consist of six sections: [Introduction](#1-introduction), [About the User Guide](#2-about-the-user-guide), [Quick Start](#3-quick-start), [Features](#4-features), [FAQ](#5-faq), and [Command Summary](#6-command-summary).
+
+* The **Introduction** section provides a general overview of what our product does.
+
+* The **About the User Guide** section introduces you to icons and unfamiliar terms used throughout this document.
+
+* The **Quick Start** section provides you with the basic information to set up and use our product properly.  
+
+* The **Features** section provides you with step-by-step instructions for every product feature.
+
+* The **FAQ** section provides you with the answer to commonly asked questions.
+
+* The **Command Summary** section provides a summary to every feature's format and usage examples.
+
+A table of content is also provided at the start of this document to allow you to navigate to each section easily.
+
+### 2.3 User Guide Icons
+The table below shows the icons used in this document with its associated meaning. 
+
+| Icon                                                                      | Meaning                                                       |
+|---------------------------------------------------------------------------|---------------------------------------------------------------|
+|<div markdown="block" class="alert alert-info"> :information_source: </div>| This icon indicates important information to be taken note of |
+|<div markdown="span" class="alert alert-primary"> :bulb: </div>            | This icon indicates useful tips for the users                 |
+
+### 2.4 Glossary
+The table below describes the terms used in this document with its accompanying definitions.
+
+| Term               | Definition                                                                                     |
+|--------------------|------------------------------------------------------------------------------------------------|
+|**GUI**             | The *Graphical User Interface (GUI)* allows program interaction through graphics               |
+|**CLI**             | The *Command Line Interface (CLI)* allows program interaction through commands                 |
+|**Command**         | An instruction to the program to perform a specific task or operation <br> e.g., `list-p`      |
+|**Prefix**          | An indicator used to mark the start of a *Parameter* <br> e.g., `n/` `st/`                     |
+|**Parameter**       | A value supplied by the user in a command <br> e.g., `NAME` `START_TIME`                       |
+|**Command Format**  | The *Command Format* describes the arrangement of the *Command*, *Prefix*, and *Parameter* <br> e.g., `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL` |
+
+### 2.5 Notes about the Command Format
+This subsection describes some noteworthy information about the command format that will be useful in guiding you through the [Features](#4-features) section.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add-p n/NAME`, `NAME` is a parameter which can be used as `add-p n/John Doe`.
@@ -64,17 +96,47 @@ Coach2K22 is a desktop app that helps busy sports coaches **organise their overw
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-</div>
 
-### 2.1 Contact Management
 
-#### 2.1.1 Listing all contacts : `list-p`
+--------------------------------------------------------------------------------------------------------------------
+
+## **3. Quick Start**
+
+1. Ensure you have Java `11` or above installed in your Computer.
+
+1. Download the latest `Coach2K22.jar` file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
+
+1. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2K22.
+
+1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   ![Ui](images/Ui.png)
+
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all the possible commands.<br>
+   Some example commands you can try:
+
+    * **`list-p`** : Lists all contacts.
+
+    * **`add-p`**`n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` : Adds a contact named `Johnson`.
+
+    * **`del-p`**`3` : Deletes the 3rd contact shown in the current list.
+
+    * **`exit`** : Exits the app.
+
+1. Refer to the [Features](#4-features) below for details of each command.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **4. Features**
+
+### 4.1 Contact Management
+
+#### 4.1.1 Listing all contacts : `list-p`
 
 Shows a list of all persons in our contact list.
 
 Format: `list-p`
 
-#### 2.1.2 Adding a person: `add-p`
+#### 4.1.2 Adding a person: `add-p`
 
 Adds a person to our contact list.
 
@@ -87,7 +149,7 @@ Examples:
 A person can have any number of tags (including 0)
 </div>
 
-#### 2.1.3 Deleting a person: `del-p`
+#### 4.1.3 Deleting a person: `del-p`
 
 Delete a person from our contact list.
 
@@ -96,7 +158,7 @@ Format: `del-p INDEX`
 Examples:
 * `del-p 1` deletes the first person in the contact list.
 
-#### 2.1.4 Editing a person: `edit-p`
+#### 4.1.4 Editing a person: `edit-p`
 
 Edit a person from our contact list.
 
@@ -106,13 +168,13 @@ Examples:
 * `edit-p 1 p/98273712 e/johndoe@example.com` edits the phone number and email addresses of the 1st person into `98273712` and  `johndoe@example.com` respectively.
 * `edit-p 2 n/Alan Walker t/` edits the name of the 2nd person and clear all existing tags.
 
-#### 2.1.5 Clearing all contact entries: `clear-p`
+#### 4.1.5 Clearing all contact entries: `clear-p`
 
 Clear all entries from our contact list.
 
 Format: `clear-p`
 
-#### 2.1.6 Adding a tag : `tag-add-p`
+#### 4.1.6 Adding a tag : `tag-add-p`
 
 Add tags to a selected person from our contact list.
 
@@ -129,7 +191,7 @@ Examples:
 
 </div>
 
-#### 2.1.7 Deleting a tag : `tag-del-p`
+#### 4.1.7 Deleting a tag : `tag-del-p`
 
 Add tags to a selected person from our contact list.
 
@@ -147,7 +209,7 @@ Examples:
 
 </div>
 
-#### 2.1.8 Locating persons by keyword : `find-p`
+#### 4.1.8 Locating persons by keyword : `find-p`
 
 Find persons matching any of the given keywords from our contact list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
@@ -174,7 +236,7 @@ Examples:
 </div>
 
 
-#### 2.1.9 Adding a strength : `strength-add`
+#### 4.1.9 Adding a strength : `strength-add`
 
 Add a strength to a selected person from our contact list.
 
@@ -183,6 +245,8 @@ Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
 Examples:
 * `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
 
+<div markdown="block" class="alert alert-info">
+
 **:information_source: Key things to take note of:**<br>
 
 * Adds a strength at the specified `INDEX`.
@@ -190,7 +254,9 @@ Examples:
 * The provided `INDEX` must be a valid (must be an unsigned non-zero integer and exists in the list).
 * The `STRENGTH_DESCRIPTION` must not be greater than 50 characters.
 
-#### 2.1.10 Adding a weakness : `weakness-add`
+</div>
+
+#### 4.1.10 Adding a weakness : `weakness-add`
 
 Add a weakness to a selected person from our contact list.
 
@@ -199,6 +265,8 @@ Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
 Examples:
 * `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
 
+<div markdown="block" class="alert alert-info">
+
 **:information_source: Key things to take note of:**<br>
 
 * Adds a weakness at the specified `INDEX`.
@@ -206,7 +274,9 @@ Examples:
 * The provided `INDEX` must be a valid (must be an unsigned non-zero integer and exists in the list).
 * The `WEAKNESS_DESCRIPTION` must not be greater than 50 characters.
 
-#### 2.1.11 Adding a miscellaneous note : `misc-add`
+</div>
+
+#### 4.1.11 Adding a miscellaneous note : `misc-add`
 
 Add a miscellaneous note to a selected person from our contact list.
 
@@ -215,6 +285,8 @@ Format: `misc-add INDEX  NOTE_DESCRIPTION`
 Examples:
 * `misc-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
+<div markdown="block" class="alert alert-info">
+
 **:information_source: Key things to take note of:**<br>
 
 * Adds a miscellaneous note at the specified `INDEX`.
@@ -222,7 +294,9 @@ Examples:
 * The provided `INDEX` must be a valid (must be an unsigned non-zero integer and exists in the list).
 * The `NOTE_DESCRIPTION` must not be greater than 50 characters.
 
-#### 2.1.12 Deleting a strength : `strength-del`
+</div>
+
+#### 4.1.12 Deleting a strength : `strength-del`
 
 Delete a strength from a selected person from our contact list.
 
@@ -244,7 +318,7 @@ Examples:
 </div>
 
 
-#### 2.1.13 Deleting a weakness : `weakness-del`
+#### 4.1.13 Deleting a weakness : `weakness-del`
 
 Delete the weakness from a selected person from our contact list.
 
@@ -266,7 +340,7 @@ Examples:
 </div>
 
 
-#### 2.1.14 Deleting a miscellaneous note : `misc-del`
+#### 4.1.14 Deleting a miscellaneous note : `misc-del`
 
 Delete the miscellaneous note from a selected person from our contact list.
 
@@ -287,28 +361,28 @@ Examples:
 
 </div>
 
-#### 2.1.15 Sorting list of persons by strengths : `sort-strength`
+#### 4.1.15 Sorting list of persons by strengths : `sort-strength`
 
 Sorts the list of persons by total strengths in descending order.
 
 Format: `sort-strength`
 
-#### 2.1.16 Sorting list of persons by weaknesses : `sort-weakness`
+#### 4.1.16 Sorting list of persons by weaknesses : `sort-weakness`
 
 Sorts the list of persons by total weaknesses in descending order.
 
 Format: `sort-weaknesses`
 
 
-### 2.2 Task Management
+### 4.2 Task Management
 
-#### 2.2.1 Listing all tasks : `list-t`
+#### 4.2.1 Listing all tasks : `list-t`
 
 Shows a list of all tasks in our task list.
 
 Format: `list-t`
 
-#### 2.2.2 Adding a task: `add-t`
+#### 4.2.2 Adding a task: `add-t`
 
 Adds a task to our task list.
 
@@ -334,7 +408,7 @@ Examples:
 
 </div>
 
-#### 2.2.3 Deleting a task: `del-t`
+#### 4.2.3 Deleting a task: `del-t`
 
 Delete a task from our task list.
 
@@ -349,7 +423,7 @@ Examples:
 * The index can be obtained by referring to the indicated task index on the displayed task list.
 * Index values start from 1 and are always positive integers.
 
-#### 2.2.4 Editing a task: `edit-t`
+#### 4.2.4 Editing a task: `edit-t`
 
 Edit a task from our task list.
 
@@ -359,7 +433,7 @@ Examples:
 * `edit-t 2 d/29-04-2022 et/10:00` edits the date and end time of the second task into `29-04-2022` and  `10:00` respectively.
 * `edit-t 1 n/PR Event t/` edits the name of the first task to `PR Event` and clears all existing tags.
 
-#### 2.2.5 Clear all task entries : `clear-t`
+#### 4.2.5 Clear all task entries : `clear-t`
 
 Clear all tasks or tasks on a selected date from our task list.
 
@@ -377,7 +451,7 @@ Examples:
 
 </div>
 
-#### 2.2.6 Adding a tag : `tag-add-t`
+#### 4.2.6 Adding a tag : `tag-add-t`
 
 Add a tag to a selected task from our task list.
 
@@ -394,7 +468,7 @@ Examples:
 
 </div>
 
-#### 2.2.7 Deleting a tag : `tag-del-t`
+#### 4.2.7 Deleting a tag : `tag-del-t`
 
 Delete a tag from a selected task in our task list.
 
@@ -412,7 +486,7 @@ Examples:
 
 </div>
 
-#### 2.2.8 Locating tasks by keyword : `find-t`
+#### 4.2.8 Locating tasks by keyword : `find-t`
 
 Find tasks matching any of the given keywords from our task list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
@@ -438,7 +512,7 @@ Examples:
 
 </div>
 
-#### 2.2.9 Locating contacts tagged to a task : `get-person`
+#### 4.2.9 Locating contacts tagged to a task : `get-person`
 
 Pull out the contact information of persons tagged to a task.
 
@@ -447,33 +521,35 @@ Format: `get-person INDEX`
 Examples:
 * `get-person 2` pulls out the contact information of persons tagged to the second task.
 
-#### 2.2.10 Sorting tasks by date : `sort-date`
+#### 4.2.10 Sorting tasks by date : `sort-date`
 
 Sort the task list by date, in order of the task whose deadline is earlier.
 
 Format: `sort-date`
 
-### 2.3 Strategic Planning
+### 4.3 Strategic Planning
 
-#### 2.3.1 Load new background image : `load-court`
+#### 4.3.1 Load new background image : `load-court`
 
 Load a new background image in the strategy tab.
 
 Format: `load-court IMAGE_NAME`
 
 Examples:
-* `load-court basketball` loads and sets the image `basketball.png` as the background image of strategy tab.
+* `load-court basketball` loads would set the image from the filepath `courts/basketball.png` as the background image of strategy tab (if it exists).
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Key things to take note of:**<br>
 
+* A folder named `courts` will be automatically generated in the same directory as the JAR file
+* Image must be in `png` format and be contained in the aforementioned `courts` directory.
 * Loads the given image from the filepath `courts/IMAGE_NAME.png`.
-* File must exist and be in `png` format in a folder named `courts` in the same directory as the JAR file (folder will be automatically generated).
+
 
 </div>
 
-#### 2.3.2 Adding new players: `add-player`
+#### 4.3.2 Adding new players: `add-player`
 
 Add a new player to the strategy board.
 
@@ -493,7 +569,7 @@ Examples:
 
 </div>
 
-#### 2.3.3 Removing players: `del-player`
+#### 4.3.3 Removing players: `del-player`
 
 Remove a player from the strategy board.
 
@@ -504,7 +580,7 @@ As mentioned above, the player name is case-sensitive.
 Examples:
 * `del-player Messi` removes the player named `Messi` from the strategy board.
 
-#### 2.3.4 Moving a player to a coordinate: `move`
+#### 4.3.4 Moving a player to a coordinate: `move`
 
 Move a player to a coordinate on the strategy board.
 
@@ -515,30 +591,29 @@ As mentioned above, the player name is case-sensitive.
 Example:
 * `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
 
-#### 2.3.5 Export strategy board as image file: `export`
+#### 4.3.5 Export strategy board as image file: `export`
 
 Exports current view of the strategy board as an image to the users local device. 
 
 Format: `export`
 
-### 2.4 General
+### 4.4 General
 
-#### 2.4.1 Viewing help: `help`
+#### 4.4.1 Viewing help: `help`
 
 Shows a message explaining how to access the help page.
 
 Format: `help`
 
-#### 2.4.2 Exiting the program : `exit`
+#### 4.4.2 Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-
 --------------------------------------------------------------------------------------------------------------------
 
-## **3. FAQ**
+## **5. FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
@@ -547,9 +622,9 @@ Format: `exit`
 **A**: These functions allow coach to judge players based on their respective strengths/weaknesses for improved judgement of abilities, analyzing their liabilities, and strategically choosing the right player for the right purpose.
 --------------------------------------------------------------------------------------------------------------------
 
-## **4. Command summary**
+## **6. Command summary**
 
-### 4.1 Contact Management
+### 6.1 Contact Management
 
 | Action                   | Format, Examples                                                                                                                                             |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -570,7 +645,7 @@ Format: `exit`
 | **Sort by Strengths**    | `sort-strength`                                                                                                                                              |
 | **Sort by Weaknesses**   | `sort-weakness`<br/>                                                                                                                                              |
 
-### 4.2 Task Management
+### 6.2 Task Management
 
 | Action           | Format, Examples                                                                  |
 |------------------|-----------------------------------------------------------------------------------|
@@ -585,7 +660,7 @@ Format: `exit`
 | **Get Person**   | `get-person INDEX`<br> e.g., `get-person 2`                                       |
 | **Sort By Date** | `sort-date`                                                                       |
 
-### 4.3 Strategic Planning
+### 6.3 Strategic Planning
 
 | Action            | Format, Examples                                                        |
 |-------------------|-------------------------------------------------------------------------|
@@ -596,19 +671,10 @@ Format: `exit`
 | **Export**        | `export`                                                                |
 
 
-### 4.4 General
+### 6.4 General
 
 | Action       | Format, Examples        |
 |--------------|-------------------------|
 |  **Help**    | `help`                  |
 |  **Exit**    | `exit`                  |
-
---------------------------------------------------------------------------------------------------------------------
-
-## **5. Glossary**
-
-| Term               | Definition                                                                       |
-|--------------------|----------------------------------------------------------------------------------|
-|**GUI** | The *Graphical User Interface (GUI)* allows program interaction through graphics             |
-|**CLI** | The *Command Line Interface (CLI)* allows program interaction through commands               |
 
