@@ -1317,38 +1317,41 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+  1. Download the jar file and copy into an empty folder
 
-   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+  2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-2Saving window preferences
+2. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+  1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   2. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+  2. Re-launch the app by double-clicking the jar file.<br>
+     Expected: The most recent window size and location is retained.
+
+### 7.3 Saving data
+
+1. Dealing with corrupted data files
+
+1. Stop the program.
+
+2. Delete all files in the folder `data`; This folder should be found in the same directory as your JAR file.
+
+3. Restart the program.
 
 ### 7.2 Deleting a person
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   2. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+  2. Test case: `delete 1`<br>
+     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   3. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+  3. Test case: `delete 0`<br>
+     Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-   
-### 7.3 Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
+  4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+     Expected: Similar to previous.
 
 ### 7.4 Adding a Strength/Weakness/Miscellaneous note to a person
 
@@ -1384,7 +1387,7 @@ testers are expected to do more *exploratory* testing.
    Expected: Similar to previous, except the note is deleted from the weakness list.
 
 5. Test case: `misc-del 1 1`<br>
-      Expected: Similar to previous, except the note is deleted from the misc list.
+   Expected: Similar to previous, except the note is deleted from the misc list.
 
 6. Test case: `strength-del 0 1`<br>
    Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
@@ -1427,10 +1430,10 @@ testers are expected to do more *exploratory* testing.
    Expected: The entire contact list is sorted by total number of strengths in descending order.
 
 4. Test case: `sort-weakness`<br>
-      Expected: The entire contact list is sorted by total number of weaknesses in descending order.
+   Expected: The entire contact list is sorted by total number of weaknesses in descending order.
 
 5. Test case: `sort-strength abc`<br>
-      Expected: The entire contact list is sorted by total number of strengths in descending order (anything after the command word is ignored).
+   Expected: The entire contact list is sorted by total number of strengths in descending order (anything after the command word is ignored).
 
 ### 7.8 Load new image to serve as court in Strategy Tab
 
@@ -1446,3 +1449,99 @@ testers are expected to do more *exploratory* testing.
 
 5. Test case: `load-court test/`<br>
    Expected: Similar to previous. Even if `test.png` exists, as `/` are not allowed in command argument.
+
+### 7.9 Finding persons by name or tag
+
+1. Find persons matching any of the given keywords from our contact list. You can choose to find by `NAME(s)`, `TAG(s)`, or both.
+
+2. Prerequisites: Contact List should not be empty.
+
+3. Test case: `find-p n/Alan t/team1`<br>
+   Expected: All persons whose name matches the keyword `Alan` (case-insensitive) or tag matches the keyword `team1`(case-insensitive).
+
+4. Test case: `find-p n/Alan n/John`<br>
+   Expected: All persons whose name matches at least one of the keywords `Alan` or `John` (case-insensitive).
+
+5. Test case: `find-p t/team1 n/team2`
+   Expected: All persons whose tag matches at least one of the keyword `team1` or `team2` (case-insensitive).
+
+6. Test case: `find-p`
+   Expected: Error message shown in the status message denoting the arguments `find-p` takes in.
+
+### 7.10 Finding tasks by name or tag
+
+1. Find tasks matching any of the given keywords from our contact list. You can choose to find by `NAME(s)`, `TAG(s)`, or both.
+
+2. Prerequisites: Task List should not be empty.
+
+3. Test case: `find-t n/Meeting t/team1`<br>
+   Expected: All persons whose name matches the keyword `Meeting` (case-insensitive) or tag matches the keyword `team1`(case-insensitive).
+
+4. Test case: `find-t n/Meeting n/Talk`<br>
+   Expected: All persons whose name matches at least one of the keywords `Meeting` or `Talk` (case-insensitive).
+
+5. Test case: `find-t t/team1 n/team2`<br>
+   Expected: All persons whose tag matches at least one of the keyword `team1` or `team2` (case-insensitive).
+
+6. Test case: `find-t`<br>
+   Expected: Error message shown in the status message denoting the arguments `find-t` takes in.
+
+### 7.11 Finding persons tagged to a task
+
+1. Pull out the contact information of persons tagged to a task.
+
+2. Prerequisites: Task List should not be empty.
+
+3. Assumption: All tasks have persons tagged to it.
+
+3.1 Test case: `get-person 1` <br>
+Expected: Switch to the contacts tab and show contact details of all persons tagged to the first task in the task list.
+
+3.2 Test case: `get-person` <br>
+Expected: Error message shown in the status message denoting the arguments `get-person` takes in.
+
+4. Assumption: All tasks do not have persons tagged to it.
+
+4.1 Test case: `get-person 1` <br>
+Expected: Switch to the contacts tab and show an empty contact list.
+
+4.2 Test case: `get-person` <br>
+Expected: Same as point 3.2.
+
+### 7.12 Adding a person
+1. Add a person into the contact list.
+
+2. Test case: `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` <br>
+   Expected: Add a person named `Johnson` with his relevant details into the contact list
+
+3. Test case: `add-p` <br>
+   Expected: Error message shown in the status message denoting the arguments `add-p` takes in.
+
+### 7.13 Editing a person
+1. Edit a person in the contact list.
+
+2. Prerequisites: Contact list should not be empty.
+
+3. Assumption: The first person in the contact list has the name `Johnson`.
+
+   3.1 Test case: `edit-p 1 n/John` <br>
+   Expected: The first person in the contact list will have his name changed to `John`.
+   Additionally, all tasks with person `Johnson` tagged to it will have the specific participant tag changed from `Johnson` to `John`.
+
+   3.2 Test case: `edit-p 2 a/Woodlands`<br>
+   Expected: The second person in the contact list will have his address details changed to `Woodlands`.
+
+   3.3 Test case: `edit-p 1`<br>
+   Expected: Error message shown in the status message denoting the arguments `edit-p` takes in.
+
+   3.4 Test case: `edit-p n/hello`<br>
+   Expected: Same as previous.
+
+   3.5 Test case: `edit-p`<br>
+   Expected: Same as previous.
+
+### 7.14 Clearing all contact entries
+1. Clears all entries from the contact list.
+
+2. Test case: `clear-p`<br>
+   Expected: All entries in the contact list will be cleared. It also clears the participant field of all tasks.
