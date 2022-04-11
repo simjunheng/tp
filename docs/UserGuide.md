@@ -632,7 +632,7 @@ It is roughly located at the coordinate `(50, 550)` since the circle center is a
 ![move-ex1](images/move-ex1.png)
 
 Then you can move John to the coordinate `(150, 500)` by typing:
-* `move Messi x/150 y/500`.
+* `move John x/150 y/500`.
 
 The image below shows the new position of John: You can see that the circle center has moved to the new coordinate.
 
