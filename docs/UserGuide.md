@@ -8,15 +8,14 @@ title: User Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always"></div>
 
 ## **1. Introduction**
 Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds.
 
 ### 1.1 Installation Instructions
-=======
-This application is **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Coach2K22 can get your administrative tasks done faster than traditional GUI apps.
 
---------------------------------------------------------------------------------------------------------------------
+This application is **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Coach2K22 can get your administrative tasks done faster than traditional GUI apps.
 
 1. Download the latest '.jar' file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
 
@@ -37,11 +36,9 @@ Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RA
 </div>
 
 ### 1.2 CLI tutorial
-=======
-Some users may not have come across a Command Line Interface (CLI) based application before. 
-Here is a quick tutorial to get your started!
 
---------------------------------------------------------------------------------------------------------------------
+You may not have come across a Command Line Interface (CLI) based application before. 
+Here is a quick tutorial to get you started!
 
 1. Follow the instructions above in section 1.1 to download the Coach2k22 application to a directory of your choice. 
 
@@ -56,6 +53,8 @@ Here is a quick tutorial to get your started!
 6. Refer to the [Features](#2-features) section below for more information and details on the command formats Coach2k22 accepts!
 
 <div style="page-break-after: always"></div>
+
+--------------------------------------------------------------------------------------------------------------------
 
 
 ## **2. About the User Guide**
