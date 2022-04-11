@@ -437,14 +437,14 @@ The steps above are summarised using a sequence diagram as shown below. Note tha
 
 ##### Design Consideration
 
-**Aspect: Should there be different note lists for each person:**
+**Aspect: Should there be different sorting functions for address book and schedule:**
 
-* **Alternative 1 (current choice):** Separate `note-del` command into three different commands.
+* **Alternative 1 (current choice):** Use different commands for sorting the address book and schedule.
   * Pros: Easier to use and more intuitive.
   * Cons: Difficult to extend and modify.
-* **Alternative 2:** Single `note-del` command for adding to each list with provided prefixes.
+* **Alternative 2:** Single `sort` command for sorting the `AddressBook` and `TaskBook`.
   * Pros: Easier to extend and modify.
-  * Cons: Not intuitive for the user and more prone to feature flaws
+  * Cons: Not intuitive for the user and very difficult to implement
 
 ### 4.2 Task Management
 
