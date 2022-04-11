@@ -36,6 +36,26 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RAM and 500 MB of storage_).
 </div>
 
+### 1.2 CLI tutorial
+=======
+Some users may not have come across a Command Line Interface (CLI) based application before. 
+Here is a quick tutorial to get your started!
+
+--------------------------------------------------------------------------------------------------------------------
+
+1. Follow the instructions above in section 1.1 to download the Coach2k22 application to a directory of your choice. 
+
+2. Double-click the file to launch the application.
+
+3. Upon launch, the GUI (as seen in section 1.1 step 3) will be visible to the user.
+
+4. Hover your cursor over the box labelled CLI (as seen in section 1.1 step 4) and click on it once.
+
+5. Users can now use their keyboard to type commands into the CLI. 
+
+6. Refer to the [Features](#2-features) section below for more information and details on the command formats Coach2k22 accepts!
+
+
 ## **2. About the User Guide**
 
 ### 2.1 Purpose
