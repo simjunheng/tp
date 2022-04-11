@@ -12,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.TASK_FIRST_INDEX;
 import static seedu.address.testutil.TypicalIndexes.TASK_SECOND_INDEX;
+import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskBook;
@@ -78,16 +79,28 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, new EditTaskDescriptor());
-        Task editedTask = model.getFilteredTaskList().get(TASK_FIRST_INDEX.getZeroBased());
+    public void execute_invalidAdditionOfPersons_failure() {
+        EditTaskDescriptor invalidTask = new EditTaskDescriptorBuilder().withPersons(ALICE.getName().fullName).build();
+        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
 
-        String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
+        String expectedMessage = String.format(EditTaskCommand.MESSAGE_SCHEDULE_CONFLICT, ALICE.getName().fullName);
+        assertThrows(CommandException.class,
+                expectedMessage, () -> editTaskCommand.execute(model));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
+        assertCommandFailure(editTaskCommand, model, expectedMessage);
+    }
 
-        assertCommandSuccess(editTaskCommand, model, expectedMessage, expectedModel);
+    @Test
+    public void execute_invalidStartEndTime_failure() {
+        EditTaskDescriptor invalidTask = new EditTaskDescriptorBuilder().withStartTime("15:00")
+                .withEndTime("13:00").build();
+        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
+
+        String expectedMessage = String.format(EditTaskCommand.MESSAGE_SCHEDULE_CONFLICT_START_END_TIME);
+        assertThrows(CommandException.class,
+                expectedMessage, () -> editTaskCommand.execute(model));
+
+        assertCommandFailure(editTaskCommand, model, expectedMessage);
     }
 
     @Test

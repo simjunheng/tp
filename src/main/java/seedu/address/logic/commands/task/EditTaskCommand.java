@@ -53,6 +53,10 @@ public class EditTaskCommand extends Command {
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
     public static final String MESSAGE_CONTACT_NOT_FOUND_IN_LIST =
             "Unable to edit task as the person %1$s cannot be found in the current address book";
+    public static final String MESSAGE_SCHEDULE_CONFLICT =
+            "The person %1$s is already involved in a task at this date and time";
+    public static final String MESSAGE_SCHEDULE_CONFLICT_START_END_TIME =
+            "This task ends before or at its specified start time!";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -74,6 +78,7 @@ public class EditTaskCommand extends Command {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
         List<Person> unfilteredPersonList = model.getUnfilteredPersonList();
+        List<Task> unfilteredTaskList = model.getUnfilteredTaskList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
@@ -86,6 +91,10 @@ public class EditTaskCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 
+        if (editedTask.hasStartEndTimeConflict()) {
+            throw new CommandException(String.format(MESSAGE_SCHEDULE_CONFLICT_START_END_TIME));
+        }
+
         Set<Name> persons = editedTask.getPersons();
 
         for (Name name: persons) {
@@ -95,6 +104,21 @@ public class EditTaskCommand extends Command {
                     notFound = false;
                 }
             }
+
+            //checks if persons are already involved in tasks with conflicting time ranges to the edited task
+            for (Name names: persons) {
+                for (Task task: unfilteredTaskList) {
+                    Set<Name> nameList = task.getPersons();
+                    if (nameList.contains(names)) {
+                        boolean conflictExist = task.hasDateTimeConflict(editedTask);
+                        if (conflictExist) {
+                            throw new CommandException(String.format(MESSAGE_SCHEDULE_CONFLICT, name));
+                        }
+                    }
+                }
+            }
+
+
             if (notFound) {
                 throw new CommandException(String.format(MESSAGE_CONTACT_NOT_FOUND_IN_LIST, name));
             }
