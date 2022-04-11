@@ -605,7 +605,19 @@ Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 As mentioned above, the player name is case-sensitive.
 
 Example:
-* `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
+
+Suppose you have added a player named `John` to the strategy board. And suppose this is the current position of John:
+It is roughly located at the coordinate `(50, 550)` since the circle center is around that position.
+
+![move-ex1](images/move-ex1.png)
+
+Then you can move John to the coordinate `(150, 500)` by typing:
+* `move Messi x/150 y/500`.
+
+The image below shows the new position of John: You can see that the circle center has moved to the new coordinate.
+
+![move-ex2](images/move-ex2.png)
+
 
 #### 4.3.5 Export strategy board as image file: `export`
 
