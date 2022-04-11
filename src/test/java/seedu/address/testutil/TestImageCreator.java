@@ -21,8 +21,10 @@ public class TestImageCreator {
         File testFile = testImage.getImagePath();
         File testDirectory = new File(Image.FILE_PATH);
         try {
-            testFile.mkdir(); //in case "courts" directory has not been created
-            testDirectory.createNewFile();
+            if (!testDirectory.exists()) {
+                testDirectory.mkdir(); //in case "courts" directory has not been created
+            }
+            testFile.createNewFile();
         } catch (IOException e) {
             assert false : "Runtime should not reach here";
         }
