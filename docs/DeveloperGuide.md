@@ -446,7 +446,46 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** Single `del` command that deletes tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
 
-#### 4.2.3 Edit Feature
+#### 4.2.3 Add Tags Feature
+
+##### Implementation
+This feature allows the user to add tags to tasks in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setTask()` and `#updateFilteredTaskList()` to add tags to a task.
+
+Given below is an example usage scenario of how the add tag mechanism behaves at each step.
+
+Step 1: The user inputs `tag-add-t 1 important` to add the tag "friend" to the first task in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTaskTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `AddTaskTagCommand` back to the `LogicManager` for command execution. This `AddTaskTagCommand` contains information about the new tag (in this case, "important")
+
+Step 4: During the command execution, the `ModelManager#setTask()` is called which edits the tags of the task with the user-supplied tags. The filtered task list is updated with `ModelManager#updateFilteredTaskList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![AddTaskTagSequenceDiagram](images/AddTaskTagSequenceDiagram.png)
+
+
+#### 4.2.4 Delete Tags Feature
+
+##### Implementation
+This feature allows the user to delete tags from tasks in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setTask()` and `#updateFilteredTaskList()` to delete tags from a task.
+
+Given below is an example usage scenario of how the delete tag mechanism behaves at each step.
+
+Step 1: The user inputs `tag-del-t 1 important` to delete the tag "important" from the first task in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeleteTaskTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeleteTaskTagCommand` back to the `LogicManager` for command execution. This `DeleteTaskTagCommand` contains information about the tag to be deleted (in this case, "important")
+
+Step 4: During the command execution, the `ModelManager#setTask()` is called which edits out the tag from the task. The filtered task list is updated with `ModelManager#updateFilteredTaskList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeleteTaskTagSequenceDiagram](images/DeleteTaskTagSequenceDiagram.png)
+
+#### 4.2.5 Edit Feature
 
 ##### Implementation
 
@@ -476,7 +515,7 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
     
-#### 4.2.4 Clear Feature
+#### 4.2.6 Clear Feature
 
 ##### Implementation
 
@@ -513,7 +552,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easier and more intuitive for the user to understand
     * Cons: Hard to implement.
 
-#### 4.2.5 Find Feature
+#### 4.2.7 Find Feature
 
 ##### Implementation
 
@@ -555,7 +594,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easier and more intuitive for the user to understand.
     * Cons: Hard to implement.
 
-#### 4.2.6 Get Person Feature
+#### 4.2.8 Get Person Feature
 
 ##### Implementation
 
