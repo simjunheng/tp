@@ -1319,16 +1319,14 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
 
 ### 7.2 Deleting a person
 
@@ -1336,21 +1334,89 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
+   2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
+   3. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
-
+   
 ### 7.3 Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+
+### 7.4 Adding a Strength/Weakness/Miscellaneous note to a person
+
+1. Adding a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
+
+2. Prerequisites: Contacts has to contain some people. No prerequisite on all people.
+
+3. Test case: `strength-add 1 good stamina`<br>
+   Expected: The note `good stamina` is added to the strength list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
+
+4. Test case: `weakness-add 1 bad stamina`<br>
+   Expected: The note `bad stamina` is added to the weakness list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
+
+5. Test case: `misc-add 1 likes ice cream`<br>
+   Expected: The note `likes ice cream` is added to the misc list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
+
+6. Test case: `strength-add 0 good stamina`<br>
+   Expected: No note is added. Error details shown in the status message. Status bar remains the same.
+
+7. Other incorrect commands to try: `strength-add`, `misc-add x`, `...` (where x is larger than the list size)<br>
+   Expected: Similar to previous.
+
+### 7.5 Deleting a Strength/Weakness/Miscellaneous note to a person
+
+1. Deleting a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
+
+2. Prerequisites: Contacts has to contain some people. No prerequisite on all people.
+
+3. Test case: `strength-del 1 1`<br>
+   Expected: The first note is deleted from the strength list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
+
+4. Test case: `weakness-add 1 1`<br>
+   Expected: Similar to previous, except the note is deleted from the weakness list.
+
+5. Test case: `misc-add 1 1`<br>
+      Expected: Similar to previous, except the note is deleted from the misc list.
+
+6. Test case: `strength-del 0 1`<br>
+   Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
+
+7. Test case: `strength-add 1 0`<br>
+   Expected: Similar to previous.
+
+8. Other incorrect commands to try: `strength-del`, `misc-del x`, `...` (where x is larger than the list size)<br>
+   Expected: Similar to previous.
+
+
+### 7.6 Clearing all Tasks from the task list or only those on a particular day
+
+1. Deleting a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
+
+2. Prerequisites: Contacts has to contain some people. No prerequisite on all people.
+
+3. Test case: `strength-del 1 1`<br>
+   Expected: The first note is deleted from the strength list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
+
+4. Test case: `weakness-add 1 1`<br>
+   Expected: Similar to previous, except the note is deleted from the weakness list.
+
+5. Test case: `misc-add 1 1`<br>
+   Expected: Similar to previous, except the note is deleted from the misc list.
+
+6. Test case: `strength-del 0 1`<br>
+   Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
+
+7. Test case: `strength-add 1 0`<br>
+   Expected: Similar to previous.
+
+8. Other incorrect commands to try: `strength-del`, `misc-del x`, `...` (where x is larger than the list size)<br>
+   Expected: Similar to previous.
+   
