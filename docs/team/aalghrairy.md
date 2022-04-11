@@ -44,6 +44,8 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
   * Replaced references to `AddressBook` with `Coach2K22` in Developer Guide
   * Maintained some issues to be implemented by all team members
   * Maintained issue tracking for some individual tasks of respective team members
+    * Including ensuring milestones, assignees, and labels were properly selected
+  * Modifyed the Index.md file
 * **Review/mentoring contributions**:
   * [#20](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/20)
   * [#21](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/21)
@@ -59,6 +61,10 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
   * [#106](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/106)
   * [#109](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/109)
   * [#124](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/124)
+  * [#140](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/140)
+  * [#142](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/142)
+  * [#143](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/143)
+  * [#212](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/212)
 * **Contributions beyond the project team:**
   * Evidence of helping others:
     * [#197](https://github.com/nus-cs2103-AY2122S2/forum/issues/197)
