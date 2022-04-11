@@ -623,6 +623,8 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
+
 #### 4.3.3 Removing players: `del-player`
 
 Remove a player from the strategy board.
