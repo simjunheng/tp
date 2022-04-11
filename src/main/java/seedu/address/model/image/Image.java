@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.io.File;
 /**
- * Represents an Image in Coack2K22.
+ * Represents an Image in Coach2K22.
  */
 public class Image {
     public static final String FILE_PATH = "courts/";
