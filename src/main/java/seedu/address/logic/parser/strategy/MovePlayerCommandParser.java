@@ -13,6 +13,7 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.strategy.Player;
 
 /**
  * Parses input arguments and creates a new MovePlayerCommand object.
@@ -42,7 +43,12 @@ public class MovePlayerCommandParser implements Parser<MovePlayerCommand> {
             int yCoord = Integer.parseInt(argMultimap.getValue(PREFIX_YCOORD).get());
             String playerName = argMultimap.getPreamble();
 
-            if (xCoord < 0 || yCoord < 0) {
+            if (!Player.isValidXCoord(xCoord)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        MovePlayerCommand.MESSAGE_USAGE));
+            }
+
+            if (!Player.isValidYCoord(yCoord)) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                         MovePlayerCommand.MESSAGE_USAGE));
             }

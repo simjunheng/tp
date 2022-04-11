@@ -287,7 +287,7 @@ public class ParserUtil {
         requireNonNull(playerName);
         String trimmedPlayerName = playerName.trim();
         if (!Player.isValidPlayer(trimmedPlayerName)) {
-            throw new ParseException(Player.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Player.MESSAGE_NAME_CONSTRAINTS);
         }
         return new Player(trimmedPlayerName);
     }
