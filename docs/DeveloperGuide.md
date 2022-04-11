@@ -1196,6 +1196,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Move a player on the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to move a player on the strategy board
+4. Coach2K22 shows the updated strategy board with the player moved to the new position
+
+   Use case ends.
+
+**Extension**
+* 3a. The player name is invalid.
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3b. The player name is not on the strategy board.
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3c. The position is invalid.
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
 **Use case: Load new background image for strategy tab**
 
 **MSS**
