@@ -491,6 +491,8 @@ Format: `clear-t [d/DATE]`
 Examples:
 * `clear-t d/10-10-2022` clears all tasks on the date given.
 
+<div style="page-break-after: always"></div>
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Key things to take note of:**<br>
