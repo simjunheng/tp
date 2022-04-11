@@ -1354,7 +1354,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Adding a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
 
-2. Prerequisites: Contacts has to contain some people. No prerequisite on all people.
+2. Prerequisites: Currently viewable Contacts list has to contain some people.
 
 3. Test case: `strength-add 1 good stamina`<br>
    Expected: The note `good stamina` is added to the strength list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
@@ -1375,21 +1375,21 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
 
-2. Prerequisites: Contacts has to contain some people. No prerequisite on all people.
+2. Prerequisites: Currently viewable Contacts list has to contain some people.
 
 3. Test case: `strength-del 1 1`<br>
    Expected: The first note is deleted from the strength list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
 
-4. Test case: `weakness-add 1 1`<br>
+4. Test case: `weakness-del 1 1`<br>
    Expected: Similar to previous, except the note is deleted from the weakness list.
 
-5. Test case: `misc-add 1 1`<br>
+5. Test case: `misc-del 1 1`<br>
       Expected: Similar to previous, except the note is deleted from the misc list.
 
 6. Test case: `strength-del 0 1`<br>
    Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
 
-7. Test case: `strength-add 1 0`<br>
+7. Test case: `strength-del 1 0`<br>
    Expected: Similar to previous.
 
 8. Other incorrect commands to try: `strength-del`, `misc-del x`, `...` (where x is larger than the list size)<br>
@@ -1398,25 +1398,22 @@ testers are expected to do more *exploratory* testing.
 
 ### 7.6 Clearing all Tasks from the task list or only those on a particular day
 
-1. Deleting a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
+1. Empty the task list or remove only those that correspond with a given day.
 
-2. Prerequisites: Contacts has to contain some people. No prerequisite on all people.
+2. Prerequisites: Schedule must contain some tasks.
 
-3. Test case: `strength-del 1 1`<br>
-   Expected: The first note is deleted from the strength list of the first person in the current Contacts list. Details of the modified contact shown in the status message.
+3. Test case: `clear-t`<br>
+   Expected: The entire task list in contacts will be cleared.
 
-4. Test case: `weakness-add 1 1`<br>
-   Expected: Similar to previous, except the note is deleted from the weakness list.
+4. Test case: `clear-t d/03-03-2022`<br>
+   Expected: If there are tasks that are allocated on `03-03-2022`, remove them. Otherwise, no task is deleted, and error details are shown in the status message.
 
-5. Test case: `misc-add 1 1`<br>
-   Expected: Similar to previous, except the note is deleted from the misc list.
+5. Test case: `clear-t d/30-02-2022`<br>
+   Expected: No task is deleted. Error details shown in the status message. Status bar remains the same.
 
-6. Test case: `strength-del 0 1`<br>
-   Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
-
-7. Test case: `strength-add 1 0`<br>
+6. Test case: `clear-t d/2022-03-03`<br>
    Expected: Similar to previous.
 
-8. Other incorrect commands to try: `strength-del`, `misc-del x`, `...` (where x is larger than the list size)<br>
+8. Other incorrect commands to try: `clear-t d/abc`, `clear-t d`, `clear-t d/`, `...`
    Expected: Similar to previous.
    
