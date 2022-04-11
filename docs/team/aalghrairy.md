@@ -25,22 +25,12 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
   * Add detailed installation instructions, including labelled GUI example, operating system, and system requirements. 
 * **Contributions to the DG:**
   * Added the Product Scope and Glossary sections
-  * Implemented the Model Component
-  * Added the following implementation descriptions of functions
+  * Implemented the Model Component, including the UML Diagram
+  * Added the following implementation descriptions of functions, as well as their respective UML Diagrams
     * Clear Tasks
     * Load Court
     * Add and Delete Strength/Weakness/Misc
     * Sort by Strength/Weakness
-  * Implemented the following UML Diagrams
-    * Model Diagram
-    * Clear Tasks
-    * Load Court
-    * Add Strength/Weakness/Misc
-    * Delete Strength/Weakness/Misc
-    * Sort by Strength/Weakness
-  * Added some user stories:  
-    * `As an organised coach I can view players by their strengths and weaknesses so that I can make informed decisions on choosing the best person for a specific objective`
-    * `As an organized and data-driven coach I can sort my players by certain data so I can get better understanding of how players compare`
   * Added the following use cases:
     * Add a strength, weakness, and miscellaneous note to a person
     * Delete a strength, weakness, and miscellaneous note from a person
