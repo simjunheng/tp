@@ -24,7 +24,7 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 
 3. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
-    
+
 4. Type your commands in the Command Line Interface box (CLI) labeled below. You can switch between the three tabs (Contact, Schedule, Strategy tabs).<br>
    ![Ui-labeled](images/Ui-Labeled.png)
 
@@ -36,10 +36,30 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RAM and 500 MB of storage_).
 </div>
 
+### 1.2 CLI tutorial
+=======
+Some users may not have come across a Command Line Interface (CLI) based application before. 
+Here is a quick tutorial to get your started!
+
+--------------------------------------------------------------------------------------------------------------------
+
+1. Follow the instructions above in section 1.1 to download the Coach2k22 application to a directory of your choice. 
+
+2. Double-click the file to launch the application.
+
+3. Upon launch, the GUI (as seen in section 1.1 step 3) will be visible to the user.
+
+4. Hover your cursor over the box labelled CLI (as seen in section 1.1 step 4) and click on it once.
+
+5. Users can now use their keyboard to type commands into the CLI. 
+
+6. Refer to the [Features](#2-features) section below for more information and details on the command formats Coach2k22 accepts!
+
+
 ## **2. About the User Guide**
 
 ### 2.1 Purpose
-This User Guide provides an in-depth documentation of our product to help familarise you with using Coach2K22 for your organisation purposes. You can refer to [Structure](#22-structure) to find out what's included in this document. 
+This User Guide provides an in-depth documentation of our product to help familarise you with using Coach2K22 for your organisation purposes. You can refer to [Structure](#22-structure) to find out what's included in this document.
 
 ### 2.2 Structure
 This User Guide consist of six sections: [Introduction](#1-introduction), [About the User Guide](#2-about-the-user-guide), [Quick Start](#3-quick-start), [Features](#4-features), [FAQ](#5-faq), and [Command Summary](#6-command-summary).
@@ -48,7 +68,7 @@ This User Guide consist of six sections: [Introduction](#1-introduction), [About
 
 * The **About the User Guide** section introduces you to icons and unfamiliar terms used throughout this document.
 
-* The **Quick Start** section provides you with the basic information to set up and use our product properly.  
+* The **Quick Start** section provides you with the basic information to set up and use our product properly.
 
 * The **Features** section provides you with step-by-step instructions for every product feature.
 
@@ -59,7 +79,7 @@ This User Guide consist of six sections: [Introduction](#1-introduction), [About
 A table of content is also provided at the start of this document to allow you to navigate to each section easily.
 
 ### 2.3 User Guide Icons
-The table below shows the icons used in this document with its associated meaning. 
+The table below shows the icons used in this document with its associated meaning.
 
 | Icon                                                                      | Meaning                                                       |
 |---------------------------------------------------------------------------|---------------------------------------------------------------|
@@ -131,7 +151,7 @@ This subsection describes some noteworthy information about the command format t
 
 ## **4. Features**
 
-* This Features section is an exhaustive list of all the commands and capabilities of Coach2K22. 
+* This Features section is an exhaustive list of all the commands and capabilities of Coach2K22.
 
 * Commands in Coach2K22 are split into 3 distinct categories
 
@@ -349,7 +369,7 @@ Examples:
 * Deletes the weakness at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The weakness index refers to the index number shown in the weakness list of the respective person.
-* Both indices **must be a positive integer** 1, 2, 3, …​ 
+* Both indices **must be a positive integer** 1, 2, 3, …​
 * Both indices must be valid (existing in their respective lists).
 
 </div>
@@ -570,7 +590,7 @@ Add a new player to the strategy board.
 
 Format: `add-player PLAYER_NAME`
 
-Examples: 
+Examples:
 * `add-player Messi` adds a new player named `Messi` in the strategy board.
 
 
@@ -590,7 +610,7 @@ Remove a player from the strategy board.
 
 Format: `del-player PLAYER_NAME`
 
-As mentioned above, the player name is case-sensitive. 
+As mentioned above, the player name is case-sensitive.
 And the player name must be present on the strategy board.
 
 Examples:
@@ -605,11 +625,23 @@ Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 As mentioned above, the player name is case-sensitive.
 
 Example:
-* `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
+
+Suppose you have added a player named `John` to the strategy board. And suppose this is the current position of John:
+It is roughly located at the coordinate `(50, 550)` since the circle center is around that position.
+
+![move-ex1](images/move-ex1.png)
+
+Then you can move John to the coordinate `(150, 500)` by typing:
+* `move Messi x/150 y/500`.
+
+The image below shows the new position of John: You can see that the circle center has moved to the new coordinate.
+
+![move-ex2](images/move-ex2.png)
+
 
 #### 4.3.5 Export strategy board as image file: `export`
 
-Exports current view of the strategy board as an image to the users local device. 
+Exports current view of the strategy board as an image to the users local device.
 
 Format: `export`
 
@@ -640,7 +672,7 @@ Format: `exit`
 
 ## **6. Command summary**
 
-This section will give a summary of all the commands available in the application. 
+This section will give a summary of all the commands available in the application.
 They will be classified into the following categories by command usage:
 * [**Contact Management**](#61-contact-management)
 * [**Task Management**](#62-task-management)
@@ -650,8 +682,8 @@ They will be classified into the following categories by command usage:
 You can find the corresponding command format and maybe one example for the actions you are able to perform on the application.
 
 ### 6.1 Contact Management
-This section will list all the commands available for contact management in the application. 
-The actions here are all related to managing the contacts of the user. 
+This section will list all the commands available for contact management in the application.
+The actions here are all related to managing the contacts of the user.
 
 | Action                   | Format, Examples                                                                                                                                             |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
