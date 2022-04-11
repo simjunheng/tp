@@ -470,7 +470,7 @@ Examples:
 * The index can be obtained by referring to the indicated task index on the displayed task list.
 * Index values start from 1 and are always positive integers.
 
-<div>
+</div>
 
 #### 4.2.4 Editing a task: `edit-t`
 
