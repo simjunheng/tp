@@ -290,14 +290,14 @@ Given below is an example usage scenario of how the add tag mechanism behaves at
 
 Step 1: The user inputs `tag-add-p 1 friend` to add the tag "friend" to the first contact in the list.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTagCommandParser` where its method `#parse` is called to process the user inputs.
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPersonTagCommandParser` where its method `#parse` is called to process the user inputs.
 
-Step 3: It then returns a newly initialised `AddTagCommand` back to the `LogicManager` for command execution. This `AddTagCommand` contains information about the new tag (in this case, "friend")
+Step 3: It then returns a newly initialised `AddPersonTagCommand` back to the `LogicManager` for command execution. This `AddPersonTagCommand` contains information about the new tag (in this case, "friend")
 
 Step 4: During the command execution, the `ModelManager#setPerson()` is called which edits the tags of the person with the user-supplied tags. The filtered person list is updated with `ModelManager#updateFilteredPersonList` to display the new information to the user.
 
 The steps above are summarised using a sequence diagram as shown below.
-![AddTagSequenceDiagram](images/AddTagSequenceDiagram.png)
+![AddPersonTagSequenceDiagram](images/AddPersonTagSequenceDiagram.png)
 
 
 ##### Design Consideration
@@ -307,11 +307,42 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Maintains abstraction and reuses code instead of writing new code.
     * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
 
-* **Alternative 2 (current choice):** Implement AddTagCommand independently, rewriting similar code
+* **Alternative 2 (current choice):** Implement AddPersonTagCommand independently, rewriting similar code
     * Pros: Cleaner code and less dependencies
     * Cons: Repetitive code that is not abstracted
 
-#### 4.1.6 Find Feature
+#### 4.1.6 Delete Tags Feature
+
+##### Implementation
+This feature allows the user to delete tags from contacts in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setPerson()` and `#updateFilteredPersonList()` to delete tags from a contact.
+
+Given below is an example usage scenario of how the delete tag mechanism behaves at each step.
+
+Step 1: The user `tag-del-p 1 friend` to delete the tag "friend" from the first contact in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeletePersonTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeletePersonTagCommand` back to the `LogicManager` for command execution. This `DeletePersonTagCommand` contains information about the new tag (in this case, "friend")
+
+Step 4: During the command execution, the `ModelManager#setPerson()` is called which edits the tags of the person with the user-supplied tags. The filtered perosn list is updated with `ModelManager#updateFilteredPersonList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeletePersonTagSequenceDiagram](images/DeletePersonTagSequenceDiagram.png)
+
+
+##### Design Consideration
+
+**Aspect: Should the implementation use the existing edit functionalities in AB3:**
+* **Alternative 1:**  Use the current EditCommand class to edit a person's tags.
+    * Pros: Maintains abstraction and reuses code instead of writing new code.
+    * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
+
+* **Alternative 2 (current choice):** Implement DeletePersonTagCommand independently, rewriting similar code
+    * Pros: Cleaner code and less dependencies
+    * Cons: Repetitive code that is not abstracted
+
+#### 4.1.7 Find Feature
 
 ##### Implementation
 
@@ -508,7 +539,46 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** Single `del` command that deletes tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
 
-#### 4.2.3 Edit Feature
+#### 4.2.3 Add Tags Feature
+
+##### Implementation
+This feature allows the user to add tags to tasks in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setTask()` and `#updateFilteredTaskList()` to add tags to a task.
+
+Given below is an example usage scenario of how the add tag mechanism behaves at each step.
+
+Step 1: The user inputs `tag-add-t 1 important` to add the tag "friend" to the first task in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTaskTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `AddTaskTagCommand` back to the `LogicManager` for command execution. This `AddTaskTagCommand` contains information about the new tag (in this case, "important")
+
+Step 4: During the command execution, the `ModelManager#setTask()` is called which edits the tags of the task with the user-supplied tags. The filtered task list is updated with `ModelManager#updateFilteredTaskList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![AddTaskTagSequenceDiagram](images/AddTaskTagSequenceDiagram.png)
+
+
+#### 4.2.4 Delete Tags Feature
+
+##### Implementation
+This feature allows the user to delete tags from tasks in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setTask()` and `#updateFilteredTaskList()` to delete tags from a task.
+
+Given below is an example usage scenario of how the delete tag mechanism behaves at each step.
+
+Step 1: The user inputs `tag-del-t 1 important` to delete the tag "important" from the first task in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeleteTaskTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeleteTaskTagCommand` back to the `LogicManager` for command execution. This `DeleteTaskTagCommand` contains information about the tag to be deleted (in this case, "important")
+
+Step 4: During the command execution, the `ModelManager#setTask()` is called which edits out the tag from the task. The filtered task list is updated with `ModelManager#updateFilteredTaskList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeleteTaskTagSequenceDiagram](images/DeleteTaskTagSequenceDiagram.png)
+
+#### 4.2.5 Edit Feature
 
 ##### Implementation
 
@@ -538,7 +608,8 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
 
-#### 4.2.4 Clear Feature
+    
+#### 4.2.6 Clear Feature
 
 ##### Implementation
 
@@ -575,7 +646,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easier and more intuitive for the user to understand
     * Cons: Hard to implement.
 
-#### 4.2.5 Find Feature
+#### 4.2.7 Find Feature
 
 ##### Implementation
 
@@ -617,7 +688,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easier and more intuitive for the user to understand.
     * Cons: Hard to implement.
 
-#### 4.2.6 Get Person Feature
+#### 4.2.8 Get Person Feature
 
 ##### Implementation
 
@@ -636,6 +707,30 @@ Step 4: During the command execution, the `ModelManager#updateFilteredPersonList
 
 The steps above are summarised using a sequence diagram as shown below.
 ![GetPersonSequenceDiagram](images/GetPersonSequenceDiagram.png)
+
+
+#### 4.2.9 Sort by Date Feature
+
+##### Implementation
+
+This feature allows the user to sort the task list in chronological order. The resulting task list will be sorted by earliest date and time first.
+It is facilitated by `ModelManager` which makes use of the method `#getUnfilteredTaskList()` to get the list of tasks.
+
+Given below is an example usage scenario of how the sort date mechanism behaves at each step.
+
+Step 1: The user inputs `sort-date` to sort the task list by date.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22#parseCommand()`. Since this command does not require parameters, the SortTaskByDateCommand object is created directly instead of through a Parser.
+
+Step 3: The newly initialised `SortTaskByDateCommand` is returned back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the current list of tasks is sorted using an internal sorting algorithm, then a new TaskBook object is created to store the new ordered list of tasks.
+
+Step 5: The model replaces its old TaskBook with the new sorted TaskBook using `ModelManager#setTaskBook`, and the GUI updates the task list accordingly.
+
+The steps above are summarised using a sequence diagram as shown below.
+![SortTaskByDateSequenceDiagram](images/SortTaskByDateSequenceDiagram.png)
+
 
 ### 4.3 Strategic Planning
 
