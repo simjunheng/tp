@@ -14,7 +14,7 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
   * Enhanced Note feature to include three different lists of notes for each contact
     * _Expanded `note-add` command to_`strength-add`, `weakness-add`, and `misc-add`
     * _Expanded `note-del` command to_`strength-del`, `weakness-del`, and `misc-del`
-  * Improved GUI of PersonCard to better display three note lists _(Strengths, Weaknesses, and Miscellaneous)_
+  * Improved GUI of PersonCard to better display the three note lists
   * Implemented `clear-t` command to clear all tasks or tasks for a given date
   * Implemented `load-court` command to load background image for strategy tab
     * Required many instances of defensive programming due to reliance on external directories and files
@@ -26,12 +26,10 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
 * **Contributions to the DG:**
   * Added the Product Scope and Glossary sections
   * Implemented the Model Component
-  * Implemented the Model UML Diagram
   * Added the following implementation descriptions of functions
     * Clear Tasks
     * Load Court
-    * Add Strength/Weakness/Misc
-    * Delete Strength/Weakness/Misc
+    * Add and Delete Strength/Weakness/Misc
     * Sort by Strength/Weakness
   * Implemented the following UML Diagrams
     * Model Diagram
@@ -44,14 +42,9 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
     * `As an organised coach I can view players by their strengths and weaknesses so that I can make informed decisions on choosing the best person for a specific objective`
     * `As an organized and data-driven coach I can sort my players by certain data so I can get better understanding of how players compare`
   * Added the following use cases:
-    * Add a strength to a person
-    * Add a weakness to a person
-    * Add a miscellaneous note to a person
-    * Delete a strength from a person
-    * Delete a weakness from a person
-    * Delete a miscellaneous note from a person
-    * Sort address book by strengths in descending order
-    * Sort address book by weaknesses in descending order
+    * Add a strength, weakness, and miscellaneous note to a person
+    * Delete a strength, weakness, and miscellaneous note from a person
+    * Sort address book by strengths/weaknesses in descending order
     * Clear all tasks from the task list
     * Clear all tasks for a specified date from task list
     * Load new background image for strategy tab
@@ -62,25 +55,15 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
     * Including ensuring milestones, assignees, and labels were properly selected
   * Modified the Index.md file
 * **Review/mentoring contributions**:
-  * [#20](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/20)
-  * [#21](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/21)
-  * [#22](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/22)
-  * [#24](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/24)
-  * [#25](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/25)
   * [#26](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/26)
   * [#38](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/38)
-  * [#55](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/55)
-  * [#63](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/63)
   * [#76](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/76)
   * [#97](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/97)
   * [#106](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/106)
   * [#109](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/109)
   * [#124](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/124)
   * [#140](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/140)
-  * [#142](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/142)
   * [#143](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/143)
-  * [#212](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/212)
-  * [#218](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/218)
 * **Contributions beyond the project team:**
   * Evidence of helping others:
     * [#197](https://github.com/nus-cs2103-AY2122S2/forum/issues/197)
