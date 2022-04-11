@@ -682,6 +682,8 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always"></div>
+
 ## **5. FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
