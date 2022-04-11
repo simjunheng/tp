@@ -19,7 +19,7 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 ## **2. About the User Guide**
 
 ### 2.1 Purpose
-This User Guide provides an in-depth documentation of our product to help familarise you with Coach2K22. You can refer to [Structure](#22-structure) to find out what's included in this document. 
+This User Guide provides an in-depth documentation of our product to help familarise you with using Coach2K22 for your organisation purposes. You can refer to [Structure](#22-structure) to find out what's included in this document. 
 
 ### 2.2 Structure
 This User Guide consist of six sections: [Introduction](#1-introduction), [About the User Guide](#2-about-the-user-guide), [Quick Start](#3-quick-start), [Features](#4-features), [FAQ](#5-faq), and [Command Summary](#6-command-summary).
@@ -110,6 +110,18 @@ This subsection describes some noteworthy information about the command format t
 --------------------------------------------------------------------------------------------------------------------
 
 ## **4. Features**
+
+* This Features section is an exhaustive list of all the commands and capabilities of Coach2K22. 
+
+* Commands in Coach2K22 are split into 3 distinct categories
+
+### Categories of Commands ###
+1. Contact Management
+   * This [section](#4.1-contact-management) contains information about commands for editing information related to people.
+2. Task Management
+   * This [section](#4.2-task-management) contains information about commands for editing information related to tasks.
+3. Strategic Planning
+   * This [section](#4.3-strategic-planning) contains information about commands for manipulating the strategy board.
 
 ### 4.1 Contact Management
 
