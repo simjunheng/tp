@@ -290,14 +290,14 @@ Given below is an example usage scenario of how the add tag mechanism behaves at
 
 Step 1: The user inputs `tag-add-p 1 friend` to add the tag "friend" to the first contact in the list.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddTagCommandParser` where its method `#parse` is called to process the user inputs.
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPersonTagCommandParser` where its method `#parse` is called to process the user inputs.
 
-Step 3: It then returns a newly initialised `AddTagCommand` back to the `LogicManager` for command execution. This `AddTagCommand` contains information about the new tag (in this case, "friend")
+Step 3: It then returns a newly initialised `AddPersonTagCommand` back to the `LogicManager` for command execution. This `AddPersonTagCommand` contains information about the new tag (in this case, "friend")
 
 Step 4: During the command execution, the `ModelManager#setPerson()` is called which edits the tags of the person with the user-supplied tags. The filtered person list is updated with `ModelManager#updateFilteredPersonList` to display the new information to the user.
 
 The steps above are summarised using a sequence diagram as shown below.
-![AddTagSequenceDiagram](images/AddTagSequenceDiagram.png)
+![AddPersonTagSequenceDiagram](images/AddPersonTagSequenceDiagram.png)
 
 
 ##### Design Consideration
@@ -307,11 +307,28 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Maintains abstraction and reuses code instead of writing new code.
     * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
 
-* **Alternative 2 (current choice):** Implement AddTagCommand independently, rewriting similar code
+* **Alternative 2 (current choice):** Implement AddPersonTagCommand independently, rewriting similar code
     * Pros: Cleaner code and less dependencies
     * Cons: Repetitive code that is not abstracted
 
-#### 4.1.6 Find Feature
+#### 4.1.6 Delete Tags Feature
+This feature allows the user to delete tags from contacts in the list. It is facilitated by `ModelManager` which
+makes use of the method `#setPerson()` and `#updateFilteredPersonList()` to delete tags from a contact.
+
+Given below is an example usage scenario of how the delete tag mechanism behaves at each step.
+
+Step 1: The user `tag-del-p 1 friend` to delete the tag "friend" from the first contact in the list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeletePersonTagCommandParser` where its method `#parse` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeletePersonTagCommand` back to the `LogicManager` for command execution. This `DeletePersonTagCommand` contains information about the new tag (in this case, "friend")
+
+Step 4: During the command execution, the `ModelManager#setPerson()` is called which edits the tags of the person with the user-supplied tags. The filtered perosn list is updated with `ModelManager#updateFilteredPersonList` to display the new information to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeletePersonTagSequenceDiagram](images/DeletePersonTagSequenceDiagram.png)
+
+#### 4.1.7 Find Feature
 
 ##### Implementation
 
