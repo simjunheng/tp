@@ -196,12 +196,13 @@ public class StrategyPanel extends UiPart<Region> {
         text.xProperty().bind(cr.centerXProperty());
         text.yProperty().bind(cr.centerYProperty());
         stack.getChildren().addAll(cr, text);
-        //stack.setTranslateX(x);
-        //stack.setTranslateY(y);
+        double width = Math.max(cr.getRadius() * 2, text.getLayoutBounds().getWidth());
         stack.translateXProperty()
-                .bind(strategyAnchorPane.widthProperty().divide(BOARD_WIDTH).multiply(x));
+                .bind((strategyAnchorPane.widthProperty().subtract(AnchorPane.getLeftAnchor(hSlider)))
+                        .divide(BOARD_WIDTH).multiply(x).subtract(width / 2));
         stack.translateYProperty()
-                .bind(strategyAnchorPane.heightProperty().divide(BOARD_HEIGHT).multiply(BOARD_HEIGHT - y));
+                .bind((strategyAnchorPane.heightProperty().subtract(AnchorPane.getTopAnchor(vSlider)))
+                        .divide(BOARD_HEIGHT).multiply(BOARD_HEIGHT - y).subtract(40));
         stack.setOnMousePressed(pressHandler);
         stack.setOnMouseDragged(dragHandler);
     }
