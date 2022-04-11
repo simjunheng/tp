@@ -262,7 +262,7 @@ parser class which corresponds with the provided command to parse the user's inp
 
 Step 3: Since there are no arguments for this command, a newly initialised `ClearPersonCommand` is returned to the `LogicManager` for command execution.
 
-Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to delete persons in all the tasks. After which, a new `AddressBook` object is passed into the `ModelManager#setAddressBook()` method which clears out the person list. 
+Step 4: During the command execution, the `ModelManager#setTask()` method is called multiple times to delete persons in all the tasks. After which, a new `AddressBook` object is passed into the `ModelManager#setAddressBook()` method which clears out the person list.
 
 Step 5: The GUI display is then updated to show an empty contact and new task list without any persons tagged to the tasks.
 
@@ -315,14 +315,14 @@ The steps above are summarised using a sequence diagram as shown below.
 
 ##### Implementation
 
-This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which 
+This feature allows the user to display selected persons in the contact list. It is facilitated by `ModelManager` which
 makes use of the method `#updateFilteredPersonList()` to find persons by name or tag.
 
 Given below is an example usage scenario of how the find person mechanism behaves at each step.
 
 Step 1: The user inputs `find n/Alex t/friends` to find selected persons.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs. 
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `FindPersonCommandParser` where its method `#parse()` is called to process the user inputs.
 
 Step 3: It then returns a newly initialised `FindPersonCommand` back to the `LogicManager` for command execution.
 
@@ -415,7 +415,7 @@ The steps above are summarised using a sequence diagram as shown below. Note tha
   * Pros: Easier to extend and modify.
   * Cons: Not intuitive for the user and more prone to feature flaws
 
-#### 4.1.10 Sort by Strength/Weakness Features
+#### 4.1.9 Sort by Strength/Weakness Features
 
 ##### Implementation
 
@@ -537,7 +537,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Cons: Not as intuitive for the user.
 * **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
-    
+
 #### 4.2.4 Clear Feature
 
 ##### Implementation
@@ -612,7 +612,7 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 1 (current choice):** A separate command for finding tasks and persons.
     * Pros: Easy to implement.
     * Cons: Hard to extend.
-    
+
 * **Alternative 2:** A combined command for finding tasks and persons.
     * Pros: Easier and more intuitive for the user to understand.
     * Cons: Hard to implement.
@@ -632,25 +632,25 @@ Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Par
 
 Step 3: It then returns a newly initialised `GetPersonCommand` back to the `LogicManager` for command execution.
 
-Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called. The GUI display then updates the person list - showing only the contact details of persons tagged to the specified task.  
+Step 4: During the command execution, the `ModelManager#updateFilteredPersonList()` is called. The GUI display then updates the person list - showing only the contact details of persons tagged to the specified task.
 
 The steps above are summarised using a sequence diagram as shown below.
 ![GetPersonSequenceDiagram](images/GetPersonSequenceDiagram.png)
-    
+
 ### 4.3 Strategic Planning
 
 #### 4.3.1 Add Feature
 
 ##### Implementation
 
-This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which 
+This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which
 makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
 
 Given below is an example usage scenario of how the adding player mechanism behaves at each step.
 
 Step 1: The user inputs `add-player Cena` to add a new player to the strategy board.
 
-Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs. 
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `AddPlayerCommandParser` where its method `#parse()` is called to process the user inputs.
 
 Step 3: It then returns a newly initialised `AddPlayerCommand` back to the `LogicManager` for command execution.
 
@@ -701,7 +701,7 @@ The steps above are summarised using a sequence diagram as shown below.
   * Pros: Easy to extend and more intuitive for the user.
   * Cons: Hard to implement.
     
-#### 4.3.2 Delete Feature
+#### 4.3.3 Delete Feature
 
 ##### Implementation
 
@@ -732,7 +732,7 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easy to implement.
     * Cons: Users need to repeat the same command multiple times to remove multiple players.
 
-#### 4.3.3 Move Feature
+#### 4.3.4 Move Feature
 
 ##### Implementation
 
@@ -763,7 +763,7 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2 (current choice):** Users can only move one player at a time.
     * Pros: Easy to implement.
     * Cons: Users need to repeat the same command multiple times to move multiple players.
-    
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **5. Documentation, logging, testing, configuration, dev-ops**
@@ -835,9 +835,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. The parameters supplied by the user is invalid.
-  
+
     * 1a1. Coach2K22 shows an error message.
-      
+
       Use case ends.
 
 * 1b. Compulsory parameters not supplied by the user.
@@ -868,7 +868,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
-    
+
 **Use case: Add a strength to a person**
 
 **MSS**
@@ -956,7 +956,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * This use case describes a similar interaction between the user and Coach2K22 to that of `Delete a strength from a person`
     * Takes in a misc. index instead of a strength index
-    
+
 **Use case: Find persons by name or tag**
 
 **MSS**
@@ -973,7 +973,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Coach2K22 shows an empty list.
 
       Use case ends.
-    
+
 * 1b. The keyword provided is not indicated by a prefix e.g. `n/` or `t/`.
 
     * 1b1. Coach2K22 shows an error message.
@@ -985,12 +985,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. Coach2K22 shows an error message.
 
       Use case ends.
-    
+
 * 1d. Missing keyword after a prefix is given e.g. `n/` or `t/`.
-  
+
     * 1d1. Coach2K22 shows an error message.
 
-      Use case ends.    
+      Use case ends.
 
 **Use case: Sort address book by strengths in descending order**
 
@@ -1013,7 +1013,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * This use case describes a similar interaction between the user and Coach2K22 to that of `Sort address book by strengths in descending order`
     * Sorts list of persons by total number of weaknesses in descending order instead of total number of strengths
-    
+
 **Use case: Add a tag to a person**
 
 **MSS**
@@ -1022,7 +1022,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Coach2K22 shows a list of persons
 3. User requests to attach a new tag to a person
 4. Coach2k22 shows the new details of the person
-   
+
    Use case ends.
 
 **Extensions**
@@ -1404,38 +1404,41 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+  1. Download the jar file and copy into an empty folder
 
-   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+  2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-2Saving window preferences
+2. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+  1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   2. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+  2. Re-launch the app by double-clicking the jar file.<br>
+     Expected: The most recent window size and location is retained.
+
+### 7.3 Saving data
+
+1. Dealing with corrupted data files
+
+1. Stop the program.
+
+2. Delete all files in the folder `data`; This folder should be found in the same directory as your JAR file.
+
+3. Restart the program.
 
 ### 7.2 Deleting a person
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   2. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+  2. Test case: `delete 1`<br>
+     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   3. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+  3. Test case: `delete 0`<br>
+     Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-   
-### 7.3 Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
+  4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+     Expected: Similar to previous.
 
 ### 7.4 Adding a Strength/Weakness/Miscellaneous note to a person
 
@@ -1471,7 +1474,7 @@ testers are expected to do more *exploratory* testing.
    Expected: Similar to previous, except the note is deleted from the weakness list.
 
 5. Test case: `misc-del 1 1`<br>
-      Expected: Similar to previous, except the note is deleted from the misc list.
+   Expected: Similar to previous, except the note is deleted from the misc list.
 
 6. Test case: `strength-del 0 1`<br>
    Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.
@@ -1514,10 +1517,10 @@ testers are expected to do more *exploratory* testing.
    Expected: The entire contact list is sorted by total number of strengths in descending order.
 
 4. Test case: `sort-weakness`<br>
-      Expected: The entire contact list is sorted by total number of weaknesses in descending order.
+   Expected: The entire contact list is sorted by total number of weaknesses in descending order.
 
 5. Test case: `sort-strength abc`<br>
-      Expected: The entire contact list is sorted by total number of strengths in descending order (anything after the command word is ignored).
+   Expected: The entire contact list is sorted by total number of strengths in descending order (anything after the command word is ignored).
 
 ### 7.8 Load new image to serve as court in Strategy Tab
 
@@ -1533,3 +1536,107 @@ testers are expected to do more *exploratory* testing.
 
 5. Test case: `load-court test/`<br>
    Expected: Similar to previous. Even if `test.png` exists, as `/` are not allowed in command argument.
+
+### 7.9 Finding persons by name or tag
+
+1. Find persons matching any of the given keywords from our contact list. You can choose to find by `NAME(s)`, `TAG(s)`, or both.
+
+2. Prerequisites: Contact List should not be empty.
+
+3. Test case: `find-p n/Alan t/team1`<br>
+   Expected: All persons whose name matches the keyword `Alan` (case-insensitive) or tag matches the keyword `team1`(case-insensitive).
+
+4. Test case: `find-p n/Alan n/John`<br>
+   Expected: All persons whose name matches at least one of the keywords `Alan` or `John` (case-insensitive).
+
+5. Test case: `find-p t/team1 n/team2`
+   Expected: All persons whose tag matches at least one of the keyword `team1` or `team2` (case-insensitive).
+
+6. Test case: `find-p`
+   Expected: Error message shown in the status message denoting the arguments `find-p` takes in.
+
+### 7.10 Finding tasks by name or tag
+
+1. Find tasks matching any of the given keywords from our contact list. You can choose to find by `NAME(s)`, `TAG(s)`, or both.
+
+2. Prerequisites: Task List should not be empty.
+
+3. Test case: `find-t n/Meeting t/team1`<br>
+   Expected: All persons whose name matches the keyword `Meeting` (case-insensitive) or tag matches the keyword `team1`(case-insensitive).
+
+4. Test case: `find-t n/Meeting n/Talk`<br>
+   Expected: All persons whose name matches at least one of the keywords `Meeting` or `Talk` (case-insensitive).
+
+5. Test case: `find-t t/team1 n/team2`<br>
+   Expected: All persons whose tag matches at least one of the keyword `team1` or `team2` (case-insensitive).
+
+6. Test case: `find-t`<br>
+   Expected: Error message shown in the status message denoting the arguments `find-t` takes in.
+
+### 7.11 Finding persons tagged to a task
+
+1. Pull out the contact information of persons tagged to a task.
+
+2. Prerequisites: Task List should not be empty.
+
+3. Assumption: All tasks have persons tagged to it.
+
+3.1 Test case: `get-person 1` <br>
+Expected: Switch to the contacts tab and show contact details of all persons tagged to the first task in the task list.
+
+3.2 Test case: `get-person` <br>
+Expected: Error message shown in the status message denoting the arguments `get-person` takes in.
+
+4. Assumption: All tasks do not have persons tagged to it.
+
+4.1 Test case: `get-person 1` <br>
+Expected: Switch to the contacts tab and show an empty contact list.
+
+4.2 Test case: `get-person` <br>
+Expected: Same as point 3.2.
+
+### 7.12 Adding a person
+1. Add a person into the contact list.
+
+2. Test case: `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` <br>
+   Expected: Add a person named `Johnson` with his relevant details into the contact list
+
+3. Test case: `add-p` <br>
+   Expected: Error message shown in the status message denoting the arguments `add-p` takes in.
+
+### 7.13 Editing a person
+1. Edit a person in the contact list.
+
+2. Prerequisites: Contact list should not be empty.
+
+3. Assumption: The first person in the contact list has the name `Johnson`.
+
+   3.1 Test case: `edit-p 1 n/John` <br>
+   Expected: The first person in the contact list will have his name changed to `John`.
+   Additionally, all tasks with person `Johnson` tagged to it will have the specific participant tag changed from `Johnson` to `John`.
+
+   3.2 Test case: `edit-p 2 a/Woodlands`<br>
+   Expected: The second person in the contact list will have his address details changed to `Woodlands`.
+
+   3.3 Test case: `edit-p 1`<br>
+   Expected: Error message shown in the status message denoting the arguments `edit-p` takes in.
+
+   3.4 Test case: `edit-p n/hello`<br>
+   Expected: Same as previous.
+
+   3.5 Test case: `edit-p`<br>
+   Expected: Same as previous.
+
+### 7.14 Clearing all contact entries
+1. Clears all entries from the contact list.
+
+2. Test case: `clear-p`<br>
+   Expected: All entries in the contact list will be cleared. It also clears the participant field of all tasks.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **8. Appendix: Effort**
+
+1. The team has extended the program to deal with three different entity types: `Person`, `Task`, `Strategy`. These entities are interconnected where features specific to `Person` may directly affect the `Task` entity. Deliberate and extensive checks are implemented across features to ensure functional correctness.
+   
+2. The team has implemented a JavaFX strategy board with draggable nodes. In addition, a `move` feature is implemented to cater to existing requirements. It was tough to implement this as nodes placements are determined by its relative position. Our team also tried to get these placements as accurate as possible to ensure functional correctness - increasing the implementation difficulty levels.
