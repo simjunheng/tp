@@ -80,12 +80,12 @@ public class Player {
     }
 
     public void setYCoord(int yCoord) {
+        checkArgument(isValidYCoord(yCoord), MESSAGE_Y_CONSTRAINTS);
         this.yCoord = yCoord;
     }
 
     //uti methods
     public Player toCopy() {
-        checkArgument(isValidYCoord(yCoord), MESSAGE_Y_CONSTRAINTS);
         return new Player(name, xCoord, yCoord);
     }
 
