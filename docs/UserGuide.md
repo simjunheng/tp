@@ -558,10 +558,11 @@ Remove a player from the strategy board.
 
 Format: `del-player PLAYER_NAME`
 
-As mentioned above, the player name is case-sensitive.
+As mentioned above, the player name is case-sensitive. 
+And the player name must be present on the strategy board.
 
 Examples:
-* `del-player Messi` removes the player named `Messi` from the strategy board.
+* `del-player Messi` removes the player named `Messi` from the strategy board if such player exists on the strategy board.
 
 #### 4.3.4 Moving a player to a coordinate: `move`
 
@@ -607,7 +608,18 @@ Format: `exit`
 
 ## **6. Command summary**
 
+This section will give a summary of all the commands available in the application. 
+They will be classified into the following categories by command usage:
+* [**Contact Management**](#61-contact-management)
+* [**Task Management**](#62-task-management)
+* [**Strategic Planning**](#63-strategic-planning)
+* [**General**](#64-general)
+
+You can find the corresponding command format and maybe one example for the actions you are able to perform on the application.
+
 ### 6.1 Contact Management
+This section will list all the commands available for contact management in the application. 
+The actions here are all related to managing the contacts of the user. 
 
 | Action                   | Format, Examples                                                                                                                                             |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -629,6 +641,8 @@ Format: `exit`
 | **Sort by Weaknesses**   | `sort-weakness`<br/>                                                                                                                                              |
 
 ### 6.2 Task Management
+This section will list all the commands available for task management in the application.
+The actions here are all related to managing the tasks of the user.
 
 | Action           | Format, Examples                                                                  |
 |------------------|-----------------------------------------------------------------------------------|
@@ -644,6 +658,8 @@ Format: `exit`
 | **Sort By Date** | `sort-date`                                                                       |
 
 ### 6.3 Strategic Planning
+This section will list all the commands available for strategic planning in the application.
+The actions here are all related to performing the strategic planning.
 
 | Action            | Format, Examples                                                        |
 |-------------------|-------------------------------------------------------------------------|
@@ -655,6 +671,8 @@ Format: `exit`
 
 
 ### 6.4 General
+This section will list all the commands available for general usage in the application.
+The actions here are all related to general usage.
 
 | Action       | Format, Examples        |
 |--------------|-------------------------|
