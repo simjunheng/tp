@@ -1352,7 +1352,7 @@ testers are expected to do more *exploratory* testing.
 
 ### 7.4 Adding a Strength/Weakness/Miscellaneous note to a person
 
-1. Adding a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
+1. Adding a strength/weakness/miscellaneous (using `strength-add`, `weakness-add`, and `misc-add` respectively) note to a person while currently viewable person list has people.
 
 2. Prerequisites: Currently viewable Contacts list has to contain some people.
 
@@ -1373,7 +1373,7 @@ testers are expected to do more *exploratory* testing.
 
 ### 7.5 Deleting a Strength/Weakness/Miscellaneous note to a person
 
-1. Deleting a strength/weakness/miscellaneous note to a person while currently viewable person list has people.
+1. Deleting a strength/weakness/miscellaneous note (using `strength-del`, `weakness-del`, and `misc-del` respectively) to a person while currently viewable person list has people.
 
 2. Prerequisites: Currently viewable Contacts list has to contain some people.
 
@@ -1400,7 +1400,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Empty the task list or remove only those that correspond with a given day.
 
-2. Prerequisites: Schedule must contain some tasks.
+2. Prerequisites: Unfiltered Schedule must contain some tasks.
 
 3. Test case: `clear-t`<br>
    Expected: The entire task list in contacts will be cleared.
@@ -1414,6 +1414,20 @@ testers are expected to do more *exploratory* testing.
 6. Test case: `clear-t d/2022-03-03`<br>
    Expected: Similar to previous.
 
-8. Other incorrect commands to try: `clear-t d/abc`, `clear-t d`, `clear-t d/`, `...`
+7. Other incorrect commands to try: `clear-t d/abc`, `clear-t d`, `clear-t d/`, `...`<br>
    Expected: Similar to previous.
-   
+
+### 7.7 Sort the Contacts list by strength or weakness in descending order
+
+1. Sort the entire Contact list by strength (for `sort-strength`) or weakness (for `sort-weakness`) in descending order
+
+2. Prerequisites: Unfiltered Contacts list must contain some people.
+
+3. Test case: `sort-strength`<br>
+   Expected: The entire contact list is sorted by total number of strengths in descending order.
+
+4. Test case: `sort-weakness`<br>
+      Expected: The entire contact list is sorted by total number of weaknesses in descending order.
+
+5. Test case: `sort-strength abc`<br>
+      Expected: The entire contact list is sorted by total number of strengths in descending order (anything after the command word is ignored).
