@@ -312,6 +312,8 @@ The steps above are summarised using a sequence diagram as shown below.
     * Cons: Repetitive code that is not abstracted
 
 #### 4.1.6 Delete Tags Feature
+
+##### Implementation
 This feature allows the user to delete tags from contacts in the list. It is facilitated by `ModelManager` which
 makes use of the method `#setPerson()` and `#updateFilteredPersonList()` to delete tags from a contact.
 
@@ -327,6 +329,18 @@ Step 4: During the command execution, the `ModelManager#setPerson()` is called w
 
 The steps above are summarised using a sequence diagram as shown below.
 ![DeletePersonTagSequenceDiagram](images/DeletePersonTagSequenceDiagram.png)
+
+
+##### Design Consideration
+
+**Aspect: Should the implementation use the existing edit functionalities in AB3:**
+* **Alternative 1:**  Use the current EditCommand class to edit a person's tags.
+    * Pros: Maintains abstraction and reuses code instead of writing new code.
+    * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
+
+* **Alternative 2 (current choice):** Implement DeletePersonTagCommand independently, rewriting similar code
+    * Pros: Cleaner code and less dependencies
+    * Cons: Repetitive code that is not abstracted
 
 #### 4.1.7 Find Feature
 
