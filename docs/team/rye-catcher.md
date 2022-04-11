@@ -1,4 +1,4 @@
-### Project: Coach2K22
+### Lyu Xiaoteng's Project Portfolio Page
 
 #### Overview
 Our product helps busy sports coaches organise their overwhelming lists of contacts and messy weekly
@@ -14,14 +14,18 @@ schedules. It also provides them with a platform to visualise defensive and offe
     * Implemented drag and move features on the strategy board (PR: [#61](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/61))
     * Partially implemented note features to allow users to add notes to the contacts (PR: [#38](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/38))
 * **Contributions to the UG**
-    * Added the documentation for the following features `add-player`, `del-player`, and `move` (PR: [#92](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/92))
+    * Added the documentation for the following features `add-player`, `del-player` (PR: [#92](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/92))
+    * Added the documentation for the following features `move` (PR: [#253](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/253))
+    * Added the supplemental information for the command summery information (PR: [#237](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/237))
 * **Contributions to the DG**
     * Added the following use cases to the documentation:
         * Add a new player to the strategy board (PR: [#92](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/92))
         * Remove a player from the strategy board (PR: [#92](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/92))
+        * Move a player on the strategy board (PR: [#240](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/240))
     * Added the implementation and design consideration for **Add Players** feature (PR: [#92](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/92))
+    * Added the implementation and design consideration for **Remove Players** and **Move Players** features (PR: [#240](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/240))
 * **Contributions to team-based tasks**
-    * _to be added soon_
+    * Maintained some issues tracking and fix some minor bugs in others' codes.
 * **Review/mentoring contributions**
     * PR: [#16](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/16)
     * PR: [#20](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/20)
