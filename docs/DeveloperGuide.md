@@ -1555,5 +1555,6 @@ Expected: Same as point 3.2.
    across features to ensure functional correctness.
    
 2. The team has implemented a JavaFX strategy board with draggable nodes. In addition, a `move` feature is implemented to cater to 
-   existing requirements and also, user who prefer CLI over GUI. It was particularly tough to implement this as nodes placements are
-   determined by its relative position
+   existing requirements. It was tough to implement this as nodes placements are determined by its relative position. Our team also
+   tried to get these placements as accurate as possible to ensure functional correctness - increasing the implementation difficulty levels.
+   
