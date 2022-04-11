@@ -1431,3 +1431,18 @@ testers are expected to do more *exploratory* testing.
 
 5. Test case: `sort-strength abc`<br>
       Expected: The entire contact list is sorted by total number of strengths in descending order (anything after the command word is ignored).
+
+### 7.8 Load new image to serve as court in Strategy Tab
+
+1. Loads the given image by the provided name to serve as the court in Strategy Tab.
+
+2. Prerequisites: Image must be a png file and stored in the automatically generated `courts` directory which exists in the same folder as the JAR.
+
+3. Test case: `load-court basketball`<br>
+   Expected: The image `basketball.png` will be loaded from the `courts` directory and serve as the court in the Strategy tab. If it does not exist, no image is loaded, and error details are shown in the status message.
+
+4. Test case: `load-court`<br>
+   Expected: No image is loaded, and error details are shown in the status message.
+
+5. Test case: `load-court test/`<br>
+   Expected: Similar to previous. Even if `test.png` exists, as `/` are not allowed in command argument.
