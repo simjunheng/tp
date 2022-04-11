@@ -273,6 +273,7 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
 
 #### 4.1.9 Adding a strength : `strength-add`
 
