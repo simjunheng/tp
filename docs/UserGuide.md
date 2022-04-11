@@ -315,6 +315,8 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
+
 #### 4.1.11 Adding a miscellaneous note : `misc-add`
 
 Add a miscellaneous note to a selected person from our contact list.
@@ -356,6 +358,7 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
 
 #### 4.1.13 Deleting a weakness : `weakness-del`
 
