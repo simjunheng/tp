@@ -8,7 +8,7 @@ title: User Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always"></div>
+
 ## **1. Introduction**
 Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds.
 
@@ -27,8 +27,6 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 
 4. Type your commands in the Command Line Interface box (CLI) labeled below. You can switch between the three tabs (Contact, Schedule, Strategy tabs).<br>
    ![Ui-labeled](images/Ui-Labeled.png)
-   
-<div style="page-break-after: always"></div>
 
 5. Refer to the [Features](#2-features) below for details of each command, as well as their formats.
 
@@ -37,8 +35,6 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 <div markdown="span" class="alert alert-primary">:bulb: **Note:**
 Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RAM and 500 MB of storage_).
 </div>
-
-<div style="page-break-after: always"></div>
 
 ### 1.2 CLI tutorial
 =======
