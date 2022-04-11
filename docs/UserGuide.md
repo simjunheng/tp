@@ -579,7 +579,7 @@ Examples:
 **:information_source: Key things to take note of:**<br>
 
 * `PLAYER_NAME` is case-sensitive e.g. `John Cena` will NOT match `john Cena`.
-* `PLAYER_NAME` can not be empty and its length must be less or equal to `24` characters.
+* `PLAYER_NAME` can not be empty and its length must be less or equal to `50` characters.
 * `PLAYER_NAME` must be unique and can NOT contain the character `/`.
 
 </div>
@@ -603,6 +603,16 @@ Move a player to a coordinate on the strategy board.
 Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 
 As mentioned above, the player name is case-sensitive.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Key things to take note of:**<br>
+
+* `X_COORDINATE` and `Y_COORDINATE` must be integers.
+* `X_COORDINATE` must be non-negative and less than or equal to `1000`.
+* `Y_COORDINATE` must be non-negative and less than or equal to `600`.
+
+</div>
 
 Example:
 * `move Messi x/0 y/0` moves the player named `Messi` to the top left corner of the strategy board.
