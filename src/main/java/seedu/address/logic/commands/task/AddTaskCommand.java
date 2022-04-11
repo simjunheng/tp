@@ -50,6 +50,8 @@ public class AddTaskCommand extends Command {
             "The person %1$s cannot be found in the current address book";
     public static final String MESSAGE_SCHEDULE_CONFLICT =
             "The person %1$s is already involved in a task at this date and time";
+    public static final String MESSAGE_SCHEDULE_CONFLICT_START_END_TIME =
+            "This task ends before or at its specified start time!";
     private final Task toAdd;
 
     /**
@@ -66,6 +68,10 @@ public class AddTaskCommand extends Command {
         List<Person> unfilteredPersonList = model.getUnfilteredPersonList();
         List<Task> unfilteredTaskList = model.getUnfilteredTaskList();
         Set<Name> persons = toAdd.getPersons();
+
+        if (toAdd.hasStartEndTimeConflict()) {
+            throw new CommandException(String.format(MESSAGE_SCHEDULE_CONFLICT_START_END_TIME));
+        }
 
         //checks if persons exist in the current list
         for (Name name: persons) {
