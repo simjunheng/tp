@@ -229,6 +229,8 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
+
 #### 4.1.7 Deleting a tag : `tag-del-p`
 
 Add tags to a selected person from our contact list.
@@ -380,7 +382,6 @@ Examples:
 * Both indices must be valid (existing in their respective lists).
 
 </div>
-
 
 #### 4.1.14 Deleting a miscellaneous note : `misc-del`
 
@@ -536,6 +537,8 @@ Examples:
 * The tag name is case-sensitive and must be an exact match for it to be recognised.
 
 </div>
+
+<div style="page-break-after: always"></div>
 
 #### 4.2.8 Locating tasks by keyword : `find-t`
 
