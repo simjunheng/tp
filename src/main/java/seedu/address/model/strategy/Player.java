@@ -6,11 +6,16 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.util.Objects;
 
 public class Player {
-    public static final String MESSAGE_CONSTRAINTS = "Player name cannot be empty"
+    public static final String MESSAGE_NAME_CONSTRAINTS = "Player name cannot be empty"
             + " and must be not more then 24 characters"
             + " and must not contain \"/\". \n";
+    public static final String MESSAGE_X_CONSTRAINTS = "X coordinate must be an integer between 0 and 1000";
+    public static final String MESSAGE_Y_CONSTRAINTS = "Y coordinate must be an integer between 0 and 600";
+
     private static final int DEF_XCOORD = 50;
     private static final int DEF_YCOORD = 500;
+    private static final int X_LIMIT = 1000;
+    private static final int Y_LIMIT = 600;
 
     private final String name;
     private int xCoord;
@@ -21,7 +26,7 @@ public class Player {
      */
     public Player(String name) {
         requireNonNull(name);
-        checkArgument(isValidPlayer(name), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPlayer(name), MESSAGE_NAME_CONSTRAINTS);
         this.name = name;
         this.xCoord = DEF_XCOORD;
         this.yCoord = DEF_YCOORD;
@@ -32,7 +37,9 @@ public class Player {
      */
     public Player(String name, int xCoord, int yCoord) {
         requireNonNull(name);
-        checkArgument(isValidPlayer(name), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPlayer(name), MESSAGE_NAME_CONSTRAINTS);
+        checkArgument(isValidXCoord(xCoord), MESSAGE_X_CONSTRAINTS);
+        checkArgument(isValidYCoord(yCoord), MESSAGE_Y_CONSTRAINTS);
         this.name = name;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
@@ -43,6 +50,14 @@ public class Player {
      */
     public static boolean isValidPlayer(String playerName) {
         return !playerName.isEmpty() && playerName.length() <= 24 && !playerName.contains("/");
+    }
+
+    public static boolean isValidXCoord(int xCoord) {
+        return xCoord >= 0 && xCoord <= X_LIMIT;
+    }
+
+    public static boolean isValidYCoord(int yCoord) {
+        return yCoord >= 0 && yCoord <= Y_LIMIT;
     }
 
     //Getters
@@ -60,6 +75,7 @@ public class Player {
 
     //Setters
     public void setXCoord(int xCoord) {
+        checkArgument(isValidXCoord(xCoord), MESSAGE_X_CONSTRAINTS);
         this.xCoord = xCoord;
     }
 
@@ -69,6 +85,7 @@ public class Player {
 
     //uti methods
     public Player toCopy() {
+        checkArgument(isValidYCoord(yCoord), MESSAGE_Y_CONSTRAINTS);
         return new Player(name, xCoord, yCoord);
     }
 

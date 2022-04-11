@@ -20,9 +20,9 @@ public class MovePlayerCommand extends Command {
             + ": Moves the player to the specified location.\n"
             + "Parameters: "
             + "PLAYER_NAME "
-            + "x/X_COORDINATE (must be non-negative integers) "
-            + "y/Y_COORDINATE (must be non-negative integers)\n"
-            + "Example: " + COMMAND_WORD + " " + "John" + " " + "x/10" + " " + "y/20";
+            + "x/X_COORDINATE (must be non-negative integers no greater than 1000) "
+            + "y/Y_COORDINATE (must be non-negative integers no greater than 600)\n"
+            + "Example: " + COMMAND_WORD + " " + "John" + " " + "x/100" + " " + "y/200";
 
     public static final String MESSAGE_SUCCESS = "%1$s has been moved to the specified location: (%2$d, %3$d).";
 
