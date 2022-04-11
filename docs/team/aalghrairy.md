@@ -1,4 +1,4 @@
-### Project: Coach2K22
+### Abdulelah Faisal S Al Ghrairy's Project Portfolio Page
 
 #### Overview:
 Our product helps busy sports coaches organise their overwhelming lists of contacts and messy weekly
@@ -26,8 +26,21 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
 * **Contributions to the DG:**
   * Added the Product Scope and Glossary sections
   * Implemented the Model Component
-  * Implemented implementations of Clear Tasks and Load Court functions, as well as functions related to adding notes, deleting notes, and sorting contacts by strengths and weaknesses.
-  * Added some user stories:
+  * Implemented the Model UML Diagram
+  * Added the following implementation descriptions of functions
+    * Clear Tasks
+    * Load Court
+    * Add Strength/Weakness/Misc
+    * Delete Strength/Weakness/Misc
+    * Sort by Strength/Weakness
+  * Implemented the following UML Diagrams
+    * Model Diagram
+    * Clear Tasks
+    * Load Court
+    * Add Strength/Weakness/Misc
+    * Delete Strength/Weakness/Misc
+    * Sort by Strength/Weakness
+  * Added some user stories:  
     * `As an organised coach I can view players by their strengths and weaknesses so that I can make informed decisions on choosing the best person for a specific objective`
     * `As an organized and data-driven coach I can sort my players by certain data so I can get better understanding of how players compare`
   * Added the following use cases:

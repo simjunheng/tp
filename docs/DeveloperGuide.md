@@ -302,7 +302,7 @@ The steps above are summarised using a sequence diagram as shown below.
 
 ##### Design Consideration
 
-**Aspect: Should the implementation use the existing edit functionalities in AB3:**
+**Aspect: Should the implementation use the existing edit functionalities in Coach2K22:**
 * **Alternative 1:**  Use the current EditCommand class to edit a person's tags.
     * Pros: Maintains abstraction and reuses code instead of writing new code.
     * Cons: Creates a cyclic dependency, making the code base harder to maintain later on
