@@ -1545,3 +1545,15 @@ Expected: Same as point 3.2.
 
 2. Test case: `clear-p`<br>
    Expected: All entries in the contact list will be cleared. It also clears the participant field of all tasks.
+   
+--------------------------------------------------------------------------------------------------------------------
+
+## **8. Appendix: Effort**
+
+1. The team has extended the program to deal with three different entity types: `Person`, `Task`, `Strategy`. These entities
+   are interconnected where features specific to `Person` may directly affect the `Task` entity. Deliberate and extensive checks are implemented
+   across features to ensure functional correctness.
+   
+2. The team has implemented a JavaFX strategy board with draggable nodes. In addition, a `move` feature is implemented to cater to 
+   existing requirements and also, user who prefer CLI over GUI. It was particularly tough to implement this as nodes placements are
+   determined by its relative position
