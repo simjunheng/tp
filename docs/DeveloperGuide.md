@@ -86,14 +86,14 @@ The `UI` component,
 
 ### 3.3 Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S2-CS2103T-W14-2/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
 <img src="images/LogicClassDiagram.png" width="550"/>
 
 How the `Logic` component works:
-1. When `Logic` is called upon to execute a command, it uses the `AddressBookParser` class to parse the user command.
+1. When `Logic` is called upon to execute a command, it uses the `Coach2K22Parser` class to parse the user command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to add a person).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
@@ -110,7 +110,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <img src="images/ParserClasses.png" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `Coach2K22Parser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `Coach2K22Parser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### 3.4 Model component
@@ -415,7 +415,7 @@ The steps above are summarised using a sequence diagram as shown below. Note tha
   * Pros: Easier to extend and modify.
   * Cons: Not intuitive for the user and more prone to feature flaws
 
-#### 4.1.10 Sort by Strength/Weakness Features
+#### 4.1.9 Sort by Strength/Weakness Features
 
 ##### Implementation
 
@@ -646,7 +646,7 @@ The steps above are summarised using a sequence diagram as shown below.
 This feature allows the user to add players to the strategy board. It is facilitated by `ModelManager` which
 makes use of the method `#addPlayer()` and `#updateFilteredPlayerList()` to add a new player to the strategy board.
 
-Given below is an example usage scenario of how the add player mechanism behaves at each step.
+Given below is an example usage scenario of how the adding player mechanism behaves at each step.
 
 Step 1: The user inputs `add-player Cena` to add a new player to the strategy board.
 
@@ -663,10 +663,10 @@ The steps above are summarised using a sequence diagram as shown below.
 
 **Aspect: Should there be an abstraction for players:**
 
-* **Alternative 1 (current choice):** A player is a String of player name.
+* **Alternative 1:** A player is a String of player name.
     * Pros: Easy to implement.
     * Cons: Hard to extend.
-* **Alternative 2:** A player is an object of class `Player`.
+* **Alternative 2 (current choice):** A player is an object of class `Player`.
     * Pros: Easy to extend and manipulate attributes of a player.
     * Cons: Hard to implement.
 
@@ -700,7 +700,69 @@ The steps above are summarised using a sequence diagram as shown below.
 * **Alternative 2:** Allow for different filetypes of images (png, jpeg, etc.).
   * Pros: Easy to extend and more intuitive for the user.
   * Cons: Hard to implement.
+    
+#### 4.3.3 Delete Feature
 
+##### Implementation
+
+This feature allows the user to remove players from the strategy board. It is facilitated by `ModelManager` which
+makes use of the method `#deletePlayer()` and `#updateFilteredPlayerList()` to delete an existing player from the strategy board.
+
+Given below is an example usage scenario of how the deleting player mechanism behaves at each step.
+
+Step 1: The user inputs `del-player Cena` to remove a player named `Cena` from the strategy board.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DelPlayerCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeletePlayerCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#deletePlayer()` is called which remove the player from an internal list and updates the GUI display with a new player named "Cena" shown in the strategy board. The command results are then generated and shown to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![DeletePlayerSequenceDiagram](images/DeletePlayerSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should allow users to remove multiple players at once:**
+
+* **Alternative 1:** Users can remove multiple players at once.
+    * Pros: Possibly improve the efficiency for users.
+    * Cons: User inputs are more prone to errors.
+* **Alternative 2 (current choice):** Users can only remove one player at a time.
+    * Pros: Easy to implement.
+    * Cons: Users need to repeat the same command multiple times to remove multiple players.
+
+#### 4.3.4 Move Feature
+
+##### Implementation
+
+This feature allows the user to move players on the strategy board. It is facilitated by `ModelManager` which
+makes use of the method `#deletePlayer()`, `#addPlayer()`, and `#updateFilteredPlayerList()` to move an existing player to a new position on the strategy board.
+
+Given below is an example usage scenario of how the moving player mechanism behaves at each step.
+
+Step 1: The user inputs `move Cena x/200 y/100` to move a player named `Cena` to a new position with x-coordinate `200` and y-coordinate `100` on the strategy board.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `MovePlayerCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `MovePlayerCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the `ModelManager#deletePlayer()` is firstly called which removes the player named "Cena" from an internal list. 
+Then the `ModelManager#addPlayer()` is called which adds the player with same name but new position to an internal list and updates the GUI display with a player named "Cena" with new position `(200, 100)` shown in the strategy board.
+At last, the command results are then generated and shown to the user.
+
+The steps above are summarised using a sequence diagram as shown below.
+![MovePlayerSequenceDiagram](images/MovePlayerSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should allow users to move multiple players at once:**
+* **Alternative 1:** Users can move multiple players at once.
+    * Pros: Possibly improve the efficiency for users.
+    * Cons: User inputs are more prone to errors.
+* **Alternative 2 (current choice):** Users can only move one player at a time.
+    * Pros: Easy to implement.
+    * Cons: Users need to repeat the same command multiple times to move multiple players.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1254,6 +1316,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 * 3c. The player name is not provided.
+    * 3c1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Move a player on the strategy board**
+
+**MSS**
+
+1. User requests to show all players on the strategy board
+2. Coach2K22 shows players
+3. User requests to move a player on the strategy board
+4. Coach2K22 shows the updated strategy board with the player moved to the new position
+
+   Use case ends.
+
+**Extension**
+* 3a. The player name is invalid.
+    * 3a1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3b. The player name is not on the strategy board.
+    * 3b1. Coach2K22 shows an error message.
+
+      Use case resumes at step 2.
+* 3c. The position is invalid.
     * 3c1. Coach2K22 shows an error message.
 
       Use case resumes at step 2.
