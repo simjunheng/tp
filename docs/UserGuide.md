@@ -403,6 +403,8 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
+
 #### 4.1.15 Sorting list of persons by strengths : `sort-strength`
 
 Sorts the list of persons by total strengths in descending order.
@@ -414,7 +416,6 @@ Format: `sort-strength`
 Sorts the list of persons by total weaknesses in descending order.
 
 Format: `sort-weaknesses`
-
 
 ### 4.2 Task Management
 
@@ -450,6 +451,8 @@ Examples:
 
 </div>
 
+<div style="page-break-after: always"></div>
+
 #### 4.2.3 Deleting a task: `del-t`
 
 Delete a task from our task list.
@@ -459,11 +462,15 @@ Format: `del-t INDEX`
 Examples:
 * `del-t 2` deletes the second task in the task list.
 
+<div markdown="block" class="alert alert-info">
+
 **:information_source: Key things to take note of:**<br>
 
 * Deletes the task at the specified `INDEX`.
 * The index can be obtained by referring to the indicated task index on the displayed task list.
 * Index values start from 1 and are always positive integers.
+
+<div>
 
 #### 4.2.4 Editing a task: `edit-t`
 
