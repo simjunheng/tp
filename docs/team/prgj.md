@@ -17,7 +17,7 @@ schedules. It also provides them with a platform to visualise defensive and offe
   * Added CLI tutorial ([#252](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/252))
 * **Contributions to the DG**
   * Added use cases/user stories for `add-t`, `del-t`,`edit-t`and `export` (PR: [#94](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/94))
-  * Added implementation details for `add-t`and `export`, modified `edit-t`(PR: [#249](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/249))
+  * Added implementation details for `add-t`and `export`, modified `edit-t`(PR: [#263](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/263))
 * **Contributions to team-based tasks**
   * Update UserGuide with contents of draft user guide (PR: [#21](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/21))
 * **Review/mentoring contributions**
