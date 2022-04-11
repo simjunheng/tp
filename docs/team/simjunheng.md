@@ -20,11 +20,19 @@ schedules. It also provides them with a platform to visualise defensive and offe
   * Added **About the User Guide** section to improve front matter of the user guide (PR: [#214](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/214))
   * Added section numberings throughout the user guide (PR: [#86](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/86))
 * **Contributions to the DG**
+  * Update UI component diagram (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
   * Added the following use cases:
     * Find tasks by name or tag (PR: [#139](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/139))
     * Find persons by name or tag (PR: [#24](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/24)
     * Find persons tagged to a task (PR: [#139](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/139))
-  * Added the implementation and design consideration for **Find Persons** feature (PR: [#86](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/86))
+  * Added the implementation and design consideration for:
+    * **Find Persons** feature (PR: [#86](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/86))
+    * **Add Persons** feature (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
+    * **Edit Persons** feature (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
+    * **Delete Persons** feature (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
+    * **Delete Tasks** feature (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
+    * **Find Tasks** feature (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
+    * **Get Persons** feature (PR: [#223](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/223))
 * **Contributions to team-based tasks**
   * Released JAR file for v1.2 and v1.3
   * Update collaborative project notes for v1.2 and v1.3 features demo

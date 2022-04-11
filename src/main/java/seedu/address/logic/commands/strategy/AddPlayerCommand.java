@@ -5,7 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.task.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.strategy.Player;
 
@@ -19,7 +19,7 @@ public class AddPlayerCommand extends Command {
             + ": Add a player in the strategy panel. "
             + "Parameters: "
             + "PLAYER_NAME"
-            + "(must be non-empty, not more than 24 characters and does not contain \"/\")\n"
+            + "(must be non-empty, not more than 50 characters and does not contain \"/\")\n"
             + "Example: " + COMMAND_WORD + " "
             + "Lionel Messi";
 

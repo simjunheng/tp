@@ -49,7 +49,7 @@ public class Player {
      * Returns true if the given player name is a valid player name.
      */
     public static boolean isValidPlayer(String playerName) {
-        return !playerName.isEmpty() && playerName.length() <= 24 && !playerName.contains("/");
+        return !playerName.isEmpty() && playerName.length() <= 50 && !playerName.contains("/");
     }
 
     public static boolean isValidXCoord(int xCoord) {
