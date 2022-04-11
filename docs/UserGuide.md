@@ -25,9 +25,12 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 3. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
     
-4. Type the command in the command box and press Enter to execute it.
+4. Type your commands in the Command Line Interface box (CLI) labeled below. You can switch between the three tabs (Contact, Schedule, Strategy tabs).<br>
+   ![Ui-labeled](images/Ui-Labeled.png)
 
-5. Refer to the [Features](#2-features) below for details of each command.
+5. Refer to the [Features](#2-features) below for details of each command, as well as their formats.
+
+6. Contacts and Schedule related tabs will be saved automatically (Strategy needs to be explicitly saved).
 
 <div markdown="span" class="alert alert-primary">:bulb: **Note:**
 Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RAM and 500 MB of storage_).
