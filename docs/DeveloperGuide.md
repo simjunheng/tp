@@ -353,14 +353,14 @@ The steps above are summarised using a sequence diagram as shown below.
     * Pros: Easier and more intuitive for the user to understand.
     * Cons: Hard to implement.
 
-#### 4.1.1 Add Strength/Weakness/Misc Features
+#### 4.1.7 Add Strength/Weakness/Misc Features
 
 ##### Implementation
 
 These features allow the user to add a strength, weakness, or miscellaneous note to a person in the person list . It is facilitated by `ModelManager` which
 makes use of the method `#setPerson()` to replace the particular person with the new person with modified note list (depending on the given command).
 
-Given below is an example usage scenario of how the add note mechanism behaves at each step._Note that three commands have similar implementations, so only strength will be provided here._
+Given below is an example usage scenario of how the Add Strength mechanism behaves at each step._Note that three commands have similar implementations, so only the Add Strength feature will be provided here._
 
 Step 1: The user inputs `strength-add 1 great endurance` to add the strength `great endurance` to the person in index `1` of the person list.
 
@@ -383,6 +383,38 @@ The steps above are summarised using a sequence diagram as shown below. Note tha
 * **Alternative 2:** Single `note-add` command for adding to each list with provided prefixes.
     * Pros: Easier to extend and modify.
     * Cons: Not intuitive for the user and more prone to feature flaws
+
+#### 4.1.7 Delete Strength/Weakness/Misc Features
+
+##### Implementation
+
+These features allow the user to delete a strength, weakness, or miscellaneous note from a person in the person list . It is facilitated by `ModelManager` which
+makes use of the method `#setPerson()` to replace the particular person with the new person with modified note list (depending on the given command).
+
+Given below is an example usage scenario of how the Delete Strength mechanism behaves at each step._Note that three commands have similar implementations, so only the Delete Strength feature will be provided here._
+
+Step 1: The user inputs `strength-del 1 1` to delete the first strength from the person in index `1` of the person list.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22Parser#parseCommand()` to find a suitable parser class to process the user inputs. This initialises the `DeleteStrengthCommandParser` where its method `#parse()` is called to process the user inputs.
+
+Step 3: It then returns a newly initialised `DeleteStrengthCommand` back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, `ModelManager#setPerson()` method is called to update the specified person in the person list with the new strength list.
+
+The steps above are summarised using a sequence diagram as shown below. Note that all occurrences of `Strength` will be generalized to `Note` to represent the implementation of the Delete Strength, Weakness, and Misc features.
+![DeleteNoteSequenceDiagram](images/DeleteNoteSequenceDiagram.png)
+
+##### Design Consideration
+
+**Aspect: Should there be different note lists for each person:**
+
+* **Alternative 1 (current choice):** Separate `note-add` command into three different commands.
+  * Pros: Easier to use and more intuitive.
+  * Cons: Difficult to extend and modify.
+* **Alternative 2:** Single `note-add` command for adding to each list with provided prefixes.
+  * Pros: Easier to extend and modify.
+  * Cons: Not intuitive for the user and more prone to feature flaws
+
 ### 4.2 Task Management
 
 #### 4.2.1 Add Feature
