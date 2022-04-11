@@ -124,6 +124,8 @@ This subsection describes some noteworthy information about the command format t
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always"></div>
+
 ## **3. Quick Start**
 
 1. Ensure you have Java `11` or above installed in your Computer.
