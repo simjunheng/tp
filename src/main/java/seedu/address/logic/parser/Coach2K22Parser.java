@@ -18,7 +18,7 @@ import seedu.address.logic.commands.person.EditPersonCommand;
 import seedu.address.logic.commands.person.FindPersonCommand;
 import seedu.address.logic.commands.person.ListPersonCommand;
 import seedu.address.logic.commands.person.SortStrengthCommand;
-import seedu.address.logic.commands.person.SortTaskByDateCommand;
+import seedu.address.logic.commands.task.SortTaskByDateCommand;
 import seedu.address.logic.commands.person.SortWeaknessCommand;
 import seedu.address.logic.commands.person.notecommands.AddMiscCommand;
 import seedu.address.logic.commands.person.notecommands.AddStrengthCommand;

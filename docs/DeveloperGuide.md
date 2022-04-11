@@ -614,6 +614,29 @@ Step 4: During the command execution, the `ModelManager#updateFilteredPersonList
 The steps above are summarised using a sequence diagram as shown below.
 ![GetPersonSequenceDiagram](images/GetPersonSequenceDiagram.png)
     
+
+#### 4.2.9 Sort by Date Feature
+
+##### Implementation
+
+This feature allows the user to sort the task list in chronological order. The resulting task list will be sorted by earliest date and time first.
+It is facilitated by `ModelManager` which makes use of the method `#getUnfilteredTaskList()` to get the list of tasks.
+
+Given below is an example usage scenario of how the sort date mechanism behaves at each step.
+
+Step 1: The user inputs `sort-date` to sort the task list by date.
+
+Step 2: This argument is passed into `LogicManager` which calls on `Coach2K22#parseCommand()`. Since this command does not require parameters, the SortTaskByDateCommand object is created directly instead of through a Parser.
+
+Step 3: The newly initialised `SortTaskByDateCommand` is returned back to the `LogicManager` for command execution.
+
+Step 4: During the command execution, the current list of tasks is sorted using an internal sorting algorithm, then a new TaskBook object is created to store the new ordered list of tasks.
+
+Step 5: The model replaces its old TaskBook with the new sorted TaskBook using `ModelManager#setTaskBook`, and the GUI updates the task list accordingly.
+
+The steps above are summarised using a sequence diagram as shown below.
+![SortTaskByDateSequenceDiagram](images/SortTaskByDateSequenceDiagram.png)
+
 ### 4.3 Strategic Planning
 
 #### 4.3.1 Add Feature
