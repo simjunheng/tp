@@ -22,10 +22,11 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
 * **Contributions to the UG:**
   * Added feature definitions for the following functions (and included in command summary):
     * (`strength-add`, `weakness-add`, `misc-add`, `strength-del`, `weakness-del`, `misc-del`, `clear-t`, `load-court`, `sort-strength`, `sort-weakness`)
+  * Add detailed installation instructions, including labelled GUI example, operating system, and system requirements. 
 * **Contributions to the DG:**
   * Added the Product Scope and Glossary sections
   * Implemented the Model Component
-  * Implemented implementations of `clear-t`, `load-court`, as well as adding note ,deleting note, and sorting contacts by note related functions.
+  * Implemented implementations of Clear Tasks and Load Court functions, as well as functions related to adding notes, deleting notes, and sorting contacts by strengths and weaknesses.
   * Added some user stories:
     * `As an organised coach I can view players by their strengths and weaknesses so that I can make informed decisions on choosing the best person for a specific objective`
     * `As an organized and data-driven coach I can sort my players by certain data so I can get better understanding of how players compare`
@@ -47,7 +48,6 @@ https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=aalghrairy&breakdown=
   * Maintained issue tracking for some individual tasks of respective team members
     * Including ensuring milestones, assignees, and labels were properly selected
   * Modified the Index.md file
-  * Add detailed installation instructions to User Guide (including labelled GUI)
 * **Review/mentoring contributions**:
   * [#20](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/20)
   * [#21](https://github.com/AY2122S2-CS2103T-W14-2/tp/pull/21)
