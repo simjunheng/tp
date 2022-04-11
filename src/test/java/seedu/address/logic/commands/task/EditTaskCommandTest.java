@@ -78,16 +78,16 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, new EditTaskDescriptor());
-        Task editedTask = model.getFilteredTaskList().get(TASK_FIRST_INDEX.getZeroBased());
+    public void execute_invalidStartEndTime_failure() {
+        EditTaskDescriptor invalidTask = new EditTaskDescriptorBuilder().withStartTime("15:00")
+                .withEndTime("13:00").build();
+        EditTaskCommand editTaskCommand = new EditTaskCommand(TASK_FIRST_INDEX, invalidTask);
 
-        String expectedMessage = String.format(EditTaskCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask);
+        String expectedMessage = String.format(EditTaskCommand.MESSAGE_SCHEDULE_CONFLICT_START_END_TIME);
+        assertThrows(CommandException.class,
+                expectedMessage, () -> editTaskCommand.execute(model));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                model.getTaskBook(), new StrategyBoard(), new UserPrefs());
-
-        assertCommandSuccess(editTaskCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editTaskCommand, model, expectedMessage);
     }
 
     @Test
