@@ -1,4 +1,4 @@
-### Project: Coach2K22
+### Sim Jun Heng's Project Portfolio Page
 
 #### Overview
 Our product helps busy sports coaches organise their overwhelming lists of contacts and messy weekly

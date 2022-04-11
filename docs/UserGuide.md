@@ -727,6 +727,8 @@ The actions here are all related to managing the contacts of the user.
 | **Sort by Strengths**    | `sort-strength`                                                                                                                                              |
 | **Sort by Weaknesses**   | `sort-weakness`<br/>                                                                                                                                              |
 
+<div style="page-break-after: always"></div>
+
 ### 6.2 Task Management
 This section will list all the commands available for task management in the application.
 The actions here are all related to managing the tasks of the user.
@@ -743,6 +745,8 @@ The actions here are all related to managing the tasks of the user.
 | **Find**         | `find-t [n/NAME]…​ [t/TAG]…​`<br> e.g., `find-p n/Meeting n/Training t/team1 t/team2` |
 | **Get Person**   | `get-person INDEX`<br> e.g., `get-person 2`                                       |
 | **Sort By Date** | `sort-date`                                                                       |
+
+<div style="page-break-after: always"></div>
 
 ### 6.3 Strategic Planning
 This section will list all the commands available for strategic planning in the application.
