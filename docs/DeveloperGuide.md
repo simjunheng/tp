@@ -609,7 +609,6 @@ The steps above are summarised using a sequence diagram as shown below.
     * Cons: Not as intuitive for the user.
 * **Alternative 2:** Single `edit` command that edits tasks/persons depending on parameters.
     * Pros: More intuitive for the user.
-
     
 #### 4.2.6 Clear Feature
 
@@ -709,7 +708,6 @@ Step 4: During the command execution, the `ModelManager#updateFilteredPersonList
 
 The steps above are summarised using a sequence diagram as shown below.
 ![GetPersonSequenceDiagram](images/GetPersonSequenceDiagram.png)
-
 
 #### 4.2.9 Sort by Date Feature
 
