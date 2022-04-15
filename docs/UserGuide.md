@@ -550,9 +550,11 @@ To get the contact information of all participants in Team Training (Task 2), yo
 This will bring you to the contact tab - displaying only the contact information of participants in Task 2.
 
 Before entering the command
+
 ![getperson-ex1](images/getperson-ex1.png)
 
 After entering the command
+
 ![getperson-ex2](images/getperson-ex2.png)
 
 
