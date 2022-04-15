@@ -8,7 +8,6 @@ title: User Guide
   {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always"></div>
 
 ## **1. Introduction**
 Coach2K22 is a desktop app that helps busy sports coaches **organise their overwhelming lists of contacts and messy weekly schedules.** It also provides them with a **platform to visualise defensive and offensive plays** as the game unfolds.
@@ -51,8 +50,6 @@ Here is a quick tutorial to get you started!
 5. Users can now use their keyboard to type commands into the CLI.
 
 6. Refer to the [Features](#3-features) section below for more information and details on the command formats Coach2k22 accepts!
-
-<div style="page-break-after: always"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -196,7 +193,6 @@ Add tags to a selected person from our contact list.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.1.7 Deleting a tag : `tag-del-p`
 
@@ -242,7 +238,6 @@ Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.1.9 Adding a strength : `strength-add`
 
@@ -284,7 +279,6 @@ Add a weakness to a selected person from our contact list.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.1.11 Adding a miscellaneous note : `misc-add`
 
@@ -327,7 +321,6 @@ Delete a strength from a selected person from our contact list.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.1.13 Deleting a weakness : `weakness-del`
 
@@ -371,7 +364,6 @@ Delete the miscellaneous note from a selected person from our contact list.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.1.15 Sorting list of persons by strengths : `sort-strength`
 
@@ -421,7 +413,6 @@ Adds a task to our task list.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.2.3 Deleting a task: `del-t`
 
@@ -461,7 +452,6 @@ Clear all tasks or tasks on a selected date from our task list.
 **Format:**
 * `clear-t d/10-10-2022` clears all tasks on the date given.
 
-<div style="page-break-after: always"></div>
 
 <div markdown="block" class="alert alert-info">
 
@@ -507,7 +497,6 @@ Delete a tag from a selected task in our task list.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.2.8 Locating tasks by keyword : `find-t`
 
@@ -605,7 +594,6 @@ Add a new player to the strategy board.
 
 </div>
 
-<div style="page-break-after: always"></div>
 
 #### 3.3.3 Removing players: `del-player`
 
@@ -685,7 +673,6 @@ Exits the program.
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always"></div>
 
 ## **4. FAQ**
 
@@ -730,7 +717,6 @@ The actions here are all related to managing the contacts of the user.
 | **Sort by Strengths**    | `sort-strength`                                                                                                                                              |
 | **Sort by Weaknesses**   | `sort-weakness`<br/>                                                                                                                                              |
 
-<div style="page-break-after: always"></div>
 
 ### 5.2 Task Management
 This section will list all the commands available for task management in the application.
@@ -749,7 +735,6 @@ The actions here are all related to managing the tasks of the user.
 | **Get Person**   | `get-person INDEX`<br> e.g., `get-person 2`                                       |
 | **Sort By Date** | `sort-date`                                                                       |
 
-<div style="page-break-after: always"></div>
 
 ### 5.3 Strategic Planning
 This section will list all the commands available for strategic planning in the application.
