@@ -139,15 +139,15 @@ They are further classified into the following categories based on their functio
 
 Shows a list of all persons in our contact list.
 
-Format: `list-p`
+**Format:** `list-p`
 
 #### 3.1.2 Adding a person: `add-p`
 
 Adds a person to our contact list.
 
-Format: `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​`
+**Format:** `add-p n/NAME p/PHONE_NUMBER a/ADDRESS e/EMAIL [t/TAG_NAME]…​`
 
-Examples:
+**Examples:**
 * `add-p n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -158,18 +158,18 @@ A person can have any number of tags (including 0)
 
 Delete a person from our contact list.
 
-Format: `del-p INDEX`
+**Format:** `del-p INDEX`
 
-Examples:
+**Examples:**
 * `del-p 1` deletes the first person in the contact list.
 
 #### 3.1.4 Editing a person: `edit-p`
 
 Edit a person from our contact list.
 
-Format: `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​`
+**Format:** `edit-p INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG_NAME]…​`
 
-Examples:
+**Examples:**
 * `edit-p 1 p/98273712 e/johndoe@example.com` edits the phone number and email addresses of the 1st person into `98273712` and  `johndoe@example.com` respectively.
 * `edit-p 2 n/Alan Walker t/` edits the name of the 2nd person and clear all existing tags.
 
@@ -177,15 +177,15 @@ Examples:
 
 Clear all entries from our contact list.
 
-Format: `clear-p`
+**Format:** `clear-p`
 
 #### 3.1.6 Adding a tag : `tag-add-p`
 
 Add tags to a selected person from our contact list.
 
-Format: `tag-add-p INDEX TAG_NAME`
+**Format:** `tag-add-p INDEX TAG_NAME`
 
-Examples:
+**Examples:**
 * `tag-add-p 1 public` adds the tag `public` to the first person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -202,9 +202,9 @@ Examples:
 
 Add tags to a selected person from our contact list.
 
-Format: `tag-del-p INDEX TAG_NAME`
+**Format:** `tag-del-p INDEX TAG_NAME`
 
-Examples:
+**Examples:**
 * `tag-del-p 1 team` deletes the tag `team` from the first person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -221,9 +221,9 @@ Examples:
 Find persons matching any of the given keywords from our contact list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
-Format: `find-p [n/NAME]…​ [t/TAG]…​`
+**Format:** `find-p [n/NAME]…​ [t/TAG]…​`
 
-Examples:
+**Examples:**
 * `find-p n/Alan t/team1`
 * `find-p n/Alan`
 * `find-p t/team1`
@@ -248,9 +248,9 @@ Examples:
 
 Add a strength to a selected person from our contact list.
 
-Format: `strength-add INDEX  STRENGTH_DESCRIPTION`
+**Format:** `strength-add INDEX  STRENGTH_DESCRIPTION`
 
-Examples:
+**Examples:**
 * `strength-add 1 Great stamina` adds the strength "Great stamina" to the 1st person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -268,9 +268,9 @@ Examples:
 
 Add a weakness to a selected person from our contact list.
 
-Format: `weakness-add INDEX  WEAKNESS_DESCRIPTION`
+**Format:** `weakness-add INDEX  WEAKNESS_DESCRIPTION`
 
-Examples:
+**Examples:**
 * `weakness-add 1 Poor defensive abilities` adds the weakness "Poor defensive abilities" to the 1st person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -290,9 +290,9 @@ Examples:
 
 Add a miscellaneous note to a selected person from our contact list.
 
-Format: `misc-add INDEX  NOTE_DESCRIPTION`
+**Format:** `misc-add INDEX  NOTE_DESCRIPTION`
 
-Examples:
+**Examples:**
 * `misc-add 1 Likes ice cream` adds the miscellaneous note "Likes ice cream" to the 1st person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -310,9 +310,9 @@ Examples:
 
 Delete a strength from a selected person from our contact list.
 
-Format: `strength-del INDEX  STRENGTH_INDEX`
+**Format:** `strength-del INDEX  STRENGTH_INDEX`
 
-Examples:
+**Examples:**
 * `strength-del 1 1` deletes the first strength from the first person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -333,9 +333,9 @@ Examples:
 
 Delete the weakness from a selected person from our contact list.
 
-Format: `weakness-del INDEX  WEAKNESS_INDEX`
+**Format:** `weakness-del INDEX  WEAKNESS_INDEX`
 
-Examples:
+**Examples:**
 * `weakness-del 1 1` deletes the first weakness from the first person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -354,9 +354,9 @@ Examples:
 
 Delete the miscellaneous note from a selected person from our contact list.
 
-Format: `misc-del INDEX  NOTE_INDEX`
+**Format:** `misc-del INDEX  NOTE_INDEX`
 
-Examples:
+**Examples:**
 * `misc-del 1 1` deletes the first miscellaneous note from the first person in the contact list.
 
 <div markdown="block" class="alert alert-info">
@@ -377,13 +377,13 @@ Examples:
 
 Sorts the list of persons by total strengths in descending order.
 
-Format: `sort-strength`
+**Format:** `sort-strength`
 
 #### 3.1.16 Sorting list of persons by weaknesses : `sort-weakness`
 
 Sorts the list of persons by total weaknesses in descending order.
 
-Format: `sort-weaknesses`
+**Format:** `sort-weaknesses`
 
 ### 3.2 Task Management
 
@@ -391,15 +391,15 @@ Format: `sort-weaknesses`
 
 Shows a list of all tasks in our task list.
 
-Format: `list-t`
+**Format:** `list-t`
 
 #### 3.2.2 Adding a task: `add-t`
 
 Adds a task to our task list.
 
-Format: `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
+**Format:** `add-t n/NAME d/DATE st/STARTTIME et/ENDTIME [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
 
-Examples:
+**Examples:**
 * `add-t n/Welcome Tea d/24-04-2022 st/09:00 et/12:00 t/Socials c/Alex Yeoh`
 
 
@@ -427,9 +427,9 @@ Examples:
 
 Delete a task from our task list.
 
-Format: `del-t INDEX`
+**Format:** `del-t INDEX`
 
-Examples:
+**Examples:**
 * `del-t 2` deletes the second task in the task list.
 
 <div markdown="block" class="alert alert-info">
@@ -446,9 +446,9 @@ Examples:
 
 Edit a task from our task list.
 
-Format: `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
+**Format:** `edit-t INDEX [n/NAME] [d/DATE] [st/STARTTIME] [et/ENDTIME] [t/TAG_NAME]…​ [c/PERSON_NAME]…​`
 
-Examples:
+**Examples:**
 * `edit-t 2 d/29-04-2022 et/10:00` edits the date and end time of the second task into `29-04-2022` and  `10:00` respectively.
 * `edit-t 1 n/PR Event t/` edits the name of the first task to `PR Event` and clears all existing tags.
 
@@ -456,9 +456,9 @@ Examples:
 
 Clear all tasks or tasks on a selected date from our task list.
 
-Format: `clear-t [d/DATE]`
+**Format:** `clear-t [d/DATE]`
 
-Examples:
+**Format:**
 * `clear-t d/10-10-2022` clears all tasks on the date given.
 
 <div style="page-break-after: always"></div>
@@ -476,9 +476,9 @@ Examples:
 
 Add a tag to a selected task from our task list.
 
-Format: `tag-add-t INDEX TAG_NAME`
+**Format:** `tag-add-t INDEX TAG_NAME`
 
-Examples:
+**Examples:**
 * `tag-add-t 1 important` adds the tag "important" to the first task in the list.
 
 <div markdown="block" class="alert alert-info">
@@ -493,9 +493,9 @@ Examples:
 
 Delete a tag from a selected task in our task list.
 
-Format: `tag-del-t INDEX TAG_NAME`
+**Format:** `tag-del-t INDEX TAG_NAME`
 
-Examples:
+**Examples:**
 * `tag-del-t 1 important` removes the tag "important" from the first task in the list.
 
 <div markdown="block" class="alert alert-info">
@@ -514,9 +514,9 @@ Examples:
 Find tasks matching any of the given keywords from our task list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
 
-Format: `find-t [n/NAME]…​ [t/TAG]…​`
+**Format:** `find-t [n/NAME]…​ [t/TAG]…​`
 
-Examples:
+**Examples:**
 * `find-t n/Meeting t/team1`
 * `find-t n/Meeting`
 * `find-t t/team1`
@@ -539,11 +539,11 @@ Examples:
 
 Pull out the contact information of participants/persons tagged to a task.
 
-Format: `get-person INDEX`
+**Format:** `get-person INDEX`
 
-Examples:
+**Examples:**
 
-To get the contact information of all participants in Task 2 `Team Training`, you can enter the following command:
+To get the contact information of all participants in Team Training (Task 2), you can enter the following command:
 
 * `get-person 2`
 
@@ -560,7 +560,7 @@ After entering the command
 
 Sort the task list by date, in order of the task whose deadline is earlier.
 
-Format: `sort-date`
+**Format:** `sort-date`
 
 ### 3.3 Strategic Planning
 
@@ -568,7 +568,7 @@ Format: `sort-date`
 
 Load a new background image in the strategy tab.
 
-Format: `load-court IMAGE_NAME`
+**Format:** `load-court IMAGE_NAME`
 
 Examples:
 * `load-court basketball` loads would set the image from the filepath `courts/basketball.png` as the background image of strategy tab (if it exists).
@@ -587,9 +587,9 @@ Examples:
 
 Add a new player to the strategy board.
 
-Format: `add-player PLAYER_NAME`
+**Format:** `add-player PLAYER_NAME`
 
-Examples:
+**Examples:**
 * `add-player Messi` adds a new player named `Messi` in the strategy board.
 
 
@@ -609,7 +609,7 @@ Examples:
 
 Remove a player from the strategy board.
 
-Format: `del-player PLAYER_NAME`
+**Format:** `del-player PLAYER_NAME`
 
 <div markdown="block" class="alert alert-info">
 
@@ -622,14 +622,14 @@ Format: `del-player PLAYER_NAME`
 
 </div>
 
-Examples:
+**Examples:**
 * `del-player Messi` removes the player named `Messi` from the strategy board if such player exists on the strategy board.
 
 #### 3.3.4 Moving a player to a coordinate: `move`
 
 Move a player to a coordinate on the strategy board.
 
-Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
+**Format:** `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 
 
 <div markdown="block" class="alert alert-info">
@@ -646,7 +646,7 @@ Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 
 </div>
 
-Examples:
+**Examples:**
 
 Suppose you have added a player named `John` to the strategy board. And suppose this is the current position of John:
 It is roughly located at the coordinate `(50, 550)` since the circle center is around that position.
@@ -665,7 +665,7 @@ The image below shows the new position of John: You can see that the circle cent
 
 Exports current view of the strategy board as an image to the users local device.
 
-Format: `export`
+**Format:** `export`
 
 ### 3.4 General
 
@@ -673,13 +673,13 @@ Format: `export`
 
 Shows a message explaining how to access the help page.
 
-Format: `help`
+**Format:** `help`
 
 #### 3.4.2 Exiting the program : `exit`
 
 Exits the program.
 
-Format: `exit`
+**Format:** `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
