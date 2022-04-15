@@ -5,7 +5,7 @@ title: User Guide
 [![codecov](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp/branch/master/graph/badge.svg?token=N3IGRH3TN0)](https://codecov.io/gh/AY2122S2-CS2103T-W14-2/tp)
 
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always"></div>
@@ -27,7 +27,7 @@ This application is **optimized for use via a Command Line Interface** (CLI) whi
 4. Type your commands in the Command Line Interface box (CLI) labeled below. You can switch between the three tabs (Contact, Schedule, Strategy tabs).<br>
    ![Ui-labeled](images/Ui-Labeled.png)
 
-5. Refer to the [Features](#2-features) below for details of each command, as well as their formats.
+5. Refer to the [Features](#3-features) below for details of each command, as well as their formats.
 
 6. Contacts and Schedule related tabs will be saved automatically (Strategy needs to be explicitly saved).
 
@@ -37,10 +37,10 @@ Coach2K22 can run on computers with Windows and MacOS (_Requires at least 1GB RA
 
 ### 1.2 CLI tutorial
 
-You may not have come across a Command Line Interface (CLI) based application before. 
+You may not have come across a Command Line Interface (CLI) based application before.
 Here is a quick tutorial to get you started!
 
-1. Follow the instructions above in section 1.1 to download the Coach2k22 application to a directory of your choice. 
+1. Follow the instructions above in section 1.1 to download the Coach2k22 application to a directory of your choice.
 
 2. Double-click the file to launch the application.
 
@@ -48,9 +48,9 @@ Here is a quick tutorial to get you started!
 
 4. Hover your cursor over the box labelled CLI (as seen in section 1.1 step 4) and click on it once.
 
-5. Users can now use their keyboard to type commands into the CLI. 
+5. Users can now use their keyboard to type commands into the CLI.
 
-6. Refer to the [Features](#2-features) section below for more information and details on the command formats Coach2k22 accepts!
+6. Refer to the [Features](#3-features) section below for more information and details on the command formats Coach2k22 accepts!
 
 <div style="page-break-after: always"></div>
 
@@ -63,13 +63,11 @@ Here is a quick tutorial to get you started!
 This User Guide provides an in-depth documentation of our product to help familarise you with using Coach2K22 for your organisation purposes. You can refer to [Structure](#22-structure) to find out what's included in this document.
 
 ### 2.2 Structure
-This User Guide consist of six sections: [Introduction](#1-introduction), [About the User Guide](#2-about-the-user-guide), [Quick Start](#3-quick-start), [Features](#4-features), [FAQ](#5-faq), and [Command Summary](#6-command-summary).
+This User Guide consist of five sections: [Introduction](#1-introduction), [About the User Guide](#2-about-the-user-guide), [Features](#3-features), [FAQ](#4-faq), and [Command Summary](#5-command-summary).
 
-* The **Introduction** section provides a general overview of what our product does.
+* The **Introduction** section provides a general overview of what our product does, installation instructions, and a quick tutorial to get you started.
 
 * The **About the User Guide** section introduces you to icons and unfamiliar terms used throughout this document.
-
-* The **Quick Start** section provides you with the basic information to set up and use our product properly.
 
 * The **Features** section provides you with step-by-step instructions for every product feature.
 
@@ -120,61 +118,30 @@ This subsection describes some noteworthy information about the command format t
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-
-
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always"></div>
+## **3. Features**
 
-## **3. Quick Start**
+This section contains an exhaustive list of commands supported by Coach2K22.
+They are further classified into the following categories based on their functions:
 
-1. Ensure you have Java `11` or above installed in your Computer.
+* [Contact Management](#31-contact-management) are commands that allow you to manage your contacts efficiently.
 
-1. Download the latest `Coach2K22.jar` file from [here](https://github.com/AY2122S2-CS2103T-W14-2/tp/releases).
+* [Task Management](#32-task-management) are commands that allow you to manage your ongoing tasks.
 
-1. Copy the file to the folder you want to use as the _home folder_ for your copy of Coach2K22.
+* [Strategic Planning](#33-strategic-planning) are commands that allow you to manipulate the strategy board.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+* [General](#34-general) are commands that does not fit into any of the aforementioned categories.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will list all the possible commands.<br>
-   Some example commands you can try:
+### 3.1 Contact Management
 
-    * **`list-p`** : Lists all contacts.
-
-    * **`add-p`**`n/Johnson p/83918273 a/Woodlands Avenue 4 e/johnson@gmail.com t/Hustlers` : Adds a contact named `Johnson`.
-
-    * **`del-p`**`3` : Deletes the 3rd contact shown in the current list.
-
-    * **`exit`** : Exits the app.
-
-1. Refer to the [Features](#4-features) below for details of each command.
-
---------------------------------------------------------------------------------------------------------------------
-
-## **4. Features**
-
-* This Features section is an exhaustive list of all the commands and capabilities of Coach2K22.
-
-* Commands in Coach2K22 are split into 3 distinct categories
-
-### Categories of Commands ###
-1. Contact Management
-   * This [section](#4.1-contact-management) contains information about commands for editing information related to people.
-2. Task Management
-   * This [section](#4.2-task-management) contains information about commands for editing information related to tasks.
-3. Strategic Planning
-   * This [section](#4.3-strategic-planning) contains information about commands for manipulating the strategy board.
-
-### 4.1 Contact Management
-
-#### 4.1.1 Listing all contacts : `list-p`
+#### 3.1.1 Listing all contacts : `list-p`
 
 Shows a list of all persons in our contact list.
 
 Format: `list-p`
 
-#### 4.1.2 Adding a person: `add-p`
+#### 3.1.2 Adding a person: `add-p`
 
 Adds a person to our contact list.
 
@@ -187,7 +154,7 @@ Examples:
 A person can have any number of tags (including 0)
 </div>
 
-#### 4.1.3 Deleting a person: `del-p`
+#### 3.1.3 Deleting a person: `del-p`
 
 Delete a person from our contact list.
 
@@ -196,7 +163,7 @@ Format: `del-p INDEX`
 Examples:
 * `del-p 1` deletes the first person in the contact list.
 
-#### 4.1.4 Editing a person: `edit-p`
+#### 3.1.4 Editing a person: `edit-p`
 
 Edit a person from our contact list.
 
@@ -206,13 +173,13 @@ Examples:
 * `edit-p 1 p/98273712 e/johndoe@example.com` edits the phone number and email addresses of the 1st person into `98273712` and  `johndoe@example.com` respectively.
 * `edit-p 2 n/Alan Walker t/` edits the name of the 2nd person and clear all existing tags.
 
-#### 4.1.5 Clearing all contact entries: `clear-p`
+#### 3.1.5 Clearing all contact entries: `clear-p`
 
 Clear all entries from our contact list.
 
 Format: `clear-p`
 
-#### 4.1.6 Adding a tag : `tag-add-p`
+#### 3.1.6 Adding a tag : `tag-add-p`
 
 Add tags to a selected person from our contact list.
 
@@ -223,7 +190,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * The tag name should not contain spaces and should be alphanumeric.
 
@@ -231,7 +198,7 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.1.7 Deleting a tag : `tag-del-p`
+#### 3.1.7 Deleting a tag : `tag-del-p`
 
 Add tags to a selected person from our contact list.
 
@@ -242,14 +209,14 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * The tag name should not contain spaces and should be alphanumeric.
 * The tag name is case-sensitive and must be an exact match for it to be recognised.
 
 </div>
 
-#### 4.1.8 Locating persons by keyword : `find-p`
+#### 3.1.8 Locating persons by keyword : `find-p`
 
 Find persons matching any of the given keywords from our contact list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
@@ -264,7 +231,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * One of the optional items e.g. `[n/NAME]` must be present for the command to work.
 * The search is case-insensitive e.g. `hans` will match `Hans`.
@@ -277,7 +244,7 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.1.9 Adding a strength : `strength-add`
+#### 3.1.9 Adding a strength : `strength-add`
 
 Add a strength to a selected person from our contact list.
 
@@ -288,7 +255,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Adds a strength at the specified `INDEX`.
 * `INDEX` refers to the index number shown in the displayed person list.
@@ -297,7 +264,7 @@ Examples:
 
 </div>
 
-#### 4.1.10 Adding a weakness : `weakness-add`
+#### 3.1.10 Adding a weakness : `weakness-add`
 
 Add a weakness to a selected person from our contact list.
 
@@ -308,7 +275,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Adds a weakness at the specified `INDEX`.
 * `INDEX` refers to the index number shown in the displayed person list.
@@ -319,7 +286,7 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.1.11 Adding a miscellaneous note : `misc-add`
+#### 3.1.11 Adding a miscellaneous note : `misc-add`
 
 Add a miscellaneous note to a selected person from our contact list.
 
@@ -330,7 +297,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Adds a miscellaneous note at the specified `INDEX`.
 * `INDEX` refers to the index number shown in the displayed person list.
@@ -339,7 +306,7 @@ Examples:
 
 </div>
 
-#### 4.1.12 Deleting a strength : `strength-del`
+#### 3.1.12 Deleting a strength : `strength-del`
 
 Delete a strength from a selected person from our contact list.
 
@@ -350,7 +317,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Deletes the strength at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -362,7 +329,7 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.1.13 Deleting a weakness : `weakness-del`
+#### 3.1.13 Deleting a weakness : `weakness-del`
 
 Delete the weakness from a selected person from our contact list.
 
@@ -373,7 +340,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Deletes the weakness at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -383,7 +350,7 @@ Examples:
 
 </div>
 
-#### 4.1.14 Deleting a miscellaneous note : `misc-del`
+#### 3.1.14 Deleting a miscellaneous note : `misc-del`
 
 Delete the miscellaneous note from a selected person from our contact list.
 
@@ -394,7 +361,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Deletes the miscellaneous note at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -406,27 +373,27 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.1.15 Sorting list of persons by strengths : `sort-strength`
+#### 3.1.15 Sorting list of persons by strengths : `sort-strength`
 
 Sorts the list of persons by total strengths in descending order.
 
 Format: `sort-strength`
 
-#### 4.1.16 Sorting list of persons by weaknesses : `sort-weakness`
+#### 3.1.16 Sorting list of persons by weaknesses : `sort-weakness`
 
 Sorts the list of persons by total weaknesses in descending order.
 
 Format: `sort-weaknesses`
 
-### 4.2 Task Management
+### 3.2 Task Management
 
-#### 4.2.1 Listing all tasks : `list-t`
+#### 3.2.1 Listing all tasks : `list-t`
 
 Shows a list of all tasks in our task list.
 
 Format: `list-t`
 
-#### 4.2.2 Adding a task: `add-t`
+#### 3.2.2 Adding a task: `add-t`
 
 Adds a task to our task list.
 
@@ -438,23 +405,23 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * `PERSON_NAME` has to be present in the contact list for them to be tagged to a task.
 
 </div>
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** 
 
-:bulb: **Tip:** A task can have any number of tags (including 0)<br>
+* A task can have any number of tags (including 0)<br>
 
-:bulb: **Tip:** A task can also be assigned to multiple persons (including 0)
+* A task can also be assigned to multiple persons (including 0)
 
 </div>
 
 <div style="page-break-after: always"></div>
 
-#### 4.2.3 Deleting a task: `del-t`
+#### 3.2.3 Deleting a task: `del-t`
 
 Delete a task from our task list.
 
@@ -465,7 +432,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Deletes the task at the specified `INDEX`.
 * The index can be obtained by referring to the indicated task index on the displayed task list.
@@ -473,7 +440,7 @@ Examples:
 
 </div>
 
-#### 4.2.4 Editing a task: `edit-t`
+#### 3.2.4 Editing a task: `edit-t`
 
 Edit a task from our task list.
 
@@ -483,7 +450,7 @@ Examples:
 * `edit-t 2 d/29-04-2022 et/10:00` edits the date and end time of the second task into `29-04-2022` and  `10:00` respectively.
 * `edit-t 1 n/PR Event t/` edits the name of the first task to `PR Event` and clears all existing tags.
 
-#### 4.2.5 Clear all task entries : `clear-t`
+#### 3.2.5 Clear all task entries : `clear-t`
 
 Clear all tasks or tasks on a selected date from our task list.
 
@@ -496,14 +463,14 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * Clears all tasks on the specified `DATE`.
 * Date must be in the format `dd-mm-yyyy`.
 
 </div>
 
-#### 4.2.6 Adding a tag : `tag-add-t`
+#### 3.2.6 Adding a tag : `tag-add-t`
 
 Add a tag to a selected task from our task list.
 
@@ -514,13 +481,13 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * The tag name should not contain spaces and should be alphanumeric.
 
 </div>
 
-#### 4.2.7 Deleting a tag : `tag-del-t`
+#### 3.2.7 Deleting a tag : `tag-del-t`
 
 Delete a tag from a selected task in our task list.
 
@@ -531,7 +498,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * The tag name should not contain spaces and should be alphanumeric.
 * The tag name is case-sensitive and must be an exact match for it to be recognised.
@@ -540,7 +507,7 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.2.8 Locating tasks by keyword : `find-t`
+#### 3.2.8 Locating tasks by keyword : `find-t`
 
 Find tasks matching any of the given keywords from our task list.
 Users can choose to find by `NAME`(s), `TAG`(s), or both.
@@ -555,7 +522,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * One of the optional items e.g. `[n/NAME]` must be present for the command to work.
 * The search is case-insensitive e.g. `meeting` will match `Meeting`.
@@ -566,24 +533,25 @@ Examples:
 
 </div>
 
-#### 4.2.9 Locating contacts tagged to a task : `get-person`
+#### 3.2.9 Locating contacts tagged to a task : `get-person`
 
 Pull out the contact information of persons tagged to a task.
 
 Format: `get-person INDEX`
 
 Examples:
+
 * `get-person 2` pulls out the contact information of persons tagged to the second task.
 
-#### 4.2.10 Sorting tasks by date : `sort-date`
+#### 3.2.10 Sorting tasks by date : `sort-date`
 
 Sort the task list by date, in order of the task whose deadline is earlier.
 
 Format: `sort-date`
 
-### 4.3 Strategic Planning
+### 3.3 Strategic Planning
 
-#### 4.3.1 Load new background image : `load-court`
+#### 3.3.1 Load new background image : `load-court`
 
 Load a new background image in the strategy tab.
 
@@ -594,16 +562,15 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * A folder named `courts` will be automatically generated in the same directory as the JAR file
 * Image must be in `png` format and be contained in the aforementioned `courts` directory.
 * Loads the given image from the filepath `courts/IMAGE_NAME.png`.
 
-
 </div>
 
-#### 4.3.2 Adding new players: `add-player`
+#### 3.3.2 Adding new players: `add-player`
 
 Add a new player to the strategy board.
 
@@ -615,7 +582,7 @@ Examples:
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
 * `PLAYER_NAME` is case-sensitive e.g. `John Cena` will NOT match `john Cena`.
 * `PLAYER_NAME` can not be empty and its length must be less or equal to `50` characters.
@@ -625,37 +592,51 @@ Examples:
 
 <div style="page-break-after: always"></div>
 
-#### 4.3.3 Removing players: `del-player`
+#### 3.3.3 Removing players: `del-player`
 
 Remove a player from the strategy board.
 
 Format: `del-player PLAYER_NAME`
 
-As mentioned above, the player name is case-sensitive.
-And the player name must be present on the strategy board.
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Additional Notes:**<br>
+
+* `PLAYER_NAME` is case-sensitive e.g. `John Cena` will NOT match `john Cena`.
+* `PLAYER_NAME` can not be empty and its length must be less or equal to `50` characters.
+* `PLAYER_NAME` must be unique and can NOT contain the character `/`.
+* `PLAYER_NAME` must be present in the strategy board
+
+</div>
 
 Examples:
 * `del-player Messi` removes the player named `Messi` from the strategy board if such player exists on the strategy board.
 
-#### 4.3.4 Moving a player to a coordinate: `move`
+#### 3.3.4 Moving a player to a coordinate: `move`
 
 Move a player to a coordinate on the strategy board.
 
 Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 
-As mentioned above, the player name is case-sensitive.
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Additional Notes:**<br>
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Key things to take note of:**<br>
+**:information_source: Additional Notes:**<br>
 
+* `PLAYER_NAME` is case-sensitive e.g. `John Cena` will NOT match `john Cena`.
+* `PLAYER_NAME` can not be empty and its length must be less or equal to `50` characters.
+* `PLAYER_NAME` must be unique and can NOT contain the character `/`.
+* `PLAYER_NAME` must be present in the strategy board.
 * `X_COORDINATE` and `Y_COORDINATE` must be integers.
 * `X_COORDINATE` must be non-negative and less than or equal to `1000`.
 * `Y_COORDINATE` must be non-negative and less than or equal to `600`.
 
 </div>
 
-Example:
+Examples:
 
 Suppose you have added a player named `John` to the strategy board. And suppose this is the current position of John:
 It is roughly located at the coordinate `(50, 550)` since the circle center is around that position.
@@ -670,21 +651,21 @@ The image below shows the new position of John: You can see that the circle cent
 ![move-ex2](images/move-ex2.png)
 
 
-#### 4.3.5 Export strategy board as image file: `export`
+#### 3.3.5 Export strategy board as image file: `export`
 
 Exports current view of the strategy board as an image to the users local device.
 
 Format: `export`
 
-### 4.4 General
+### 3.4 General
 
-#### 4.4.1 Viewing help: `help`
+#### 3.4.1 Viewing help: `help`
 
 Shows a message explaining how to access the help page.
 
 Format: `help`
 
-#### 4.4.2 Exiting the program : `exit`
+#### 3.4.2 Exiting the program : `exit`
 
 Exits the program.
 
@@ -694,7 +675,7 @@ Format: `exit`
 
 <div style="page-break-after: always"></div>
 
-## **5. FAQ**
+## **4. FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Coach2k22 home folder.
@@ -703,18 +684,18 @@ Format: `exit`
 **A**: These functions allow coach to judge players based on their respective strengths/weaknesses for improved judgement of abilities, analyzing their liabilities, and strategically choosing the right player for the right purpose.
 --------------------------------------------------------------------------------------------------------------------
 
-## **6. Command summary**
+## **5. Command summary**
 
-This section will give a summary of all the commands available in the application.
-They will be classified into the following categories by command usage:
-* [**Contact Management**](#61-contact-management)
-* [**Task Management**](#62-task-management)
-* [**Strategic Planning**](#63-strategic-planning)
-* [**General**](#64-general)
+This section gives you a summary of all the available commands in the application.
+They are classified into the following categories by command usage:
+* [Contact Management](#51-contact-management)
+* [Task Management](#52-task-management)
+* [Strategic Planning](#53-strategic-planning)
+* [General](#54-general)
 
 You can find the corresponding command format and maybe one example for the actions you are able to perform on the application.
 
-### 6.1 Contact Management
+### 5.1 Contact Management
 This section will list all the commands available for contact management in the application.
 The actions here are all related to managing the contacts of the user.
 
@@ -739,7 +720,7 @@ The actions here are all related to managing the contacts of the user.
 
 <div style="page-break-after: always"></div>
 
-### 6.2 Task Management
+### 5.2 Task Management
 This section will list all the commands available for task management in the application.
 The actions here are all related to managing the tasks of the user.
 
@@ -758,7 +739,7 @@ The actions here are all related to managing the tasks of the user.
 
 <div style="page-break-after: always"></div>
 
-### 6.3 Strategic Planning
+### 5.3 Strategic Planning
 This section will list all the commands available for strategic planning in the application.
 The actions here are all related to performing the strategic planning.
 
@@ -771,7 +752,7 @@ The actions here are all related to performing the strategic planning.
 | **Export**        | `export`                                                                |
 
 
-### 6.4 General
+### 5.4 General
 This section will list all the commands available for general usage in the application.
 The actions here are all related to general usage.
 
