@@ -547,12 +547,12 @@ To get the contact information of all participants in Task 2 `Team Training`, yo
 
 * `get-person 2`
 
-This will bring you to the **Contact** tab - displaying only the contact information of participants in Task 2.
+This will bring you to the contact tab - displaying only the contact information of participants in Task 2.
 
-**Before** entering the command
+Before entering the command
 ![getperson-ex1](images/getperson-ex1.png)
 
-**After** entering the command
+After entering the command
 ![getperson-ex2](images/getperson-ex2.png)
 
 
