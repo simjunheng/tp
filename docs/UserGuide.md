@@ -411,7 +411,9 @@ Examples:
 
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** 
+<div markdown="span" class="alert alert-primary">
+
+**:bulb: Tips:**<br>
 
 * A task can have any number of tags (including 0)<br>
 
@@ -535,13 +537,24 @@ Examples:
 
 #### 3.2.9 Locating contacts tagged to a task : `get-person`
 
-Pull out the contact information of persons tagged to a task.
+Pull out the contact information of participants/persons tagged to a task.
 
 Format: `get-person INDEX`
 
 Examples:
 
-* `get-person 2` pulls out the contact information of persons tagged to the second task.
+To get the contact information of all participants in Task 2 `Team Training`, you can enter the following command:
+
+* `get-person 2`
+
+This will bring you to the **Contact** tab - displaying only the contact information of participants in Task 2.
+
+**Before** entering the command
+![getperson-ex1](images/getperson-ex1.png)
+
+**After** entering the command
+![getperson-ex2](images/getperson-ex2.png)
+
 
 #### 3.2.10 Sorting tasks by date : `sort-date`
 
@@ -618,9 +631,6 @@ Move a player to a coordinate on the strategy board.
 
 Format: `move PLAYER_NAME x/X_COORDINATE y/Y_COORDINATE`
 
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Additional Notes:**<br>
 
 <div markdown="block" class="alert alert-info">
 
